@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/service/service",
+    "pages/index/index",
+    "pages/mall/mall",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/reservationDetail/reservationDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "backgroundColor": "#000",
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#4454cd",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "lib/images/tabbar/index.png",
+        "selectedIconPath": "lib/images/tabbar/index-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "iconPath": "lib/images/tabbar/mall.png",
+        "selectedIconPath": "lib/images/tabbar/mall-active.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "iconPath": "lib/images/tabbar/service.png",
+        "selectedIconPath": "lib/images/tabbar/service-active.png",
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "lib/images/tabbar/order.png",
+        "selectedIconPath": "lib/images/tabbar/order-active.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "lib/images/tabbar/my.png",
+        "selectedIconPath": "lib/images/tabbar/my-active.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+.tab {
+    &-nav {
+        display: flex;
+        margin: 20rpx 0 40rpx;
+        font-size: 28rpx;
+        text-align: center;
+        // background-color: #fff;
+        & .item {
+            // flex: 1;
+            padding: 16rpx 30rpx;
+            border-radius: 6rpx;
+            background-color: #fff;
+        }
+        & .item.active {
+            background-color: #4454cd;
+            color: #fff;
+        }
+        & .item + .item {
+            margin-left: 20rpx;
+        }
+    }
+    &-content {
+        font-size: 24rpx;
+    }
+}

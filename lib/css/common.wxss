@@ -1,0 +1,66 @@
+page {
+  background-color: #f8f8f8;
+  font-family: "PingFang SC";
+}
+.container {
+  padding: 20rpx;
+}
+.title-page {
+  padding: 0 30rpx 40rpx;
+  font-size: 60rpx;
+  font-weight: 500;
+  border-bottom: 2rpx solid #cbcbcb;
+  background-color: #fff;
+}
+.title-channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  line-height: 1;
+  margin: 40rpx 0 30rpx;
+}
+.title-main {
+  font-weight: 700;
+  font-size: 34rpx;
+}
+.title-sm {
+  font-size: 28rpx;
+}
+.label {
+  width: 80rpx;
+  padding: 6rpx 10rpx;
+  background-color: #f1f1f1;
+  border-radius: 6rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+.label-info {
+  background-color: #5f9ef7;
+  color: #fff;
+}
+.label-success {
+  background-color: #7ed67e;
+  color: #fff;
+}
+.label-warning {
+  background-color: #cab182;
+  color: #fff;
+}
+.label-danger {
+  background-color: #bd7676;
+  color: #fff;
+}
+.label-primary {
+  background-color: #6f7bda;
+  color: #fff;
+}
+.label + .label {
+  margin-top: 6rpx;
+}
+.text-primary {
+  color: #4454cd;
+}
+.text-danger {
+  color: #d34444;
+}

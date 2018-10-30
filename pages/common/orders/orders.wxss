@@ -1,0 +1,139 @@
+page {
+  background-color: #f8f8f8;
+  font-family: "PingFang SC";
+}
+.container {
+  padding: 20rpx;
+}
+.title-page {
+  padding: 0 30rpx 40rpx;
+  font-size: 60rpx;
+  font-weight: 500;
+  border-bottom: 2rpx solid #cbcbcb;
+  background-color: #fff;
+}
+.title-channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  line-height: 1;
+  margin: 40rpx 0 30rpx;
+}
+.title-main {
+  font-weight: 700;
+  font-size: 34rpx;
+}
+.title-sm {
+  font-size: 28rpx;
+}
+.label {
+  width: 80rpx;
+  padding: 6rpx 10rpx;
+  background-color: #f1f1f1;
+  border-radius: 6rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+.label-info {
+  background-color: #5f9ef7;
+  color: #fff;
+}
+.label-success {
+  background-color: #7ed67e;
+  color: #fff;
+}
+.label-warning {
+  background-color: #cab182;
+  color: #fff;
+}
+.label-danger {
+  background-color: #bd7676;
+  color: #fff;
+}
+.label-primary {
+  background-color: #6f7bda;
+  color: #fff;
+}
+.label + .label {
+  margin-top: 6rpx;
+}
+.text-primary {
+  color: #4454cd;
+}
+.text-danger {
+  color: #d34444;
+}
+.order-list .item {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.2);
+  font-size: 26rpx;
+}
+.order-list .item-image {
+  position: relative;
+  width: 146rpx;
+  height: 146rpx;
+  margin-right: 30rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.order-list .item-image .img {
+  position: relative;
+  top: 50%;
+  width: 146rpx;
+  height: 100%;
+  transform: translateY(-50%);
+}
+.order-list .item-info {
+  flex: 1;
+}
+.order-list .item-title {
+  height: 68rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.order-list .item-des {
+  height: 68rpx;
+  color: #cbcbcb;
+  font-size: 24rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.order-list .item-price,
+.order-list .item-count {
+  text-align: right;
+  font-weight: 500;
+}
+.order-list .item-price {
+  font-weight: 500;
+}
+.order-list .item-count {
+  font-size: 18rpx;
+}
+.order-list .item-operator {
+  margin-left: 30rpx;
+}
+.order-list .item-operator .btn {
+  font-size: 20rpx;
+}
+.order-list .item-operator > .div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.order-list .item + .item {
+  margin-top: 20rpx;
+}
+.order-list p {
+  text-align: justify;
+}

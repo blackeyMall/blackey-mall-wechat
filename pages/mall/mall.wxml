@@ -1,0 +1,4 @@
+<!-- mall.wxml -->
+<view class="redirecting">
+    <text>小程序跳转中...</text>
+</view>

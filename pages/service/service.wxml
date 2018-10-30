@@ -1,0 +1,14 @@
+<!--pages/service/service.wxml-->
+<view class="title-page">服务项目</view>
+<view class="container">
+    <view class="service-list">
+        <view class="item" wx:for="{{itemList}}" wx:key="item.id">
+            <view class="item-content">
+                <image class="item-img" src="{{item.imgUrl}}" mode="widthFix" />
+                <text class="">
+                    {{item.title}}
+                </text>
+            </view>
+        </view>
+    </view>
+</view>

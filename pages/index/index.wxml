@@ -1,0 +1,24 @@
+<!-- index.wxml -->
+<view class="container">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDots}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{item.index}}">
+        <swiper-item class="swiper-item">
+        <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+    </block>
+    </swiper>
+    <view class="div">
+        <view class="title-channel">
+            <view class="title-main">
+                服务中的订单
+            </view>
+            <view class="title-sm">
+                更多 <i class="iconfont icon-more"></i>
+            </view>
+        </view>
+    </view>
+    <view class="div">
+        <!-- 订单列表-组件 -->
+        <orders></orders>
+    </view>
+</view>
