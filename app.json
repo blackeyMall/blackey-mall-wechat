@@ -1,11 +1,13 @@
 {
   "pages": [
-    "pages/service/service",
+    "pages/orderReservationDetail/orderReservationDetail",
     "pages/index/index",
     "pages/mall/mall",
+    "pages/service/service",
     "pages/order/order",
     "pages/my/my",
-    "pages/reservationDetail/reservationDetail"
+    "pages/orderServiceDetail/orderServiceDetail",
+    "pages/orderCompleteDetail/orderCompleteDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

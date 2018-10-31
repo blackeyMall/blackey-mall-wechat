@@ -80,15 +80,16 @@ Component({
         this.data.mockOrderList.forEach(el => {
             let { status, ...temp } = el;
             if (status === 0) {
-                temp.status = "预约中";
+                temp.statusName = "预约中";
                 temp.statusClass = "info";
             } else if (status === 1) {
-                temp.status = "服务中";
+                temp.statusName = "服务中";
                 temp.statusClass = "danger";
             } else if (status === 2) {
-                temp.status = "已完成";
+                temp.statusName = "已完成";
                 temp.statusClass = "success";
             }
+            temp.status = status;
             orderList.push(temp);
         });
         this.setData({
@@ -116,8 +117,32 @@ Component({
         },
         _propertyChange: function(newVal, oldVal) {},
 
-        orderDetail: function () {
-            console.log(1)
+        // 跳转订单详情
+        orderDetail: function (el) {
+            let navigateUrl = '';
+            switch (el.currentTarget.dataset.status) {
+                case 0: 
+                    navigateUrl = '/pages/orderReservationDetail/orderReservationDetail';
+                    break;
+                case 1:
+                    navigateUrl = '/pages/orderServiceDetail/orderServiceDetail';
+                    break;
+                case 2:
+                    navigateUrl = '/pages/orderCompleteDetail/orderCompleteDetail';
+                    break;
+            }
+            wx.navigateTo({
+                url: navigateUrl,
+                success: function(res){
+                    // success
+                },
+                fail: function() {
+                    // fail
+                },
+                complete: function() {
+                    // complete
+                }
+            })
         }
     }
 });

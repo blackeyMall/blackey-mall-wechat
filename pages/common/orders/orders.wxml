@@ -1,5 +1,5 @@
 <view class="order-list">
-    <view class="item" wx:for="{{orderList}}" wx:key="{{item.index}}" bindtap="orderDetail">
+    <view class="item" wx:for="{{orderList}}" wx:key="{{item.index}}" data-id="{{item.orderId}}" data-status="{{item.status}}" bindtap="orderDetail">
         <view class="item-image">
             <image src="{{item.imgUrl}}" class="img" mode="widthFix" />
         </view>
@@ -17,7 +17,7 @@
                     <view class="item-price">{{item.price}}</view>
                     <view class="item-count">x {{item.count}}</view>
                 </view>
-                <view class="label label-{{item.statusClass}}">{{item.status}}</view>
+                <view class="label label-{{item.statusClass}}">{{item.statusName}}</view>
             </view>
         </view>
     </view>
