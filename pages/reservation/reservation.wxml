@@ -1,0 +1,57 @@
+<!--pages/reservationDetail/reservationDetail.wxml-->
+<view class="title-page">
+    <view class="div">
+        <view>预约服务</view>
+        <view class="label label-primary">{{serviceItem.title}}</view>
+    </view>
+    <image src="{{serviceItem.url}}" class="avatar-img" mode="aspectFit" />
+</view>
+<!-- <view class="avatar">
+    <open-data class="avatar-img" type="userAvatarUrl" lang="zh_CN"></open-data>
+</view> -->
+<view class="container">
+    <view class="div">
+        <view class="form">
+            <view class="form-group active">
+                <label for="">姓名</label>
+                <input value="张三" type="text" placeholder="请输入姓名" bindinput="" bindfocus="handleInputFocus" bindblur="" />
+            </view>
+            <view class="form-group">
+                <label class="" for="">电话</label>
+                <input class="" value="" type="number" placeholder="请输入电话" maxlength="11" bindinput="" bindfocus=""
+                    bindblur="" />
+            </view>
+            <view class="form-group">
+                <label class="" for="">日期</label>
+                <!-- <input class="" value="" type="text" placeholder="请输入日期" bindinput="" bindfocus="" bindblur="" /> -->
+                <picker class="input" mode="date" value="{{date}}" bindchange="bindDateChange">
+                    {{date}}
+                </picker>
+            </view>
+            <view class="form-group">
+                <label class="" for="">地址</label>
+                <input class="" value="" type="text" placeholder="请输入地址" bindinput="" bindfocus="" bindblur="" />
+            </view>
+            <view class="form-group remarks">
+                <label class="" for="">备注</label>
+                <!-- <input class="" value="" type="text" placeholder="请输入备注" bindinput="" bindfocus="" bindblur="" /> -->
+                <textarea class="" value="" placeholder="请输入备注信息" auto-height bindinput="" bindfocus="" bindblur=""
+                    bindconfirm="" bindlinechange="%{15}">
+
+                        </textarea>
+
+            </view>
+            <view class="form-btn">
+                <!-- <button class="default" size="default" type="default" plain="default" disabled="false" loading="false"
+                            hover-class="button-hover" hover-stop-propagation="false"
+                             form-type="submit|reset" open-type="contact|share|getUserInfo|openSetting|feedback" >
+                            
+                        </button> -->
+                <view class="btn btn-primary">确定</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="circle circle-pink"></view>
+<view class="circle circle-purple"></view>
+<view class="circle circle-blue"></view>

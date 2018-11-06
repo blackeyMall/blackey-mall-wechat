@@ -11,57 +11,62 @@ Component({
                 // 通常 newVal 就是新设置的数据， oldVal 是旧数据
             }
         },
-        myProperty2: String // 简化的定义方式
+        myProperty2: String, // 简化的定义方式
+        pageType: Number
     },
     data: {
         orderList: [],
+        // 模拟mock数据
         mockOrderList: [
             {
                 orderId: "order20181027088231",
-                imgUrl: "../../../lib/images/order/item1.png",
-                title:
-                    "欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具",
-                des:
-                    "欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具欧式沙发厨房餐具",
-                price: 9999.64,
-                count: 3,
-                status: 0
+                imgUrl: "../../../lib/images/item/item-1.png",
+                title: "水电",
+                date: "2018-11-03",
+                address: '上海市浦东新区张江镇',
+                price: "9999.64",
+                status: 0,
+                statusName: '预约中'
             },
             {
-                orderId: "order20181027088232",
-                imgUrl: "../../../lib/images/order/item2.png",
-                title: "欧式沙发",
-                des: "厨房餐具",
-                price: 9999.64,
-                count: 3,
-                status: 1
+                orderId: "order20181027088231",
+                imgUrl: "../../../lib/images/item/item-2.png",
+                title: "水电",
+                date: "2018-11-03",
+                address: '上海市浦东新区川沙镇',
+                price: "11.64",
+                status: 1,
+                statusName: '确认中'
             },
             {
-                orderId: "order20181027088233",
-                imgUrl: "../../../lib/images/order/item3.png",
-                title: "欧式沙发2",
-                des: "欧式沙发2",
-                price: 9999.64,
-                count: 3,
-                status: 2
+                orderId: "order20181027088231",
+                imgUrl: "../../../lib/images/item/item-3.png",
+                title: "水电",
+                date: "2018-11-03",
+                address: '上海市徐汇区',
+                price: "9",
+                status: 2,
+                statusName: '服务中'
             },
             {
-                orderId: "order20181027088234",
-                imgUrl: "../../../lib/images/order/item4.png",
-                title: "欧式沙发3",
-                des: "欧式沙发3",
-                price: 9999.64,
-                count: 3,
-                status: 0
+                orderId: "order20181027088231",
+                imgUrl: "../../../lib/images/item/item-4.png",
+                title: "水电",
+                date: "2018-11-03",
+                address: '上海市浦东新区南汇',
+                price: "99",
+                status: 3,
+                statusName: '已完成'
             },
             {
-                orderId: "order20181027088235",
-                imgUrl: "../../../lib/images/order/item1.png",
-                title: "欧式沙发4",
-                des: "欧式沙发4",
-                price: 9999.64,
-                count: 3,
-                status: 1
+                orderId: "order20181027088231",
+                imgUrl: "../../../lib/images/item/item-5.png",
+                title: "水电",
+                date: "2018-11-03",
+                address: '北京朝阳区',
+                price: "9999",
+                status: 3,
+                statusName: '已完成'
             }
         ]
     }, // 私有数据，可用于模板渲染
@@ -76,20 +81,26 @@ Component({
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function() {}, // 此处attached的声明会被lifetimes字段中的声明覆盖
     ready: function() {
+        console.log(this.data.pageType)
+        if (this.data.pageType === 0) {
+            // 首页 - 传入openId
+        } else if (this.data.pageType === 1) {
+            // 订单列表页 - 传入openId & 订单分类状态： 0 全部  1 预约中  2  确认中  3 服务中  4 已完成
+        }
         let orderList = [];
         this.data.mockOrderList.forEach(el => {
-            let { status, ...temp } = el;
-            if (status === 0) {
-                temp.statusName = "预约中";
+            let { statusName, ...temp } = el;
+            if (statusName === '预约中') {
                 temp.statusClass = "info";
-            } else if (status === 1) {
-                temp.statusName = "服务中";
+            } else if (statusName === '确认中') {
                 temp.statusClass = "danger";
-            } else if (status === 2) {
-                temp.statusName = "已完成";
+            } else if (statusName === '服务中') {
+                temp.statusClass = "primary";
+            } else if (statusName === '已完成') {
                 temp.statusClass = "success";
             }
-            temp.status = status;
+            temp.statusName = statusName
+            console.log(temp)
             orderList.push(temp);
         });
         this.setData({
@@ -118,31 +129,27 @@ Component({
         _propertyChange: function(newVal, oldVal) {},
 
         // 跳转订单详情
-        orderDetail: function (el) {
-            let navigateUrl = '';
-            switch (el.currentTarget.dataset.status) {
-                case 0: 
-                    navigateUrl = '/pages/orderReservationDetail/orderReservationDetail';
-                    break;
-                case 1:
-                    navigateUrl = '/pages/orderServiceDetail/orderServiceDetail';
-                    break;
-                case 2:
-                    navigateUrl = '/pages/orderCompleteDetail/orderCompleteDetail';
-                    break;
+        orderDetail: function(el) {
+            console.log(el)
+            if (el.currentTarget.dataset.statusname === '预约中') {
+                wx.showModal({
+                    title: '提示',
+                    content: '订单预约中，待联系确认后查看！',
+                    showCancel: false
+                })
+                return
+            } else if (el.currentTarget.dataset.statusname === '确认中') {
+                // 跳转用户信息确认页面
+                wx.navigateTo({
+                    url: '/pages/orderConfirm/orderConfirm?orderInfo=' + JSON.stringify(el.currentTarget.dataset)
+                });
+                
+            } else {
+                // 跳转订单详情页
+                wx.navigateTo({
+                    url: '/pages/orderDetail/orderDetail?orderInfo=' + JSON.stringify(el.currentTarget.dataset)
+                });
             }
-            wx.navigateTo({
-                url: navigateUrl,
-                success: function(res){
-                    // success
-                },
-                fail: function() {
-                    // fail
-                },
-                complete: function() {
-                    // complete
-                }
-            })
         }
     }
 });

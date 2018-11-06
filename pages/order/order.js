@@ -1,6 +1,10 @@
 // pages/order/order.js
 Page({
 
+  properties: {
+    type: Number
+  },
+
   /**
    * 页面的初始数据
    */

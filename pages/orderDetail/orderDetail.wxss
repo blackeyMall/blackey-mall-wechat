@@ -1,0 +1,88 @@
+.container {
+  flex: 1;
+}
+.container > .div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.avatar-img {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 0 0 auto;
+  border-radius: 8rpx;
+  background-color: #eff0fa;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.order-detail {
+  border-radius: 8rpx;
+}
+.order-detail .div {
+  padding: 30rpx;
+  border-radius: 8rpx;
+}
+.order-detail .div + .div {
+  margin-top: 20rpx;
+}
+.time-line .item {
+  position: relative;
+  line-height: 1;
+  padding-left: 40rpx;
+  border-left: 1rpx dashed #7ed67e;
+  font-size: 28rpx;
+}
+.time-line .item > .div {
+  background-color: #f8f8f8;
+}
+.time-line .item text {
+  display: block;
+  margin-bottom: 20rpx;
+}
+.time-line .item .date {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #5f9ef7;
+}
+.time-line .item .date ::before,
+.time-line .item .date ::after {
+  position: absolute;
+  top: 0;
+  left: -11rpx;
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 50%;
+  background-color: #7ed67e;
+  content: ' ';
+}
+.time-line .item .date ::after {
+  top: 4rpx;
+  left: -7rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background-color: #fff;
+}
+.time-line .item .img-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10rpx;
+  margin-right: -10rpx;
+}
+.time-line .item .img-list image {
+  flex: 0 0 50%;
+  height: 200rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.time-line .item:first-child {
+  border-color: #5f9ef7;
+}
+.time-line .item:first-child .date ::before {
+  background-color: #5f9ef7;
+}
+.time-line .item:last-child {
+  border-left: 0;
+}
+.time-line .item + .item {
+  padding-top: 20rpx;
+}

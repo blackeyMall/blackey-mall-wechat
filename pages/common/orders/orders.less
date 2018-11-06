@@ -1,8 +1,8 @@
-@import "../../../lib/css/common";
+@import "../../../lib/css/common.wxss";
 
 // mixins
-.ellipsis-multiple(@col) {
-    display: -webkit-box;    
+.ellipsis-multiple(@col) { 
+    display: -webkit-box;  
     -webkit-box-orient: vertical;    
     -webkit-line-clamp: @col;    
     overflow: hidden;
@@ -12,17 +12,22 @@
     .item {
         display: flex;
         flex-wrap: wrap;
-        padding: 20rpx 30rpx;
-        background-color: #fff;
+        height: 100%;
+        padding: 30rpx;
+        background-color: #fff; 
         border-radius: 16rpx;
-        box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.2);
-        font-size: 26rpx;
+        box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
+        font-size: 24rpx;
+        .iconfont {
+            font-size: 24rpx;
+        }
         &-image {
             position: relative;
             width: 146rpx;
             height: 146rpx;
             margin-right: 30rpx;
-            border-radius: 50%;
+            border-radius: 16rpx;
+            box-shadow: 0 0 8rpx rgba(147, 166, 179, 0.3);
             overflow: hidden;
             .img {
                 position: relative;
@@ -34,39 +39,52 @@
         }
         &-info {
             flex: 1;
-        }
-        &-title {
-            height: 68rpx;
-            margin-bottom: 10rpx;
-            .ellipsis-multiple(2);
-        }
-        &-des {
-            height: 68rpx;
-            color: #cbcbcb;
-            font-size: 24rpx;
-            .ellipsis-multiple(2);
-        }
-        &-price,
-        &-count {
-            text-align: right;
-            font-weight: 500;
-        }
-        &-price {
-            font-weight: 500;
-        }
-        &-count {
-            font-size: 18rpx;
-        }
-        &-operator {
-            margin-left: 30rpx;
-            .btn {
-                font-size: 20rpx;
-            }
-            & > .div {
+            > .div {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 height: 100%;
+            }
+        }
+        &-title {
+            margin-bottom: 20rpx;
+            color: #4454cd;
+        }
+        &-date {
+            margin-bottom: 10rpx;
+            color: #999;
+            font-size: 24rpx;
+        }
+        &-address {
+            color: #666;
+            font-size: 24rpx;
+        }
+        &-title,
+        &-date,
+        &-address {
+            > .div {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                .iconfont {
+                    margin-right: 10rpx;
+                    // margin-top: 4rpx;
+                }
+                text {
+                    flex: 1;
+                    text-align: justify;
+                }
+            }
+        }
+        &-price {
+            text-align: right;
+            font-weight: 500;
+        }
+        &-operator {
+            margin-left: 20rpx;
+            .label {
+                margin-left: auto;
+                margin-top: 30rpx;
             }
         }
     }

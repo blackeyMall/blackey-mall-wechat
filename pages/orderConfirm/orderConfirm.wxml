@@ -1,0 +1,38 @@
+<!--pages/reservationDetail/reservationDetail.wxml-->
+<view class="title-page">
+    <view class="div">
+        <view>确认订单信息</view>
+    </view>
+</view>
+<view class="container">
+    <view class="div">
+        <view class="form">
+            <view class="form-group active">
+                <label for="">预约姓名</label>
+                <text>张三</text>
+            </view>
+            <view class="form-group">
+                <label class="" for="">预约电话</label>
+                <text>12388882222</text>
+            </view>
+            <view class="form-group">
+                <label class="" for="">预约日期</label>
+                <text>2018-11-07</text>
+            </view>
+            <view class="form-group">
+                <label class="" for="">预约地址</label>
+                <text>上海市浦东新区</text>
+            </view>
+            <view class="form-group remarks">
+                <label class="" for="">备注</label>
+                <text>要在在工 要要在地夺</text>
+            </view>
+            <view class="form-btn">
+                <view class="btn btn-primary" bindtap="onConfirmInfo">确定</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="circle circle-pink"></view>
+<view class="circle circle-purple"></view>
+<view class="circle circle-blue"></view>

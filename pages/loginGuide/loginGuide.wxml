@@ -1,0 +1,13 @@
+<!--pages/my/my.wxml-->
+<view class="login-guide">
+    <view class="body">
+        <view class="div">
+            <image src="../../lib/images/logo.jpg" width="aspectFit" />
+            <button class="btn-primary" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">登录好匠工</button>
+        </view>
+    </view>
+    <view class="copyright">
+        <text class="text-primary">好匠工</text>
+        <text>版权所有</text>
+    </view>
+</view>

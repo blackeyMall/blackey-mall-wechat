@@ -10,15 +10,21 @@
     <view class="div">
         <view class="title-channel">
             <view class="title-main">
-                服务中的订单
+                <view class="div">
+                    <i class="iconfont icon-service"></i>
+                    <text>服务中的订单</text>
+                </view>
             </view>
             <view class="title-sm">
-                更多 <i class="iconfont icon-more"></i>
+                <view class="div">
+                    <text>更多</text>
+                    <i class="iconfont icon-more"></i>
+                </view>
             </view>
         </view>
     </view>
     <view class="div">
         <!-- 订单列表-组件 -->
-        <orders></orders>
+        <orders pagetype="{{pageType}}"></orders>
     </view>
 </view>

@@ -1,3 +1,2 @@
 /**app.wxss**/
-@import "lib/iconfont/iconfont";
-@import "lib/css/common";
+@import "./lib/css/common";

@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/orderReservationDetail/orderReservationDetail",
     "pages/index/index",
-    "pages/mall/mall",
+    "pages/loginGuide/loginGuide",
     "pages/service/service",
+    "pages/reservation/reservation",
+    "pages/orderDetail/orderDetail",
+    "pages/mall/mall",
     "pages/order/order",
     "pages/my/my",
-    "pages/orderServiceDetail/orderServiceDetail",
-    "pages/orderCompleteDetail/orderCompleteDetail"
+    "pages/orderConfirm/orderConfirm"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,7 +21,7 @@
     "color": "#000",
     "selectedColor": "#4454cd",
     "backgroundColor": "#fff",
-    "borderStyle": "white",
+    "borderStyle": "#f8f8f8",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -1,21 +1,35 @@
 <view class="order-list">
-    <view class="item" wx:for="{{orderList}}" wx:key="{{item.index}}" data-id="{{item.orderId}}" data-status="{{item.status}}" bindtap="orderDetail">
+    <view class="item" wx:for="{{orderList}}" wx:key="{{item.index}}" data-id="{{item.orderId}}" data-status="{{item.status}}" data-statusname="{{item.statusName}}" data-url="{{item.imgUrl}}" data-address="{{item.address}}" bindtap="orderDetail">
         <view class="item-image">
             <image src="{{item.imgUrl}}" class="img" mode="widthFix" />
         </view>
         <view class="item-info">
-            <view class="item-title">
-                {{item.title}}
-            </view>
-            <view class="item-des">
-                {{item.des}}
+            <view class="div">
+                <view class="item-title">
+                    <view class="div">
+                        <i class="iconfont icon-xiangmu"></i>
+                        <text>{{item.title}}</text>
+                    </view>
+                </view>
+                <view class="item-date">
+                    <view class="div">
+                        <i class="iconfont icon-riqi"></i>
+                        <text>{{item.date}}</text>
+                    </view>
+                </view>
+                <view class="item-address">
+                    <view class="div">
+                        <i class="iconfont icon-address"></i>
+                        <text>{{item.address}}</text>
+                    </view>
+                </view>
             </view>
         </view>
         <view class="item-operator">
             <view class="div">
                 <view class="text-danger">
-                    <view class="item-price">{{item.price}}</view>
-                    <view class="item-count">x {{item.count}}</view>
+                    <view class="item-price">￥{{item.price}}</view>
+                    <!-- <view class="item-count">x {{item.count}}</view> -->
                 </view>
                 <view class="label label-{{item.statusClass}}">{{item.statusName}}</view>
             </view>

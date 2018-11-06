@@ -1,6 +1,8 @@
 // common  -start
+@import "../iconfont/iconfont.wxss";
+
 page {
-    background-color: #f8f8f8;
+    // background-color: #f8f8f8;
     font-family: "PingFang SC";
 }
 .container {
@@ -8,11 +10,16 @@ page {
 }
 .title {
     &-page {
-        padding: 0 30rpx 40rpx;
+        display: flex;
+        justify-content: space-between;
+        padding: 30rpx;
         font-size: 60rpx;
         font-weight: 500;
         border-bottom: 2rpx solid #cbcbcb;
         background-color: #fff;
+        .label {
+            margin-top: 20rpx
+        }
     }
     &-channel {
         display: flex;
@@ -20,14 +27,31 @@ page {
         align-items: flex-end;
         width: 100%;
         line-height: 1;
-        margin: 40rpx 0 30rpx;
+        margin: 60rpx 0 40rpx;
     }
     &-main {
         font-weight: 700;
-        font-size: 34rpx;
+        font-size: 40rpx;
+        > .div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .iconfont {
+            margin-right: 10rpx;
+            font-size: 44rpx;
+        }
     }
     &-sm {
         font-size: 28rpx;
+        > .div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .iconfont {
+            font-size: 28rpx;
+        }
     }
 }
 .label {
