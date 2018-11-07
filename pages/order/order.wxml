@@ -1,13 +1,17 @@
 <!--pages/order/order.wxml-->
-<view class="title-page">订单中心</view>
-<view class="container">
+<view class="title-page">
+    <view class="div">订单中心</view>
     <view class="tab-nav">
+        <view class="item active">全部</view>
         <view class="item">预约中</view>
-        <view class="item active">服务中</view>
+        <view class="item">确认中</view>
+        <view class="item">服务中</view>
         <view class="item">已完成</view>
     </view>
+</view>
+<view class="container">
     <view class="tab-content">
         <!-- 订单列表-组件 -->
-        <orders></orders>
+        <orders pagetype="{{pageType}}"></orders>
     </view>
 </view>

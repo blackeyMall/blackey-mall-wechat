@@ -7,7 +7,7 @@
             <view class="div">
                 <view class="item-title">
                     <view class="div">
-                        <i class="iconfont icon-xiangmu"></i>
+                        <i class="iconfont icon-service"></i>
                         <text>{{item.title}}</text>
                     </view>
                 </view>

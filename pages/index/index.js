@@ -1,6 +1,6 @@
 Page({
   data: {
-    pageType: 0,
+    pageType: 2,
     imgUrls: [
       '../../lib/images/slider/slider1.jpg',
       '../../lib/images/slider/slider2.jpg',

@@ -3,6 +3,7 @@
     <view class="div">
         <view>确认订单信息</view>
     </view>
+    <view class="label label-primary">{{orderInfo.statusname}}</view>
 </view>
 <view class="container">
     <view class="div">

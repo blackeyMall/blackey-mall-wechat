@@ -1,14 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/order/order",
     "pages/loginGuide/loginGuide",
     "pages/service/service",
     "pages/reservation/reservation",
     "pages/orderDetail/orderDetail",
     "pages/mall/mall",
-    "pages/order/order",
     "pages/my/my",
-    "pages/orderConfirm/orderConfirm"
+    "pages/orderConfirm/orderConfirm",
+    "pages/orderDetailList/orderDetailList"
   ],
   "window": {
     "backgroundTextStyle": "light",

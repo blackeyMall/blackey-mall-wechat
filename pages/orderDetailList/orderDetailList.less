@@ -1,0 +1,122 @@
+page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.container {
+    flex: 1;
+    overflow: auto;
+    > .div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+}
+.avatar-img {
+    width: 160rpx;
+    height: 160rpx;
+    margin: 0 0 0 auto;
+    border-radius: 8rpx;
+    background-color: #eff0fa;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.title-page {
+    align-items: flex-end;
+}
+
+.order-detail {
+    border-radius: 8rpx;
+    .div {
+        padding: 20rpx 30rpx;
+        // background-color: #f8f8f8;
+        border-radius: 8rpx;
+    }
+    .div + .div {
+        margin-top: 20rpx;
+    }
+}
+
+.time-line {
+    padding: 0;
+    .item {
+        position: relative;
+        line-height: 1;
+        padding-left: 120rpx;
+        padding-bottom: 40rpx;
+        // border-left: 2rpx dashed #7ed67e;
+        font-size: 28rpx;
+        > .div {
+            background-color: #f8f8f8;
+        }
+        text {
+            display: block;
+            margin-bottom: 20rpx;
+        }
+        .date {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80rpx;
+            margin-bottom: 0;
+            font-size: 28rpx;
+            font-weight: 700;
+            // color: #5f9ef7;
+            // ::before {
+            //     position: absolute;
+            //     top: 30rpx;
+            //     left: -11rpx;
+            //     width: 22rpx;
+            //     height: 22rpx;
+            //     border-radius: 50%;
+            //     background-color: #7ed67e;
+            //     content: ' ';
+            // }
+        }
+        // .img-list {
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     margin-left: -10rpx;
+        //     margin-right: -10rpx;
+        //     image {
+        //         flex: 0 0 50%;
+        //         height: 200rpx;
+        //         padding: 10rpx;
+        //         box-sizing: border-box;
+        //     }
+        // }
+        image {
+            width: 100%;
+            border-radius: 12rpx;
+        }
+        &:first-child {
+            border-color: #5f9ef7;
+            .date {
+                ::before {
+                    background-color: #5f9ef7;
+                }
+            }
+        }
+        .content {
+            padding: 30rpx;
+        }
+        // &:last-child {
+        //     border-left: 0;
+        // }
+    }
+    // .item + .item {
+    //     padding-top: 20rpx;
+    // }
+}
+
+.btn {
+    width: 70%;
+    margin: 20rpx auto;
+    padding: 20rpx;
+    border-radius: 16rpx;
+    background-color: #6f7bda;
+    font-size: 32rpx;
+    color: #fff;
+    text-align: center;
+}

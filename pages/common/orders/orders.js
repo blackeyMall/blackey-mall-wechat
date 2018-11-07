@@ -12,7 +12,7 @@ Component({
             }
         },
         myProperty2: String, // 简化的定义方式
-        pageType: Number
+        pagetype: Number
     },
     data: {
         orderList: [],
@@ -81,10 +81,10 @@ Component({
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function() {}, // 此处attached的声明会被lifetimes字段中的声明覆盖
     ready: function() {
-        console.log(this.data.pageType)
-        if (this.data.pageType === 0) {
+        console.log(this.data.pagetype)
+        if (this.data.pagetype === 0) {
             // 首页 - 传入openId
-        } else if (this.data.pageType === 1) {
+        } else if (this.data.pagetype === 1) {
             // 订单列表页 - 传入openId & 订单分类状态： 0 全部  1 预约中  2  确认中  3 服务中  4 已完成
         }
         let orderList = [];
@@ -100,7 +100,6 @@ Component({
                 temp.statusClass = "success";
             }
             temp.statusName = statusName
-            console.log(temp)
             orderList.push(temp);
         });
         this.setData({
@@ -130,7 +129,6 @@ Component({
 
         // 跳转订单详情
         orderDetail: function(el) {
-            console.log(el)
             if (el.currentTarget.dataset.statusname === '预约中') {
                 wx.showModal({
                     title: '提示',

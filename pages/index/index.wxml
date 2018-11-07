@@ -1,11 +1,13 @@
 <!-- index.wxml -->
 <view class="container">
-    <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDots}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
-    <block wx:for="{{imgUrls}}" wx:key="{{item.index}}">
-        <swiper-item class="swiper-item">
-        <image src="{{item}}" class="slide-image" />
-        </swiper-item>
-    </block>
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDots}}"
+        indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+        circular="{{circular}}">
+        <block wx:for="{{imgUrls}}" wx:key="{{item.index}}">
+            <swiper-item class="swiper-item">
+                <image src="{{item}}" class="slide-image" />
+            </swiper-item>
+        </block>
     </swiper>
     <view class="div">
         <view class="title-channel">
@@ -26,5 +28,19 @@
     <view class="div">
         <!-- 订单列表-组件 -->
         <orders pagetype="{{pageType}}"></orders>
+    </view>
+    <view class="contact">
+        <view class="btn" hover-class="active">
+            <view class="div">
+                <i class="iconfont icon-dianhua"></i>
+                <text>拨打电话</text>
+            </view>
+        </view>
+        <view class="btn" hover-class="active">
+            <view class="div">
+                <i class="iconfont icon-kefu"></i>
+                <text>在线客服</text>
+            </view>
+        </view>
     </view>
 </view>

@@ -3,7 +3,7 @@
 <view class="container">
     <view class="service-list">
         <view class="item" wx:for="{{itemList}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-type="{{item.type}}" data-url="{{item.imgUrl}}" data-title="{{item.title}}" bindtap="handleReservation">
-            <view class="item-content">
+            <view class="item-content" hover-class="active">
                 <image class="item-img" src="{{item.imgUrl}}" mode="widthFix" />
                 <text class="">
                     {{item.title}}

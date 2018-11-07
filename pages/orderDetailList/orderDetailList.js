@@ -21,12 +21,13 @@ Page({
             materialImgUrl: '../../lib/images/slider/slider3.jpg',
             mark: 'yfsklfjsf'
         },
+        type: 2
     },
     onLoad:function(options){
         // 生命周期函数--监听页面加载
-        console.log(JSON.parse(options.orderInfo))
         this.setData({
-            orderInfo: JSON.parse(options.orderInfo)
+            orderInfo: JSON.parse(options.orderInfo),
+            type: options.type
         })
     },
     onReady:function(){
@@ -60,12 +61,5 @@ Page({
         //   desc: 'desc', // 分享描述
         //   path: 'path' // 分享路径
         // }
-    },
-
-    // 跳转服务进度页
-    orderDetailList (e) {
-        wx.navigateTo({
-            url: `/pages/orderDetailList/orderDetailList?orderInfo=${JSON.stringify(this.data.orderInfo)}&type=${e.currentTarget.dataset.type}`
-        })
-    },
+    }
 })
