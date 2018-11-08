@@ -2,21 +2,34 @@
 @import "../iconfont/iconfont.wxss";
 
 page {
-    // background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     font-family: "PingFang SC";
 }
 .container {
-    padding: 20rpx 30rpx;
+    flex: 1;
+    padding: 20rpx;
 }
 .title { 
     &-page {
         display: flex;
         justify-content: space-between;
+        flex-shrink: 0;
         padding: 30rpx;
-        font-size: 60rpx;
+        font-size: 50rpx;
         font-weight: 500;
         border-bottom: 2rpx solid #cbcbcb;
         background-color: #fff;
+        .avatar-img {
+            width: 160rpx;
+            height: 160rpx;
+            margin: 0 0 0 auto;
+            border-radius: 16rpx;
+            background-color: #eff0fa;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
         .label {
             margin-top: 20rpx
         }
@@ -88,10 +101,10 @@ page {
 }
 .text {
     &-primary {
-        color: #4454cd;
+        color: #4454cd; 
     }
     &-danger {
         color: #d34444;
-    }
+    } 
 }
 // common  -end

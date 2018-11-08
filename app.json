@@ -1,20 +1,21 @@
 {
   "pages": [
+    "pages/my/my",
     "pages/index/index",
-    "pages/order/order",
+    "pages/orderCenter/orderCenter",
     "pages/loginGuide/loginGuide",
     "pages/service/service",
     "pages/reservation/reservation",
     "pages/orderDetail/orderDetail",
     "pages/mall/mall",
-    "pages/my/my",
     "pages/orderConfirm/orderConfirm",
+    "pages/feedback/feedback",
     "pages/orderDetailList/orderDetailList"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "好匠工",
     "navigationBarTextStyle": "black"
   },
   "backgroundColor": "#000",
@@ -43,7 +44,7 @@
         "text": "服务"
       },
       {
-        "pagePath": "pages/order/order",
+        "pagePath": "pages/orderCenter/orderCenter",
         "iconPath": "lib/images/tabbar/order.png",
         "selectedIconPath": "lib/images/tabbar/order-active.png",
         "text": "订单"

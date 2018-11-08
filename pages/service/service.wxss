@@ -16,7 +16,7 @@
   top: 0;
   padding: 20rpx;
   background-color: #eee;
-  border-radius: 8rpx;
+  border-radius: 16rpx;
   box-shadow: 0 0 20rpx rgba(147, 166, 179, 0.5);
   transition: all .1s;
   box-shadow: 0 8rpx 0 #bbbbbb, 0 10rpx 0 rgba(0, 0, 0, 0.3);

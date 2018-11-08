@@ -68,4 +68,11 @@ Page({
             url: `/pages/orderDetailList/orderDetailList?orderInfo=${JSON.stringify(this.data.orderInfo)}&type=${e.currentTarget.dataset.type}`
         })
     },
+
+    // 跳转服务反馈页
+    onFeedBack (e) {
+        wx.navigateTo({
+            url: `/pages/feedback/feedback?orderInfo=${JSON.stringify(e.currentTarget.dataset)}`
+        })
+    }
 })

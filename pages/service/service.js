@@ -14,7 +14,7 @@ Page({
       id: '2',
       imgUrl: '../../lib/images/item/item-2.png',
       type: 1,
-      title: '木式'
+      title: '木工'
     }, {
       id: '3',
       imgUrl: '../../lib/images/item/item-3.png',

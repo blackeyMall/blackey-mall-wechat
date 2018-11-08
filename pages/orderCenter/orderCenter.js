@@ -9,7 +9,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageType: 1
+    pageType: 1,
+    navList: ['全部', '预约中', '确认中', '服务中', '已完成'],
+    activeItem: '全部'
+  },
+
+  onChangeNav (e) {
+    this.setData({
+      activeItem: e.currentTarget.dataset.item
+    })
   },
 
   /**

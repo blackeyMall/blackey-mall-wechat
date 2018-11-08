@@ -1,17 +1,13 @@
 page {
+  flex-direction: column;
   background-color: #f8f8f8;
 }
 .title-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 30rpx 30rpx 0;
   flex-direction: column;
-  z-index: 1;
+  padding-bottom: 0;
 }
 .container {
-  padding-top: 250rpx;
+  overflow: auto;
 }
 .tab-nav {
   display: flex;
@@ -30,7 +26,4 @@ page {
 .tab-nav .item.active {
   background-color: #4454cd;
   color: #fff;
-}
-.tab-content {
-  font-size: 24rpx;
 }

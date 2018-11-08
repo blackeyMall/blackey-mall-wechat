@@ -1,73 +1,35 @@
-page {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.container {
-  flex: 1;
-}
-.avatar-img {
-  width: 160rpx;
-  height: 160rpx;
-  margin: 0 0 0 auto;
-  border-radius: 8rpx;
-  background-color: #eff0fa;
-  overflow: hidden;
-  box-sizing: border-box;
-}
 .form {
+  flex: 1;
+  overflow: auto;
   width: 80%;
-  margin: 60rpx auto 0;
+  margin: 60rpx auto;
 }
 .form-group {
   position: relative;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 12rpx;
-  box-shadow: 0 0 10rpx rgba(15, 14, 107, 0.1);
+  padding: 30rpx 40rpx;
+  background-color: rgba(248, 248, 248, 0.9);
+  border-radius: 16rpx;
+  box-shadow: 0 0 10rpx rgba(147, 166, 179, 0.3);
   transition: all .3s linear;
+  font-size: 24rpx;
+  color: #4454cd;
 }
-.form-group.active {
-  box-shadow: 0 0 10rpx #4454cd;
-}
-.form-group.remarks {
+.form-group label {
   display: block;
-  padding: 20rpx 0 10rpx;
+  margin-bottom: 10rpx;
+  color: #666;
+  font-size: 28rpx;
 }
 .form-group textarea {
   width: 100%;
-  height: 200rpx;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  box-sizing: border-box;
-}
-.form-group input,
-.form-group .input {
-  flex: 1;
-  line-height: 1;
-  padding: 20rpx 30rpx 20rpx 0;
-  font-size: 28rpx;
-  transition: all .3s linear;
-}
-.form-group .input {
-  padding: 30rpx 30rpx 30rpx 0;
-}
-.form-group label {
-  padding-left: 30rpx;
-  padding-right: 20rpx;
-  color: #4454cd;
-  font-size: 28rpx;
-}
-.form-group + .form-group {
-  margin-top: 30rpx;
+  height: 400rpx;
 }
 .form-btn {
-  margin-top: 50rpx;
+  margin-top: 40rpx;
 }
 .form-btn .btn {
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 30rpx;
   padding: 16rpx;
   font-size: 32rpx;
   text-align: center;

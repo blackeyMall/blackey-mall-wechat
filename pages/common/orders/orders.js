@@ -24,7 +24,7 @@ Component({
                 title: "水电",
                 date: "2018-11-03",
                 address: '上海市浦东新区张江镇',
-                price: "9999.64",
+                price: "99999.64",
                 status: 0,
                 statusName: '预约中'
             },
@@ -33,8 +33,8 @@ Component({
                 imgUrl: "../../../lib/images/item/item-2.png",
                 title: "水电",
                 date: "2018-11-03",
-                address: '上海市浦东新区川沙镇',
-                price: "11.64",
+                address: '上海市浦东新区川沙镇上海市浦东新区川沙镇',
+                price: "99999.64",
                 status: 1,
                 statusName: '确认中'
             },

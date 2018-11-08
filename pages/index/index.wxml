@@ -31,7 +31,7 @@
     </view>
     <view class="contact">
         <view class="btn" hover-class="active">
-            <view class="div">
+            <view class="div" bindtap="onMakePhoneCall">
                 <i class="iconfont icon-dianhua"></i>
                 <text>拨打电话</text>
             </view>

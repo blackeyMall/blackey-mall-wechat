@@ -1,33 +1,36 @@
 Page({
     data:{
         orderInfo: {},
-        orderData: {
-            timeLine: [{
-                date: '2018-11-07',
-                name: '张师傅',
-                des: '粉刷客户墙面',
-                imgUrl: '../../lib/images/slider/slider1.jpg'
-            }, {
-                date: '2018-11-07',
-                name: '张师傅',
-                des: '粉刷客户墙面2',
-                imgUrl: '../../lib/images/slider/slider2.jpg'
-            }, {
-                date: '2018-11-07',
-                name: '张师傅',
-                des: '粉刷客户墙面3',
-                imgUrl: '../../lib/images/slider/slider3.jpg'
-            }],
-            materialImgUrl: '../../lib/images/slider/slider3.jpg',
-            mark: 'yfsklfjsf'
-        },
+        // timeLine: [{
+        //     date: '2018-11-07',
+        //     name: '张师傅',
+        //     des: '粉刷客户墙面',
+        //     imgUrl: '../../lib/images/slider/slider1.jpg'
+        // }, {
+        //     date: '2018-11-07',
+        //     name: '张师傅',
+        //     des: '粉刷客户墙面2',
+        //     imgUrl: '../../lib/images/slider/slider2.jpg'
+        // }, {
+        //     date: '2018-11-07',
+        //     name: '张师傅',
+        //     des: '粉刷客户墙面3',
+        //     imgUrl: '../../lib/images/slider/slider3.jpg'
+        // }],
+        timeLine: [],
+        // materials: [{
+        //     imgUrl: '../../lib/images/slider/slider3.jpg',
+        //     des: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
+        // }],
+        materials: [],
         type: 2
     },
     onLoad:function(options){
         // 生命周期函数--监听页面加载
+        console.log(this.data.materials.length)
         this.setData({
             orderInfo: JSON.parse(options.orderInfo),
-            type: options.type
+            type: parseInt(options.type)
         })
     },
     onReady:function(){

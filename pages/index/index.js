@@ -15,5 +15,12 @@ Page({
     indicatorActiveColor: '#4454cd'
   },
   onLoad: function() {
+  },
+  // 拨打电话
+  onMakePhoneCall () {
+    console.log(1)
+    wx.makePhoneCall({
+      phoneNumber: '12344442222'
+    })
   }
 })

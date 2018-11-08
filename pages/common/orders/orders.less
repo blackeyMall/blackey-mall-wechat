@@ -18,8 +18,8 @@
         border-radius: 16rpx;
         box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
         font-size: 24rpx;
-        .iconfont {
-            font-size: 24rpx;
+        .iconfont { 
+            font-size: 24rpx; 
         }
         &-image {
             position: relative;
@@ -52,6 +52,7 @@
             font-size: 32rpx;
             font-weight: 500;
             .iconfont {
+                line-height: 44rpx !important;
                 font-size: 32rpx;
                 font-weight: 700;
             }
@@ -71,8 +72,9 @@
             > .div {
                 display: flex;
                 flex-wrap: wrap;
-                align-items: center;
+                // align-items: center;
                 .iconfont { 
+                    line-height: 34rpx;
                     margin-right: 10rpx;
                 }
                 text {
@@ -82,19 +84,24 @@
             }
         }
         &-price {
-            text-align: right;
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 28rpx;
             font-weight: 500;
         }
         &-operator {
             margin-left: 20rpx;
-            .label {
-                margin-left: auto;
-                margin-top: 30rpx;
+            .div {
+                position: relative;
+                display: flex;
+                align-items: center;
+                height: 100%;
             }
         }
     }
     .item + .item {
-        margin-top: 30rpx;
+        margin-top: 20rpx;
     }
     p {
         text-align: justify;
