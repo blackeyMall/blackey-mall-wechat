@@ -79,35 +79,27 @@ Page({
     },
     loginAndGetOpenid () {
       let _this = this
+      // 登录
       wx.login({
-        success (res) {
-          console.log("----->"+ res.code)
-          if (res.code) {
-            wx.request({
-              url:'https://www.ssqushe.com/artisan/user/login',
-              data: {
-                code: res.code
-              },
-              success: function (res) {
-                console.log(res)
-                res = res.data;
-                // 保存openId，并将用户信息发送给后端
-                if (res.code === 0) {
-                  wx.showModal({
-                    title: 'set openid',
-                    content: res.data,
-                  })
-                  wx.setStorageSync('openid', res.data);
-                  _this.sendUserInfoToServer();
-                } else {
-                  wx.showModal({
-                    title: 'Sorry',
-                    content: '用户登录失败~',
-                  })
-                }
-              }
-            })
-          }
+        success: res => {
+          console.log(res.code)
+          wx.request({
+            url: 'https://www.ssqushe.com/artisan/user/login',
+            data: {
+              code: res.code
+            },
+            header: {},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: function (obj) {
+              wx.setStorageSync("openid", obj.data.data.openid)
+              wx.setStorageSync("sessionKey", obj.data.data.sessionKey)
+              console.log(res)
+            },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
         }
       })
     },
