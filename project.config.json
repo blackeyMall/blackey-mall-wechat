@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.2",
-	"appid": "wxb08acb1b752dfe69",
+	"appid": "wxe8d9cc02ebb02721",
 	"projectname": "BuildingMaterials.OrderManage",
 	"isGameTourist": false,
 	"condition": {

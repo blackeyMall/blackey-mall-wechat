@@ -13,8 +13,24 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res.code)
+        wx.request({
+          url: 'https://www.ssqushe.com/artisan/user/login',
+          data: {
+            code : res.code
+          },
+          header: {},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: function(obj) {
+            wx.setStorageSync("openid", obj.data.data.openid)
+            wx.setStorageSync("sessionKey", obj.data.data.sessionKey)
+            console.log(res)
+          },
+          fail: function(res) {},
+          complete: function(res) {},
+        })
       }
     })
     // 获取用户信息
@@ -42,3 +58,10 @@ App({
     userInfo: null
   }
 })
+
+//接口请求
+let request = {
+  login: (data, frequestHandler) => {
+    http.GET("/artisan/user/login", data, frequestHandler)
+  }
+}

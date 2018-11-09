@@ -81,13 +81,15 @@ Page({
       let _this = this
       wx.login({
         success (res) {
+          console.log("----->"+ res.code)
           if (res.code) {
             wx.request({
-              url: 'http://www.baidu.com',
+              url:'https://www.ssqushe.com/artisan/user/login',
               data: {
                 code: res.code
               },
               success: function (res) {
+                console.log(res)
                 res = res.data;
                 // 保存openId，并将用户信息发送给后端
                 if (res.code === 0) {
