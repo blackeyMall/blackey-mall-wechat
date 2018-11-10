@@ -1,20 +1,20 @@
 <view class="order-list">
-    <view class="item" wx:for="{{orderList}}" wx:key="{{item.index}}" data-id="{{item.orderId}}" data-status="{{item.status}}" data-statusname="{{item.statusName}}" data-url="{{item.imgUrl}}" data-address="{{item.address}}" bindtap="orderDetail">
+    <view class="item" wx:for="{{orderList}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-statusname="{{item.orderStatus.name}}" data-url="{{item.picUrl}}" bindtap="orderDetail">
         <view class="item-image">
-            <image src="{{item.imgUrl}}" class="img" mode="widthFix" />
+            <image src="{{item.picUrl}}" class="img" mode="widthFix" />
         </view>
         <view class="item-info">
             <view class="div">
                 <view class="item-title">
                     <view class="div">
                         <i class="iconfont icon-service"></i>
-                        <text>{{item.title}}</text>
+                        <text>{{item.projectName}}</text>
                     </view>
                 </view>
                 <view class="item-date">
                     <view class="div">
                         <i class="iconfont icon-riqi"></i>
-                        <text>{{item.date}}</text>
+                        <text>{{item.serviceTime}}</text>
                     </view>
                 </view>
                 <view class="item-address">
@@ -28,7 +28,7 @@
         <view class="item-operator">
             <view class="div">
                 <view class="item-price text-danger">￥{{item.price}}</view>
-                <view class="label label-{{item.statusClass}}">{{item.statusName}}</view>
+                <view class="label label-{{item.orderStatus.statusClass}}">{{item.orderStatus.name}}</view>
             </view>
         </view>
     </view>

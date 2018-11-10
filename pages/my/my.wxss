@@ -1,5 +1,4 @@
 .header {
-  margin-bottom: 40rpx;
   text-align: center;
   font-size: 28rpx;
   color: #4454cd;
@@ -22,8 +21,8 @@
 }
 .total-order {
   display: flex;
-  margin: 0 30rpx 40rpx;
-  padding: 40rpx 30rpx;
+  margin: 60rpx 30rpx;
+  padding: 60rpx 30rpx;
   background-image: linear-gradient(to bottom, #8f96ce, #4454cd);
   box-shadow: 0 10rpx 40rpx rgba(68, 84, 205, 0.6);
   color: #fff;

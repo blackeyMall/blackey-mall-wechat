@@ -1,68 +1,62 @@
+import ajax from "../../utils/net";
+let app = getApp()
+let _ = {
+    getProcess: (data, handler) => {
+        ajax.POST("/artisan/serviceprocess/query/process", data, handler);
+    },
+    getMaterials: (data, handler) => {
+        ajax.GET("/artisan/material/order", data, handler);
+    }
+};
 Page({
-    data:{
+    data: {
         orderInfo: {},
-        // timeLine: [{
-        //     date: '2018-11-07',
-        //     name: '张师傅',
-        //     des: '粉刷客户墙面',
-        //     imgUrl: '../../lib/images/slider/slider1.jpg'
-        // }, {
-        //     date: '2018-11-07',
-        //     name: '张师傅',
-        //     des: '粉刷客户墙面2',
-        //     imgUrl: '../../lib/images/slider/slider2.jpg'
-        // }, {
-        //     date: '2018-11-07',
-        //     name: '张师傅',
-        //     des: '粉刷客户墙面3',
-        //     imgUrl: '../../lib/images/slider/slider3.jpg'
-        // }],
         timeLine: [],
-        // materials: [{
-        //     imgUrl: '../../lib/images/slider/slider3.jpg',
-        //     des: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试'
-        // }],
         materials: [],
         type: 2
     },
-    onLoad:function(options){
+    onLoad: function(options) {
+        app.globalData.checkSession()
         // 生命周期函数--监听页面加载
-        console.log(this.data.materials.length)
         this.setData({
             orderInfo: JSON.parse(options.orderInfo),
             type: parseInt(options.type)
+        });
+        let _this = this
+        if (parseInt(options.type) === 0) {
+            // 服务进度
+            _.getProcess({
+                orderId: this.data.orderInfo.id
+            }, {
+                success: function(res) {
+                    res = res.data
+                    _this.setData({
+                        timeLine: res.data.list
+                    })
+                    // _this.timeLine = res.data.list
+                }
+            })
+        } else if (parseInt(options.type) === 1) {
+            // 材料清单
+            _.getMaterials({
+                orderId: this.data.orderInfo.id
+            }, {
+                success: function(res) {
+                    res = res.data
+                    _this.setData({
+                        materials: [res.data]
+                    })
+                    // _this.timeLine = res.data.list
+                }
+            })
+        } else {
+            // 脏数据
+        }
+    },
+    // 跳转服务反馈页
+    onFeedBack (e) {
+        wx.navigateTo({
+            url: `/pages/feedback/feedback?orderInfo=${JSON.stringify(e.currentTarget.dataset)}`
         })
-    },
-    onReady:function(){
-        // 生命周期函数--监听页面初次渲染完成
-        
-    },
-    onShow:function(){
-        // 生命周期函数--监听页面显示
-
-    },
-    onHide:function(){
-        // 生命周期函数--监听页面隐藏
-        
-    },
-    onUnload:function(){
-        // 生命周期函数--监听页面卸载
-        
-    },
-    onPullDownRefresh: function() {
-        // 页面相关事件处理函数--监听用户下拉动作
-        
-    },
-    onReachBottom: function() {
-        // 页面上拉触底事件的处理函数
-        
-    },
-    onShareAppMessage: function() {
-        // 用户点击右上角分享
-        // return {
-        //   title: 'title', // 分享标题
-        //   desc: 'desc', // 分享描述
-        //   path: 'path' // 分享路径
-        // }
     }
-})
+});

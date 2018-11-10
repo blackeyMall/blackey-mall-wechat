@@ -9,23 +9,23 @@
 <view class="form">
     <view class="form-group active">
         <label for="">预约姓名</label>
-        <text>张三</text>
+        <text>{{orderComfirmDetail.name}}</text>
     </view>
     <view class="form-group">
         <label class="" for="">预约电话</label>
-        <text>12388882222</text>
+        <text>{{orderComfirmDetail.telephone}}</text>
     </view>
     <view class="form-group">
         <label class="" for="">预约日期</label>
-        <text>2018-11-07</text>
+        <text>{{orderComfirmDetail.serviceTime}}</text>
     </view>
     <view class="form-group">
         <label class="" for="">预约地址</label>
-        <text>上海市浦东新区</text>
+        <text>{{orderComfirmDetail.address}}</text>
     </view>
     <view class="form-group remarks">
         <label class="" for="">备注</label>
-        <text>要在在工 要要在地夺</text>
+        <text>{{orderComfirmDetail.remark}}</text>
     </view>
 </view>
 <view class="btn" bindtap="onConfirmInfo">确定</view>

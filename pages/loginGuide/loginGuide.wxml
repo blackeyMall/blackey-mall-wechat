@@ -3,7 +3,7 @@
     <view class="body">
         <view class="div">
             <image src="../../lib/images/logo.jpg" width="aspectFit" />
-            <button class="btn-primary" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">登录好匠工</button>
+            <button class="btn-primary" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">授权登录好匠工</button>
         </view>
     </view>
     <view class="copyright">

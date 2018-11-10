@@ -1,13 +1,17 @@
 page {
-  flex-direction: column;
   background-color: #f8f8f8;
 }
 .title-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   flex-direction: column;
   padding-bottom: 0;
+  z-index: 1;
 }
 .container {
-  overflow: auto;
+  padding-top: 230rpx;
 }
 .tab-nav {
   display: flex;

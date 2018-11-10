@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/my/my",
     "pages/index/index",
     "pages/orderCenter/orderCenter",
-    "pages/loginGuide/loginGuide",
     "pages/service/service",
+    "pages/my/my",
+    "pages/loginGuide/loginGuide",
     "pages/reservation/reservation",
     "pages/orderDetail/orderDetail",
     "pages/mall/mall",

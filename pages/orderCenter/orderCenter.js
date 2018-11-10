@@ -1,4 +1,7 @@
 // pages/order/order.js
+import ajax from '../../utils/net'
+let app = getApp()
+
 Page({
 
   properties: {
@@ -9,110 +12,97 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageType: 1,
-    navList: ['全部', '预约中', '确认中', '服务中', '已完成'],
-    activeItem: '全部'
+    navList: [{
+      orderCategoryName: '全部',
+      orderStatus: 'DEFAULT'
+    }, {
+      orderCategoryName: '预约中',
+      orderStatus: 'BOOK'
+    }, {
+      orderCategoryName: '确认中',
+      orderStatus: 'CONFIRM'
+    }, {
+      orderCategoryName: '服务中',
+      orderStatus: 'SERVICE'
+    }, {
+      orderCategoryName: '已完成',
+      orderStatus: 'DONE'
+    }],
+    activeItem: 'DEFAULT',
+    current: 1,
+    size: 5,
+    orderList: []
   },
 
   onChangeNav (e) {
-    this.setData({
-      activeItem: e.currentTarget.dataset.item
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    let current = e.currentTarget.dataset.status
+    if (this.data.activeItem !== current) {
+      this.setData({
+        activeItem: current,
+        orderList: []
+      })
+      this.onLoadData(1)
+    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.checkSession()
+    this.setData({
+      orderList: [],
+      activeItem: 'DEFAULT'
+    })
+    this.onLoadData(this.data.current)
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  onLoadData (page, isHideLoading) {
+    let _this = this
+    ajax.POST('/artisan/order/list', {
+      openId: wx.getStorageSync('openid'),
+      orderStatus: this.data.activeItem,
+      current: page,
+      size: this.data.size
+    }, {
+      success: function(res) {
+        res = res.data
+        if (res.code === 200) {
+          let orderList = []
+          res.data.records.forEach(el => {
+            let { orderStatus, ...temp } = el;
+            if (orderStatus.name === '预约中') {
+                orderStatus.statusClass = "info";
+            } else if (orderStatus.name === '确认中') {
+                orderStatus.statusClass = "danger";
+            } else if (orderStatus.name === '服务中') {
+                orderStatus.statusClass = "primary";
+            } else if (orderStatus.name === '已完成') {
+                orderStatus.statusClass = "success";
+            }
+            temp.orderStatus = orderStatus
+            orderList.push(temp);
+          });
+          _this.setData({
+            orderList: _this.data.orderList.concat(orderList),
+            current: res.data.current
+          })
+        }
+      }
+    })
+    if (isHideLoading) {
+      wx.hideLoading()
+    }
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  /**
-   * 上拉加载...
-   */
-  onReachBottom: function () {
-    var that = this;
     // 显示加载图标
     wx.showLoading({
       title: '加载中...',
     })
-    console.log('加载中......')
-    setTimeout(() => {
-      wx.hideLoading();
-    }, 3000)
-    // 页数+1
-    // page = page + 1;
-    // wx.request({
-    //   url: 'https://xxx/?page=' + page,
-    //   method: "GET",
-    //   // 请求头部
-    //   header: {
-    //     'content-type': 'application/text'
-    //   },
-    //   success: function (res) {
-    //     // 回调函数
-    //     var moment_list = that.data.moment;
- 
-    //     for (var i = 0; i < res.data.data.length; i++) {
-    //       moment_list.push(res.data.data[i]);
-    //     }
-    //     // 设置数据
-    //     that.setData({
-    //       moment: that.data.moment
-    //     })
-    //     // 隐藏加载框
-    //     wx.hideLoading();
-    //   }
-    // })
- 
+    this.onLoadData(this.data.current + 1, 1)
   }
 })

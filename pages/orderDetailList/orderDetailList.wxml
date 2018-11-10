@@ -9,10 +9,13 @@
 <view class="time-line" wx:if="{{type === 0 && timeLine.length > 0}}">
     <view class="item" wx:for="{{timeLine}}">
         <view class="item-content">
-            <text class="title">{{item.name}}</text>
-            <text class="date">{{item.date}}</text>
-            <text class="des">{{item.des}}</text>
-            <image class="" src="{{item.imgUrl}}" mode="widthFix" />
+            <text class="date">{{item.createdDate}}</text>
+            <text class="title">{{item.content}}</text>
+            <view class="img-list">
+                <view class="img" wx:for="{{item.pics}}">
+                    <image class="" src="{{item}}" mode="widthFix" />
+                </view>
+            </view>
         </view>
     </view>
 </view>
@@ -27,13 +30,13 @@
 <view class="materials" wx:if="{{type === 1 && materials.length > 0}}">
     <view class="item" wx:for="{{materials}}">
         <view class="item-content">
-            <image class="" src="{{item.imgUrl}}" mode="widthFix" />
+            <image class="" src="{{item.picUrl}}" mode="widthFix" />
             <text class="title">备注：</text>
-            <text class="des">备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注</text>
+            <text class="des">{{item.materialRemark}}</text>
         </view>
     </view>
 </view>
-<view class="materials empty" wx:if="{{type === 1 && timeLine.length === 0}}">
+<view class="materials empty" wx:if="{{type === 1 && materials.length === 0}}">
         <view class="item">
             <view class="item-content">
                 <i class="iconfont icon-empty"></i>
@@ -41,4 +44,4 @@
             </view>
         </view>
     </view>
-<view class="btn" data-id="{{orderInfo.id}}">{{orderInfo.statusname === '服务中' ? '实时反馈' : '申请售后'}}</view>
+<view class="btn" data-id="{{orderInfo.id}}" data-statusname="{{orderInfo.statusname}}" data-url="{{orderInfo.url}}" bindtap="onFeedBack">{{orderInfo.statusname === '服务中' ? '实时反馈' : '申请售后'}}</view>

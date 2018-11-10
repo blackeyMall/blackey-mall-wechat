@@ -9,12 +9,11 @@
 <view class="form">
     <view class="form-group">
         <label for="">姓名</label>
-        <input type="text" placeholder="请输入姓名" bindinput="" bindfocus="handleInputFocus" bindblur="" />
+        <input type="text" placeholder="请输入姓名" bindinput="bindNameChanged" />
     </view>
     <view class="form-group">
         <label class="" for="">电话</label>
-        <input class="" type="number" placeholder="请输入电话" maxlength="11" bindinput="" bindfocus=""
-            bindblur="" />
+        <input class="" type="number" placeholder="请输入电话" maxlength="11" bindinput="bindTelChanged" />
     </view>
     <view class="form-group">
         <label class="" for="">日期</label>
@@ -24,14 +23,14 @@
     </view>
     <view class="form-group">
         <label class="" for="">地址</label>
-        <input class="" type="text" placeholder="请输入地址" bindinput="" bindfocus="" bindblur="" />
+        <input class="" type="text" placeholder="请输入地址" bindinput="bindAddressChanged" bindfocus="" bindblur="" />
     </view>
     <view class="form-group remarks">
         <label class="" for="">备注</label>
-        <textarea class="" placeholder="请输入备注信息"></textarea>
+        <textarea class="" placeholder="请输入备注信息" bindinput="bindRemarkChanged"></textarea>
     </view>
 </view>
-<view class="btn btn-primary">确定</view>
+<view class="btn btn-primary" bindtap="onCommitReservation">确定</view>
 <view class="circle circle-pink"></view>
 <view class="circle circle-purple"></view>
 <view class="circle circle-blue"></view>

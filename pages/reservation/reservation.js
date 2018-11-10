@@ -1,7 +1,14 @@
+import ajax from '../../utils/net'
+let app = getApp()
+
 Page({
     data: {
+        serviceItem: {},
+        name: '',
+        tel: '',
         date: new Date().toLocaleDateString(),
-        serviceItem: {}
+        address: '',
+        remark: ''
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
@@ -9,41 +16,77 @@ Page({
             serviceItem: JSON.parse(options.serviceItem)
         })
     },
-    onReady: function() {
-        // 生命周期函数--监听页面初次渲染完成
-    },
     onShow: function() {
         // 生命周期函数--监听页面显示
-    },
-    onHide: function() {
-        // 生命周期函数--监听页面隐藏
-    },
-    onUnload: function() {
-        // 生命周期函数--监听页面卸载
-    },
-    onPullDownRefresh: function() {
-        // 页面相关事件处理函数--监听用户下拉动作
-    },
-    onReachBottom: function() {
-        // 页面上拉触底事件的处理函数
-    },
-    onShareAppMessage: function() {
-        // 用户点击右上角分享
-        // return {
-        //   title: 'title', // 分享标题
-        //   desc: 'desc', // 分享描述
-        //   path: 'path' // 分享路径
-        // }
+        app.globalData.checkSession()
     },
 
     // 输入框focus事件
-    handleInputFocus: function(el) {
-        console.log(el);
+    bindNameChanged (e) {
+        this.setData({
+            name: e.detail.value
+        })
     },
-
+    bindTelChanged (e) {
+        this.setData({
+            tel: e.detail.value
+        })
+    },
     bindDateChange(e) {
         this.setData({
             date: e.detail.value
         });
+    },
+    bindAddressChanged (e) {
+        this.setData({
+            address: e.detail.value
+        })
+    },
+    bindRemarkChanged (e) {
+        this.setData({
+            remark: e.detail.value
+        })
+    },
+    onCommitReservation () {
+        if (this.data.tel === '') {
+            wx.showModal({
+                title: '温馨提示',
+                content: '手机号必填！',
+                showCancel: false
+            })
+            return
+        } else {
+            ajax.POST('/artisan/order/booking', {
+                projectId: this.data.serviceItem.id,
+                openId: wx.getStorageSync('openid'),
+                name: this.data.name,
+                telephone: this.data.tel,
+                serviceTime: this.data.date,
+                address: this.data.address,
+                remark: this.data.remark
+            }, {
+                success: function(res) {
+                    res = res.data
+                    if (res.code === 200) {
+                        wx.showModal({
+                            title: '温馨提示',
+                            content: '预约成功，请等待工作人员电话联系！',
+                            showCancel: false,
+                            success: () => {
+                                wx.switchTab({
+                                    url: '/pages/index/index'
+                                })
+                            }
+                        })
+                    } else {
+                        wx.showModal({
+                            title: '温馨提示',
+                            content: '预约失败，请稍后重试！',
+                            showCancel: false
+                        })
+                    }
+                }
+            })
+        }
     }
 });

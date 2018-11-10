@@ -20,9 +20,23 @@
             display: block;
             margin-bottom: 20rpx;
         }
+        .img-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -10rpx;
+            margin-right: -10rpx;
+            margin-bottom: 0;
+            .img {
+                flex: 0 0 50%;
+                padding: 10rpx;
+                box-sizing: border-box;
+            }
+        }
         image {
             width: 100%;
             border-radius: 12rpx;
+            box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
+            overflow: hidden;
         }
         .title {
             font-weight: 500;
@@ -115,12 +129,12 @@
         margin-top: 30rpx;
         color: #2668c5;
         font-size: 24rpx;
-        font-weight: 500;
     }
     .des {
         margin-top: 6rpx;
-        font-size: 20rpx;
+        font-size: 32rpx;
         color: #5f9ef7;
+        font-weight: 500;
     }
     &.empty {
         text-align: center;

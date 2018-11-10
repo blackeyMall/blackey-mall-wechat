@@ -3,9 +3,9 @@
     <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDots}}"
         indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
         circular="{{circular}}">
-        <block wx:for="{{imgUrls}}" wx:key="{{item.index}}">
+        <block wx:for="{{imgUrls}}" wx:key="{{item.index}}" data-redirect="{{item.redirectUrl}}" bindtap="onRedirectDetail">
             <swiper-item class="swiper-item">
-                <image src="{{item}}" class="slide-image" />
+                <image src="{{item.picUrl}}" class="slide-image" />
             </swiper-item>
         </block>
     </swiper>
@@ -17,7 +17,7 @@
                     <text>服务中的订单</text>
                 </view>
             </view>
-            <view class="title-sm">
+            <view class="title-sm" bindtap="onSwitchOrderCenter">
                 <view class="div">
                     <text>更多</text>
                     <i class="iconfont icon-more"></i>
@@ -27,7 +27,7 @@
     </view>
     <view class="div">
         <!-- 订单列表-组件 -->
-        <orders pagetype="{{pageType}}"></orders>
+        <orders order-list="{{orderList}}"></orders>
     </view>
     <view class="contact">
         <view class="btn" hover-class="active">

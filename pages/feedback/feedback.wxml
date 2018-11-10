@@ -9,10 +9,10 @@
 <view class="form">
     <view class="form-group remarks">
         <label class="" for="">问题描述</label>
-        <textarea class="" value="" placeholder="请输入问题描述"></textarea>
+        <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述"></textarea>
     </view>
 </view>
-<view class="btn btn-primary">确定</view>
+<view class="btn btn-primary" bindtap="onFeedBack">确定</view>
 <view class="circle circle-pink"></view>
 <view class="circle circle-purple"></view>
 <view class="circle circle-blue"></view>

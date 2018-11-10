@@ -1,7 +1,18 @@
+import ajax from '../../utils/net'
+let app = getApp()
+let _ = {
+    getConfirmOrderInfo: (data, handler) => {
+      ajax.GET('/artisan/serviceinfo/order', data, handler)
+    },
+    confirmOrder: (data, handler) => {
+      ajax.POST('/artisan/order/confirm', data, handler)
+    }
+}
 Page({
     data: {
         date: new Date().toLocaleDateString(),
-        orderInfo: {}
+        orderInfo: {},
+        orderComfirmDetail: {}
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
@@ -9,77 +20,56 @@ Page({
             orderInfo: JSON.parse(options.orderInfo)
         })
     },
-    onReady: function() {
-        // 生命周期函数--监听页面初次渲染完成
-        // 调取接口获取订单预约信息 入参 openId & orderId: this.data.orderInfo.id
-        wx.request({
-            url: 'https://URL',
-            data: {},
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            // header: {}, // 设置请求的 header
-            success: function(res){
-                // success
-            },
-            fail: function() {
-                // fail
-            },
-            complete: function() {
-                // complete
-            }
-        })
-
-    },
     onShow: function() {
         // 生命周期函数--监听页面显示
-    },
-    onHide: function() {
-        // 生命周期函数--监听页面隐藏
-    },
-    onUnload: function() {
-        // 生命周期函数--监听页面卸载
-    },
-    onPullDownRefresh: function() {
-        // 页面相关事件处理函数--监听用户下拉动作
-    },
-    onReachBottom: function() {
-        // 页面上拉触底事件的处理函数
-    },
-    onShareAppMessage: function() {
-        // 用户点击右上角分享
-        // return {
-        //   title: 'title', // 分享标题
-        //   desc: 'desc', // 分享描述
-        //   path: 'path' // 分享路径
-        // }
+        let _this = this
+        app.globalData.checkSession()
+        _.getConfirmOrderInfo({
+            orderId: this.data.orderInfo.id
+        }, {
+            success: function(res) {
+                res = res.data
+                if (res.code === 200) {
+                    _this.setData({
+                        orderComfirmDetail: res.data
+                    })
+                }
+            }
+        })
     },
     onConfirmInfo () {
         // 点击确认按钮弹出提示框
+        let _this = this
         wx.showModal({
             title: '提示',
             content: '确认订单信息无误！',
             success (res) {
                 if (res.confirm) {
-                    // 用户点击确认，请求接口更新订单状态
-                    wx.request({
-                        url: 'https://URL',
-                        data: {},
-                        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-                        // header: {}, // 设置请求的 header
-                        success: function(res){
-                            // success
+                    _.confirmOrder({
+                        id: _this.data.orderInfo.id,
+                        orderStatus: 'SERVICE'
+                    }, {
+                        success: function(res) {
+                            res = res.data
+                            if (res.code === 200) {
+                                wx.switchTab({
+                                    url: '/pages/index/index'
+                                })
+                            } else {
+                                wx.showModal({
+                                    title: '温馨提示',
+                                    content: '服务异常，请稍后重试！'
+                                })
+                            }
                         },
                         fail: function() {
-                            // fail
-                        },
-                        complete: function() {
-                            // complete
+                            wx.showModal({
+                                title: '温馨提示',
+                                content: '服务异常，请稍后重试！'
+                            })
                         }
                     })
-                    // 回到原页面
-                    wx.navigateBack({})
-                } else if (res.cancel) {
-                    // 用户点击取消按钮
-                }
+                } 
             }
         })
     }

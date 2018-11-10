@@ -5,7 +5,7 @@
     </view>
     <view class="tel">
         <i class="iconfont icon-nickname"></i>
-        <text>小柒</text>
+        <text>{{nickName}}</text>
     </view>
 </view>
 
@@ -13,11 +13,11 @@
     <view class="total-order">
         <view class="amount">
             <view class="title">订单总额</view>
-            <view class="content">￥ 9999.64</view>
+            <view class="content">{{orderSum}}</view>
         </view>
         <view class="count">
             <view class="title">订单总数</view>
-            <view class="content">18</view>
+            <view class="content">{{orderCount}}</view>
         </view>
     </view>
 
@@ -25,7 +25,7 @@
         <view class="item">
             <view class="title">城市</view>
             <view class="content">
-                上海
+                {{city}}
             </view>
         </view>
         <view class="item">
