@@ -27,10 +27,7 @@
         </view>
         <view class="item-operator">
             <view class="div">
-                <view class="text-danger">
-                    <view class="item-price">￥{{item.price}}</view>
-                    <!-- <view class="item-count">x {{item.count}}</view> -->
-                </view>
+                <view class="item-price text-danger">￥{{item.price}}</view>
                 <view class="label label-{{item.statusClass}}">{{item.statusName}}</view>
             </view>
         </view>

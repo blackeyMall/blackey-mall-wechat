@@ -4,78 +4,42 @@
         <open-data class="avatar" type="userAvatarUrl"></open-data>
     </view>
     <view class="tel">
-        <i class="iconfont icon-tel"></i>
-        <text>12288883333</text>
+        <i class="iconfont icon-nickname"></i>
+        <text>小柒</text>
     </view>
 </view>
 
-<view class="last-order">
-    <view class="order-info">
-        <text class="id">订单号：123132313123</text>
-        <text class="date">订单日期：2018-11-09</text>
+<view class="main">
+    <view class="total-order">
+        <view class="amount">
+            <view class="title">订单总额</view>
+            <view class="content">￥ 9999.64</view>
+        </view>
+        <view class="count">
+            <view class="title">订单总数</view>
+            <view class="content">18</view>
+        </view>
     </view>
-    <view class="amount">￥ 9999.64</view>
-</view>
 
-<view class="info-list">
-    <!-- <view class="item">
-        <text>昵称</text>
-        <text>
-            <open-data type="userNickName"></open-data>
-        </text>
-    </view>
-    <view class="item">
-        <text>性别</text>
-        <text>
-            <open-data type="userGender"></open-data>
-        </text>
-    </view>
-    <view class="item">
-        <text>城市</text>
-        <text>
-            <open-data type="userCity"></open-data>
-        </text>
-    </view>
-    <view class="item">
-        <text>省份</text>
-        <text>
-            <open-data type="userProvince"></open-data>
-        </text>
-    </view>
-    <view class="item">
-        <text>国家</text>
-        <text>
-            <open-data type="userCountry"></open-data>
-        </text>
-    </view> -->
-    <view class="item">
-        <view class="title">昵称</view>
-        <view class="content">
-            12138
+    <view class="info-list">
+        <view class="item">
+            <view class="title">城市</view>
+            <view class="content">
+                上海
+            </view>
         </view>
-    </view>
-    <view class="item">
-        <view class="title">性别</view>
-        <view class="content">
-            男
+        <view class="item">
+            <view class="title">关于</view>
+            <view class="content">
+                好匠工
+            </view>
         </view>
-    </view>
-    <view class="item">
-        <view class="title">城市</view>
-        <view class="content">
-            上海
-        </view>
-    </view>
-    <view class="item">
-        <view class="title">省份</view>
-        <view class="content">
-            上海
-        </view>
-    </view>
-    <view class="item">
-        <view class="title">国家</view>
-        <view class="content">
-            中国
+        <view class="item">
+            <view class="title">版本</view>
+            <view class="content">
+                V1.0
+            </view>
         </view>
     </view>
 </view>
+<view class="copyright">好匠工 ©版权所有</view>

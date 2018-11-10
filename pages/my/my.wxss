@@ -6,7 +6,9 @@
 }
 .header .iconfont {
   margin-right: 10rpx;
-  font-size: 26rpx;
+}
+.main {
+  flex: 1;
 }
 .avatar-img {
   width: 160rpx;
@@ -18,9 +20,10 @@
 .avatar-img .img {
   width: 100%;
 }
-.last-order {
+.total-order {
+  display: flex;
   margin: 0 30rpx 40rpx;
-  padding: 30rpx 30rpx 60rpx;
+  padding: 40rpx 30rpx;
   background-image: linear-gradient(to bottom, #8f96ce, #4454cd);
   box-shadow: 0 10rpx 40rpx rgba(68, 84, 205, 0.6);
   color: #fff;
@@ -28,16 +31,16 @@
   box-sizing: border-box;
   font-size: 24rpx;
 }
-.last-order .order-info {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 30rpx;
-}
-.last-order .amount {
-  margin-top: 30rpx;
+.total-order > view {
+  flex: 0 0 50%;
   text-align: center;
-  font-size: 60rpx;
-  font-weight: 500;
+}
+.total-order .title {
+  font-size: 32rpx;
+}
+.total-order .content {
+  margin-top: 20rpx;
+  font-size: 50rpx;
 }
 .info-list {
   margin: 0 30rpx 40rpx;
@@ -54,4 +57,10 @@
 .info-list .content {
   color: #4454cd;
   font-weight: 500;
+}
+.copyright {
+  margin: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
 }

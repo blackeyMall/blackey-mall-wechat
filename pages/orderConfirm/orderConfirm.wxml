@@ -27,10 +27,8 @@
         <label class="" for="">备注</label>
         <text>要在在工 要要在地夺</text>
     </view>
-    <view class="form-btn">
-        <view class="btn btn-primary" bindtap="onConfirmInfo">确定</view>
-    </view>
 </view>
+<view class="btn" bindtap="onConfirmInfo">确定</view>
 <view class="circle circle-pink"></view>
 <view class="circle circle-purple"></view>
 <view class="circle circle-blue"></view>

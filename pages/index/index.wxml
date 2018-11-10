@@ -36,11 +36,5 @@
                 <text>拨打电话</text>
             </view>
         </view>
-        <view class="btn" hover-class="active">
-            <view class="div">
-                <i class="iconfont icon-kefu"></i>
-                <text>在线客服</text>
-            </view>
-        </view>
     </view>
 </view>

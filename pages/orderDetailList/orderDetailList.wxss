@@ -8,7 +8,7 @@
   line-height: 1;
   padding-left: 40rpx;
   padding-bottom: 40rpx;
-  border-left: 2rpx dashed #7ed67e;
+  border-left: 4rpx dashed #7ed67e;
   font-size: 28rpx;
 }
 .time-line .item-content {
@@ -137,14 +137,4 @@
   display: block;
   margin-bottom: 30rpx;
   font-size: 200rpx;
-}
-.btn {
-  width: 70%;
-  margin: 20rpx auto;
-  padding: 20rpx;
-  border-radius: 16rpx;
-  background-color: #6f7bda;
-  font-size: 32rpx;
-  color: #fff;
-  text-align: center;
 }
