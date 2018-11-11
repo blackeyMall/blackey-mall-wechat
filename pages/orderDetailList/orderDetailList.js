@@ -19,7 +19,7 @@ Page({
         app.globalData.checkSession()
         // 生命周期函数--监听页面加载
         this.setData({
-            orderInfo: JSON.parse(options.orderInfo),
+          orderInfo: JSON.parse(decodeURIComponent(options.orderInfo)),
             type: parseInt(options.type)
         });
         let _this = this
@@ -56,7 +56,7 @@ Page({
     // 跳转服务反馈页
     onFeedBack (e) {
         wx.navigateTo({
-            url: `/pages/feedback/feedback?orderInfo=${JSON.stringify(e.currentTarget.dataset)}`
+          url: `/pages/feedback/feedback?orderInfo=${encodeURIComponent(JSON.stringify(e.currentTarget.dataset))}`
         })
     }
 });

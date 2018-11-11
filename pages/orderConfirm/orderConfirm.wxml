@@ -16,6 +16,10 @@
         <text>{{orderComfirmDetail.telephone}}</text>
     </view>
     <view class="form-group">
+        <label class="" for="">价格</label>
+        <text>{{orderComfirmDetail.price}}</text>
+    </view>
+    <view class="form-group">
         <label class="" for="">预约日期</label>
         <text>{{orderComfirmDetail.serviceTime}}</text>
     </view>

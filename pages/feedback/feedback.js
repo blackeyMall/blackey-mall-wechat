@@ -10,7 +10,7 @@ Page({
         // 生命周期函数--监听页面加载
         app.globalData.checkSession()
         this.setData({
-            orderInfo: JSON.parse(options.orderInfo)
+          orderInfo: JSON.parse(decodeURIComponent(options.orderInfo))
         })
     },
     bindDesChange (e) {
