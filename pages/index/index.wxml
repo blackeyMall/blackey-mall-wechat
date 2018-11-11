@@ -29,12 +29,7 @@
         <!-- 订单列表-组件 -->
         <orders order-list="{{orderList}}"></orders>
     </view>
-    <view class="contact">
-        <view class="btn" hover-class="active">
-            <view class="div" bindtap="onMakePhoneCall">
-                <i class="iconfont icon-dianhua"></i>
-                <text>拨打电话</text>
-            </view>
-        </view>
+    <view class="contact" hover-class="active" bindtap="onMakePhoneCall">
+        <i class="iconfont icon-dianhua"></i>
     </view>
 </view>
