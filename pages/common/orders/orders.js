@@ -15,12 +15,12 @@ Component({
             } else if (el.currentTarget.dataset.statusname === '确认中') {
                 // 跳转用户信息确认页面
                 wx.navigateTo({
-                    url: '/pages/orderConfirm/orderConfirm?orderInfo=' + JSON.stringify(el.currentTarget.dataset)
+                  url: '/pages/orderConfirm/orderConfirm?orderInfo=' + encodeURIComponent(JSON.stringify(el.currentTarget.dataset))
                 })
             } else {
                 // 跳转订单详情页
                 wx.navigateTo({
-                    url: '/pages/orderDetail/orderDetail?orderInfo=' + JSON.stringify(el.currentTarget.dataset)
+                  url: '/pages/orderDetail/orderDetail?orderInfo=' + encodeURIComponent(JSON.stringify(el.currentTarget.dataset))
                 })
             }
         }
