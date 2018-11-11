@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/loginGuide/loginGuide",
-    "pages/getPhoneNumber/getPhoneNumber",
     "pages/index/index",
     "pages/orderCenter/orderCenter",
     "pages/service/service",
@@ -11,7 +9,9 @@
     "pages/mall/mall",
     "pages/orderConfirm/orderConfirm",
     "pages/feedback/feedback",
-    "pages/orderDetailList/orderDetailList"
+    "pages/orderDetailList/orderDetailList",
+    "pages/loginGuide/loginGuide",
+    "pages/getPhoneNumber/getPhoneNumber"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,9 +10,6 @@ Page({
         if (!e.detail.userInfo) {
           return
         }
-        wx.navigateTo({
-          url: '/pages/getPhoneNumber/getPhoneNumber'
-        })
         wx.setStorageSync("userInfo", e.detail.userInfo);
         this.checkSessionAndLogin()
     },
