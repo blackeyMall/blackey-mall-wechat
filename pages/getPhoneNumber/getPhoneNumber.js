@@ -5,14 +5,11 @@ Page({
     /**
      * 点击登录按钮事件
      */
-    onGotUserInfo(e) {
+    onGotPhoneNumber(e) {
         // 获得最新的用户信息
         if (!e.detail.userInfo) {
           return
         }
-        wx.navigateTo({
-          url: '/pages/getPhoneNumber/getPhoneNumber'
-        })
         wx.setStorageSync("userInfo", e.detail.userInfo);
         this.checkSessionAndLogin()
     },

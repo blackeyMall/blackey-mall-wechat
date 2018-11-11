@@ -6,7 +6,7 @@
         </view>
         <view class="logo-title">好匠工</view>
         <view class="title">小程序申请获得以下权限：</view>
-        <view class="des">获得你的公开信息（昵称、头像等）</view>
-        <button class="btn-confirm" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">确认授权</button>
+        <view class="des">获得你的手机号</view>
+        <button class="btn-confirm" open-type="getPhoneNumber" bindgetphonenumber="onGotPhoneNumber">确认授权</button>
     </view>
 </view>

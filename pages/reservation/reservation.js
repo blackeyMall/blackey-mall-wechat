@@ -12,13 +12,13 @@ Page({
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
-        this.setData({
-            serviceItem: JSON.parse(options.serviceItem)
-        })
     },
     onShow: function() {
         // 生命周期函数--监听页面显示
         app.globalData.checkSession()
+        this.setData({
+            serviceItem: JSON.parse(options.serviceItem)
+        })
     },
 
     // 输入框focus事件
