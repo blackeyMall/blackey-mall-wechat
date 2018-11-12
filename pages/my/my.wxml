@@ -11,13 +11,13 @@
 
 <view class="main">
     <view class="total-order">
-        <view class="amount">
-            <view class="title">订单总额</view>
-            <view class="content">{{orderSum}}</view>
-        </view>
         <view class="count">
             <view class="title">订单总数</view>
             <view class="content">{{orderCount}}</view>
+        </view>
+        <view class="amount">
+            <view class="title">订单总额</view>
+            <view class="content">{{orderSum}}</view>
         </view>
     </view>
 
@@ -31,7 +31,7 @@
         <view class="item">
             <view class="title">关于</view>
             <view class="content">
-                好匠工
+                上海诺坚信息科技有限公司
             </view>
         </view>
         <view class="item">
