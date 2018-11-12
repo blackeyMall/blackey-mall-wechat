@@ -33,6 +33,7 @@
     </view>
 </view>
 <view class="btn" bindtap="onConfirmInfo">确定</view>
+<contact></contact>
 <view class="circle circle-pink"></view>
 <view class="circle circle-purple"></view>
 <view class="circle circle-blue"></view>

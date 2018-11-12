@@ -1,10 +1,15 @@
 Component({
     properties: {
-        orderList: Array
+        orderList: Array,
+        queryContent: {
+            type: Boolean,
+            default: 0
+        }
     },
     methods: {
         // 跳转订单详情
         orderDetail: function(el) {
+            console.log(this.data.queryContent)
             if (el.currentTarget.dataset.statusname === '预约中') {
                 wx.showModal({
                     title: '提示',

@@ -12,6 +12,7 @@
     .item {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         height: 100%;
         padding: 30rpx;
         background-color: #fff; 
@@ -94,6 +95,14 @@
             .div {
                 position: relative;
                 padding-top: 60rpx;
+                text-align: right;
+            }
+            .content { 
+                width: 160rpx;
+                margin-top: 20rpx;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
         }
     }
@@ -102,5 +111,19 @@
     }
     p { 
         text-align: justify;
+    }
+    // 列表无内容
+    &.empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 370rpx;
+        font-size: 28rpx;
+        color: #666;
+        .iconfont {
+            // margin-bottom: 40rpx;
+            font-size: 300rpx;
+        }
     }
 }

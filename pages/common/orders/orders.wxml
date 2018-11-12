@@ -1,4 +1,4 @@
-<view class="order-list">
+<view class="order-list" wx:if="{{orderList.length > 0}}">
     <view class="item" wx:for="{{orderList}}" wx:key="{{item.id}}" data-id="{{item.id}}" data-statusname="{{item.orderStatus.name}}" data-url="{{item.picUrl}}" bindtap="orderDetail">
         <view class="item-image">
             <image src="{{item.picUrl}}" class="img" mode="widthFix" />
@@ -29,7 +29,13 @@
             <view class="div">
                 <view class="item-price text-danger">￥{{item.price}}</view>
                 <view class="label label-{{item.orderStatus.statusClass}}">{{item.orderStatus.name}}</view>
+                <!-- <view wx:if="{{queryContent}}" class="content">{{item.content}}</view> -->
+                <view class="content">服务进度进度</view>
             </view>
         </view>
     </view>
+</view>
+<view class="order-list empty" wx:if="{{orderList.length === 0}}">
+    <i class="iconfont icon-emptyorder"></i>
+    <view class="tips">暂无订单</view>
 </view>

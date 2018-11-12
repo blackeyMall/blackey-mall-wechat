@@ -24,3 +24,4 @@
 </view>
 <view class="btn" data-id="{{orderInfo.id}}" data-statusname="{{orderInfo.statusname}}" data-url="{{orderInfo.url}}" bindtap="onFeedBack">{{orderInfo.statusname ===
     '服务中' ? '实时反馈' : '申请售后'}}</view>
+<contact></contact>

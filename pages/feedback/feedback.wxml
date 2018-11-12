@@ -11,8 +11,20 @@
         <label class="" for="">问题描述</label>
         <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述"></textarea>
     </view>
+    <view class="img-list">
+        <!-- <view class="item">
+            <image src="{{orderInfo.url}}" mode="widthFix" />
+        </view> -->
+        <view class="item" bindtap="bindChooseImage">
+            <view class="btn-upload">
+                <i class="iconfont icon-upload"></i>
+                <view class="content">上传图片</view>
+            </view>
+        </view>
+    </view>
 </view>
 <view class="btn btn-primary" bindtap="onFeedBack">确定</view>
+<contact></contact>
 <view class="circle circle-pink"></view>
 <view class="circle circle-purple"></view>
 <view class="circle circle-blue"></view>

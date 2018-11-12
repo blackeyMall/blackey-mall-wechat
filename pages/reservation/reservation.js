@@ -8,7 +8,8 @@ Page({
         tel: '',
         date: new Date().toLocaleDateString(),
         address: '',
-        remark: ''
+        remark: '',
+        reservationFlag: true
     },
     onLoad: function(options) {
       // 生命周期函数--监听页面加载
@@ -57,37 +58,55 @@ Page({
             })
             return
         } else {
-            ajax.POST('/artisan/order/booking', {
-                projectId: this.data.serviceItem.id,
-                openId: wx.getStorageSync('openid'),
-                name: this.data.name,
-                telephone: this.data.tel,
-                serviceTime: this.data.date,
-                address: this.data.address,
-                remark: this.data.remark
-            }, {
-                success: function(res) {
-                    res = res.data
-                    if (res.code === 200) {
+            if (this.data.reservationFlag) {
+                this.data.reservationFlag = false
+                ajax.POST('/artisan/order/booking', {
+                    projectId: this.data.serviceItem.id,
+                    openId: wx.getStorageSync('openid'),
+                    name: this.data.name,
+                    telephone: this.data.tel,
+                    serviceTime: this.data.date,
+                    address: this.data.address,
+                    remark: this.data.remark
+                }, {
+                    success: function(res) {
+                        res = res.data
+                        if (res.code === 200) {
+                            wx.showModal({
+                                title: '温馨提示',
+                                content: '预约成功，请等待工作人员电话联系！',
+                                showCancel: false,
+                                success: () => {
+                                    wx.switchTab({
+                                        url: '/pages/index/index'
+                                    })
+                                }
+                            })
+                        } else {
+                            wx.showModal({
+                                title: '温馨提示',
+                                content: '预约失败，请稍后重试！',
+                                showCancel: false
+                            })
+                            this.data.reservationFlag = true
+                        }
+                    },
+                    fail: function() {
                         wx.showModal({
                             title: '温馨提示',
-                            content: '预约成功，请等待工作人员电话联系！',
-                            showCancel: false,
-                            success: () => {
-                                wx.switchTab({
-                                    url: '/pages/index/index'
-                                })
-                            }
-                        })
-                    } else {
-                        wx.showModal({
-                            title: '温馨提示',
-                            content: '预约失败，请稍后重试！',
+                            content: '请误重复预约！',
                             showCancel: false
                         })
+                        this.data.reservationFlag = true
                     }
-                }
-            })
+                })
+            } else {
+                wx.showModal({
+                    title: '温馨提示',
+                    content: '请误重复预约！',
+                    showCancel: false
+                })
+            }
         }
     }
 });

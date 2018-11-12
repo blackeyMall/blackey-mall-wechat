@@ -1,4 +1,7 @@
 /**index.wxss**/
+.container {
+  flex: 0 0 auto;
+}
 .swiper {
   width: 100%;
   height: 350rpx;
@@ -19,26 +22,16 @@
   top: 50%;
   transform: translateY(-50%);
 }
-.contact {
-  position: fixed;
-  right: 20rpx;
-  bottom: 20rpx;
+.order {
+  padding: 20rpx;
+}
+.order.empty {
+  flex: 1;
+}
+.order.empty .div {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100rpx;
-  height: 100rpx;
-  background-image: linear-gradient(to right bottom, #abb0d4, #6674e0);
-  box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
-  color: #fff;
-  border-radius: 50%;
-  transition: all .1s;
-}
-.contact:active {
-  background-image: linear-gradient(to right bottom, #8d96d6, #3e51dd);
-}
-.contact .iconfont {
-  display: block;
-  line-height: 1;
-  font-size: 40rpx;
+  flex-direction: column;
+  height: 100%;
 }

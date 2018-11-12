@@ -23,7 +23,7 @@ Page({
     // 跳转服务反馈页
     onFeedBack (e) {
         wx.navigateTo({
-          url: `/pages/feedback/feedback?orderInfo=${JSON.stringify(decodeURIComponent(e.currentTarget.dataset))}`
+          url: `/pages/feedback/feedback?orderInfo=${encodeURIComponent(JSON.stringify(e.currentTarget.dataset))}`
         })
     }
 })

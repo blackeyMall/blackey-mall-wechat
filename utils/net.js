@@ -11,6 +11,11 @@ const POST = (url, data, requestHandler) => {
   request('POST', 'application/json', url, data, requestHandler)
 }
 
+//POSTFILE请求
+const POSTFILE = (url, data, requestHandler) => {
+  request('POST', 'multipart/form-data', url, data, requestHandler)
+}
+
 const request = (method, header, url, data, requestHandler) => {
   wx.showLoading({ title: "加载中..."})
   wx.request({
@@ -52,5 +57,6 @@ const request = (method, header, url, data, requestHandler) => {
 
 module.exports = {
   GET: GET,
-  POST: POST
+  POST: POST,
+  POSTFILE: POSTFILE
 }

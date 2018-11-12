@@ -1,4 +1,7 @@
 /**index.wxss**/
+.container {
+    flex: 0 0 auto;
+}
 
 // slider -start
 .swiper {
@@ -22,27 +25,16 @@
     }
 }
 // slider -end
-
-.contact {
-    position: fixed;
-    right: 20rpx;
-    bottom: 20rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100rpx;
-    height: 100rpx;
-    background-image: linear-gradient(to right bottom, #abb0d4, #6674e0);
-    box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
-    color: #fff;
-    border-radius: 50%;
-    transition: all .1s;
-    &:active {
-        background-image: linear-gradient(to right bottom, #8d96d6, #3e51dd);
-    }
-    .iconfont {
-        display: block;
-        line-height: 1;
-        font-size: 40rpx;
+.order {
+    padding: 20rpx;
+}
+.order.empty {
+    flex: 1;
+    .div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
     }
 }

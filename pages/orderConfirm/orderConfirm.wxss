@@ -22,6 +22,10 @@
 .form-group + .form-group {
   margin-top: 30rpx;
 }
+.btn {
+  width: 60%;
+  border-radius: 80rpx;
+}
 .circle {
   position: fixed;
   border-radius: 50%;

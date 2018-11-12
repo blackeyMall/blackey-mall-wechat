@@ -31,3 +31,9 @@ page {
   background-color: #4454cd;
   color: #fff;
 }
+.tab-content.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
