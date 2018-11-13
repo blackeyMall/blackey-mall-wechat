@@ -4,7 +4,7 @@ Component({
         // 拨打电话
         onMakePhoneCall() {
             wx.makePhoneCall({
-                phoneNumber: "12344442222"
+                phoneNumber: "15221127738"
             });
         }
     }

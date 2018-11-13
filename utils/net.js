@@ -12,8 +12,29 @@ const POST = (url, data, requestHandler) => {
 }
 
 //POSTFILE请求
-const POSTFILE = (url, data, requestHandler) => {
-  request('POST', 'multipart/form-data', url, data, requestHandler)
+/**
+ * url 上传文件路径
+ * file 文件路径
+ * filename 服务端传递的文件名称
+ * requestHandler .
+ */
+const POSTFILE = (url, file, filename, requestHandler) => {
+  wx.uploadFile({
+    url: app.globalData.server + url,
+    filePath: file,
+    name: filename,
+    header: { 'content-type': 'multipart/form-data' },
+    success: res => {
+    if ("function" == typeof requestHandler.success) {
+      requestHandler.success(res)
+      }
+    },
+    fail: res => {
+      if ("function" == typeof requestHandler.fail) {
+        requestHandler.fail(res)
+      }
+    }
+  })
 }
 
 const request = (method, header, url, data, requestHandler) => {
