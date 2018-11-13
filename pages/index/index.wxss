@@ -17,10 +17,7 @@
   box-sizing: border-box;
 }
 .swiper .slide-image {
-  position: relative;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
 }
 .order {
   padding: 20rpx;

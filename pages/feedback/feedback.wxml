@@ -4,7 +4,7 @@
         <view>{{orderInfo.statusname === '服务中' ? '实时反馈' : '申请售后'}}</view>
         <view class="label label-primary">{{orderInfo.statusname}}</view>
     </view>
-    <image src="{{picUrl}}" class="avatar-img" mode="aspectFit" />
+    <image src="{{orderInfo.url}}" class="avatar-img" mode="aspectFit" />
 </view>
 <view class="form">
     <view class="form-group remarks">
@@ -12,9 +12,9 @@
         <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述"></textarea>
     </view>
     <view class="img-list">
-        <!-- <view class="item">
-            <image src="{{orderInfo.url}}" mode="widthFix" />
-        </view> -->
+        <view class="item" wx:if="{{picUrl !== ''}}">
+            <image src="{{picUrl}}" mode="widthFix" />
+        </view>
         <view class="item" bindtap="bindChooseImage">
             <view class="btn-upload">
                 <i class="iconfont icon-upload"></i>

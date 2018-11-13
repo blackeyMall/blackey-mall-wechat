@@ -56,6 +56,9 @@ Page({
       _.sendUserInfo(userInfo, {
         success: function(res) {
           wx.navigateBack({delta: 1})
+          // wx.navigateTo({
+          //   url: '/pages/getPhoneNumber/getPhoneNumber'
+          // })
         }
       })
     }

@@ -29,8 +29,8 @@
             <view class="div">
                 <view class="item-price text-danger">￥{{item.price}}</view>
                 <view class="label label-{{item.orderStatus.statusClass}}">{{item.orderStatus.name}}</view>
-                <!-- <view wx:if="{{queryContent}}" class="content">{{item.content}}</view> -->
-                <view class="content">服务进度进度</view>
+                <view wx:if="{{queryContent}}" class="content">{{item.content}}</view>
+                <!-- <view class="content">服务进度进度</view> -->
             </view>
         </view>
     </view>

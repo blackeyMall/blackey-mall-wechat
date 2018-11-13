@@ -5,7 +5,7 @@
         circular="{{circular}}">
         <block wx:for="{{imgUrls}}" wx:key="{{item.index}}" data-redirect="{{item.redirectUrl}}" bindtap="onRedirectDetail">
             <swiper-item class="swiper-item">
-                <image src="{{item.picUrl}}" class="slide-image" />
+                <image src="{{item.picUrl}}" class="slide-image" mode="scaleToFill" />
             </swiper-item>
         </block>
     </swiper>

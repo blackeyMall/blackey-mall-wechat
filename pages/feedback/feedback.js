@@ -4,7 +4,7 @@ Page({
     data: {
         date: new Date().toLocaleDateString(),
         orderInfo: {},
-        picUrl:"",
+        picUrl: '',
         des: ''
     },
     onLoad: function(options) {
@@ -48,17 +48,19 @@ Page({
         }
     },
     bindChooseImage () {
+        let _this = this
         wx.chooseImage({
             count: 1, // 最多可以选择的图片张数，默认9
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
             sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
             success: function(res){
-                console.log(res)
                 ajax.POSTFILE('/artisan/file/upload', 
                   res.tempFiles[0].path, "file", {
                     success: function (res) {
-                      res = res.data
-                      console.log(res)
+                        res = res.data
+                        _this.setData({
+                            picUrl: JSON.parse(res).data
+                        })
                     }}
                 )
             },

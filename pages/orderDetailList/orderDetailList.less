@@ -7,7 +7,7 @@
         line-height: 1;
         padding-left: 40rpx;
         padding-bottom: 40rpx;
-        border-left: 6rpx dashed #7ed67e;
+        border-left: 4rpx dashed #7ed67e;
         font-size: 28rpx;
         &-content {
             position: relative;
@@ -50,29 +50,42 @@
             font-size: 24rpx;
             color: #666;
         }
-        &::before {
+        &::before{
             position: absolute;
             top: 0;
             left: -18rpx;
             width: 32rpx;
             height: 32rpx;
-            background-color: #7ed67e;
+            // background-color: #7ed67e;
+            background-color: #fff;
+            border: 4rpx solid #7ed67e;
             border-radius: 50%;
+            box-sizing: border-box;
             content: ' ';
         }
-        &::after {
-            position: absolute;
-            top: 6rpx;
-            left: 10rpx;
-            border: 10rpx solid transparent;
-            border-right-width: 0;
-            border-left-color: #7ed67e;
-            content: ' ';
-        }
+        // &::after {
+        //     position: absolute;
+        //     top: 4rpx;
+        //     left: -14rpx;
+        //     width: 24rpx;
+        //     height: 24rpx;
+        //     background-color: #fff;
+        //     border-radius: 50%;
+        // }
+        // &::after {
+        //     position: absolute;
+        //     top: 6rpx;
+        //     left: 10rpx;
+        //     border: 10rpx solid transparent;
+        //     border-right-width: 0;
+        //     border-left-color: #7ed67e;
+        //     content: ' ';
+        // }
         &:first-child {
             border-left-color: #4454cd;
             &::before {
-                background-color: #4454cd;
+                // background-color: #4454cd;
+                border-color: #4454cd;
             }
             &::after {
                 border-left-color: #4454cd;
@@ -129,7 +142,7 @@
     .title {
         margin-top: 30rpx;
         color: #2668c5;
-        font-size: 24rpx;
+        font-size: 32rpx;
     }
     .des {
         margin-top: 6rpx;
