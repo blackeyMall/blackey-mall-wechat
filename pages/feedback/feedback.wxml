@@ -9,11 +9,11 @@
 <view class="form">
     <view class="form-group remarks">
         <label class="" for="">问题描述</label>
-        <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述"></textarea>
+        <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述" auto-focus="{{autoFocus}}"></textarea>
     </view>
     <view class="img-list">
         <view class="item" wx:if="{{picUrl !== ''}}">
-            <image src="{{picUrl}}" mode="widthFix" />
+            <image src="{{picUrl}}" mode="aspectFill" />
         </view>
         <view class="item" bindtap="bindChooseImage">
             <view class="btn-upload">

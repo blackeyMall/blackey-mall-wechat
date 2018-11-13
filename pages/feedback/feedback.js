@@ -5,7 +5,8 @@ Page({
         date: new Date().toLocaleDateString(),
         orderInfo: {},
         picUrl: '',
-        des: ''
+        des: '',
+        autoFocus: true
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
@@ -44,6 +45,12 @@ Page({
                         })
                     }
                 }
+            })
+        } else {
+            wx.showModal({
+                title: '温馨提示',
+                content: '问题描述不能为空！',
+                showCancel: false
             })
         }
     },
