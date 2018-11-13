@@ -7,13 +7,13 @@
     <image src="{{orderInfo.url}}" class="avatar-img" mode="aspectFit" />
 </view>
 <view class="time-line" wx:if="{{type === 0 && timeLine.length > 0}}">
-    <view class="item" wx:for="{{timeLine}}">
+    <view class="item" wx:for-index='itemIndex' wx:for="{{timeLine}}">
         <view class="item-content">
             <text class="date">{{item.createdDate}}</text>
             <text class="title">{{item.content}}</text>
             <view class="img-list">
                 <view class="img" wx:for="{{item.pics}}">
-                    <image class="" src="{{item}}" mode="widthFix" />
+                    <image class="" src="{{item}}" data-index='{{index}}' data-itemIndex='{{itemIndex}}' bindtap="previewProcessImg" mode="widthFix" />
                 </view>
             </view>
         </view>
@@ -28,9 +28,9 @@
     </view>
 </view>
 <view class="materials" wx:if="{{type === 1 && materials.length > 0}}">
-    <view class="item" wx:for="{{materials}}">
+    <view class="item" wx:for="{{materials}}" >
         <view class="item-content">
-            <image class="" src="{{item.picUrl}}" mode="widthFix" />
+            <image class="" src="{{item.picUrl}}" mode="widthFix" bindtap="previewMaterialImg" />
             <text class="title">备注：</text>
             <text class="des">{{item.materialRemark}}</text>
         </view>

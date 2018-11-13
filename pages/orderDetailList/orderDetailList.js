@@ -53,6 +53,30 @@ Page({
             // 脏数据
         }
     },
+    previewProcessImg: function (e) {
+      console.log(e.currentTarget.dataset.index);
+      var itemIndex = e.currentTarget.dataset.itemindex;
+      var index = e.currentTarget.dataset.index;
+      var imgArr = this.data.timeLine[itemIndex].pics;
+      wx.previewImage({
+        current: imgArr[index],     //当前图片地址
+        urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
+    previewMaterialImg: function (e) {
+      var imgArr = [];
+      imgArr.push(this.data.materials[0].picUrl);
+      wx.previewImage({
+        current: imgArr[0],     //当前图片地址
+        urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    },
     // 跳转服务反馈页
     onFeedBack (e) {
         wx.navigateTo({
