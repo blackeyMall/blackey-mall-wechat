@@ -7,9 +7,7 @@ Page({
      */
     onGotPhoneNumber(e) {
         // 获得最新的用户信息
-        if (!e.detail.userInfo) {
-          return
-        }
+        console.log(e)
         wx.setStorageSync("userInfo", e.detail.userInfo);
         this.checkSessionAndLogin()
     },

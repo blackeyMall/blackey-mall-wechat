@@ -12,13 +12,17 @@
         <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述" auto-focus="{{autoFocus}}"></textarea>
     </view>
     <view class="img-list">
-        <view class="item" wx:if="{{picUrl !== ''}}">
-            <image src="{{picUrl}}" mode="aspectFill" />
+        <view class="item" wx:for="{{pics}}">
+            <view class="div">
+                <image src="{{item}}" mode="aspectFill" />
+            </view>
         </view>
         <view class="item" bindtap="bindChooseImage">
-            <view class="btn-upload">
-                <i class="iconfont icon-upload"></i>
-                <view class="content">上传图片</view>
+            <view class="div">
+                <view class="btn-upload">
+                    <i class="iconfont icon-upload"></i>
+                    <view class="content">上传图片</view>
+                </view>
             </view>
         </view>
     </view>

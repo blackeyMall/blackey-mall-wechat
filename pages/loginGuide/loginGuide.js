@@ -55,10 +55,14 @@ Page({
       userInfo.openId =thisOpenId
       _.sendUserInfo(userInfo, {
         success: function(res) {
+          // let phoneNumber = wx.getStorageSync('phoneNumber')
+          // if (phoneNumber) {
           wx.navigateBack({delta: 1})
-          // wx.navigateTo({
-          //   url: '/pages/getPhoneNumber/getPhoneNumber'
-          // })
+          // } else {
+          //   wx.navigateTo({
+          //     url: '/pages/getPhoneNumber/getPhoneNumber'
+          //   })
+          // }
         }
       })
     }

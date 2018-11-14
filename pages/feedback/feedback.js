@@ -5,13 +5,14 @@ Page({
         date: new Date().toLocaleDateString(),
         orderInfo: {},
         picUrl: '',
+        pics: [],
         des: '',
         autoFocus: true
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
         app.globalData.checkSession()
-        console.log(options)
+        // console.log(options)
         this.setData({
           orderInfo: JSON.parse(decodeURIComponent(options.orderInfo))
         })
@@ -27,6 +28,7 @@ Page({
             ajax.POST('/artisan/feedback/save', {
                 openId: wx.getStorageSync('openid'),
                 content: _this.data.des,
+                picUrl: _this.data.pics,
                 orderId: _this.data.orderInfo.id,
                 feedBackType: _this.data.orderInfo.statusname === '服务中' ? 'BYUSER' : 'AFTERSALES'
             }, {
@@ -65,9 +67,10 @@ Page({
                   res.tempFiles[0].path, "file", {
                     success: function (res) {
                         res = res.data
-                        _this.setData({
-                            picUrl: JSON.parse(res).data
-                        })
+                        console.log(JSON.parse(res))
+                        let pics = _this.data.pics
+                        pics.push(JSON.parse(res).data)
+                        _this.setData({pics})
                     }}
                 )
             },

@@ -36,21 +36,28 @@
   margin-top: 20rpx;
 }
 .img-list .item {
-  flex: 0 0 160rpx;
-  height: 160rpx;
+  flex: 0 0 33.33333%;
   padding: 10rpx;
+  box-sizing: border-box;
+}
+.img-list .item .div {
+  padding: 10rpx;
+  height: 170rpx;
   background-color: rgba(248, 248, 248, 0.9);
   box-shadow: 0 0 10rpx rgba(147, 166, 179, 0.3);
   border-radius: 16rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all .1s;
 }
-.img-list .item + .item {
-  margin-left: 20rpx;
+.img-list .item .div:active {
+  background-color: rgba(230, 227, 227, 0.9);
 }
 .img-list image {
   position: relative;
   top: 50%;
   width: 100%;
-  height: 140rpx;
+  height: 150rpx;
   transform: translateY(-50%);
   overflow: hidden;
 }
