@@ -11,7 +11,8 @@ Page({
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
-        app.globalData.checkSession()
+        // app.globalData.checkSession()
+        app.globalData.checkOpenId()
         // console.log(options)
         this.setData({
           orderInfo: JSON.parse(decodeURIComponent(options.orderInfo))
