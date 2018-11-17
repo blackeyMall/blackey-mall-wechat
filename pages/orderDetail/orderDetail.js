@@ -11,7 +11,8 @@ Page({
     },
     onShow:function(){
         // 生命周期函数--监听页面显示
-        app.globalData.checkSession()
+        // app.globalData.checkSession()
+        app.globalData.checkOpenId()
     },
 
     // 跳转服务进度页

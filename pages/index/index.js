@@ -18,7 +18,8 @@ Page({
     orderList: []
   },
   onShow () {
-    app.globalData.checkSession()
+    // app.globalData.checkSession()
+    app.globalData.checkOpenId()
     this.setData({
       orderList: []
     })
