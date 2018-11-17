@@ -3,9 +3,6 @@ import ajax from '../../utils/net'
 let _ = {
   sendUserInfo: (data, handler) => {
     ajax.POST('/artisan/user/save', data, handler)
-  },
-  getTel: (data, handler) => {
-    ajax.POST('', data, handler)
   }
 }
 
