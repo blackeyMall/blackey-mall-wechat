@@ -42,7 +42,7 @@ Page({
               let iv = wx.getStorageSync('iv')
               userInfo.openId = res.data.openid
               userInfo.wxSessionKey = res.data.sessionKey
-              userInfo.encryptedData = encryptedData
+              userInfo.encrypData = encryptedData
               userInfo.iv = iv
               _.sendUserInfo(userInfo, {
                 success (res) {

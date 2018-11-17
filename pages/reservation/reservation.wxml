@@ -13,7 +13,7 @@
     </view>
     <view class="form-group">
         <label class="" for="">电话</label>
-        <input class="" type="number" placeholder="请输入电话" maxlength="11" bindinput="bindTelChanged" />
+        <input class="" type="number" value="{{phoneNumber}}" placeholder="请输入电话" maxlength="11" bindinput="bindTelChanged" />
     </view>
     <view class="form-group">
         <label class="" for="">日期</label>

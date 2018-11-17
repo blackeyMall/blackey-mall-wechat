@@ -1,112 +1,122 @@
-import ajax from '../../utils/net'
-let app = getApp()
+import ajax from "../../utils/net";
+let app = getApp();
 
 Page({
     data: {
         serviceItem: {},
-        name: '',
-        tel: '',
+        name: "",
+        tel: "",
         date: new Date().toLocaleDateString(),
-        address: '',
-        remark: '',
-        reservationFlag: true
+        address: "",
+        remark: "",
+        reservationFlag: true,
+        phoneNumber: ""
     },
     onLoad: function(options) {
-      // 生命周期函数--监听页面加载
-      // app.globalData.checkSession()
-        app.globalData.checkOpenId()
-      this.setData({
-        serviceItem: JSON.parse(decodeURIComponent(options.serviceItem))
-      })
-        
+        // 生命周期函数--监听页面加载
+        let phoneNumber = wx.getStorageSync('phoneNumber')
+        if (phoneNumber) {
+            this.setData({
+                phoneNumber
+            })
+        }
+        app.globalData.checkOpenId();
+        this.setData({
+            serviceItem: JSON.parse(decodeURIComponent(options.serviceItem))
+        });
     },
     onShow: function() {
         // 生命周期函数--监听页面显示
     },
 
     // 输入框focus事件
-    bindNameChanged (e) {
+    bindNameChanged(e) {
         this.setData({
             name: e.detail.value
-        })
+        });
     },
-    bindTelChanged (e) {
+    bindTelChanged(e) {
         this.setData({
             tel: e.detail.value
-        })
+        });
     },
     bindDateChange(e) {
         this.setData({
             date: e.detail.value
         });
     },
-    bindAddressChanged (e) {
+    bindAddressChanged(e) {
         this.setData({
             address: e.detail.value
-        })
+        });
     },
-    bindRemarkChanged (e) {
+    bindRemarkChanged(e) {
         this.setData({
             remark: e.detail.value
-        })
+        });
     },
-    onCommitReservation () {
-        if (this.data.tel === '') {
+    onCommitReservation() {
+        if (this.data.tel === "") {
             wx.showModal({
-                title: '温馨提示',
-                content: '手机号必填！',
+                title: "温馨提示",
+                content: "手机号必填！",
                 showCancel: false
-            })
-            return
+            });
+            return;
         } else {
             if (this.data.reservationFlag) {
-                this.data.reservationFlag = false
-                ajax.POST('/artisan/order/booking', {
-                    projectId: this.data.serviceItem.id,
-                    openId: wx.getStorageSync('openid'),
-                    name: this.data.name,
-                    telephone: this.data.tel,
-                    serviceTime: this.data.date,
-                    address: this.data.address,
-                    remark: this.data.remark
-                }, {
-                    success: function(res) {
-                        res = res.data
-                        if (res.code === 200) {
-                            wx.showModal({
-                                title: '温馨提示',
-                                content: '预约成功，请等待工作人员电话联系！',
-                                showCancel: false,
-                                success: () => {
-                                    wx.switchTab({
-                                        url: '/pages/index/index'
-                                    })
-                                }
-                            })
-                        } else {
-                            wx.showModal({
-                                title: '温馨提示',
-                                content: '预约失败，请稍后重试！',
-                                showCancel: false
-                            })
-                            this.data.reservationFlag = true
-                        }
+                this.data.reservationFlag = false;
+                ajax.POST(
+                    "/artisan/order/booking",
+                    {
+                        projectId: this.data.serviceItem.id,
+                        openId: wx.getStorageSync("openid"),
+                        name: this.data.name,
+                        telephone: this.data.tel,
+                        serviceTime: this.data.date,
+                        address: this.data.address,
+                        remark: this.data.remark
                     },
-                    fail: function() {
-                        wx.showModal({
-                            title: '温馨提示',
-                            content: '请误重复预约！',
-                            showCancel: false
-                        })
-                        this.data.reservationFlag = true
+                    {
+                        success: function(res) {
+                            res = res.data;
+                            if (res.code === 200) {
+                                wx.showModal({
+                                    title: "温馨提示",
+                                    content:
+                                        "预约成功，请等待工作人员电话联系！",
+                                    showCancel: false,
+                                    success: () => {
+                                        wx.switchTab({
+                                            url: "/pages/index/index"
+                                        });
+                                    }
+                                });
+                            } else {
+                                wx.showModal({
+                                    title: "温馨提示",
+                                    content: "预约失败，请稍后重试！",
+                                    showCancel: false
+                                });
+                                this.data.reservationFlag = true;
+                            }
+                        },
+                        fail: function() {
+                            wx.showModal({
+                                title: "温馨提示",
+                                content: "请误重复预约！",
+                                showCancel: false
+                            });
+                            this.data.reservationFlag = true;
+                        }
                     }
-                })
+                );
             } else {
                 wx.showModal({
-                    title: '温馨提示',
-                    content: '请误重复预约！',
+                    title: "温馨提示",
+                    content: "请误重复预约！",
                     showCancel: false
-                })
+                });
             }
         }
     }
