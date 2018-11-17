@@ -19,9 +19,9 @@ Page({
         if (!e.detail.userInfo) {
           return
         }
-        console.log(e.detail.encryptedData)
-        console.log(e.detail.iv)
-        wx.setStorageSync("userInfo", e.detail.userInfo);
+        wx.setStorageSync("userInfo", e.detail.userInfo)
+        wx.setStorageSync('encryptedData', e.detail.encryptedData)
+        wx.setStorageSync('iv', e.detail.iv)
         this.login()
     },
 
@@ -33,12 +33,27 @@ Page({
         success: res => {
           console.log(res)
           _.login({code: res.code}, {
-            success: function(obj) {
-              wx.setStorageSync("openid", obj.data.data.openid)
-              wx.setStorageSync("sessionKey", obj.data.data.sessionKey)
-              wx.navigateTo({
-                url: '/pages/getPhoneNumber/getPhoneNumber'
+            success: function(res) {
+              res = res.data
+              wx.setStorageSync("openid", res.data.openid)
+              wx.setStorageSync("sessionKey", res.data.sessionKey)
+              let userInfo = wx.getStorageSync('userInfo')
+              let encryptedData = wx.getStorageSync('encryptedData')
+              let iv = wx.getStorageSync('iv')
+              userInfo.openId = res.data.openid
+              userInfo.wxSessionKey = res.data.sessionKey
+              userInfo.encryptedData = encryptedData
+              userInfo.iv = iv
+              _.sendUserInfo(userInfo, {
+                success (res) {
+                  res = res.data
+                  wx.setStorageSync('phoneNumber', res.data)
+                  wx.navigateBack({delta: 1})
+                }
               })
+              // wx.navigateTo({
+              //   url: '/pages/getPhoneNumber/getPhoneNumber'
+              // })
             }
           })
         }
