@@ -37,23 +37,23 @@ Page({
               res = res.data
               wx.setStorageSync("openid", res.data.openid)
               wx.setStorageSync("sessionKey", res.data.sessionKey)
-              let userInfo = wx.getStorageSync('userInfo')
-              let encryptedData = wx.getStorageSync('encryptedData')
-              let iv = wx.getStorageSync('iv')
-              userInfo.openId = res.data.openid
-              userInfo.wxSessionKey = res.data.sessionKey
-              userInfo.encrypData = encryptedData
-              userInfo.iv = iv
-              _.sendUserInfo(userInfo, {
-                success (res) {
-                  res = res.data
-                  wx.setStorageSync('phoneNumber', res.data)
-                  wx.navigateBack({delta: 1})
-                }
-              })
-              // wx.navigateTo({
-              //   url: '/pages/getPhoneNumber/getPhoneNumber'
+              // let userInfo = wx.getStorageSync('userInfo')
+              // let encryptedData = wx.getStorageSync('encryptedData')
+              // let iv = wx.getStorageSync('iv')
+              // userInfo.openId = res.data.openid
+              // userInfo.wxSessionKey = res.data.sessionKey
+              // userInfo.encrypData = encryptedData
+              // userInfo.iv = iv
+              // _.sendUserInfo(userInfo, {
+              //   success (res) {
+              //     res = res.data
+              //     wx.setStorageSync('phoneNumber', res.data)
+              //     wx.navigateBack({delta: 1})
+              //   }
               // })
+              wx.navigateTo({
+                url: '/pages/getPhoneNumber/getPhoneNumber'
+              })
             }
           })
         }
