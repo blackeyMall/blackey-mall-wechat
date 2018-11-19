@@ -47,8 +47,13 @@ Page({
               _.sendUserInfo(userInfo, {
                 success (res) {
                   res = res.data
-                  wx.setStorageSync('phoneNumber', res.data)
-                  wx.navigateBack({delta: 1})
+                  if (res.data) {
+                    wx.setStorageSync('phoneNumber', res.data)
+                  }
+                  // wx.navigateBack({delta: 1})
+                  wx.switchTab({
+                    url: '/pages/index/index'
+                  })
                 }
               })
             //   wx.navigateTo({
