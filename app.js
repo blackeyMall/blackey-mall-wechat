@@ -1,6 +1,14 @@
 //app.js
 App({
   onLaunch: function () {
+    
+    wx.checkSession({
+      fail: err => {
+        wx.navigateTo({
+          url: '/pages/loginGuide/loginGuide'
+        })
+      }
+    })
     // wx.checkSession({
     //   fail: err => {
     //     wx.navigateTo({
@@ -18,7 +26,7 @@ App({
   },
   globalData: {
     server: 'https://www.ssqushe.com',
-    // server: 'http://192.168.1.104:1099/',
+    // server: 'http://127.0.0.1:1099',
     checkSession () {
       wx.checkSession({
         fail: err => {
