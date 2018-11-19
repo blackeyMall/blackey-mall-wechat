@@ -56,7 +56,7 @@ Page({
         });
     },
     onCommitReservation() {
-        if (this.data.tel === "") {
+      if (this.data.phoneNumber === "") {
             wx.showModal({
                 title: "温馨提示",
                 content: "手机号必填！",
