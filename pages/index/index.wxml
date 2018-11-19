@@ -32,4 +32,13 @@
         <orders order-list="{{orderList}}" query-content="1"></orders>
     </view>
 </view>
+<view class="leayer" v-if="{{showModal}}">
+    <view class="modal-tel">
+        <view class="modal-body">
+            <view class="label-input">常用手机号</view>
+            <input type="number" placeholder="请输入手机号" />
+            <view class="btn-cancel">绑定</view>
+        </view>
+    </view>
+</view>
 <contact></contact>

@@ -15,7 +15,8 @@ Page({
     indicatorActiveColor: '#4454cd',
     // 幻灯片选项 - 结束
     // 订单列表
-    orderList: []
+    orderList: [],
+    showModal: true
   },
   onShow () {
     // app.globalData.checkSession()
