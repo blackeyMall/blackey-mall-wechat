@@ -1,5 +1,5 @@
 // 服务器地址
-const serverUrl = "http://192.168.1.115:1099";
+const serverUrl = "http://192.168.14.104:1099";
 
 // 普通Ajax请求
 /**

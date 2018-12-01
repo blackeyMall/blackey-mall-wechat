@@ -6,7 +6,7 @@ let _ = {
         ajax.post("/flowers/wx/login", data, handler);
     },
     sendUserInfo: (data, handler) => {
-        ajax.post("savePath", data, handler);
+        ajax.post("/flowers/user/save", data, handler);
     }
 };
 
@@ -29,7 +29,6 @@ Page({
     login() {
         wx.login({
             success: res => {
-                console.log(res);
                 _.login(
                     { code: res.code },
                     {
@@ -41,11 +40,11 @@ Page({
                                 res.data.sessionKey
                             );
                             let userInfo = wx.getStorageSync("userInfo");
-                            userInfo.openId = res.data.openId;
+                            userInfo.openId = res.data.openid;
                             _.sendUserInfo(userInfo, {
                                 success(res) {
                                     res = res.data;
-                                    if (res.data) {
+                                    if (res.code === 200) {
                                         wx.navigateBack({ delta: 1 });
                                     }
                                 }

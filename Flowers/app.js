@@ -5,12 +5,12 @@ App({
     },
     globalData: {
         onCheckLoginStatus() {
-            // let openId = wx.getStorageSync("openId");
-            // if (openId === '') {
-            //     wx.navigateTo({
-            //         url: "/pages/login/login"
-            //     });
-            // }
+            let openId = wx.getStorageSync("openId");
+            if (openId === '') {
+                wx.navigateTo({
+                    url: "/pages/login/login"
+                });
+            }
         }
     }
 });

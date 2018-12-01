@@ -1,4 +1,4 @@
-<view class="order-center">
+    <view class="order-center">
     <view class="nav-order">
         <view class="item {{item.type === activeNav ? 'active' : ''}}" data-active="{{item.type}}" wx:for="{{navList}}" wx:for-index="index" wx:key="{{index}}" bind:tap="bindSwitchList">
             {{item.text}}

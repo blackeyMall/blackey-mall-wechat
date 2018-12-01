@@ -7,7 +7,7 @@ let _ = {
         ajax.post('', data, handler);
     },
     getTelNum: (data, handler) => {
-        ajax.post('', data, handler);
+        ajax.post('/flowers/user/mobile', data, handler);
     }
 }
 
@@ -197,11 +197,18 @@ Page({
     },
 
     bindPayment(e) {
-        let price = e.currentTarget.dataset.price;
+        // 总价
+        let openId = wx.getStorage('openId');
+        let totalFee = e.currentTarget.dataset.price;
+        let goodsNo = '123123123123';
+        let goodsName = '加班续命系列';
+        let goodsDesc = '加班续命系列加班续命系列';
+        let goodsType = '0' // 0 一周一次  1 三周三次
         wx.showModal({
             title: '订单确认',
             content: '需要现在下单吗？',
             success (res) {
+                let openId = wx.getStorage('openId');
                 let data = {};
                 _.sendOrder(data, {
                     success (res) {
@@ -231,14 +238,14 @@ Page({
 
     onGotPhoneNumber (e) {
         if (!e.detail.encryptedData) { return }
-        let userInfo = wx.getStorageSync('userInfo');
+        let data = {};
         let openId = wx.getStorageSync('openId');
         let sessionKey = wx.getStorageSync('sessionKey');
-        userInfo.openId =thisOpenId
-        userInfo.encrypData = e.detail.encryptedData
-        userInfo.iv = e.detail.iv
-        userInfo.wxSessionKey = wxSessionKey
-        _.getTelNum(userInfo, {
+        data.openId =openId
+        data.encrypData = e.detail.encryptedData
+        data.iv = e.detail.iv
+        data.sessionKey = sessionKey
+        _.getTelNum(data, {
             success (res) {
                 res = res.data
                 wx.setStorageSync('telNum', res.data)

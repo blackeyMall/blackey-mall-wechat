@@ -4,7 +4,7 @@ import ajax from "../../utils/ajax";
 
 let _ = {
     getOrderList: (data, handler) => {
-        ajax.post("", data, handler);
+        ajax.post('/flowers/order/list', data, handler);
     }
 };
 
@@ -116,41 +116,6 @@ Page({
             },
             {
                 success(res) {
-                    res = res.data;
-                    if (res.code === 200) {
-                        let orderList = [];
-                        res.data.records.forEach(el => {
-                            let { orderStatus, ...temp } = el;
-                            if (orderStatus.name === "预约中") {
-                                orderStatus.statusClass = "info";
-                            } else if (orderStatus.name === "确认中") {
-                                orderStatus.statusClass = "danger";
-                            } else if (orderStatus.name === "服务中") {
-                                orderStatus.statusClass = "primary";
-                            } else if (orderStatus.name === "已完成") {
-                                orderStatus.statusClass = "success";
-                            }
-                            temp.orderStatus = orderStatus;
-                            orderList.push(temp);
-                        });
-                        _this.setData({
-                            orderList: _this.data.orderList.concat(orderList),
-                            current: res.data.current
-                        });
-                    }
-                }
-            }
-        );
-        ajax.POST(
-            "/artisan/order/list",
-            {
-                openId: wx.getStorageSync("openid"),
-                orderStatus: this.data.activeItem,
-                current: page,
-                size: this.data.size
-            },
-            {
-                success: function(res) {
                     res = res.data;
                     if (res.code === 200) {
                         let orderList = [];

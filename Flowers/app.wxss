@@ -32,7 +32,7 @@ scroll-view {
   display: block;
   width: 24rpx;
   height: 24rpx;
-  background: url(http://127.0.0.1:5500/images/icon-delete.png) center center no-repeat;
+  background: url(http://127.0.0.1:5500/Flowers/images/icon-delete.png) center center no-repeat;
   background-size: 100% auto;
 }
 .home .welcome {
@@ -172,6 +172,7 @@ scroll-view {
 .detail .info .num {
   font-size: 40rpx;
   font-weight: 500;
+  font-style: italic;
 }
 .detail .info .div {
   margin: 0 20rpx;
@@ -185,7 +186,7 @@ scroll-view {
 }
 .detail .service-list .item {
   padding-left: 30rpx;
-  background: url(http://127.0.0.1:5500/images/icon-heart.png) left center no-repeat;
+  background: url(http://127.0.0.1:5500/Flowers/images/icon-heart.png) left center no-repeat;
   background-size: 24rpx auto;
 }
 .detail .service-list .item + .item {
@@ -207,7 +208,7 @@ scroll-view {
 .detail-operator .home {
   flex: 0 0 80rpx;
   padding: 20rpx;
-  background: url(http://127.0.0.1:5500/images/tabBar/index.png) center center no-repeat;
+  background: url(http://127.0.0.1:5500/Flowers/images/tabBar/index.png) center center no-repeat;
   background-size: 40rpx auto;
 }
 .detail-operator .btn {
@@ -248,7 +249,7 @@ scroll-view {
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto 350rpx;
-  background-image: url(http://127.0.0.1:5500/images/my-bg.png);
+  background-image: url(http://127.0.0.1:5500/Flowers/images/my-bg.png);
 }
 .my .avatar {
   width: 130rpx;
