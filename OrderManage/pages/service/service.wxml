@@ -1,0 +1,15 @@
+<!--Doctype pages/service/service.wxml-->
+<view class="title-page">服务项目</view>
+<view class="container">
+    <view class="service-list">
+        <view class="item" wx:for="{{serviceList}}" data-id="{{item.id}}" data-title="{{item.name}}" data-url="{{item.picUrl}}" wx:key="{{item.id}}" bindtap="handleReservation">
+            <view class="item-content" hover-class="active">
+                <image class="item-img" src="{{item.picUrl}}" mode="widthFix" />
+                <text class="">
+                    {{item.name}}
+                </text>
+            </view>
+        </view>
+    </view>
+</view>
+<contact></contact>

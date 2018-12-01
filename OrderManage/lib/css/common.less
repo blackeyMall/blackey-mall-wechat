@@ -1,0 +1,124 @@
+// common  -start
+@import "../iconfont/iconfont.wxss";
+
+page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: "PingFang SC";
+}
+.container {
+    flex: 1;
+    padding: 20rpx;
+}
+.title { 
+    &-page {
+        display: flex; 
+        justify-content: space-between;
+        flex-shrink: 0;
+        padding: 30rpx;
+        font-size: 50rpx;
+        font-weight: 500;
+        border-bottom: 2rpx solid #cbcbcb;
+        background-color: #fff;
+        .avatar-img {
+            width: 160rpx;
+            height: 160rpx;
+            margin: 0 0 0 auto;
+            border-radius: 16rpx;
+            background-color: #eff0fa;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .label {
+            margin-top: 20rpx
+        }
+    } 
+    &-channel {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        line-height: 1;
+        margin: 60rpx 0 0;
+    }
+    &-main {
+        font-weight: 700;
+        font-size: 40rpx;
+        > .div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .iconfont {
+            margin-right: 10rpx;
+            font-size: 44rpx;
+        }
+    }
+    &-sm {
+        font-size: 28rpx;
+        > .div {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .iconfont {
+            font-size: 28rpx;
+        }
+    }
+}
+.label {
+    // width: 80rpx;
+    display: inline-block;
+    padding: 6rpx 10rpx;
+    background-color: #f1f1f1;
+    border-radius: 6rpx;
+    // box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
+    text-align: center;
+    font-size: 26rpx;
+    box-sizing: border-box;
+    &-info {
+        background-color: #5f9ef7;
+        color: #fff;
+    }
+    &-success {
+        background-color: #7ed67e;
+        color: #fff;
+    }
+    &-warning {
+        background-color: #cab182;
+        color: #fff;
+    }
+    &-danger {
+        background-color: #bd7676;
+        color: #fff; 
+    }
+    &-primary {
+        background-color: #6f7bda;
+        color: #fff;
+    }
+    & + & {
+        margin-top: 6rpx;
+    }
+}
+.text {
+    &-primary {
+        color: #4454cd; 
+    }
+    &-danger {
+        color: #d34444; 
+    } 
+}
+
+.btn {
+    width: 80%;
+    margin: 0 auto 40rpx;
+    padding: 20rpx;
+    border-radius: 16rpx;
+    background-color: #6f7bda;
+    font-size: 32rpx;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+// common  -end

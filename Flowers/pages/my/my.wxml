@@ -1,0 +1,18 @@
+<view class="container my">
+    <view class="info">
+        <image mode="aspectFill" src="{{userInfo.avatarUrl}}" class="avatar" />
+        <view class="text">{{userInfo.nickName}}</view>
+    </view>
+    <view class="my-order">
+        <view class="content">
+            <view class="order-title">我的订单</view>
+            <view class="category-list">
+                <view class="item" wx:for="{{categoryList}}" wx:for-index="index" wx:key="{{index}}" bind:tap="bindRedirect" data-type="{{item.type}}">
+                    <image class="img" mode="widthFix" src="{{item.imgUrl}}" />
+                    <view class="text">{{item.text}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-total-order" bind:tap="bindRedirect" data-type="0">查看全部订单</view>
+</view>

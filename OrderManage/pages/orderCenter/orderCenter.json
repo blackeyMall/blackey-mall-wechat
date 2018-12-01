@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "orders": "../common/orders/orders",
+        "contact": "../common/cantact/contact"
+    }
+}

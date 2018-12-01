@@ -1,0 +1,42 @@
+<view class="order-center">
+    <view class="nav-order">
+        <view class="item {{item.type === activeNav ? 'active' : ''}}" data-active="{{item.type}}" wx:for="{{navList}}" wx:for-index="index" wx:key="{{index}}" bind:tap="bindSwitchList">
+            {{item.text}}
+        </view>
+    </view>
+    <view class="order-list">
+        <view class="item" wx:for="{{orderList}}" wx:for-index="index" wx:key="{{index}}">
+            <view class="header">
+                <view class="num">
+                    <text class="text-gray">订单号：</text>
+                    <text>{{item.orderNo}}</text>
+                </view>
+                <view class="icon-delete"></view>
+            </view>
+            <view class="body">
+                <image mode="aspectFill" src="{{item.imgUrl}}" class="img" />
+                <view class="info">
+                    <view class="price">
+                        <view class="div">
+                            <text class="text-gray">总价：</text>
+                            <text>{{item.price}}</text>
+                        </view>
+                        <view class="div">
+                            <text class="text-gray">状态：</text>
+                            <text class="text-primary">{{item.status}}</text>
+                        </view>
+                    </view>
+                    <view class="des">
+                        <view>{{item.title}}</view>
+                        <view>{{item.des}}</view>
+                        <view class="text-primary">{{item.type}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="empty" wx:if="{{orderList.length === 0}}">
+            <image mode="widthFix" src="{{emptyImgUrl}}" />
+        </view>
+    </view>
+    <view class="end">已经没有更多订单</view>
+</view>

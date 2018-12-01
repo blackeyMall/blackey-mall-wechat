@@ -1,0 +1,14 @@
+<!--pages/order/order.wxml-->
+<view class="title-page">
+    <view class="div">订单中心</view>
+    <view class="tab-nav">
+        <view class="item {{item.orderStatus === activeItem ? 'active' : ''}}" wx:for="{{navList}}" wx:key="{{item.index}}" data-status="{{item.orderStatus}}" bindtap="onChangeNav">{{item.orderCategoryName}}</view>
+    </view>
+</view>
+<view class="container">
+    <view class="tab-content {{orderList.length === 0 ? 'empty' : ''}}">
+        <!-- 订单列表-组件 -->
+        <orders order-list="{{orderList}}"></orders>
+    </view>
+</view>
+<contact></contact>

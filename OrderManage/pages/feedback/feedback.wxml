@@ -1,0 +1,34 @@
+<!--pages/reservationDetail/reservationDetail.wxml-->
+<view class="title-page">
+    <view class="div">
+        <view>{{orderInfo.statusname === '服务中' ? '实时反馈' : '申请售后'}}</view>
+        <view class="label label-primary">{{orderInfo.statusname}}</view>
+    </view>
+    <image src="{{orderInfo.url}}" class="avatar-img" mode="aspectFit" />
+</view>
+<view class="form">
+    <view class="form-group remarks">
+        <label class="" for="">问题描述</label>
+        <textarea class="" bindinput="bindDesChange" placeholder="请输入问题描述" auto-focus="{{autoFocus}}"></textarea>
+    </view>
+    <view class="img-list">
+        <view class="item" wx:for="{{pics}}">
+            <view class="div">
+                <image src="{{item}}" mode="aspectFill" />
+            </view>
+        </view>
+        <view class="item" bindtap="bindChooseImage">
+            <view class="div">
+                <view class="btn-upload">
+                    <i class="iconfont icon-upload"></i>
+                    <view class="content">上传图片</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="btn btn-primary" bindtap="onFeedBack">确定</view>
+<contact></contact>
+<view class="circle circle-pink"></view>
+<view class="circle circle-purple"></view>
+<view class="circle circle-blue"></view>

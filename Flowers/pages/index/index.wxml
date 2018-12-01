@@ -1,0 +1,40 @@
+<view class="container home">
+    <scroll-view scroll-y scroll-with-animation scroll-into-view="{{toView}}">
+        <view class="welcome">
+            <image class="welcome-img" mode="widthFix" src="{{bannerImgUrl}}" />
+        </view>
+        <view class="price">
+            <view class="price-list">
+                <view class="item" bind:tap="bindSetToView" wx:for="{{priceImgUrls}}" wx:for-index="index" wx:key="{{index}}">
+                    <image class="img" mode="widthFix" src="{{item}}" />
+                </view>
+            </view>
+            <view class="time">{{deliveryTime}}</view>
+        </view>
+        <view class="series">
+            <view class="title">
+                <image class="img" lazy-load="{{true}}" mode="widthFix" src="{{seriesTitleImgUrl}}" />
+            </view>
+            <view class="series-list" id="series">
+                <view class="item" wx:for="{{seriesList}}" wx:for-index="index" wx:key="{{index}}">
+                    <image class="img" src="{{item.imgUrl}}" />
+                    <view class="tag">
+                        <image class="img" mode="widthFix" src="{{seriesTagImgUrl}}" />
+                    </view>
+                    <div class="des">
+                        <image class="img" mode="widthFix" src="{{item.desImgUrl}}" />
+                        <view class="btn" data-category="{{item.category}}" bind:tap="bindGoDetail">
+                            {{seriesBtnText}}
+                        </view>
+                    </div>
+                </view>
+            </view>
+        </view>
+        <view class="sample">
+            <view class="title">
+                <image class="img" mode="widthFix" src="{{sampleTitleImgUrl}}" />
+            </view>
+            <image class="sample-img" mode="widthFix" src="{{sampleImgUrl}}" />
+        </view>
+    </scroll-view>
+</view>

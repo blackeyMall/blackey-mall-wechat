@@ -1,0 +1,36 @@
+{
+    "pages": [
+        "pages/my/my",
+        "pages/list/list",
+        "pages/index/index",
+        "pages/test/test",
+        "pages/detail/detail",
+        "pages/login/login"
+    ],
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "./images/tabBar/index.png",
+                "selectedIconPath": "./images/tabBar/index-active.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "./images/tabBar/my.png",
+                "selectedIconPath": "./images/tabBar/my-active.png"
+            }
+        ],
+        "color": "#000",
+        "selectedColor": "#ff9999",
+        "borderStyle": "white",
+        "backgroundColor": "#f8f8f8"
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Warm Winter",
+        "navigationBarTextStyle": "black"
+    }
+}

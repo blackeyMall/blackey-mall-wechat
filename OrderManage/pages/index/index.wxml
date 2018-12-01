@@ -1,0 +1,44 @@
+<!-- index.wxml -->
+<view class="container">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorDots}}"
+        indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+        circular="{{circular}}">
+        <block wx:for="{{imgUrls}}" wx:key="{{item.index}}" data-redirect="{{item.redirectUrl}}" bindtap="onRedirectDetail">
+            <swiper-item class="swiper-item">
+                <image src="{{item.picUrl}}" class="slide-image" mode="scaleToFill" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="div">
+        <view class="title-channel">
+            <view class="title-main">
+                <view class="div">
+                    <i class="iconfont icon-service"></i>
+                    <text>最近订单</text>
+                </view>
+            </view>
+            <view class="title-sm" bindtap="onSwitchOrderCenter">
+                <view class="div">
+                    <text>更多</text>
+                    <i class="iconfont icon-more"></i>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="order {{orderList.length === 0 ? 'empty' : ''}}">
+    <!-- 订单列表-组件 -->
+    <view class="div">
+        <orders order-list="{{orderList}}" query-content="1"></orders>
+    </view>
+</view>
+<view class="leayer" wx:if="{{showModal}}">
+    <view class="modal-tel">
+        <view class="modal-body">
+            <view class="label-input">常用手机号</view>
+            <input type="number" placeholder="请输入手机号" value="{{telNum}}" bindinput="bindNumberInput" />
+            <view class="btn-cancel" bind:tap="onUpdatePhoneNumber">绑定</view>
+        </view>
+    </view>
+</view>
+<contact></contact>

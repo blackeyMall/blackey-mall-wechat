@@ -1,0 +1,46 @@
+<!--pages/my/my.wxml-->
+<view class="header">
+    <view class="avatar-img">
+        <open-data class="avatar" type="userAvatarUrl"></open-data>
+    </view>
+    <view class="tel">
+        <i class="iconfont icon-nickname"></i>
+        <text>{{nickName}}</text>
+    </view>
+</view>
+
+<view class="main">
+    <view class="total-order">
+        <view class="count">
+            <view class="title">订单总数</view>
+            <view class="content">{{orderCount}}</view>
+        </view>
+        <view class="amount">
+            <view class="title">订单总额</view>
+            <view class="content">{{orderSum}}</view>
+        </view>
+    </view>
+
+    <view class="info-list">
+        <view class="item">
+            <view class="title">城市</view>
+            <view class="content">
+                {{city}}
+            </view>
+        </view>
+        <view class="item">
+            <view class="title">关于</view>
+            <view class="content">
+                上海诺坚信息科技有限公司
+            </view>
+        </view>
+        <view class="item">
+            <view class="title">版本</view>
+            <view class="content">
+                V1.0
+            </view>
+        </view>
+    </view>
+</view>
+<view class="copyright">好匠工 ©版权所有</view>
+<contact></contact>

@@ -1,0 +1,35 @@
+<view class="container detail">
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}">
+        <block wx:for="{{swiperImgUrls}}" wx:for-index="index" wx:key="{{index}}">
+            <swiper-item>
+                <image src="{{item}}" mode="widthFix" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="info">
+        <view class="info-title">{{detail.title}}</view>
+        <view class="info-des">{{detail.des}}</view>
+        <view class="info-price">
+            <view class="money">¥</view>
+            <view class="num">{{detail.priceStart}}</view>
+            <view class="div">-</view>
+            <view class="money">¥</view>
+            <view class="num">{{detail.priceEnd}}</view>
+        </view>
+    </view>
+    <view class="service-list">
+        <view class="item" wx:for="{{detail.advantageList}}" wx:for-index="index" wx:key="{{index}}">{{item}}</view>
+    </view>
+    <image mode="widthFix" class="detail-img" src="{{detail.imgUrl}}" />
+</view>
+<view class="detail-operator">
+    <view class="div">
+        <view class="home"></view>
+        <button class="btn" wx:if="{{!hasTelNum}}" open-type="getPhoneNumber" bindgetphonenumber="onGotPhoneNumber">授权获取手机号</button>
+        <block wx:if="{{hasTelNum}}">
+            <view class="btn {{item.type}}" data-price="{{item.price}}" wx:for="{{priceList}}" bind:tap="bindPayment" wx:for-index="index" wx:key="{{index}}">
+                <image src="{{item.imgUrl}}" mode="widthFix" class="img" />
+            </view>
+        </block>
+    </view>
+</view>
