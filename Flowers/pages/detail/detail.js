@@ -21,6 +21,8 @@ Page({
         hasTelNum: false,
         // 鲜花系列分类 - 首页传递的数据
         category: '',
+        // 系列ID
+        seriesId: '',
         // --- 幻灯片设置 start ---
         indicatorDots: true, // 显示指示圆点
         autoplay: true, // 自动播放
@@ -128,12 +130,12 @@ Page({
         // 价格列表
         priceList: [
             {
-                type: 'once',
+                type: '0',
                 price: '380',
                 imgUrl: '../../images/once-price.png'
             },
             {
-                type: 'weeky',
+                type: '1',
                 price: '880',
                 imgUrl: '../../images/weeky-price.png'
             }
@@ -178,38 +180,33 @@ Page({
         }
         this.setData({
             swiperImgUrls: activeSeries,
+            seriesId: options.seriesId,
             detail,
             hasTelNum
         })
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {},
-
-    /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function(e) {
+    onShow: function() {
         // 检索登录状态
         app.globalData.onCheckLoginStatus();
     },
 
     bindPayment(e) {
-        // 总价
-        let openId = wx.getStorage('openId');
-        let totalFee = e.currentTarget.dataset.price;
-        let goodsNo = '123123123123';
-        let goodsName = '加班续命系列';
-        let goodsDesc = '加班续命系列加班续命系列';
-        let goodsType = '0' // 0 一周一次  1 三周三次
         wx.showModal({
             title: '订单确认',
             content: '需要现在下单吗？',
             success (res) {
-                let openId = wx.getStorage('openId');
-                let data = {};
+                let data = {
+                    openId: wx.getStorage('openId'), // openId
+                    totalFee: e.currentTarget.dataset.price, // 总价格
+                    goodsType: e.currentTarget.dataset.type, // 0 一周一次  1 三周三次
+                    goodsNo: this.data.seriesId, // 系列ID
+                    goodsName: this.data.title, // 名称
+                    goodsDesc: this.data.des // 简介
+                };
                 _.sendOrder(data, {
                     success (res) {
                         res = res.data
@@ -236,6 +233,7 @@ Page({
         })
     },
 
+    // 获取手机号
     onGotPhoneNumber (e) {
         if (!e.detail.encryptedData) { return }
         let data = {};
@@ -248,36 +246,20 @@ Page({
         _.getTelNum(data, {
             success (res) {
                 res = res.data
-                wx.setStorageSync('telNum', res.data)
-                this.setData({
-                    hasTelNum: true
-                })
+                if (res.code === 200) {
+                    wx.setStorageSync('telNum', res.data)
+                    this.setData({
+                        hasTelNum: true
+                    })
+                }
             }
         })
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {},
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {},
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {},
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {},
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {}
+    // 返回首页
+    bindGoIndex () {
+        wx.switchTab({
+            url: '../index/index'
+        })
+    }
 });

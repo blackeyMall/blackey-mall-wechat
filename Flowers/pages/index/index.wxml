@@ -23,7 +23,7 @@
                     </view>
                     <div class="des">
                         <image class="img" mode="widthFix" src="{{item.desImgUrl}}" />
-                        <view class="btn" data-category="{{item.category}}" bind:tap="bindGoDetail">
+                        <view class="btn" data-seriesid="{{item.seriesId}}" data-category="{{item.category}}" bind:tap="bindGoDetail">
                             {{seriesBtnText}}
                         </view>
                     </div>

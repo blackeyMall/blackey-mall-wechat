@@ -19,24 +19,28 @@ Page({
         seriesList: [
             {
                 // 加班续命系列
+                seriesId: 'adfs0sd9f8sd98f0s98fa0sdf98a0',
                 category: 'jbxm',
                 imgUrl: '../../images/series/jbxm.png',
                 desImgUrl: '../../images/series/jbxm-des.png'
             },
             {
                 // 完结撒花
+                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
                 category: 'wjsh',
                 imgUrl: '../../images/series/wjsh.png',
                 desImgUrl: '../../images/series/wjsh-des.png'
             },
             {
                 // 躺赢KPI
+                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
                 category: 'kpi',
                 imgUrl: '../../images/series/kpi.png',
                 desImgUrl: '../../images/series/kpi-des.png'
             },
             {
                 // 压力山小
+                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
                 category: 'ylsx',
                 imgUrl: '../../images/series/ylsx.png',
                 desImgUrl: '../../images/series/ylsx-des.png'
@@ -63,7 +67,7 @@ Page({
     // 跳转详情页
     bindGoDetail (e) {
         wx.navigateTo({
-            url: `/pages/detail/detail?category=${e.currentTarget.dataset.category}`
+            url: `/pages/detail/detail?seriesId=${e.currentTarget.dataset.seriesid}&category=${e.currentTarget.dataset.category}`
         })
     }
 });

@@ -24,10 +24,10 @@
 </view>
 <view class="detail-operator">
     <view class="div">
-        <view class="home"></view>
+        <view class="home" bind:tap="bindGoIndex"></view>
         <button class="btn" wx:if="{{!hasTelNum}}" open-type="getPhoneNumber" bindgetphonenumber="onGotPhoneNumber">授权获取手机号</button>
         <block wx:if="{{hasTelNum}}">
-            <view class="btn {{item.type}}" data-price="{{item.price}}" wx:for="{{priceList}}" bind:tap="bindPayment" wx:for-index="index" wx:key="{{index}}">
+            <view class="btn {{item.type === '0' ? 'once' : 'weeky'}}" data-type="{{item.type}}" data-price="{{item.price}}" wx:for="{{priceList}}" bind:tap="bindPayment" wx:for-index="index" wx:key="{{index}}">
                 <image src="{{item.imgUrl}}" mode="widthFix" class="img" />
             </view>
         </block>

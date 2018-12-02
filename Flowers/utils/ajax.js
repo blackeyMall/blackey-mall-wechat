@@ -1,5 +1,4 @@
-// 服务器地址
-const serverUrl = "http://192.168.14.104:1099";
+let app = getApp();
 
 // 普通Ajax请求
 /**
@@ -12,7 +11,7 @@ const serverUrl = "http://192.168.14.104:1099";
 const request = (method, url, data, requestHandler, header = 'application/json') => {
     wx.showLoading({ title: "加载中..." });
     wx.request({
-        url: serverUrl + url,
+        url: app.globalData.serverUrl + url,
         data: data,
         method: method, // 选项： GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: { "content-type": header }, // 设置请求的 header
