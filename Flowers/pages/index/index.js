@@ -6,54 +6,54 @@ Page({
         // 点击价格滚动到商品页
         toView: '',
         // banner图
-        bannerImgUrl: '../../images/banner.png',
+        bannerImgUrl: 'https://www.ssqushe.com/img/flower/banner.png',
         // 价格图片地址
         priceImgUrls: [
-            '../../images/once.png',
-            '../../images/weeky.png'
+            'https://www.ssqushe.com/img/flower/once.png',
+            'https://www.ssqushe.com/img/flower/weeky.png'
         ],
         deliveryTime: '统一配送时间：周一（全天）',
         // 鲜花系列标题图
-        seriesTitleImgUrl: '../../images/series/title-series.png',
+        seriesTitleImgUrl: 'https://www.ssqushe.com/img/flower/series/title-series.png',
         // 鲜花系列图
         seriesList: [
             {
                 // 加班续命系列
-                seriesId: 'adfs0sd9f8sd98f0s98fa0sdf98a0',
+                seriesId: '4e02b726ed5f4bdab58d404df0b35786',
                 category: 'jbxm',
-                imgUrl: '../../images/series/jbxm.png',
-                desImgUrl: '../../images/series/jbxm-des.png'
+                imgUrl: 'https://www.ssqushe.com/img/flower/series/jbxm.png',
+                desImgUrl: 'https://www.ssqushe.com/img/flower/series/jbxm-des.png'
             },
             {
                 // 完结撒花
-                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
+                seriesId: '4e02b726ed5f4bdab58d404di0b35986',
                 category: 'wjsh',
-                imgUrl: '../../images/series/wjsh.png',
-                desImgUrl: '../../images/series/wjsh-des.png'
+                imgUrl: 'https://www.ssqushe.com/img/flower/series/wjsh.png',
+                desImgUrl: 'https://www.ssqushe.com/img/flower/series/wjsh-des.png'
             },
             {
                 // 躺赢KPI
-                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
+                seriesId: '4e02b726ed5f4bdab58d407df0b35986',
                 category: 'kpi',
-                imgUrl: '../../images/series/kpi.png',
-                desImgUrl: '../../images/series/kpi-des.png'
+                imgUrl: 'https://www.ssqushe.com/img/flower/series/kpi.png',
+                desImgUrl: 'https://www.ssqushe.com/img/flower/series/kpi-des.png'
             },
             {
                 // 压力山小
-                seriesId: 'adfs0sd9f8sfsvlkdj8fa0sdf98a0',
+                seriesId: '4e02b726ed5f4bdab58d404df0b45986',
                 category: 'ylsx',
-                imgUrl: '../../images/series/ylsx.png',
-                desImgUrl: '../../images/series/ylsx-des.png'
+                imgUrl: 'https://www.ssqushe.com/img/flower/series/ylsx.png',
+                desImgUrl: 'https://www.ssqushe.com/img/flower/series/ylsx-des.png'
             }
         ],
         // 系列图标签地址
-        seriesTagImgUrl: '../../images/icon-tag.png',
+        seriesTagImgUrl: 'https://www.ssqushe.com/img/flower/icon-tag.png',
         // 系列按钮广西
         seriesBtnText: 'BUY NOW',
         // 鲜花样本标题图
-        sampleTitleImgUrl: '../../images/sample-title.png',
+        sampleTitleImgUrl: 'https://www.ssqushe.com/img/flower/sample-title.png',
         // 鲜花样本图
-        sampleImgUrl: '../../images/sample.png'
+        sampleImgUrl: 'https://www.ssqushe.com/img/flower/sample.png'
     },
     onShow: function() {
         // 检索登录状态

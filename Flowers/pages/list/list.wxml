@@ -11,7 +11,7 @@
                     <text class="text-gray">订单号：</text>
                     <text>{{item.orderNo}}</text>
                 </view>
-                <view class="icon-delete"></view>
+                <view class="icon-delete" data-orderno="{{item.id}}" bind:tap="bindDeleteOrder"></view>
             </view>
             <view class="body">
                 <image mode="aspectFill" src="{{item.imgUrl}}" class="img" />
@@ -19,7 +19,7 @@
                     <view class="price">
                         <view class="div">
                             <text class="text-gray">总价：</text>
-                            <text>{{item.price}}</text>
+                            <text>{{item.amount}}</text>
                         </view>
                         <view class="div">
                             <text class="text-gray">状态：</text>
@@ -27,9 +27,9 @@
                         </view>
                     </view>
                     <view class="des">
-                        <view>{{item.title}}</view>
-                        <view>{{item.des}}</view>
-                        <view class="text-primary">{{item.type}}</view>
+                        <view>{{item.goodsName}}</view>
+                        <view>{{item.goodsDesc}}</view>
+                        <view class="text-primary">{{item.goodsTypeName}}</view>
                     </view>
                 </view>
             </view>

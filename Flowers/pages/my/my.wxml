@@ -14,5 +14,5 @@
             </view>
         </view>
     </view>
-    <view class="btn-total-order" bind:tap="bindRedirect" data-type="0">查看全部订单</view>
+    <view class="btn-total-order" bind:tap="bindRedirect" data-type="DEFAULT">查看全部订单</view>
 </view>

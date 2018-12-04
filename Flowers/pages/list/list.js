@@ -17,71 +17,29 @@ Page({
         // 导航列表
         navList: [
             {
-                type: 1,
+                type: 'DEFAULT',
                 text: "全部订单"
             },
             {
-                type: 2,
-                text: "待付款"
+                type: 'CANCEL',
+                text: "已取消"
             },
             {
-                type: 3,
+                type: 'SERVICE',
                 text: "服务中"
             },
             {
-                type: 4,
+                type: 'DONE',
                 text: "已完成"
-            },
-            {
-                type: 5,
-                text: "已评价"
             }
         ],
         // 当前导航
-        activeNav: 1,
+        activeNav: 'DEFAULT',
         // 订单列表
-        // orderList: [],
+        orderList: [],
         // mock订单数据
-        orderList: [
-            {
-                orderNo: 123123123123123,
-                price: 380,
-                status: "正在配送",
-                title: "加班续命系列",
-                des: "提醒经常加班的她，定时养个眼，劳逸结合",
-                type: "单品单次",
-                imgUrl: "../../images/test.png"
-            },
-            {
-                orderNo: 123123123123123,
-                price: 880,
-                status: "正在配送",
-                title: "压力山小系列",
-                des: "提醒经常加班的她，定时养个眼，劳逸结合",
-                type: "三周三次",
-                imgUrl: "../../images/test.png"
-            },
-            {
-                orderNo: 123123123123123,
-                price: 380,
-                status: "正在配送",
-                title: "加班续命系列",
-                des: "提醒经常加班的她，定时养个眼，劳逸结合",
-                type: "单品单次",
-                imgUrl: "../../images/test.png"
-            },
-            {
-                orderNo: 123123123123123,
-                price: 880,
-                status: "正在配送",
-                title: "压力山小系列",
-                des: "提醒经常加班的她，定时养个眼，劳逸结合",
-                type: "三周三次",
-                imgUrl: "../../images/test.png"
-            }
-        ],
         // 暂无订单图片地址
-        emptyImgUrl: "../../images/order-empty.png",
+        emptyImgUrl: "https://www.ssqushe.com/img/flower/order-empty.png",
         // 当前页码
         current: 1,
         // 每页显示条数
@@ -94,9 +52,9 @@ Page({
     onLoad: function(options) {
         // 设置当前分类
         let type = options.type;
-        let activeNav = 1;
-        if (parseInt(type)) {
-            activeNav = parseInt(type);
+        let activeNav = 'DEFAULT';
+        if (type) {
+            activeNav = type;
         }
         this.setData({
             activeNav
@@ -134,8 +92,8 @@ Page({
         let _this = this;
         let data = {
             openId: wx.getStorageSync("openId"), // openId
-            // 当前选中订单类别  说明： 1 待付款  2 服务中  3 已完成  4 待评价  5 售后
-            activeNav: this.data.activeNav,
+            // 当前选中订单类别
+            tradeStatus: this.data.activeNav,
             current: page, // 当前页页码
             size: this.data.size // 每页显示条数
         }
@@ -149,7 +107,34 @@ Page({
                         res.data.records.forEach(el => {
                             // 对返回数据进行二次处理
                             // ...
-                            orderList.push(el);
+                            let {id, goodsNo, goodsName, goodsDesc, goodsType, amount, tradeStatus} = el;
+                            let imgUrl = '', goodsTypeName = '';
+                            switch (goodsNo) {
+                                case '4e02b726ed5f4bdab58d404df0b35786':
+                                    imgUrl = 'https://www.ssqushe.com/img/flower/swiper/jbxm/1.jpg';
+                                    break;
+                                case '4e02b726ed5f4bdab58d404di0b35986':
+                                    imgUrl = 'https://www.ssqushe.com/img/flower/swiper/wjsh/1.jpg';
+                                    break;
+                                case '4e02b726ed5f4bdab58d407df0b35986':
+                                    imgUrl = 'https://www.ssqushe.com/img/flower/swiper/kpi/1.jpg';
+                                    break;
+                                case '4e02b726ed5f4bdab58d404df0b45986':
+                                    imgUrl = 'https://www.ssqushe.com/img/flower/swiper/ylsx/1.jpg';
+                                    break;
+                            }
+                            switch (goodsType) {
+                                case '0':
+                                    goodsTypeName = '单周单次'
+                                    break;
+                                case '1':
+                                    goodsTypeName = '三周三次'
+                                    break;
+                            }
+                            let temp = {
+                                id, goodsNo, goodsName, goodsDesc, goodsTypeName, amount: parseInt(amount) / 100, status: tradeStatus.name, imgUrl
+                            }
+                            orderList.push(temp);
                         });
                         _this.setData({
                             orderList: _this.data.orderList.concat(orderList),
@@ -173,5 +158,9 @@ Page({
             title: "加载中..."
         });
         this.onLoadData(this.data.current + 1, 1);
+    },
+
+    bindDeleteOrder (e) {
+        console.log(e.currentTarget.dataset.orderno);
     }
 });

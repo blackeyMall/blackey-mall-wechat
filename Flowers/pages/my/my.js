@@ -11,30 +11,30 @@ Page({
         userInfo: {},
         categoryList: [
             {
-                type: 1,
-                imgUrl: '../../images/orderstatus/1.png',
-                text: '待付款'
+                type: 'CANCEL',
+                imgUrl: 'https://www.ssqushe.com/img/flower/orderstatus/1.png',
+                text: '已取消'
             },
             {
-                type: 2,
-                imgUrl: '../../images/orderstatus/2.png',
+                type: 'SERVICE',
+                imgUrl: 'https://www.ssqushe.com/img/flower/orderstatus/2.png',
                 text: '服务中'
             },
             {
-                type: 3,
-                imgUrl: '../../images/orderstatus/3.png',
+                type: 'DONE',
+                imgUrl: 'https://www.ssqushe.com/img/flower/orderstatus/3.png',
                 text: '已完成'
             },
             {
-                type: 4,
-                imgUrl: '../../images/orderstatus/4.png',
+                type: 'TEST',
+                imgUrl: 'https://www.ssqushe.com/img/flower/orderstatus/4.png',
                 text: '待评价'
             },
             {
-                type: 5,
-                imgUrl: '../../images/orderstatus/5.png',
+                type: 'TEST2',
+                imgUrl: 'https://www.ssqushe.com/img/flower/orderstatus/5.png',
                 text: '售后'
-            },
+            }
         ]
     },
 

@@ -2,7 +2,7 @@
 <view class="login-guide">
     <view class="body">
         <view class="text-center">
-            <image src="../../images/test.png" width="aspectFit" />
+            <image src="https://www.ssqushe.com/img/flower/test.png" width="aspectFit" />
         </view>
         <view class="logo-title">花家</view>
         <view class="title">小程序申请获得以下权限：</view>
