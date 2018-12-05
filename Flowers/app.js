@@ -9,12 +9,12 @@ App({
         serverUrl: "https://www.ssqushe.com",
         // 检查登录状态
         onCheckLoginStatus() {
-            // let openId = wx.getStorageSync("openId");
-            // if (openId === '') {
-            //     wx.navigateTo({
-            //         url: "/pages/login/login"
-            //     });
-            // }
+            let openId = wx.getStorageSync("openId");
+            if (openId === '') {
+                wx.navigateTo({
+                    url: "/pages/login/login"
+                });
+            }
         }
     }
 });

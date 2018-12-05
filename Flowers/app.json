@@ -12,14 +12,14 @@
             {
                 "pagePath": "pages/index/index",
                 "text": "首页",
-                "iconPath": "https://www.ssqushe.com/img/flower/tabBar/index.png",
-                "selectedIconPath": "https://www.ssqushe.com/img/flower/tabBar/index-active.png"
+                "iconPath": "./images/tabBar/index.png",
+                "selectedIconPath": "./images/tabBar/index-active.png"
             },
             {
                 "pagePath": "pages/my/my",
                 "text": "我的",
-                "iconPath": "https://www.ssqushe.com/img/flower/tabBar/my.png",
-                "selectedIconPath": "https://www.ssqushe.com/img/flower/tabBar/my-active.png"
+                "iconPath": "./images/tabBar/my.png",
+                "selectedIconPath": "./images/tabBar/my-active.png"
             }
         ],
         "color": "#000",
