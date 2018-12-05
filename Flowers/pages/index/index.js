@@ -57,11 +57,11 @@ Page({
     },
     onLoad: function (options) {
         // 获取二维码参数
-        wx.showModal({
-            title: '二维码测试信息',
-            content: options.scene
-        });
         if (options.scene) {
+            wx.showModal({
+                title: '二维码测试信息',
+                content: options.scene
+            });
             wx.setStorageSync('scene', options.scene);
         } else {
             wx.removeStorageSync('scene');
