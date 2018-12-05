@@ -203,8 +203,8 @@ Page({
             title: '订单确认',
             content: '需要现在下单吗？',
             success (res) {
-                console.log(res);
                 if (res.confirm) {
+                    let scene = wx.getStorageSync('scene');
                     let params = {
                         openId: wx.getStorageSync('openId'), // openId
                         totalFee: e.currentTarget.dataset.price * 100, // 总价格
@@ -213,6 +213,9 @@ Page({
                         goodsName: _this.data.detail.title, // 名称
                         goodsDesc: _this.data.detail.des // 简介
                     };
+                    if (scene) {
+                        params.refereeId = scene;
+                    }
                     _.sendOrder(params, {
                         success (res) {
                             res = res.data
