@@ -55,6 +55,12 @@ Page({
         // 鲜花样本图
         sampleImgUrl: 'https://www.ssqushe.com/img/flower/sample.png'
     },
+    onLoad: function (options) {
+        wx.showModal({
+            title: '二维码信息',
+            content: decodeURIComponent(options.scene)
+        })
+    },
     onShow: function() {
         // 检索登录状态
         app.globalData.onCheckLoginStatus();
