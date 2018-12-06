@@ -34,7 +34,7 @@ const request = (method, url, data, requestHandler, header = 'application/json')
             }
             // 服务器异常
             if (res.statusCode == 502) {
-                wx.showToast({
+                wx.showModal({
                     title: "温馨提示",
                     content: "无法链接服务器",
                     showCancel: false
@@ -77,7 +77,7 @@ const postfile = (url, file, filename, requestHandler) => {
             }
             // 服务器异常
             if (res.statusCode == 502) {
-                wx.showToast({
+              wx.showModal({
                     title: "温馨提示",
                     content: "无法链接服务器",
                     showCancel: false
