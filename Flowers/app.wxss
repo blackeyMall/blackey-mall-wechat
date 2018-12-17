@@ -178,10 +178,25 @@ scroll-view {
 .detail .info .div {
   margin: 0 20rpx;
 }
+.detail .material {
+  display: flex;
+  padding: 40rpx 30rpx;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: #888;
+  border-top: 2rpx solid #ccc;
+}
+.detail .material-title {
+  flex: 0 0 auto;
+  color: #ff9999;
+}
+.detail .material-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 .detail .service-list {
   display: flex;
   padding: 30rpx;
-  margin-bottom: 40rpx;
   background-color: #f8f8f8;
   font-size: 24rpx;
 }
@@ -193,11 +208,16 @@ scroll-view {
 .detail .service-list .item + .item {
   margin-left: 20rpx;
 }
-.detail .detail-img {
+.detail .img-list {
+  padding: 30rpx;
+}
+.detail .img-list .detail-img {
   display: block;
   width: 100%;
-  padding: 26rpx;
   box-sizing: border-box;
+}
+.detail .img-list .detail-img + .detail-img {
+  margin-top: 30rpx;
 }
 .detail-operator {
   border-top: 2rpx solid #eee;

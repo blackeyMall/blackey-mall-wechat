@@ -17,10 +17,22 @@
             <view class="num">{{detail.priceEnd}}</view>
         </view>
     </view>
+    <view class="material">
+        <view class="material-title">花材：</view>
+        <view class="material-list">
+            <view class="item">拉丝扶朗（3支）</view>
+            <view class="item">银叶菊（1/3扎）</view>
+            <view class="item">进口金丝桃果（3支）</view>
+            <view class="item">进口落新妇（3支）</view>
+            <view class="item">荔枝玫瑰（10支）</view>
+        </view>
+    </view>
     <view class="service-list">
         <view class="item" wx:for="{{detail.advantageList}}" wx:for-index="index" wx:key="{{index}}">{{item}}</view>
     </view>
-    <image mode="widthFix" class="detail-img" src="{{detail.imgUrl}}" />
+    <view class="img-list">
+        <image mode="widthFix" class="detail-img" wx:for="{{detail.imgUrl}}" src="{{item}}" />
+    </view>
 </view>
 <view class="detail-operator">
     <view class="div">
