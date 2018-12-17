@@ -14,29 +14,49 @@
             <view class="title-main">
                 <view class="div">
                     <i class="iconfont icon-service"></i>
-                    <text>最近订单</text>
+                    <text>服务项目</text>
                 </view>
             </view>
-            <view class="title-sm" bindtap="onSwitchOrderCenter">
+            <!-- <view class="title-sm" bindtap="onSwitchOrderCenter">
                 <view class="div">
                     <text>更多</text>
                     <i class="iconfont icon-more"></i>
                 </view>
+            </view> -->
+        </view>
+    </view>
+    <view class="service-list">
+        <view class="item" wx:for="{{serviceList}}" data-id="{{item.id}}" data-title="{{item.name}}" data-url="{{item.picUrl}}" wx:key="{{item.id}}" bindtap="handleReservation">
+            <view class="item-content" hover-class="active">
+                <image class="item-img" src="{{item.picUrl}}" mode="widthFix" />
+                <text class="">
+                    {{item.name}}
+                </text>
             </view>
         </view>
     </view>
 </view>
-<view class="order {{orderList.length === 0 ? 'empty' : ''}}">
-    <!-- 订单列表-组件 -->
+<!-- 订单列表-组件 -->
+<!-- <view class="order {{orderList.length === 0 ? 'empty' : ''}}">
     <view class="div">
         <orders order-list="{{orderList}}" query-content="1"></orders>
     </view>
-</view>
+</view> -->
 <view class="leayer" wx:if="{{showModal}}">
     <view class="modal-tel">
         <view class="modal-body">
-            <view class="label-input">常用手机号</view>
-            <input type="number" placeholder="请输入手机号" value="{{telNum}}" bindinput="bindNumberInput" />
+            <view class="label-input">
+                <view class="iconfont icon-tel"></view>
+                <view class="text">手机号</view>
+            </view>
+            <input type="number" placeholder="请输入" value="{{telNum}}" bindinput="bindNumberInput" />
+            <view class="label-input margin-top-30">
+                <view class="iconfont icon-nickname"></view>
+                <view class="text">角色</view>
+            </view>
+            <picker bindchange="bindPickerChange" value="{{pickerIndex}}" range="{{pickerArray}}">
+                <view class="input {{pickerIndex === 0 ? 'input-placeholder': ''}}">{{pickerArray[pickerIndex]}} </view>
+            </picker>
             <view class="btn-cancel" bind:tap="onUpdatePhoneNumber">绑定</view>
         </view>
     </view>

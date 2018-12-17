@@ -33,6 +33,18 @@
         "text": "首页"
       },
       {
+        "pagePath": "pages/mall/mall",
+        "iconPath": "lib/images/tabbar/mall.png",
+        "selectedIconPath": "lib/images/tabbar/mall-active.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "iconPath": "lib/images/tabbar/service.png",
+        "selectedIconPath": "lib/images/tabbar/service-active.png",
+        "text": "服务"
+      },
+      {
         "pagePath": "pages/orderCenter/orderCenter",
         "iconPath": "lib/images/tabbar/order.png",
         "selectedIconPath": "lib/images/tabbar/order-active.png",

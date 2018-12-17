@@ -34,6 +34,6 @@ Page({
   handleReservation (el) {
     wx.navigateTo({
       url: '/pages/reservation/reservation?serviceItem=' + encodeURIComponent(JSON.stringify(el.currentTarget.dataset))
-  })
+    })
   }
 })
