@@ -89,7 +89,7 @@ Page({
                 'https://www.ssqushe.com/img/flower/swiper/jbxm/1.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/jbxm/2.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/jbxm/3.jpg',
-                'https://www.ssqushe.com/img/flower/detail-jbxm.png'
+                'https://www.ssqushe.com/img/flower/detail.png'
             ]
         },
         detailWjsh: {
@@ -106,7 +106,7 @@ Page({
                 'https://www.ssqushe.com/img/flower/swiper/wjsh/1.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/wjsh/2.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/wjsh/3.jpg',
-                'https://www.ssqushe.com/img/flower/detail-wjsh.png'
+                'https://www.ssqushe.com/img/flower/detail.png'
             ]
         },
         detailKpi: {
@@ -123,7 +123,7 @@ Page({
                 'https://www.ssqushe.com/img/flower/swiper/kpi/1.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/kpi/2.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/kpi/3.jpg',
-                'https://www.ssqushe.com/img/flower/detail-kpi.png'
+                'https://www.ssqushe.com/img/flower/detail.png'
             ]
         },
         detailYlsx: {
@@ -140,7 +140,7 @@ Page({
                 'https://www.ssqushe.com/img/flower/swiper/ylsx/1.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/ylsx/2.jpg',
                 'https://www.ssqushe.com/img/flower/swiper/ylsx/3.jpg',
-                'https://www.ssqushe.com/img/flower/detail-ylsx.png'
+                'https://www.ssqushe.com/img/flower/detail.png'
             ]
         },
         detailWjshImgUrl: 'https://www.ssqushe.com/img/flower/detail-wjsh.png',
