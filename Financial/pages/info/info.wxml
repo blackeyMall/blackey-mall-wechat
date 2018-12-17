@@ -1,0 +1,155 @@
+<view class="project flex-column">
+    <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
+        <view class="content">
+            <view class="flex-center">
+                <view class="iconfont icon-search"></view>
+                <input class="input" value="{{searchValue}}" type="text" placeholder="请搜索您感兴趣的需求！" placeholder-class="input-placeholder" bindinput="bindSearchInput" bind:focus="bindSearchFocus" bind:confirm="bindSearchConfirm" />
+                <view class="iconfont icon-close" bind:tap="bindClearInputValue"></view>
+            </view>
+        </view>
+        <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
+    </view>
+    <view class="nav-tab">
+        <view class="filter iconfont icon-filter"></view>
+        <view class="item">
+            <view class="text">找项目</view>
+        </view>
+        <view class="item active">
+            <view class="text">找资金</view>
+        </view>
+    </view>
+    <view class="nav-tab-sub">
+        <view class="item">
+            <view class="text">全部需求</view>
+        </view>
+        <view class="item active">
+            <view class="text">付费排行</view>
+        </view>
+        <view class="item">
+            <view class="text">今日发布</view>
+        </view>
+        <view class="item">
+            <view class="text">关注需求</view>
+        </view>
+    </view>
+    <view class="nav-content flex-main">
+        <view class="project-list">
+            <view class="item">
+                <view class="header">
+                    <view class="header-item">
+                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <view class="detail">
+                            <view class="name">张大炮</view>
+                            <view class="tag-list">
+                                <view class="tag-item">大炮投资</view>
+                                <view class="tag-item">董事长</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="header-item">
+                        <view class="label-item">
+                            <view class="iconfont icon-jingpin"></view>
+                            <view class="text">精品</view>
+                        </view>
+                        <view class="label-item">
+                            <view class="iconfont icon-fufei"></view>
+                            <view class="text">付费</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="body">
+                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                </view>
+                <view class="footer">
+                    <view class="operator-item active">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">点赞</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="header">
+                    <view class="header-item">
+                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <view class="detail">
+                            <view class="name">张大炮</view>
+                            <view class="tag-list">
+                                <view class="tag-item">大炮投资</view>
+                                <view class="tag-item">董事长</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="header-item">
+                        <view class="label-item">
+                            <view class="iconfont icon-jingpin"></view>
+                            <view class="text">精品</view>
+                        </view>
+                        <view class="label-item">
+                            <view class="iconfont icon-fufei"></view>
+                            <view class="text">付费</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="body">
+                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                </view>
+                <view class="footer">
+                    <view class="operator-item active">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">点赞</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <view class="header">
+                    <view class="header-item">
+                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <view class="detail">
+                            <view class="name">张大炮</view>
+                            <view class="tag-list">
+                                <view class="tag-item">大炮投资</view>
+                                <view class="tag-item">董事长</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="header-item">
+                        <view class="label-item">
+                            <view class="iconfont icon-jingpin"></view>
+                            <view class="text">精品</view>
+                        </view>
+                        <view class="label-item">
+                            <view class="iconfont icon-fufei"></view>
+                            <view class="text">付费</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="body">
+                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                </view>
+                <view class="footer">
+                    <view class="operator-item active">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">点赞</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="btn-release" bind:tap="bindRedirect">
+    <view class="iconfont icon-add"></view>
+    <view class="text">发布</view>
+</view>

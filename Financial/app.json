@@ -1,0 +1,41 @@
+{
+    "pages": [
+        "pages/info/info",
+        "pages/releaseInfo/releaseInfo",
+        "pages/project/project",
+        "pages/card/card",
+        "pages/cardEdit/cardEdit",
+        "pages/my/my"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#67a6f3",
+        "navigationBarTitleText": "金融圈",
+        "navigationBarTextStyle": "light"
+    },
+    "tabBar": {
+        "color": "#000",
+        "selectedColor": "#67a6f3",
+        "list": [{
+            "pagePath": "pages/card/card",
+            "text": "名片",
+            "iconPath": "./assets/img/card.png",
+            "selectedIconPath": "./assets/img/card-active.png"
+        }, {
+            "pagePath": "pages/info/info",
+            "text": "信息",
+            "iconPath": "./assets/img/info.png",
+            "selectedIconPath": "./assets/img/info-active.png"
+        }, {
+            "pagePath": "pages/project/project",
+            "text": "项目",
+            "iconPath": "./assets/img/project.png",
+            "selectedIconPath": "./assets/img/project-active.png"
+        }, {
+            "pagePath": "pages/my/my",
+            "text": "我的",
+            "iconPath": "./assets/img/my.png",
+            "selectedIconPath": "./assets/img/my-active.png"
+        }]
+    }
+}

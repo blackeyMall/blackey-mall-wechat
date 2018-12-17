@@ -1,0 +1,197 @@
+<view class="panel businessCard">
+    <view class="card">
+        <view class="card-header">
+            <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+            <view class="info">
+                <view class="item name">徐佳佳</view>
+                <view class="item tag">高级产品经理</view>
+                <view class="item company">北京格上理财有限公司上海分公司北京格上理财有限公司上海分公司</view>
+            </view>
+            <view class="edit" bind:tap="bindCardEdit">
+                <view class="iconfont icon-edit"></view>
+                <view class="text">编辑</view>
+            </view>
+        </view>
+        <view class="card-body">
+            <view class="info-list">
+                <view class="item">
+                    <view class="icon">
+                        <view class="iconfont icon-dianhua"></view>
+                    </view>
+                    <view class="text">13823819782</view>
+                </view>
+                <view class="item">
+                    <view class="icon">
+                        <view class="iconfont icon-youxiang2"></view>
+                    </view>
+                    <view class="text">xujiajia@llf.com</view>
+                </view>
+                <view class="item">
+                    <view class="icon">
+                        <view class="iconfont icon-dingwei"></view>
+                    </view>
+                    <view class="text">上海上海浦东新区上海上海浦东新区上海上海浦东新区</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="more {{isMoreinfoActive === true ? 'active' : ''}}" bind:tap="bindViewDetail">
+        <view class="text">{{isMoreinfoActive === true ? '收起更多信息' : '查看更多信息'}}</view>
+        <view class="iconfont icon-open"></view>
+    </view>
+</view>
+<view class="panel more-info" wx:if="{{isMoreinfoActive}}">
+    <view class="item item-title">
+        <view class="name">个人信息</view>
+    </view>
+    <view class="item">
+        <view class="name">手机</view>
+        <view class="text">13399994444</view>
+        <view class="btn btn-call">拨打</view>
+    </view>
+    <view class="item">
+        <view class="name">公司全称</view>
+        <view class="text">上海大嫖客有限公司</view>
+        <view class="btn btn-copy">复制</view>
+    </view>
+    <view class="item">
+        <view class="name">公司网站</view>
+        <view class="text">www.12306.cn</view>
+        <view class="btn btn-copy">复制</view>
+    </view>
+    <view class="item">
+        <view class="name">公司地址</view>
+        <view class="text">上海大嫖客路大嫖客街道188弄</view>
+        <view class="btn btn-copy">复制</view>
+    </view>
+    <!-- <view class="item item-title">
+        <view class="name">个人标签</view>
+    </view>
+    <view class="item">
+        <view class="label-list">
+            <view class="label-item">股权投资</view>
+            <view class="label-item">债权投资</view>
+            <view class="label-item">股权投资</view>
+            <view class="label-item">债权投资</view>
+            <view class="label-item">融资</view>
+            <view class="label-item">融资</view>
+        </view>
+    </view> -->
+</view>
+<view class="panel">
+    <view class="nav-tab">
+        <view class="item">
+            <view class="text">好友</view>
+        </view>
+        <view class="item active">
+            <view class="text">关注的人</view>
+        </view>
+        <view class="item">
+            <view class="text">推荐人脉</view>
+        </view>
+    </view>
+    <view class="nav-content">
+        <view class="people-list">
+            <view class="item">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="info">
+                    <view class="name">王海文</view>
+                    <view class="tag-list">
+                        <view class="tag-item">发达信投</view>
+                        <view class="tag-item">项目总监</view>
+                    </view>
+                </view>
+                <view class="operator-center">
+                    <view class="operator-item active">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                    <view class="operator-item active">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">靠谱</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="info">
+                    <view class="name">王海文</view>
+                    <view class="tag-list">
+                        <view class="tag-item">发达信投</view>
+                        <view class="tag-item">项目总监</view>
+                    </view>
+                </view>
+                <view class="operator-center">
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">靠谱</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="info">
+                    <view class="name">王海文</view>
+                    <view class="tag-list">
+                        <view class="tag-item">发达信投</view>
+                        <view class="tag-item">项目总监</view>
+                    </view>
+                </view>
+                <view class="operator-center">
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">靠谱</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="info">
+                    <view class="name">王海文</view>
+                    <view class="tag-list">
+                        <view class="tag-item">发达信投</view>
+                        <view class="tag-item">项目总监</view>
+                    </view>
+                </view>
+                <view class="operator-center">
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">靠谱</view>
+                    </view>
+                </view>
+            </view>
+            <view class="item">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="info">
+                    <view class="name">王海文</view>
+                    <view class="tag-list">
+                        <view class="tag-item">发达信投</view>
+                        <view class="tag-item">项目总监</view>
+                    </view>
+                </view>
+                <view class="operator-center">
+                    <view class="operator-item">
+                        <view class="iconfont icon-focus"></view>
+                        <view class="text">关注</view>
+                    </view>
+                    <view class="operator-item">
+                        <view class="iconfont icon-zan"></view>
+                        <view class="text">靠谱</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

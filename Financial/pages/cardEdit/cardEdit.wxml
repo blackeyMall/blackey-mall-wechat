@@ -1,0 +1,85 @@
+<view class="cardEdit flex-column">
+<view class="more-info flex-main">
+        <view class="item item-title">
+            <view class="name">照片信息</view>
+        </view>
+        <view class="item">
+            <view class="name">头像:</view>
+            <view class="text text-right">
+                <block wx:if="{{cardInfo.avatarUrl !== ''}}">
+                    <image mode="widthFix" src="{{cardInfo.avatarUrl}}" class="avatar" />
+                </block>
+                <block wx:else>
+                    请选择头像
+                </block>
+            </view>
+            <view class="iconfont icon-open-right"></view>
+        </view>
+        <view class="item item-title">
+            <view class="name">个人信息</view>
+        </view>
+        <view class="item">
+            <view class="name">姓名:</view>
+            <input type="text" id="name" class="text" value="{{cardInfo.name}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-nickname"></view>
+        </view>
+        <view class="item">
+            <view class="name">职务:</view>
+            <input type="text" class="text" value="{{cardInfo.position}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-position"></view>
+        </view>
+        <view class="item">
+            <view class="name">手机:</view>
+            <input type="number" class="text" value="{{cardInfo.tel}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-tel"></view>
+        </view>
+        <view class="item">
+            <view class="name">公司全称:</view>
+            <input type="text" class="text" value="{{cardInfo.companyFullName}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-company"></view>
+        </view>
+        <view class="item">
+            <view class="name">公司简称:</view>
+            <input type="text" class="text" value="{{cardInfo.companyName}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-company"></view>
+        </view>
+        <view class="item">
+            <view class="name">公司网站:</view>
+            <input type="text" class="text" value="{{cardInfo.companyUrl}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-url"></view>
+        </view>
+        <view class="item">
+            <view class="name">公司地址:</view>
+            <input type="text" class="text" value="{{cardInfo.companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-address"></view>
+        </view>
+        <view class="item">
+            <view class="name">微信:</view>
+            <input type="text" class="text" value="{{cardInfo.wechat}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-weixin"></view>
+        </view>
+        <view class="item">
+            <view class="name">邮箱:</view>
+            <input type="number" class="text" value="{{cardInfo.email}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="iconfont icon-email"></view>
+        </view>
+        <!-- <view class="item item-title">
+            <view class="name">个人标签</view>
+            <view class="operator">
+                <view class="iconfont icon-edit"></view>
+                <view class="text">编辑</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="label-list">
+                <block wx:if="{{cardInfo.tags.length !== 0}}">
+                    <view wx:for="{{cardInfo.tags}}" class="label-item">{{item}}</view>
+                </block>
+                <block wx:else>
+                    <view class="label-item empty">暂无标签</view>
+                </block>
+            </view>
+        </view> -->
+    </view>
+    <view class="btn btn-save">保存修改</view>
+</view>
