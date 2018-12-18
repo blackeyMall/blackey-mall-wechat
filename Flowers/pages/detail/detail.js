@@ -85,7 +85,12 @@ Page({
                 '统一每周一配送',
                 '仅限上海地区（外环以内）'
             ],
-            imgUrl: 'https://www.ssqushe.com/img/flower/detail-jbxm.png',
+            imgUrl: [
+                'https://www.ssqushe.com/img/flower/swiper/jbxm/1.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/jbxm/2.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/jbxm/3.jpg',
+                'https://www.ssqushe.com/img/flower/detail.png'
+            ]
         },
         detailWjsh: {
             title: '完结撒花系列',
@@ -97,7 +102,12 @@ Page({
                 '统一每周一配送',
                 '仅限上海地区（外环以内）'
             ],
-            imgUrl: 'https://www.ssqushe.com/img/flower/detail-wjsh.png',
+            imgUrl: [
+                'https://www.ssqushe.com/img/flower/swiper/wjsh/1.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/wjsh/2.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/wjsh/3.jpg',
+                'https://www.ssqushe.com/img/flower/detail.png'
+            ]
         },
         detailKpi: {
             title: '躺赢KPI系列',
@@ -109,7 +119,12 @@ Page({
                 '统一每周一配送',
                 '仅限上海地区（外环以内）'
             ],
-            imgUrl: 'https://www.ssqushe.com/img/flower/detail-kpi.png',
+            imgUrl: [
+                'https://www.ssqushe.com/img/flower/swiper/kpi/1.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/kpi/2.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/kpi/3.jpg',
+                'https://www.ssqushe.com/img/flower/detail.png'
+            ]
         },
         detailYlsx: {
             title: '压力山小系列',
@@ -121,7 +136,12 @@ Page({
                 '统一每周一配送',
                 '仅限上海地区（外环以内）'
             ],
-            imgUrl: 'https://www.ssqushe.com/img/flower/detail-ylsx.png',
+            imgUrl: [
+                'https://www.ssqushe.com/img/flower/swiper/ylsx/1.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/ylsx/2.jpg',
+                'https://www.ssqushe.com/img/flower/swiper/ylsx/3.jpg',
+                'https://www.ssqushe.com/img/flower/detail.png'
+            ]
         },
         detailWjshImgUrl: 'https://www.ssqushe.com/img/flower/detail-wjsh.png',
         detailKpiImgUrl: 'https://www.ssqushe.com/img/flower/detail-kpi.png',

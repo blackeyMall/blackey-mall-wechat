@@ -88,7 +88,7 @@ Page({
                                     showCancel: false,
                                     success: () => {
                                         wx.switchTab({
-                                            url: "/pages/index/index"
+                                            url: "/pages/orderCenter/orderCenter"
                                         });
                                     }
                                 });

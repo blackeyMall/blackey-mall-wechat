@@ -189,10 +189,25 @@ scroll-view {
             margin: 0 20rpx;
         }
     }
+    .material {
+        display: flex;
+        padding: 40rpx 30rpx;
+        line-height: 50rpx;
+        font-size: 24rpx;
+        color: #888;
+        border-top: 2rpx solid #ccc;
+        &-title {
+            flex: 0 0 auto;
+            color: #ff9999;
+        }
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
     .service-list {
         display: flex;
         padding: 30rpx;
-        margin-bottom: 40rpx;
         background-color: #f8f8f8;
         font-size: 24rpx;
         .item {
@@ -204,11 +219,16 @@ scroll-view {
             }
         }
     }
-    .detail-img {
-        display: block;
-        width: 100%;
-        padding: 26rpx;
-        box-sizing: border-box;
+    .img-list {
+        padding: 30rpx;
+        .detail-img {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            & + .detail-img {
+                margin-top: 30rpx;
+            }
+        }
     }
     &-operator {
         border-top: 2rpx solid #eee;

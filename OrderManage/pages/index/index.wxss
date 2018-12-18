@@ -2,6 +2,9 @@
 .container {
   flex: 0 0 auto;
 }
+.margin-top-30 {
+  margin-top: 30rpx;
+}
 .swiper {
   width: 100%;
   height: 350rpx;
@@ -55,12 +58,22 @@
   padding: 60rpx 40rpx;
 }
 .modal-tel .modal-body .label-input {
-  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
   color: #4454cd;
 }
-.modal-tel .modal-body input {
-  padding: 20rpx 0;
-  font-size: 32rpx;
+.modal-tel .modal-body .label-input .iconfont {
+  flex: 0 0 auto;
+  margin-right: 10rpx;
+}
+.modal-tel .modal-body input,
+.modal-tel .modal-body .input {
+  height: 1.4rem;
+  min-height: 1.4rem;
+  line-height: 1.4rem;
+  padding: 10rpx 0;
+  font-size: 28rpx;
   border-bottom: 2rpx solid #efefef;
   border-radius: 8rpx;
 }
@@ -69,7 +82,7 @@
 }
 .modal-tel .modal-body .btn-cancel {
   width: 60%;
-  margin: 40rpx auto 0;
+  margin: 60rpx auto 0;
   padding: 20rpx;
   text-align: center;
   background-color: #4454cd;
@@ -77,4 +90,37 @@
   font-size: 28rpx;
   font-weight: 500;
   border-radius: 40rpx;
+}
+.service-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -16rpx;
+  margin-right: -16rpx;
+  margin-top: 30rpx;
+}
+.service-list .item {
+  flex: 0 0 33.33333%;
+  padding: 16rpx;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.service-list .item-content {
+  position: relative;
+  top: 0;
+  padding: 20rpx;
+  background-color: #eee;
+  background-image: linear-gradient(160deg, #efefef 40%, rgba(68, 84, 205, 0.2));
+  border-radius: 16rpx;
+  box-shadow: 0 0 20rpx rgba(147, 166, 179, 0.5);
+  transition: all .1s;
+  box-shadow: 0 8rpx 0 rgba(68, 84, 205, 0.2), 0 10rpx 0 rgba(68, 84, 205, 0.3);
+}
+.service-list .item-content.active {
+  top: 8rpx;
+  box-shadow: 0 2rpx 0 rgba(68, 84, 205, 0.2), 0 4rpx 0 rgba(68, 84, 205, 0.3);
+}
+.service-list .item-img {
+  width: 100rpx;
+  height: 100rpx;
 }
