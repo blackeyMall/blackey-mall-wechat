@@ -58,11 +58,12 @@ Page({
     onLoad: function (options) {
         // 获取二维码参数
         if (options.scene) {
-            wx.showModal({
-                title: '二维码测试信息',
-                content: options.scene
-            });
-            wx.setStorageSync('scene', options.scene);
+            // wx.showModal({
+            //     title: '二维码测试信息',
+            //     content: options.scene
+            // });
+          console.log(options.scene);
+          wx.setStorageSync('scene', decodeURIComponent(options.scene));
         } else {
             wx.removeStorageSync('scene');
         }

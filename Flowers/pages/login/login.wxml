@@ -4,7 +4,7 @@
         <view class="text-center">
             <image src="https://www.ssqushe.com/img/flower/test.png" width="aspectFit" />
         </view>
-        <view class="logo-title">花家</view>
+        <view class="logo-title">Warm Winter</view>
         <view class="title">小程序申请获得以下权限：</view>
         <view class="des">获得你的公开信息（昵称、头像等）</view>
         <button class="btn-confirm" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">确认授权</button>

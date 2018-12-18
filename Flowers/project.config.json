@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.0",
-	"appid": "wx8d2f4db66425055e",
+	"appid": "wx599ba299f9a313ad",
 	"projectname": "Flowers",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -42,7 +42,8 @@
 					"id": 0,
 					"name": "推荐人编译模式",
 					"pathName": "pages/index/index",
-					"query": "refereeId=1"
+					"query": "scene=refereeId%3D1%26res%3D123&openid=123",
+					"scene": "1011"
 				}
 			]
 		}

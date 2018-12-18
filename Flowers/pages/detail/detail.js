@@ -131,7 +131,7 @@ Page({
         priceList: [
             {
                 type: '0',
-                price: '380',
+                price: '1',
                 imgUrl: 'https://www.ssqushe.com/img/flower/once-price.png'
             },
             {
