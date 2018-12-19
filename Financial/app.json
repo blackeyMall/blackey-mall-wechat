@@ -1,11 +1,12 @@
 {
     "pages": [
-        "pages/info/info",
-        "pages/releaseInfo/releaseInfo",
-        "pages/project/project",
         "pages/card/card",
-        "pages/cardEdit/cardEdit",
-        "pages/my/my"
+        "pages/releaseProject/releaseProject",
+        "pages/releaseInfo/releaseInfo",
+        "pages/my/my",
+        "pages/info/info",
+        "pages/project/project",
+        "pages/cardEdit/cardEdit"
     ],
     "window": {
         "backgroundTextStyle": "light",

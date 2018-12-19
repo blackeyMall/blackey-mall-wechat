@@ -1,0 +1,120 @@
+<view class="padding-bottom-108">
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-more"></view>
+                    <view class="text">项目类别</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-category-list">
+                <view class="item active">股权项目</view>
+                <view class="item">其他项目</view>
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-info"></view>
+                    <view class="text">基本信息</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-base-info-container">
+                <view class="release-base-info">
+                    <view class="release-info-item">
+                        <view class="iconfont icon-nickname"></view>
+                        <input placeholder="项目名称" class="release-input" />
+                    </view>
+                    <view class="release-info-item">
+                        <view class="iconfont icon-edit"></view>
+                        <input placeholder="一句话介绍" class="release-input" />
+                    </view>
+                    <view class="release-info-item">
+                        <view class="iconfont icon-url"></view>
+                        <input placeholder="项目网地(选填)" class="release-input" />
+                    </view>
+                </view>
+                <!-- <image class="avatar" mode="widthFix" src="../../assets/img/avatar.jpg" /> -->
+                <image class="avatar empty" mode="widthFix" src="../../assets/img/logo-upload.png" />
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-item">
+            <view class="release-option-list">
+                <view class="release-option-item">
+                    <view class="release-option-title">阶段</view>
+                    <picker class="release-picker placeholder" bindchange="bindStagePickerChange" value="{{stageIndex}}" range="{{stageArray}}">
+                        <view class="picker">{{stageArray[stageIndex]}}</view>
+                    </picker>
+                </view>
+                <view class="release-option-item">
+                    <view class="release-option-title">领域</view>
+                    <picker class="release-picker placeholder" bindchange="bindFieldPickerChange" value="{{fieldIndex}}" range="{{fieldArray}}">
+                        <view class="picker">{{fieldArray[fieldIndex]}}</view>
+                    </picker>
+                </view>
+                <view class="release-option-item">
+                    <view class="release-option-title">城市</view>
+                    <picker class="release-picker placeholder" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
+                        <view class="picker">{{cityArray[cityIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-content"></view>
+                    <view class="text">项目描述</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <textarea maxlength="200" class="textarea" placeholder="请简单介绍下项目，说说你的项目的优势！" placeholder-class="textarea-placeholder" bind:input="bindTextareaInput"></textarea>
+            <view class="textarea-tips">
+                字数限制： 0 / 1000
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-img"></view>
+                    <view class="text">配图</view>
+                </view>
+                <view class="item operator">
+                    <view class="iconfont icon-upload"></view>
+                    <view class="text">上传</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-img-list">
+                <!-- <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view> -->
+                <view class="empty">暂无标签，请点击 '+添加' 按钮添加标签！</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="btn-primary fixed-bottom">发布</view>

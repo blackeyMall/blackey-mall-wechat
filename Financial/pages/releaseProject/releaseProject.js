@@ -1,12 +1,34 @@
-// pages/info/info.js
+// pages/releaseProject/releaseProject.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        displaySearchBtn: false,
-        searchValue: ''
+        stageArray: ['请选择', '测试一', '测试二', '测试三', '测试四'],
+        stageIndex: 0,
+        fieldArray: ['请选择', '测试一', '测试二', '测试三', '测试四'],
+        fieldIndex: 0,
+        cityArray: ['请选择', '测试一', '测试二', '测试三', '测试四'],
+        cityIndex: 0
+    },
+
+    bindStagePickerChange (e) {
+        this.setData({
+            stageIndex: parseInt(e.detail.value)
+        })
+    },
+
+    bindFieldPickerChange (e) {
+        this.setData({
+            fieldIndex: parseInt(e.detail.value)
+        })
+    },
+
+    bindCityPickerChange (e) {
+        this.setData({
+            cityIndex: parseInt(e.detail.value)
+        })
     },
 
     /**
@@ -63,43 +85,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-
-    bindSearchInput (e) {
-        this.setData({
-            searchValue: e.detail.value
-        })
-    },
-
-    bindSearchFocus (e) {
-        this.setData({
-            displaySearchBtn: true
-        })
-    },
-
-    bindSearchConfirm () {
-        console.log(this.data.searchValue);
-        wx.showModal({
-            title: '测试',
-            content: '123'
-        })
-    },
-
-    bindCancelSearch (e) {
-        this.setData({
-            displaySearchBtn: false
-        })
-    },
-
-    bindClearInputValue () {
-        this.setData({
-            searchValue: ''
-        })
-    },
-
-    bindRedirect () {
-        wx.navigateTo({
-            url: '/pages/releaseProject/releaseProject'
-        })
     }
 })
