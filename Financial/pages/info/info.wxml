@@ -10,7 +10,7 @@
         <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
     </view>
     <view class="nav-tab">
-        <view class="filter iconfont icon-filter"></view>
+        <!-- <view class="filter iconfont icon-filter"></view> -->
         <view class="item">
             <view class="text">找项目</view>
         </view>
@@ -150,6 +150,6 @@
 </view>
 
 <view class="btn-release" bind:tap="bindRedirect">
-    <view class="iconfont icon-add"></view>
-    <view class="text">发布</view>
+    <!-- <view class="iconfont icon-add"></view> -->
+    <view class="text">发布信息</view>
 </view>

@@ -1,5 +1,39 @@
-<view class="my">
-    <view class="my-info">
-        1
+<view class="my flex-column">
+    <view class="flex-main">
+        <view class="my-info">
+            <view class="card">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <view class="detail">
+                    <view class="detail-title">张大炮</view>
+                    <view class="tag-list">
+                        <view class="tag-item">可以呀</view>
+                        <view class="tag-item">一起</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="my-list">
+            <view class="item">
+                <view class="iconfont icon-project"></view>
+                <view class="text">我的项目</view>
+                <view class="iconfont icon-open"></view>
+            </view>
+            <view class="item">
+                <view class="iconfont icon-guanzhu"></view>
+                <view class="text">我的关注</view>
+                <view class="iconfont icon-open"></view>
+            </view>
+            <view class="item">
+                <view class="iconfont icon-info"></view>
+                <view class="text">我的信息</view>
+                <view class="iconfont icon-open"></view>
+            </view>
+            <view class="item">
+                <view class="iconfont icon-kefu"></view>
+                <view class="text">反馈管理</view>
+                <view class="iconfont icon-open"></view>
+            </view>
+        </view>
     </view>
+    <view class="tips">- 到底啦! -</view>
 </view>

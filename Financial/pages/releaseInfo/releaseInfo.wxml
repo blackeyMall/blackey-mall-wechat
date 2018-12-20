@@ -1,2 +1,126 @@
-<!--pages/releaseInfo/releaseInfo.wxml-->
-<text>pages/releaseInfo/releaseInfo.wxml</text>
+<view class="padding-bottom-108">
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-more"></view>
+                    <view class="text">信息类别</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-category-list">
+                <view class="item active">找项目</view>
+                <view class="item">找资金</view>
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-content"></view>
+                    <view class="text">详情</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <textarea maxlength="200" class="textarea" placeholder="请输入信息正文！" placeholder-class="textarea-placeholder" bind:input="bindTextareaInput"></textarea>
+            <view class="textarea-tips">
+                字数限制： 0 / 200
+            </view>
+        </view> 
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-label"></view>
+                    <view class="text">标签</view>
+                </view>
+                <view class="item operator">
+                    <view class="iconfont icon-add"></view>
+                    <view class="text">添加</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-label-list">
+                <view class="item">
+                    <view class="text">测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试测试测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试测试测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                
+                <view class="item">
+                    <view class="text">测试测</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <view class="item">
+                    <view class="text">测试</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+                <!-- <view class="empty">暂无标签，请点击 '+添加' 按钮添加标签！</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-img"></view>
+                    <view class="text">配图</view>
+                </view>
+                <view class="item operator">
+                    <view class="iconfont icon-upload"></view>
+                    <view class="text">上传</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-img-list">
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <view class="item">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" />
+                </view>
+                <!-- <view class="empty">暂无标签，请点击 '+添加' 按钮添加标签！</view> -->
+            </view>
+        </view>
+    </view>
+</view>
+<view class="btn-primary fixed-bottom">发布</view>
