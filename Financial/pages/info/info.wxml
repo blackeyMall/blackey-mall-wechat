@@ -1,4 +1,4 @@
-<view class="project flex-column">
+<view class="project">
     <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
         <view class="content">
             <view class="flex-center">
@@ -10,43 +10,30 @@
         <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
     </view>
     <view class="nav-tab">
-        <!-- <view class="filter iconfont icon-filter"></view> -->
-        <view class="item">
-            <view class="text">找项目</view>
-        </view>
-        <view class="item active">
-            <view class="text">找资金</view>
+        <view class="item {{item.category === activeNav ? 'active' : ''}}" data-category="{{item.category}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
+            <view class="text">{{item.text}}</view>
         </view>
     </view>
     <view class="nav-tab-sub">
-        <view class="item">
-            <view class="text">全部需求</view>
-        </view>
-        <view class="item active">
-            <view class="text">付费排行</view>
-        </view>
-        <view class="item">
-            <view class="text">今日发布</view>
-        </view>
-        <view class="item">
-            <view class="text">关注需求</view>
+        <view class="item {{item.tableCode === activeNavSub ? 'active' : ''}}" data-tablecode="{{item.tableCode}}" wx:for="{{navSubList}}" bind:tap="bindChangeNavSub" >
+            <view class="text">{{item.text}}</view>
         </view>
     </view>
-    <view class="nav-content flex-main">
-        <view class="project-list">
-            <view class="item">
+    <view class="nav-content">
+        <view class="project-list" wx:if="{{infoList.length !== 0}}">
+            <view class="item" wx:for="{{infoList}}" data-id="item.id">
                 <view class="header">
                     <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                         <view class="detail">
-                            <view class="name">张大炮</view>
+                            <view class="name">{{item.name}}</view>
                             <view class="tag-list">
-                                <view class="tag-item">大炮投资</view>
-                                <view class="tag-item">董事长</view>
+                                <view class="tag-item">{{item.company}}</view>
+                                <view class="tag-item">{{item.duties}}</view>
                             </view>
                         </view>
                     </view>
-                    <view class="header-item">
+                    <view class="header-item" wx:if="{{item.isRecommend}}">
                         <view class="label-item">
                             <view class="iconfont icon-jingpin"></view>
                             <view class="text">精品</view>
@@ -58,90 +45,19 @@
                     </view>
                 </view>
                 <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                    <view class="p">{{item.content}}</view>
+                    <view class="label-list">
+                        <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                    </view>
                 </view>
                 <view class="footer">
-                    <view class="operator-item active">
+                    <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
                         <view class="iconfont icon-zan"></view>
-                        <view class="text">点赞</view>
+                        <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
                     </view>
-                    <view class="operator-item">
+                    <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}">
                         <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
-                    </view>
-                </view>
-            </view>
-            <view class="item">
-                <view class="header">
-                    <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
-                        <view class="detail">
-                            <view class="name">张大炮</view>
-                            <view class="tag-list">
-                                <view class="tag-item">大炮投资</view>
-                                <view class="tag-item">董事长</view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="header-item">
-                        <view class="label-item">
-                            <view class="iconfont icon-jingpin"></view>
-                            <view class="text">精品</view>
-                        </view>
-                        <view class="label-item">
-                            <view class="iconfont icon-fufei"></view>
-                            <view class="text">付费</view>
-                        </view>
-                    </view>
-                </view>
-                <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
-                </view>
-                <view class="footer">
-                    <view class="operator-item active">
-                        <view class="iconfont icon-zan"></view>
-                        <view class="text">点赞</view>
-                    </view>
-                    <view class="operator-item">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
-                    </view>
-                </view>
-            </view>
-            <view class="item">
-                <view class="header">
-                    <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
-                        <view class="detail">
-                            <view class="name">张大炮</view>
-                            <view class="tag-list">
-                                <view class="tag-item">大炮投资</view>
-                                <view class="tag-item">董事长</view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="header-item">
-                        <view class="label-item">
-                            <view class="iconfont icon-jingpin"></view>
-                            <view class="text">精品</view>
-                        </view>
-                        <view class="label-item">
-                            <view class="iconfont icon-fufei"></view>
-                            <view class="text">付费</view>
-                        </view>
-                    </view>
-                </view>
-                <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
-                </view>
-                <view class="footer">
-                    <view class="operator-item active">
-                        <view class="iconfont icon-zan"></view>
-                        <view class="text">点赞</view>
-                    </view>
-                    <view class="operator-item">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
+                        <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
                     </view>
                 </view>
             </view>
