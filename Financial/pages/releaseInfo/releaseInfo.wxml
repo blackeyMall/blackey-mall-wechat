@@ -10,8 +10,9 @@
         </view>
         <view class="release-item">
             <view class="release-category-list">
-                <view class="item active">找项目</view>
-                <view class="item">找资金</view>
+                <!-- <view class="item active">找项目</view>
+                <view class="item">找资金</view> -->
+                <view class="item {{item.category === activeNav ? 'active' : ''}}" data-category="{{item.category}}" wx:for="{{navList}}" bind:tap="bindChangeNav">{{item.text}}</view>
             </view>
         </view> 
     </view>
@@ -25,7 +26,7 @@
             </view>
         </view>
         <view class="release-item">
-            <textarea maxlength="200" class="textarea" placeholder="请输入信息正文！" placeholder-class="textarea-placeholder" bind:input="bindTextareaInput"></textarea>
+            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请输入信息正文！" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput"></textarea>
             <view class="textarea-tips">
                 字数限制： 0 / 200
             </view>
@@ -52,35 +53,6 @@
                 </view>
                 <view class="item">
                     <view class="text">测试测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试测试测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                <view class="item">
-                    <view class="text">测试测试测试</view>
-                    <view class="iconfont icon-add"></view>
-                </view>
-                
-                <view class="item">
-                    <view class="text">测试测</view>
                     <view class="iconfont icon-add"></view>
                 </view>
                 <view class="item">
@@ -123,4 +95,4 @@
         </view>
     </view>
 </view>
-<view class="btn-primary fixed-bottom">发布</view>
+<view class="btn-primary fixed-bottom" bind:tap="bindReleaseInfo">发布</view>

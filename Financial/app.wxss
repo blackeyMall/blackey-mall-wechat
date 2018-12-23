@@ -172,7 +172,7 @@ page {
     top: 0;
     left: 0;
     width: 100%;
-    height: 75%;
+    height: 70%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     background: linear-gradient(to bottom, #67a6f3, #3968d1);
@@ -192,7 +192,6 @@ page {
 .businessCard .card-header {
     position: relative;
     display: flex;
-    margin-bottom: 30rpx;
 }
 
 .businessCard .card-header .edit {
@@ -206,6 +205,7 @@ page {
 
 .businessCard .card-header .avatar {
     flex: 0 0 140rpx;
+    height: 140rpx;
     border-radius: 6rpx;
 }
 
@@ -231,6 +231,7 @@ page {
 }
 
 .businessCard .card-body {
+    margin-top: 30rpx;
     color: #67a6f3;
     font-size: 24rpx;
 }
@@ -332,6 +333,11 @@ page {
     font-size: 20rpx;
     color: #67a6f3;
     border-radius: 6rpx;
+}
+.more-info .item .btn[data-disabled=false] {
+    border-color: #999;
+    color: #999;
+    opacity: .6;
 }
 
 .more-info .item .label-list {
@@ -562,6 +568,16 @@ page {
     color: #666;
 }
 
+.project-list .item .body .label-list {
+    display: flex;
+    margin-top: 10rpx;
+}
+
+.project-list .item .body .label-list .label-item {
+    border-color: #67a6f3;
+    color: #67a6f3;
+}
+
 .project-list .item .footer {
     display: flex;
     align-items: center;
@@ -602,8 +618,6 @@ page {
     justify-content: center;
     width: 100rpx;
     height: 100rpx;
-    /* line-height: 30rpx; */
-    /* padding: 15rpx 0; */
     border-radius: 50%;
     font-size: 24rpx;
     text-align: center;
