@@ -16,10 +16,10 @@ let _ = {
         ajax.post("/finance/userrelation/list/openid", data, handler);
     },
     focus: (data, handler) => {
-        ajax.post("/finance/userpersonfollow/save", data, handler);
+      ajax.post("/finance/userpersonfollow/foucs", data, handler);
     },
     addFriend: (data, handler) => {
-        ajax.post("/finance/userrelation/save", data, handler);
+        ajax.post("/finance/userrelation/add", data, handler);
     },
 };
 
@@ -278,12 +278,12 @@ Page({
                 res = res.data
                 if (res.code === 200) {
                     let userInfoList = _this.data.userInfoList;
-                    userInfoList[index].isFocus = 1;
+                    userInfoList[index].isFocus = res.data;
                     _this.setData({
                         userInfoList
                     })
                     wx.showToast({
-                        title: '关注成功！',
+                        title: res.message,
                         icon: 'none'
                     })
                 }
@@ -308,7 +308,7 @@ Page({
                         userInfoList
                     })
                     wx.showToast({
-                        title: '好友申请已发送！',
+                        title: res.message,
                         icon: 'none'
                     })
                 }
