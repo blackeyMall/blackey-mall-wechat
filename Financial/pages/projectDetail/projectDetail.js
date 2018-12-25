@@ -1,12 +1,11 @@
-// pages/info/info.js
+// pages/projectDetail/projectDetail.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        displaySearchBtn: false,
-        searchValue: ''
+
     },
 
     /**
@@ -63,49 +62,5 @@ Page({
      */
     onShareAppMessage: function () {
 
-    },
-
-    bindSearchInput (e) {
-        this.setData({
-            searchValue: e.detail.value
-        })
-    },
-
-    bindSearchFocus (e) {
-        this.setData({
-            displaySearchBtn: true
-        })
-    },
-
-    bindSearchConfirm () {
-        console.log(this.data.searchValue);
-        wx.showModal({
-            title: '测试',
-            content: '123'
-        })
-    },
-
-    bindCancelSearch (e) {
-        this.setData({
-            displaySearchBtn: false
-        })
-    },
-
-    bindClearInputValue () {
-        this.setData({
-            searchValue: ''
-        })
-    },
-
-    bindRedirect () {
-        wx.navigateTo({
-            url: '/pages/releaseProject/releaseProject'
-        })
-    },
-
-    bindProjectDetail () {
-        wx.navigateTo({
-            url: '/pages/projectDetail/projectDetail'
-        })
     }
 })

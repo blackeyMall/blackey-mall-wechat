@@ -13,17 +13,17 @@
             </view>
         </view>
         <view class="my-list">
-            <view class="item">
+            <view class="item" bind:tap="bindMyProject">
                 <view class="iconfont icon-project"></view>
                 <view class="text">我的项目</view>
                 <view class="iconfont icon-open"></view>
             </view>
-            <view class="item">
+            <view class="item" bind:tap="bindMyFocus">
                 <view class="iconfont icon-guanzhu"></view>
                 <view class="text">我的关注</view>
                 <view class="iconfont icon-open"></view>
             </view>
-            <view class="item">
+            <view class="item" bind:tap="bindMyInfo">
                 <view class="iconfont icon-info"></view>
                 <view class="text">我的信息</view>
                 <view class="iconfont icon-open"></view>

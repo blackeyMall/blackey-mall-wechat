@@ -62,5 +62,23 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    // bindMyFocus () {
+    //     wx.navigateTo({
+    //         url: '/pages/myfocus/myfocus'
+    //     })
+    // },
+
+    bindMyProject () {
+        wx.switchTab({
+            url: '/pages/project/project'
+        })
+    },
+
+    bindMyInfo () {
+        wx.switchTab({
+            url: '/pages/info/info'
+        })
     }
 })

@@ -1,0 +1,73 @@
+<view class="project-detail flex-column">
+    <view class="flex-main">
+        <view class="detail-group">
+            <view class="base-info">
+                <view class="img">
+                    <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                </view>
+                <view class="content">
+                    <view class="title">币加加</view>
+                    <view class="des">加密货币金融服务平台</view>
+                    <view class="url">www.bijiajia.com</view>
+                </view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
+                <view class="detail-title">融资需求</view>
+            </view>
+            <view class="detail-content">
+                <view class="detail-list">
+                    <view class="item">Pre-A轮</view>
+                    <view class="item">生物医药</view>
+                    <view class="item">上海</view>
+                </view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
+                <view class="detail-title">项目描述</view>
+            </view>
+            <view class="detail-content">
+                <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
+                <view class="detail-title">项目成员</view>
+            </view>
+            <view class="detail-content">
+                <view class="member-list">
+                    <view class="item">
+                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <view class="content">
+                            <view class="title">
+                                <view class="text">测试测试</view>
+                                <view class="small">创始人</view>
+                            </view>
+                            <view class="des">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
+                <view class="detail-title">项目BP图</view>
+            </view>
+            <view class="detail-content">
+                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="bp-img" />
+            </view>
+        </view>
+    </view>
+    <view class="btn-list">
+        <view class="btn btn-default">
+            <view class="iconfont icon-info"></view>
+            <view class="text">联系项目方</view>
+        </view>
+        <view class="btn btn-primary">
+            <view class="iconfont icon-add"></view>
+            <view class="text">关注</view>
+        </view>
+    </view>
+</view>

@@ -114,3 +114,35 @@
         </view>
     </view>
 </view>
+
+<view class="toastr {{applyList.length !== 0 ? 'active' : ''}}">
+    <view class="iconfont icon-tips text-warning"></view>
+    <view>提示:<text class="text-warning">({{applyList.length}})</text>条好友申请</view>
+</view>
+
+<!-- <view class="leayer">
+    <view class="modal modal-application">
+        <view class="modal-header">
+            <view class="title">好友申请列表</view>
+            <view class="iconfont icon-add"></view>
+        </view>
+        <view class="modal-body">
+            <view class="application-list">
+                <view class="item" wx:for="{{applyList}}" wx:if="{{applyList.length !== 0}}">
+                    <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                    <view class="content">
+                        <view class="title">{{item.name}}</view>
+                        <view class="tag-list">
+                            <view class="tag-item">{{item.company}}</view>
+                            <view class="tag-item">{{item.duties}}</view>
+                        </view>
+                    </view>
+                    <view class="operator-center">
+                        <view class="label label-danger" bind:tap="bindRefuse" data-friendid="{{item.openId}}" data-index="{{index}}">拒绝</view>
+                        <view class="label label-success" bind:tap="bindAccept" data-friendid="{{item.openId}}" data-index="{{index}}">接受</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view> -->

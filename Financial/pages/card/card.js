@@ -21,6 +21,12 @@ let _ = {
     addFriend: (data, handler) => {
         ajax.post("/finance/userrelation/add", data, handler);
     },
+    accept: (data, handler) => {
+        ajax.post("/finance/userrelation/accept", data, handler);
+    },
+    refuse: (data, handler) => {
+        ajax.post("/finance/userrelation/refuse", data, handler);
+    },
 };
 
 Page({
@@ -45,10 +51,12 @@ Page({
                 text: '推荐人脉'
             }
         ],
+        activeNav: 1,
         userInfoList: [],
-        activeNav: 3,
+        applyList: [],
         size: 5,
         current: 1,
+        applyCurrent: 1,
         total: 0
     },
 
@@ -69,13 +77,6 @@ Page({
      */
     onLoad: function (options) {
         
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
     },
 
     /**
@@ -108,22 +109,12 @@ Page({
                     }
                 }
             });
+            this.onGotApplyList(1);
+            this.setData({
+                userInfoList: []
+            });
             this.onGotList(1);
         }
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
     },
 
     /**
@@ -137,7 +128,19 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        // let totalPage = Math.ceil(this.data.total / this.data.size);
+        // if (this.data.current < totalPage) {
+        //     // 显示加载图标
+        //     wx.showLoading({
+        //         title: '加载中...',
+        //     })
+        //     this.onGetInfoList(this.data.current + 1, 1)
+        // } else {
+        //     wx.showToast({
+        //         title: '已经到底啦！',
+        //         icon: 'none'
+        //     })
+        // }
     },
 
     /**
@@ -162,9 +165,9 @@ Page({
     },
 
     bindMakePhoneCall (e) {
-        if (!e.currentTarget.dataset.disabled) {
+        if (e.currentTarget.dataset.disabled !== '待编辑' || e.currentTarget.dataset.disabled !== '') {
             wx.makePhoneCall({
-                phoneNumber: '17621153820',
+                phoneNumber: this.data.userInfo.telephone,
                 success: function(res) {
                     wx.showToast({
                         title: '拨打成功！',
@@ -190,6 +193,34 @@ Page({
         };
     },
 
+    onGotApplyList (page) {
+        let openId = wx.getStorageSync('openId');
+        let _this = this;
+        _.getFriendList({
+            openId,
+            size: this.data.size,
+            current: page,
+            status: 'APPLY'
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    if (res.data.list !== null) {
+                        let applyList = [];
+                        res.data.list.forEach(el => {
+                            let {id, openId, avatarUrl, name, company, duties, telephone, email, isFocus} = el;
+                            let temp = {id, openId, avatarUrl, name, company, duties, telephone, email, showFocus: 1, isFocus, showAddFriend: 0, isAddFriend: 0};
+                            applyList.push(temp);
+                        });
+                        _this.setData({
+                            applyList: _this.data.applyList.concat(applyList)
+                        })
+                    }
+                }
+            }
+        })
+    },
+
     onGotList (page, isHideLoading) {
         // getRecommendList
         let openId = wx.getStorageSync('openId');
@@ -198,11 +229,10 @@ Page({
             _.getRecommendList({
                 openid: openId,
                 size: this.data.size,
-                current: this.data.current
+                current: page
             }, {
                 success (res) {
                     res = res.data;
-                    console.log(res);
                     if (res.data.list !== null) {
                         let tempUserInfo = [];
                         res.data.list.forEach(el => {
@@ -220,7 +250,7 @@ Page({
             _.getFriendList({
                 openId,
                 size: this.data.size,
-                current: this.data.current,
+                current: page,
                 status: 'ACCEPT'
             }, {
                 success (res) {
@@ -228,8 +258,8 @@ Page({
                     if (res.data.list !== null) {
                         let tempUserInfo = [];
                         res.data.list.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties, telephone, email} = el;
-                            let temp = {openId, avatarUrl, name, company, duties, telephone, email, showFocus: 1, isFocus: 0, showAddFriend: 0, isAddFriend: 0};
+                            let {openId, avatarUrl, name, company, duties, telephone, email, isFocus} = el;
+                            let temp = {openId, avatarUrl, name, company, duties, telephone, email, showFocus: 1, isFocus, showAddFriend: 0, isAddFriend: 0};
                             tempUserInfo.push(temp);
                         });
                         _this.setData({
@@ -243,15 +273,15 @@ Page({
             _.getFocusList({
                 openId,
                 size: this.data.size,
-                current: this.data.current
+                current: page
             }, {
                 success (res) {
                     res = res.data;
                     if (res.data.list !== null) {
                         let tempUserInfo = [];
                         res.data.list.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties} = el;
-                            let temp = {openId, avatarUrl, name, company, duties, showFocus: 0, isFocus: 0, showAddFriend: 1, isAddFriend: 0};
+                            let {openId, avatarUrl, name, company, duties, isAddFriend} = el;
+                            let temp = {openId, avatarUrl, name, company, duties, showFocus: 0, isFocus: 0, showAddFriend: 1, isAddFriend};
                             tempUserInfo.push(temp);
                         });
                         _this.setData({
@@ -309,6 +339,58 @@ Page({
                     })
                     wx.showToast({
                         title: res.message,
+                        icon: 'none'
+                    })
+                }
+            }
+        })
+    },
+
+    bindRefuse (e) {
+        let index = e.currentTarget.dataset.index;
+        let friendId = e.currentTarget.dataset.friendid;
+        let openId = wx.getStorageSync('openId');
+        let _this = this;
+        _.refuse({
+            openId,
+            friendId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let applyList = _this.data.applyList;
+                    applyList.splice(index, 1);
+                    _this.setData({
+                        applyList
+                    });
+                    wx.showToast({
+                        title: '已拒绝！',
+                        icon: 'none'
+                    })
+                }
+            }
+        })
+    },
+
+    bindAccept (e) {
+        let index = e.currentTarget.dataset.index;
+        let friendId = e.currentTarget.dataset.friendid;
+        let openId = wx.getStorageSync('openId');
+        let _this = this;
+        _.accept({
+            openId,
+            friendId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let applyList = _this.data.applyList;
+                    applyList.splice(index, 1);
+                    _this.setData({
+                        applyList
+                    });
+                    wx.showToast({
+                        title: '添加成功！',
                         icon: 'none'
                     })
                 }

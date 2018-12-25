@@ -6,8 +6,8 @@
         <view class="item">
             <view class="name">头像:</view>
             <view class="text text-right">
-                <block wx:if="{{cardInfo.avatarUrl !== ''}}">
-                    <image mode="widthFix" src="{{cardInfo.avatarUrl}}" class="avatar" />
+                <block wx:if="{{avatarUrl !== ''}}">
+                    <image mode="widthFix" src="{{avatarUrl}}" class="avatar" />
                 </block>
                 <block wx:else>
                     请选择头像
@@ -19,49 +19,49 @@
             <view class="name">个人信息</view>
         </view>
         <view class="item">
-            <view class="name">姓名:</view>
-            <input type="text" id="name" class="text" value="{{cardInfo.name}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="name"><text class="text-danger">*</text>姓名:</view>
+            <input type="text" id="name" class="text" value="{{name}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindNameInput" />
             <view class="iconfont icon-nickname"></view>
         </view>
         <view class="item">
-            <view class="name">职务:</view>
-            <input type="text" class="text" value="{{cardInfo.position}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="name"><text class="text-danger">*</text>职务:</view>
+            <input type="text" class="text" value="{{duties}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindDutiesInput" />
             <view class="iconfont icon-position"></view>
         </view>
         <view class="item">
-            <view class="name">手机:</view>
-            <input type="number" class="text" value="{{cardInfo.tel}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="name"><text class="text-danger">*</text>手机:</view>
+            <input type="number" class="text" value="{{telephone}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindTelInput" />
             <view class="iconfont icon-tel"></view>
         </view>
         <view class="item">
-            <view class="name">公司全称:</view>
-            <input type="text" class="text" value="{{cardInfo.companyFullName}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="name"><text class="text-danger">*</text>公司简称:</view>
+            <input type="text" class="text" value="{{companyBrief}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindBriefInput" />
             <view class="iconfont icon-company"></view>
         </view>
         <view class="item">
-            <view class="name">公司简称:</view>
-            <input type="text" class="text" value="{{cardInfo.companyName}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <view class="name"><text class="text-danger">*</text>邮箱:</view>
+            <input type="number" class="text" value="{{email}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindEmailInput" />
+            <view class="iconfont icon-email"></view>
+        </view>
+        <view class="item">
+            <view class="name">公司名称:</view>
+            <input type="text" class="text" value="{{company}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindCompanyInput" />
             <view class="iconfont icon-company"></view>
         </view>
         <view class="item">
             <view class="name">公司网站:</view>
-            <input type="text" class="text" value="{{cardInfo.companyUrl}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <input type="text" class="text" value="{{companyWebsite}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWebsiteInput" />
             <view class="iconfont icon-url"></view>
         </view>
         <view class="item">
             <view class="name">公司地址:</view>
-            <input type="text" class="text" value="{{cardInfo.companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <input type="text" class="text" value="{{companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindAddressInput" />
             <view class="iconfont icon-address"></view>
         </view>
         <view class="item">
             <view class="name">微信:</view>
-            <input type="text" class="text" value="{{cardInfo.wechat}}" placeholder="请输入" placeholder-class="input-placeholder" />
+            <input type="text" class="text" value="{{wechatNo}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWechatNoInput" />
             <view class="iconfont icon-weixin"></view>
-        </view>
-        <view class="item">
-            <view class="name">邮箱:</view>
-            <input type="number" class="text" value="{{cardInfo.email}}" placeholder="请输入" placeholder-class="input-placeholder" />
-            <view class="iconfont icon-email"></view>
         </view>
         <!-- <view class="item item-title">
             <view class="name">个人标签</view>
@@ -81,5 +81,5 @@
             </view>
         </view> -->
     </view>
-    <view class="btn btn-save">保存修改</view>
+    <view class="btn btn-save" bind:tap="bindSaveInfo">保存修改</view>
 </view>
