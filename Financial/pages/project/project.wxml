@@ -1,5 +1,5 @@
-<view class="project flex-column">
-    <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
+<view class="project">
+    <!-- <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
         <view class="content">
             <view class="flex-center">
                 <view class="iconfont icon-search"></view>
@@ -8,44 +8,34 @@
             </view>
         </view>
         <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
-    </view>
+    </view> -->
     <view class="nav-tab">
-        <!-- <view class="filter iconfont icon-filter"></view> -->
-        <view class="item">
-            <view class="text">股权项目</view>
-        </view>
-        <view class="item active">
-            <view class="text">其他项目</view>
+        <view class="item {{item.category === activeNav ? 'active' : ''}}" data-category="{{item.category}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
+            <view class="text">{{item.text}}</view>
         </view>
     </view>
     <view class="nav-tab-sub">
-        <view class="item">
-            <view class="text">精选项目</view>
-        </view>
-        <view class="item active">
-            <view class="text">关注项目</view>
-        </view>
-        <view class="item">
-            <view class="text">全部项目</view>
+        <view class="item {{item.tableCode === activeNavSub ? 'active' : ''}}" data-tablecode="{{item.tableCode}}" wx:for="{{navSubList}}" bind:tap="bindChangeNavSub" >
+            <view class="text">{{item.text}}</view>
         </view>
     </view>
-    <view class="nav-content flex-main">
+    <view class="nav-content">
         <view class="project-list">
-            <view class="item" bind:tap="bindProjectDetail">
+            <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
                 <view class="header">
                     <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <image mode="widthFix" src="{{item.logo}}" class="avatar" />
                         <view class="detail">
                             <view class="name">
-                                <view class="text">水中银</view>
+                                <view class="text">{{item.name}}</view>
                             </view>
                             <view class="flex-center">
-                                <view class="label-item">有BP</view>
-                                <view class="label-item">金融</view>
+                                <view class="label-item">{{item.attachment}}</view>
+                                <view class="label-item">{{item.projectDomain}}</view>
                             </view>
                         </view>
                     </view>
-                    <view class="header-item">
+                    <!-- <view class="header-item">
                         <view class="label-item">
                             <view class="iconfont icon-jingpin"></view>
                             <view class="text">精品</view>
@@ -54,85 +44,19 @@
                             <view class="iconfont icon-fufei"></view>
                             <view class="text">付费</view>
                         </view>
-                    </view>
+                    </view> -->
                 </view>
                 <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
+                    <view class="p">{{item.brief}}</view>
                 </view>
                 <view class="footer justify-between">
                     <view class="tag-list">
-                        <view class="tag-item">融资轮次：C轮</view>
-                        <view class="tag-item tag-money">￥4千万</view>
+                        <view class="tag-item">融资轮次：{{item.financeRound}}</view>
+                        <view class="tag-item tag-money">￥{{item.financeAmount}}</view>
                     </view>
-                    <view class="operator-item active">
+                    <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
                         <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
-                    </view>
-                </view>
-            </view>
-            <view class="item" bind:tap="bindProjectDetail">
-                <view class="header">
-                    <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
-                        <view class="detail">
-                            <view class="name">张大炮</view>
-                            <view class="tag-list">
-                                <view class="tag-item">大炮投资</view>
-                                <view class="tag-item">董事长</view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="header-item">
-                        <view class="label-item">
-                            <view class="iconfont icon-jingpin"></view>
-                            <view class="text">精品</view>
-                        </view>
-                        <view class="label-item">
-                            <view class="iconfont icon-fufei"></view>
-                            <view class="text">付费</view>
-                        </view>
-                    </view>
-                </view>
-                <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
-                </view>
-                <view class="footer justify-between">
-                    <view class="operator-item active">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
-                    </view>
-                </view>
-            </view>
-            <view class="item" bind:tap="bindProjectDetail">
-                <view class="header">
-                    <view class="header-item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
-                        <view class="detail">
-                            <view class="name">张大炮</view>
-                            <view class="tag-list">
-                                <view class="tag-item">大炮投资</view>
-                                <view class="tag-item">董事长</view>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="header-item">
-                        <view class="label-item">
-                            <view class="iconfont icon-jingpin"></view>
-                            <view class="text">精品</view>
-                        </view>
-                        <view class="label-item">
-                            <view class="iconfont icon-fufei"></view>
-                            <view class="text">付费</view>
-                        </view>
-                    </view>
-                </view>
-                <view class="body">
-                    <view class="p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</view>
-                </view>
-                <view class="footer justify-between">
-                    <view class="operator-item active">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
+                        <view class="text">关注 {{item.followNum}}</view>
                     </view>
                 </view>
             </view>
@@ -141,6 +65,5 @@
 </view>
 
 <view class="btn-release" bind:tap="bindRedirect">
-    <!-- <view class="iconfont icon-add"></view> -->
     <view class="text">发布需求</view>
 </view>

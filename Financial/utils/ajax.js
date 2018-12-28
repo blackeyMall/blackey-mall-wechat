@@ -54,7 +54,7 @@ const request = (method, url, data, requestHandler, header = 'application/json')
 const postfile = (url, file, filename, requestHandler) => {
     wx.showLoading({title: '上传中...'})
     wx.uploadFile({
-        url: serverUrl + url,
+        url: app.globalData.serverUrl + url,
         filePath: file,
         name: filename,
         header: { "content-type": "multipart/form-data" },
@@ -72,16 +72,16 @@ const postfile = (url, file, filename, requestHandler) => {
             setTimeout(function() {
                 wx.hideLoading();
             }, 1000);
-            if ("function" == typeof requestHandler.complete) {
-                requestHandler.complete(res);
-            }
             // 服务器异常
-            if (res.statusCode == 502) {
-              wx.showModal({
-                    title: "温馨提示",
-                    content: "无法链接服务器",
-                    showCancel: false
-                });
+            if (res.statusCode !== 200) {
+                wx.showToast({
+                    title: '系统异常，请稍后再试！',
+                    icon: 'none'
+                })
+            } else {
+                if ("function" == typeof requestHandler.complete) {
+                    requestHandler.complete(res);
+                }
             }
         }
     });

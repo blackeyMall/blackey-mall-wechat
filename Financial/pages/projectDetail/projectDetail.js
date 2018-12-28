@@ -1,18 +1,37 @@
 // pages/projectDetail/projectDetail.js
+import ajax from "../../utils/ajax";
+
+let app = getApp();
+let _ = {
+    onGetProjectDetail: (data, handler) => {
+        ajax.get("/finance/project/info", data, handler);
+    },
+    follow: (data, handler) => {
+        ajax.post("/finance/follow/project/save", data, handler);
+    }
+};
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        id: '',
+        openId: '',
+        projectDetail: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        console.log(options);
+        this.setData({
+            id: options.objectId,
+            openId: wx.getStorageSync('openId')
+        });
+        this.onGetProjectDetail();
     },
 
     /**
@@ -26,21 +45,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
+        this.setData({
+            displayWebView: false
+        })
     },
 
     /**
@@ -62,5 +69,89 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    onGetProjectDetail () {
+        let _this = this;
+        _.onGetProjectDetail({
+            id: _this.data.id,
+            openId: _this.data.openId
+        }, {
+            success (res) {
+                res = res.data;
+                _this.setData({
+                    projectDetail: res.data
+                })
+            }
+        })
+    },
+
+    bindViewBP () {
+        wx.downloadFile({
+            url: this.data.projectDetail.attachment,
+            success (res) {
+                let path = res.tempFilePath;
+                wx.openDocument({
+                    filePath: path,
+                    success: function(res){
+                        wx.showToast({
+                            title: '打开成功！'
+                        });
+                    },
+                    fail: function() {
+                        wx.showToast({
+                            title: '打开失败！'
+                        });
+                    }
+                })
+            },
+            fail (err) {
+                wx.showToast({
+                    title: '下载失败！'
+                });
+            }
+        })
+    },
+
+    bindMakePhoneCall () {
+        let tel = this.data.projectDetail.telephone;
+        (tel !== null && tel !== '待编辑')
+        ?
+        wx.makePhoneCall({
+            phoneNumber: tel,
+            success: function(res) {
+                wx.showToast({
+                    title: '拨打成功！',
+                    icon: 'none'
+                })
+            }
+        })
+        :
+        wx.showToast({
+            title: '项目方手机号暂未编辑！',
+            icon: 'none'
+        })
+    },
+
+    bindFollow (e) {
+        let openId = this.data.openId;
+        let objectId = e.currentTarget.dataset.id;
+        let _this = this;
+        _.follow({
+            openId,
+            objectId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let projectDetail = _this.data.projectDetail;
+                    projectDetail.isFollow = res.data;
+                    res.data.value === 'ADD' ? projectDetail.followNum += 1 : projectDetail.followNum -= 1;
+                    _this.setData({
+                        projectDetail
+                    })
+                }
+            }
+        })
     }
 })

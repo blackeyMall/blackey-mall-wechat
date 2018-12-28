@@ -55,7 +55,8 @@ Page({
         infoList: [],
         current: 1,
         size: 5,
-        total: 0
+        total: 0,
+        openId: ''
     },
 
     bindChangeNav (e) {
@@ -97,19 +98,19 @@ Page({
                     let records = res.data.records;
                     if (records !== null) {
                         records.forEach(el => {
-                            let {id, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label} = el;
+                            let {id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label} = el;
                             let labelList = label.split(',');
                             company === null ? company = '公司未编辑' : company;
                             duties === null ? duties = '职务未编辑' : duties;
                             isRecommend === null ? isRecommend = 0 : isRecommend = 1;
                             tempInfoList.push({
-                                id, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, labelList
+                                id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, labelList
                             })
                         });
 
                         _this.setData({
                             infoList: _this.data.infoList.concat(tempInfoList)
-                        })
+                        });
                     }
                     _this.setData({
                         current: res.data.current,
@@ -135,16 +136,12 @@ Page({
     onShow: function () {
         // 检测登录
         app.globalData.checkLoginStatus();
-        // 获取本地登录状态
-        let openId = wx.getStorageSync('openId');
-        let _this = this;
-        if (openId && openId !== '') {
-            this.setData({
-                infoList: [],
-                activeNavSub: 'DEFAULT'
-            })
-            this.onGetInfoList(1);
-        };
+        this.setData({
+            infoList: [],
+            activeNavSub: 'DEFAULT',
+            openId: wx.getStorageSync('openId')
+        })
+        this.onGetInfoList(1);
     },
 
     /**
