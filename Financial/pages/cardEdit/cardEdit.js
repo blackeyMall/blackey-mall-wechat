@@ -28,7 +28,6 @@ Page({
         visitingAcrd: '',
         isIdentity: '',
         name: '',
-        // {"telephone":"待编辑","email":"待编辑","wechatNo":"待编辑","avatarUrl":"1","openId":"o34gB5S5NGkVZoSaTro9pNsCip0s","company":"待编辑","duties":"待编辑","companyBrief":"待编辑","companyWebsite":"待编辑","companyAddress":"待编辑","visitingAcrd":"待编辑","isIdentity":"待编辑","name":"12138"}
     },
 
     /**
@@ -43,46 +42,11 @@ Page({
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
         // 检测登录
         app.globalData.checkLoginStatus();
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
     },
 
     /**
@@ -139,16 +103,45 @@ Page({
     },
 
     bindSaveInfo () {
-        let openId = wx.getStorageSync('openId');
-        if (this.data.name === '' || this.data.duties === '' || this.data.telephone === '' || this.data.companyBrief === '' || this.data.email === '') {
+        let telReg = /^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\d{8}$/;
+        let emailReg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
+        if (this.data.name === '') {
             wx.showToast({
-                title: '请完善必填信息！',
+                title: '姓名不能为空！',
+                icon: 'none'
+            })
+            return
+        };
+        if (this.data.duties === '') {
+            wx.showToast({
+                title: '职务不能为空！',
+                icon: 'none'
+            })
+            return
+        };
+        if (!telReg.test(this.data.telephone)) {
+            wx.showToast({
+                title: '手机号码有误！',
+                icon: 'none'
+            })
+            return
+        };
+        if (this.data.companyBrief === '') {
+            wx.showToast({
+                title: '公司简称不能为空！',
+                icon: 'none'
+            })
+            return
+        };
+        if (!emailReg.test(this.data.email)) {
+            wx.showToast({
+                title: '邮箱格式有误！',
                 icon: 'none'
             })
             return
         };
         let userInfo = {
-            openId,
+            openId: wx.getStorageSync('openId'),
             telephone: this.data.telephone,
             email: this.data.email,
             wechatNo: this.data.wechatNo,

@@ -102,3 +102,31 @@ module.exports = {
     post,
     postfile
 };
+
+
+// module.exports = {
+//     getCardInfo: (data, handler) => {
+//         get("/finance/userinfo/info", data, handler);
+//     },
+//     getRecommendList: (data, handler) => {
+//         get("/finance/userinfo/list/user", data, handler);
+//     },
+//     getFocusList: (data, handler) => {
+//         post("/finance/userpersonfollow/list/openid", data, handler);
+//     },
+//     getFriendList: (data, handler) => {
+//         post("/finance/userrelation/list/openid", data, handler);
+//     },
+//     focus: (data, handler) => {
+//       post("/finance/userpersonfollow/foucs", data, handler);
+//     },
+//     addFriend: (data, handler) => {
+//         post("/finance/userrelation/add", data, handler);
+//     },
+//     accept: (data, handler) => {
+//         post("/finance/userrelation/accept", data, handler);
+//     },
+//     refuse: (data, handler) => {
+//         post("/finance/userrelation/refuse", data, handler);
+//     },
+// };

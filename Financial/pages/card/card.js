@@ -37,6 +37,7 @@ Page({
     data: {
         userInfo: {},
         isMoreinfoActive: false,
+        isModalOpen: false,
         navList: [
             {
                 id: 1,
@@ -57,7 +58,8 @@ Page({
         size: 5,
         current: 1,
         applyCurrent: 1,
-        total: 0
+        total: 0,
+        openId: ''
     },
 
     bindChangeNav (e) {
@@ -68,7 +70,7 @@ Page({
                 current: 1,
                 total: 0
             })
-            this.onGotList(1);
+            this.onGetList(1);
         }
     },
 
@@ -85,36 +87,36 @@ Page({
     onShow: function () {
         // 检测登录
         app.globalData.checkLoginStatus();
-        // 获取用户头像
-        let openId = wx.getStorageSync('openId');
+        // ---
         let _this = this;
-        if (openId && openId !== '') {
-            _.getCardInfo({
-                openid: openId
-            }, {
-                success (res) {
-                    res = res.data;
-                    if (res.code === 200) {
-                        let userInfo = res.data;
-                        for (const key in userInfo) {
-                            if (userInfo.hasOwnProperty(key)) {
-                                const el = userInfo[key];
-                                el === null ? userInfo[key] = '待编辑' : el;
-                            }
-                        }
-                        wx.setStorageSync('userInfo', userInfo);
-                        _this.setData({
-                            userInfo
-                        });
-                    }
-                }
-            });
-            this.onGotApplyList(1);
+        wx.nextTick(() => {
+            // 清空列表数据，获取用户openId
             this.setData({
-                userInfoList: []
+                userInfoList: [],
+                applyList: [],
+                openId: wx.getStorageSync('openId')
             });
-            this.onGotList(1);
-        }
+            // 获取个人名片信息
+            this.onGetCardInfo();
+            // 获取用户列表
+            this.onGetApplyList(1);
+            // 获取好友申请列表
+            this.onGetList(1);
+        });
+    },
+
+    // 打开好友申请弹窗
+    bindOpenModal () {
+        this.setData({
+            isModalOpen: true
+        })
+    },
+
+    // 关闭好友申请弹窗
+    bindCloseModal () {
+        this.setData({
+            isModalOpen: false
+        })
     },
 
     /**
@@ -128,19 +130,19 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-        // let totalPage = Math.ceil(this.data.total / this.data.size);
-        // if (this.data.current < totalPage) {
-        //     // 显示加载图标
-        //     wx.showLoading({
-        //         title: '加载中...',
-        //     })
-        //     this.onGetInfoList(this.data.current + 1, 1)
-        // } else {
-        //     wx.showToast({
-        //         title: '已经到底啦！',
-        //         icon: 'none'
-        //     })
-        // }
+        let totalPage = Math.ceil(this.data.total / this.data.size);
+        if (this.data.current < totalPage) {
+            // 显示加载图标
+            wx.showLoading({
+                title: '加载中...',
+            })
+            this.onGetList(this.data.current + 1, 1)
+        } else {
+            wx.showToast({
+                title: '已经到底啦！',
+                icon: 'none'
+            })
+        }
     },
 
     /**
@@ -165,7 +167,7 @@ Page({
     },
 
     bindMakePhoneCall (e) {
-        if (e.currentTarget.dataset.disabled !== '待编辑' || e.currentTarget.dataset.disabled !== '') {
+        if (e.currentTarget.dataset.disabled !== '') {
             wx.makePhoneCall({
                 phoneNumber: this.data.userInfo.telephone,
                 success: function(res) {
@@ -180,7 +182,7 @@ Page({
 
     bindCopyText (e) {
         let text = e.currentTarget.dataset.text;
-        if (text !== '待编辑') {
+        if (text !== '') {
             wx.setClipboardData({
                 data: text,
                 success () {
@@ -193,11 +195,10 @@ Page({
         };
     },
 
-    onGotApplyList (page) {
-        let openId = wx.getStorageSync('openId');
+    onGetApplyList (page) {
         let _this = this;
         _.getFriendList({
-            openId,
+            openId: this.data.openId,
             size: this.data.size,
             current: page,
             status: 'APPLY'
@@ -216,18 +217,22 @@ Page({
                             applyList: _this.data.applyList.concat(applyList)
                         })
                     }
+                    // _this.setData({
+                    //     current: res.data.current,
+                    //     total: res.data.total
+                    // })
                 }
             }
         })
     },
 
-    onGotList (page, isHideLoading) {
+    // 获取用户列表
+    onGetList (page, isHideLoading) {
         // getRecommendList
-        let openId = wx.getStorageSync('openId');
         let _this = this;
         if (this.data.activeNav === 3) {
             _.getRecommendList({
-                openid: openId,
+                openid: this.data.openId,
                 size: this.data.size,
                 current: page
             }, {
@@ -244,6 +249,10 @@ Page({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
                     }
+                    _this.setData({
+                        current: res.data.current,
+                        total: res.data.total
+                    })
                 }
             })
         } else if (this.data.activeNav === 1) {
@@ -266,6 +275,10 @@ Page({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
                     }
+                    _this.setData({
+                        current: res.data.current,
+                        total: res.data.total
+                    })
                 }
             })
         } else if (this.data.activeNav === 2) {
@@ -288,6 +301,10 @@ Page({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
                     }
+                    _this.setData({
+                        current: res.data.current,
+                        total: res.data.total
+                    })
                 }
             })
         }
@@ -296,12 +313,36 @@ Page({
         }
     },
 
+    // 获取用户名片信息
+    onGetCardInfo () {
+        let _this = this;
+        _.getCardInfo({
+            openid: _this.data.openId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let userInfo = res.data;
+                    for (const key in userInfo) {
+                        if (userInfo.hasOwnProperty(key)) {
+                            const el = userInfo[key];
+                            el === null ? userInfo[key] = '' : el;
+                        }
+                    }
+                    wx.setStorageSync('userInfo', userInfo);
+                    _this.setData({
+                        userInfo
+                    });
+                }
+            }
+        });
+    },
+
     bindFocus (e) {
-        let openId = wx.getStorageSync('openId');
         let index = e.currentTarget.dataset.index;
         let _this = this;
         _.focus({
-            openId,
+            openId: this.data.openId,
             personId: e.currentTarget.dataset.id
         }, {
             success (res) {
@@ -322,11 +363,10 @@ Page({
     },
 
     bindAddFriend (e) {
-        let openId = wx.getStorageSync('openId');
         let index = e.currentTarget.dataset.index;
         let _this = this;
         _.addFriend({
-            openId,
+            openId: this.data.openId,
             friendId: e.currentTarget.dataset.id
         }, {
             success (res) {
@@ -349,10 +389,9 @@ Page({
     bindRefuse (e) {
         let index = e.currentTarget.dataset.index;
         let friendId = e.currentTarget.dataset.friendid;
-        let openId = wx.getStorageSync('openId');
         let _this = this;
         _.refuse({
-            openId,
+            openId: this.data.openId,
             friendId
         }, {
             success (res) {
@@ -375,10 +414,9 @@ Page({
     bindAccept (e) {
         let index = e.currentTarget.dataset.index;
         let friendId = e.currentTarget.dataset.friendid;
-        let openId = wx.getStorageSync('openId');
         let _this = this;
         _.accept({
-            openId,
+            openId: this.data.openId,
             friendId
         }, {
             success (res) {

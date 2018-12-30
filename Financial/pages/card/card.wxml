@@ -3,9 +3,9 @@
         <view class="card-header">
             <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
             <view class="info">
-                <view class="item name">{{userInfo.name}}</view>
-                <view class="item tag">{{userInfo.duties}}</view>
-                <view class="item company">{{userInfo.companyBrief}}</view>
+                <view class="item name">{{userInfo.name === '' ? '待编辑' : userInfo.name}}</view>
+                <view class="item tag">{{userInfo.duties === '' ? '待编辑' : userInfo.duties}}</view>
+                <view class="item company">{{userInfo.companyBrief === '' ? '待编辑' : userInfo.companyBrief}}</view>
             </view>
             <view class="edit" bind:tap="bindCardEdit">
                 <view class="iconfont icon-edit"></view>
@@ -18,19 +18,19 @@
                     <view class="icon">
                         <view class="iconfont icon-dianhua"></view>
                     </view>
-                    <view class="text">{{userInfo.telephone}}</view>
+                    <view class="text">{{userInfo.telephone === '' ? '待编辑' : userInfo.telephone}}</view>
                 </view>
                 <view class="item">
                     <view class="icon">
                         <view class="iconfont icon-youxiang2"></view>
                     </view>
-                    <view class="text">{{userInfo.email}}</view>
+                    <view class="text">{{userInfo.email === '' ? '待编辑' : userInfo.email}}</view>
                 </view>
                 <view class="item">
                     <view class="icon">
                         <view class="iconfont icon-dingwei"></view>
                     </view>
-                    <view class="text">{{userInfo.companyAddress}}</view>
+                    <view class="text">{{userInfo.companyAddress === '' ? '待编辑' : userInfo.companyAddress}}</view>
                 </view>
             </view>
         </view>
@@ -46,28 +46,28 @@
     </view>
     <view class="item">
         <view class="name">手机</view>
-        <view class="text">{{userInfo.telephone}}</view>
-        <view class="btn btn-call" data-disabled="{{userInfo.telephone !== '待编辑'}}" bind:tap="bindMakePhoneCall">拨打</view>
+        <view class="text">{{userInfo.telephone === '' ? '待编辑' : userInfo.telephone}}</view>
+        <view class="btn btn-call" data-disabled="{{userInfo.telephone !== ''}}" bind:tap="bindMakePhoneCall">拨打</view>
     </view>
     <view class="item">
         <view class="name">公司全称</view>
-        <view class="text">{{userInfo.company}}</view>
-        <view class="btn btn-copy" data-disabled="{{userInfo.company !== '待编辑'}}" data-text="{{userInfo.company}}" bind:tap="bindCopyText">复制</view>
+        <view class="text">{{userInfo.company === '' ? '待编辑' : userInfo.company}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.company !== ''}}" data-text="{{userInfo.company}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">公司网站</view>
-        <view class="text">{{userInfo.companyWebsite}}</view>
-        <view class="btn btn-copy" data-disabled="{{userInfo.companyWebsite !== '待编辑'}}" data-text="{{userInfo.companyWebsite}}" bind:tap="bindCopyText">复制</view>
+        <view class="text">{{userInfo.companyWebsite === '' ? '待编辑' : userInfo.companyWebsite}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.companyWebsite !== ''}}" data-text="{{userInfo.companyWebsite}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">公司地址</view>
-        <view class="text">{{userInfo.companyAddress}}</view>
-        <view class="btn btn-copy" data-disabled="{{userInfo.companyAddress !== '待编辑'}}" data-text="{{userInfo.companyAddress}}" bind:tap="bindCopyText">复制</view>
+        <view class="text">{{userInfo.companyAddress === '' ? '待编辑' : userInfo.companyAddress}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.companyAddress !== ''}}" data-text="{{userInfo.companyAddress}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">微信号</view>
-        <view class="text">{{userInfo.wechatNo}}</view>
-        <view class="btn btn-copy" data-disabled="{{userInfo.wechatNo !== '待编辑'}}" data-text="{{userInfo.wechatNo}}" bind:tap="bindCopyText">复制</view>
+        <view class="text">{{userInfo.wechatNo === '' ? '待编辑' : userInfo.wechatNo}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.wechatNo !== ''}}" data-text="{{userInfo.wechatNo}}" bind:tap="bindCopyText">复制</view>
     </view>
     <!-- <view class="item item-title">
         <view class="name">个人标签</view>
@@ -90,7 +90,7 @@
         </view>
     </view>
     <view class="nav-content">
-        <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
+        <!-- <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
             <view class="item" wx:for="{{userInfoList}}">
                 <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                 <view class="info">
@@ -111,30 +111,80 @@
                     </view>
                 </view>
             </view>
+        </view> -->
+        <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
+            <view class="item" wx:for="{{userInfoList}}">
+                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                <view class="info">
+                    <view class="text name">
+                        <view class="iconfont icon-nickname"></view>
+                        <view>{{item.name}}<text class="small" wx:if="{{activeNav === 1}}"> | {{item.duties}}</text></view>
+                    </view>
+                    <view class="text" wx:if="{{activeNav !== 1}}">
+                        <view class="iconfont icon-company"></view>
+                        <view>{{item.company}}</view>
+                    </view>
+                    <view class="text company">
+                        <view class="iconfont icon-company"></view>
+                        <view>{{item.company}}</view>
+                    </view>
+                    <block wx:if="{{activeNav === 1}}">
+                        <view class="text">
+                            <view class="iconfont icon-tel"></view>
+                            <view>{{item.telephone}}</view>
+                        </view>
+                        <view class="text">
+                            <view class="iconfont icon-email"></view>
+                            <view>{{item.email}}</view>
+                        </view>
+                    </block>
+                </view>
+                <view class="div">
+                    <view class="operator-center">
+                        <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
+                            <view class="iconfont icon-focus"></view>
+                            <view class="text">关注</view>
+                        </view>
+                        <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
+                            <view class="iconfont icon-add"></view>
+                            <view class="text">加好友</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
         </view>
     </view>
 </view>
 
-<view class="toastr {{applyList.length !== 0 ? 'active' : ''}}">
-    <view class="iconfont icon-tips text-warning"></view>
-    <view>提示:<text class="text-warning">({{applyList.length}})</text>条好友申请</view>
+<view class="toastr {{(applyList.length !== 0 && isModalOpen === false) ? 'active' : ''}}" bind:tap="bindOpenModal">
+    <view class="content">
+        <view class="iconfont icon-tips text-warning"></view>
+        <view>提示:<text class="text-warning">({{applyList.length}})</text>条好友申请</view>
+    </view>
 </view>
 
-<!-- <view class="leayer">
-    <view class="modal modal-application">
+<view class="modal {{isModalOpen !== false ? 'open' : ''}}">
+    <div class="modal-dialog">
         <view class="modal-header">
             <view class="title">好友申请列表</view>
-            <view class="iconfont icon-add"></view>
+            <view class="iconfont icon-add" bind:tap="bindCloseModal"></view>
         </view>
         <view class="modal-body">
             <view class="application-list">
-                <view class="item" wx:for="{{applyList}}" wx:if="{{applyList.length !== 0}}">
+                <view class="item" wx:for="{{applyList}}">
                     <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                     <view class="content">
-                        <view class="title">{{item.name}}</view>
-                        <view class="tag-list">
-                            <view class="tag-item">{{item.company}}</view>
-                            <view class="tag-item">{{item.duties}}</view>
+                        <view class="text title">
+                            <view class="iconfont icon-nickname"></view>
+                            <view>{{item.name}}</view>
+                        </view>
+                        <view class="text">
+                            <view class="iconfont icon-position"></view>
+                            <view>{{item.duties}}</view>
+                        </view>
+                        <view class="text">
+                            <view class="iconfont icon-company"></view>
+                            <view>{{item.company}}</view>
                         </view>
                     </view>
                     <view class="operator-center">
@@ -144,5 +194,8 @@
                 </view>
             </view>
         </view>
-    </view>
-</view> -->
+    </div>
+</view>
+
+<!-- 遮罩层 -->
+<view class="modal-backdrop {{isModalOpen !== false ? 'active' : ''}}"></view>
