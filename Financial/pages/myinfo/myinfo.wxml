@@ -1,14 +1,4 @@
 <view class="project">
-    <!-- <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
-        <view class="content">
-            <view class="flex-center">
-                <view class="iconfont icon-search"></view>
-                <input class="input" value="{{searchValue}}" type="text" placeholder="请搜索您感兴趣的需求！" placeholder-class="input-placeholder" bindinput="bindSearchInput" bind:focus="bindSearchFocus" bind:confirm="bindSearchConfirm" />
-                <view class="iconfont icon-close" bind:tap="bindClearInputValue"></view>
-            </view>
-        </view>
-        <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
-    </view> -->
     <view class="nav-tab">
         <view class="item {{item.category === activeNav ? 'active' : ''}}" data-category="{{item.category}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
             <view class="text">{{item.text}}</view>
@@ -49,26 +39,21 @@
                     <view class="label-list">
                         <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
                     </view>
+                    <!-- <view class="img-list" wx:if="{{item.images.length !== 0}}">
+                        <view class="item" wx:for="{{item.images}}">
+                            <image mode="widthFix" src="{{item}}" />
+                        </view>
+                    </view> -->
+                    <!-- <view class="img-list">
+                        <image mode="aspectFill" src="../../assets/img/avatar.jpg" class="img" />
+                        <image mode="aspectFill" src="../../assets/img/test2.png" class="img" />
+                        <image mode="aspectFill" src="../../assets/img/avatar.jpg" class="img" />
+                    </view> -->
                     <view class="img-list" wx:if="{{item.images.length !== 0}}">
                         <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
-                    </view>
-                </view>
-                <view class="footer">
-                    <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
-                        <view class="iconfont icon-zan"></view>
-                        <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
-                    </view>
-                    <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{item.openId !== openId}}">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
                     </view>
                 </view>
             </view>
         </view>
     </view>
-</view>
-
-<view class="btn-release" bind:tap="bindRedirect">
-    <!-- <view class="iconfont icon-add"></view> -->
-    <view class="text">发布信息</view>
 </view>

@@ -15,6 +15,9 @@ let _ = {
     getFriendList: (data, handler) => {
         ajax.post("/finance/userrelation/list/openid", data, handler);
     },
+    getApplyFriendList: (data, handler) => {
+        ajax.post("/finance/userrelation/list/apply/openid", data, handler);
+    },
     focus: (data, handler) => {
       ajax.post("/finance/userpersonfollow/foucs", data, handler);
     },
@@ -55,10 +58,11 @@ Page({
         activeNav: 1,
         userInfoList: [],
         applyList: [],
+        applyCurrent: 1,
         size: 5,
         current: 1,
-        applyCurrent: 1,
         total: 0,
+        pages: '',
         openId: ''
     },
 
@@ -71,7 +75,7 @@ Page({
                 total: 0
             })
             this.onGetList(1);
-        }
+        };
     },
 
     /**
@@ -85,11 +89,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // 检测登录
-        app.globalData.checkLoginStatus();
-        // ---
-        let _this = this;
-        wx.nextTick(() => {
+        // 检测登录是否成功
+        if (app.globalData.checkLoginStatus()) {
             // 清空列表数据，获取用户openId
             this.setData({
                 userInfoList: [],
@@ -99,10 +100,10 @@ Page({
             // 获取个人名片信息
             this.onGetCardInfo();
             // 获取用户列表
-            this.onGetApplyList(1);
-            // 获取好友申请列表
             this.onGetList(1);
-        });
+            // 获取好友申请列表
+            this.onGetApplyList(1);
+        }
     },
 
     // 打开好友申请弹窗
@@ -167,7 +168,8 @@ Page({
     },
 
     bindMakePhoneCall (e) {
-        if (e.currentTarget.dataset.disabled !== '') {
+        let text = e.currentTarget.dataset.text;
+        if (text !== '') {
             wx.makePhoneCall({
                 phoneNumber: this.data.userInfo.telephone,
                 success: function(res) {
@@ -197,18 +199,16 @@ Page({
 
     onGetApplyList (page) {
         let _this = this;
-        _.getFriendList({
+        _.getApplyFriendList({
             openId: this.data.openId,
-            size: this.data.size,
-            current: page,
             status: 'APPLY'
         }, {
             success (res) {
                 res = res.data;
                 if (res.code === 200) {
-                    if (res.data.list !== null) {
+                    if (res.data.records !== null) {
                         let applyList = [];
-                        res.data.list.forEach(el => {
+                        res.data.records.forEach(el => {
                             let {id, openId, avatarUrl, name, company, duties, telephone, email, isFocus} = el;
                             let temp = {id, openId, avatarUrl, name, company, duties, telephone, email, showFocus: 1, isFocus, showAddFriend: 0, isAddFriend: 0};
                             applyList.push(temp);
@@ -217,10 +217,6 @@ Page({
                             applyList: _this.data.applyList.concat(applyList)
                         })
                     }
-                    // _this.setData({
-                    //     current: res.data.current,
-                    //     total: res.data.total
-                    // })
                 }
             }
         })
@@ -238,73 +234,108 @@ Page({
             }, {
                 success (res) {
                     res = res.data;
-                    if (res.data.list !== null) {
+                    if (res.data.records !== null) {
                         let tempUserInfo = [];
-                        res.data.list.forEach(el => {
+                        res.data.records.forEach(el => {
                             let {openId, avatarUrl, name, company, duties} = el;
-                            let temp = {openId, avatarUrl, name, company, duties, showFocus: 1, isFocus: 0, showAddFriend: 1, isAddFriend: 0};
+                            let temp = {
+                                openId, 
+                                avatarUrl, 
+                                name, 
+                                company: company === null ? '-公司未编辑-' : company, 
+                                duties: duties === null ? '-职务未编辑-' : duties,
+                                showFocus: 1, 
+                                isFocus: 0, 
+                                showAddFriend: 1, 
+                                isAddFriend: 0
+                            };
                             tempUserInfo.push(temp);
                         });
                         _this.setData({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
-                    }
+                    };
                     _this.setData({
                         current: res.data.current,
-                        total: res.data.total
-                    })
+                        total: res.data.total,
+                        pages: res.data.pages
+                    });
                 }
             })
         } else if (this.data.activeNav === 1) {
             _.getFriendList({
-                openId,
+                openId: this.data.openId,
                 size: this.data.size,
                 current: page,
                 status: 'ACCEPT'
             }, {
                 success (res) {
                     res = res.data;
-                    if (res.data.list !== null) {
+                    if (res.data.records !== null) {
                         let tempUserInfo = [];
-                        res.data.list.forEach(el => {
+                        res.data.records.forEach(el => {
                             let {openId, avatarUrl, name, company, duties, telephone, email, isFocus} = el;
-                            let temp = {openId, avatarUrl, name, company, duties, telephone, email, showFocus: 1, isFocus, showAddFriend: 0, isAddFriend: 0};
+                            let temp = {
+                                openId, 
+                                avatarUrl, 
+                                name, 
+                                company: company === null ? '-公司待编辑-' : company, 
+                                duties: duties === null ? '-职务待编辑-' : duties, 
+                                telephone: telephone === null ? '-手机待编辑-' : telephone, 
+                                email: email === null ? '-邮箱待编辑-' : email, 
+                                showFocus: 1, 
+                                isFocus, 
+                                showAddFriend: 0, 
+                                isAddFriend: 0
+                            };
                             tempUserInfo.push(temp);
                         });
                         _this.setData({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
-                    }
+                    };
                     _this.setData({
                         current: res.data.current,
-                        total: res.data.total
-                    })
+                        total: res.data.total,
+                        pages: res.data.pages
+                    });
                 }
             })
         } else if (this.data.activeNav === 2) {
             // 2
             _.getFocusList({
-                openId,
+                openId: this.data.openId,
                 size: this.data.size,
                 current: page
             }, {
                 success (res) {
                     res = res.data;
-                    if (res.data.list !== null) {
+                    if (res.data.records !== null) {
                         let tempUserInfo = [];
-                        res.data.list.forEach(el => {
+                        res.data.records.forEach(el => {
                             let {openId, avatarUrl, name, company, duties, isAddFriend} = el;
-                            let temp = {openId, avatarUrl, name, company, duties, showFocus: 0, isFocus: 0, showAddFriend: 1, isAddFriend};
+                            let temp = {
+                                openId, 
+                                avatarUrl, 
+                                name, 
+                                company: company === null ? '-公司待编辑-' : company, 
+                                duties: duties === null ? '-职务待编辑-' : duties, 
+                                showFocus: 1, 
+                                isFocus: 1, 
+                                showAddFriend: 1, 
+                                isAddFriend
+                            };
                             tempUserInfo.push(temp);
                         });
                         _this.setData({
                             userInfoList: _this.data.userInfoList.concat(tempUserInfo)
                         })
-                    }
+                    };
                     _this.setData({
                         current: res.data.current,
-                        total: res.data.total
-                    })
+                        total: res.data.total,
+                        pages: res.data.pages
+                    });
                 }
             })
         }
@@ -402,10 +433,15 @@ Page({
                     _this.setData({
                         applyList
                     });
+                    if (applyList.length === 0) {
+                        _this.setData({
+                            isModalOpen: false
+                        });
+                    };
                     wx.showToast({
                         title: '已拒绝！',
                         icon: 'none'
-                    })
+                    });
                 }
             }
         })
@@ -425,12 +461,19 @@ Page({
                     let applyList = _this.data.applyList;
                     applyList.splice(index, 1);
                     _this.setData({
-                        applyList
+                        applyList,
+                        activeNav: 1
                     });
+                    if (applyList.length === 0) {
+                        _this.setData({
+                            isModalOpen: false
+                        });
+                    };
                     wx.showToast({
                         title: '添加成功！',
                         icon: 'none'
-                    })
+                    });
+                    _this.onGetList(1);
                 }
             }
         })

@@ -6,6 +6,9 @@ let _ = {
     saveInfo: (data, handler) => {
         ajax.post("/finance/userinfo/save", data, handler);
     },
+    postfile: (file, filename, handler) => {
+        ajax.postfile("/finance/file/upload", file, filename, handler);
+    }
 };
 
 
@@ -167,5 +170,32 @@ Page({
                 }
             }
         })
-    }
+    },
+
+    bindChooseImage () {
+        let _this = this
+        wx.chooseImage({
+            count: 1, // 最多可以选择的图片张数，默认9
+            sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+            success: function(res){
+                _.postfile(res.tempFiles[0].path, "file", {
+                    success: function (res) {
+                        res = JSON.parse(res.data);
+                        if (res.code === 200) {
+                            let userInfo = wx.getStorageSync('userInfo');
+                            userInfo.avatarUrl = res.data;
+                            wx.setStorageSync(userInfo);
+                            _this.setData({
+                                avatarUrl: res.data
+                            });
+                        };
+                    }
+                });
+            },
+            fail: function(err) {
+                console.log(err);
+            },
+        })
+    },
 })

@@ -5,6 +5,9 @@ let app = getApp();
 let _ = {
     releaseInfo: (data, handler) => {
         ajax.post("/finance/requirement/save", data, handler);
+    },
+    postfile: (file, filename, handler) => {
+        ajax.postfile("/finance/file/upload", file, filename, handler);
     }
 };
 
@@ -26,7 +29,10 @@ Page({
         ],
         activeNav: 'PROJECT',
         content: '',
-        labelList: ['测试', '测试测试', '测试']
+        labelList: [],
+        labelInput: '',
+        images: [],
+        isModalOpen: false
     },
 
     bindChangeNav (e) {
@@ -105,6 +111,13 @@ Page({
         })
     },
 
+    bindLabelInput (e) {
+        this.setData({
+            labelInput: e.detail.value
+        });
+        console.log(e.detail.value);
+    },
+
     // 
     bindReleaseInfo (e) {
         if (this.data.content !== '') {
@@ -114,7 +127,8 @@ Page({
                 openId,
                 category: this.data.activeNav,
                 content: this.data.content,
-                label: this.data.labelList.join(',')
+                label: this.data.labelList.join(','),
+                images: this.data.images
             }, {
                 success (res) {
                     res = res.data;
@@ -142,5 +156,72 @@ Page({
                 icon: 'none'
             })
         }
-    }
+    },
+
+    bindOpenModal () {
+        this.setData({
+            isModalOpen: true
+        });
+    },
+
+    bindCloseModal () {
+        this.setData({
+            isModalOpen: false,
+            labelInput: ''
+        });
+    },
+
+    bindAddLabel () {
+        let labelInput = this.data.labelInput;
+        let labelList = this.data.labelList;
+        if (labelList.length >= 5) {
+            wx.showToast({
+                title: '标签上限5个！',
+                icon: 'none'
+            });
+            return;
+        }
+        if (labelInput !== '') {
+            labelList.push(labelInput);
+            this.setData({
+                labelList,
+                labelInput: ''
+            });
+        }
+    },
+
+    bindDeleteLabel (e) {
+        let index = e.currentTarget.dataset.index;
+        let labelList = this.data.labelList;
+        labelList.splice(index, 1);
+        this.setData({
+            labelList
+        });
+    },
+
+    bindChooseImage () {
+        let _this = this
+        wx.chooseImage({
+            count: 1, // 最多可以选择的图片张数，默认9
+            sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+            success: function(res){
+                _.postfile(res.tempFiles[0].path, "file", {
+                    success: function (res) {
+                        res = JSON.parse(res.data);
+                        if (res.code === 200) {
+                            let images = _this.data.images;
+                            images.push(res.data);
+                            _this.setData({
+                                images
+                            });
+                        };
+                    }
+                });
+            },
+            fail: function(err) {
+                console.log(err);
+            },
+        })
+    },
 })

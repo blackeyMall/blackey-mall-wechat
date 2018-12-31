@@ -3,9 +3,9 @@
         <view class="card-header">
             <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
             <view class="info">
-                <view class="item name">{{userInfo.name === '' ? '待编辑' : userInfo.name}}</view>
-                <view class="item tag">{{userInfo.duties === '' ? '待编辑' : userInfo.duties}}</view>
-                <view class="item company">{{userInfo.companyBrief === '' ? '待编辑' : userInfo.companyBrief}}</view>
+                <view class="item name">{{userInfo.name === '' ? '-名称未编辑-' : userInfo.name}}</view>
+                <view class="item tag">{{userInfo.duties === '' ? '-职务未编辑-' : userInfo.duties}}</view>
+                <view class="item company">{{userInfo.companyBrief === '' ? '-公司简称未编辑-' : userInfo.companyBrief}}</view>
             </view>
             <view class="edit" bind:tap="bindCardEdit">
                 <view class="iconfont icon-edit"></view>
@@ -18,19 +18,19 @@
                     <view class="icon">
                         <view class="iconfont icon-dianhua"></view>
                     </view>
-                    <view class="text">{{userInfo.telephone === '' ? '待编辑' : userInfo.telephone}}</view>
+                    <view class="text">{{userInfo.telephone === '' ? '-手机未编辑-' : userInfo.telephone}}</view>
                 </view>
                 <view class="item">
                     <view class="icon">
                         <view class="iconfont icon-youxiang2"></view>
                     </view>
-                    <view class="text">{{userInfo.email === '' ? '待编辑' : userInfo.email}}</view>
+                    <view class="text">{{userInfo.email === '' ? '-邮箱未编辑-' : userInfo.email}}</view>
                 </view>
                 <view class="item">
                     <view class="icon">
                         <view class="iconfont icon-dingwei"></view>
                     </view>
-                    <view class="text">{{userInfo.companyAddress === '' ? '待编辑' : userInfo.companyAddress}}</view>
+                    <view class="text">{{userInfo.companyAddress === '' ? '-公司地址未编辑-' : userInfo.companyAddress}}</view>
                 </view>
             </view>
         </view>
@@ -46,27 +46,27 @@
     </view>
     <view class="item">
         <view class="name">手机</view>
-        <view class="text">{{userInfo.telephone === '' ? '待编辑' : userInfo.telephone}}</view>
-        <view class="btn btn-call" data-disabled="{{userInfo.telephone !== ''}}" bind:tap="bindMakePhoneCall">拨打</view>
+        <view class="text">{{userInfo.telephone === '' ? '-未编辑-' : userInfo.telephone}}</view>
+        <view class="btn btn-call" data-disabled="{{userInfo.telephone !== ''}}" data-text="{{userInfo.telephone}}" bind:tap="bindMakePhoneCall">拨打</view>
     </view>
     <view class="item">
         <view class="name">公司全称</view>
-        <view class="text">{{userInfo.company === '' ? '待编辑' : userInfo.company}}</view>
+        <view class="text">{{userInfo.company === '' ? '-未编辑-' : userInfo.company}}</view>
         <view class="btn btn-copy" data-disabled="{{userInfo.company !== ''}}" data-text="{{userInfo.company}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">公司网站</view>
-        <view class="text">{{userInfo.companyWebsite === '' ? '待编辑' : userInfo.companyWebsite}}</view>
+        <view class="text">{{userInfo.companyWebsite === '' ? '-未编辑-' : userInfo.companyWebsite}}</view>
         <view class="btn btn-copy" data-disabled="{{userInfo.companyWebsite !== ''}}" data-text="{{userInfo.companyWebsite}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">公司地址</view>
-        <view class="text">{{userInfo.companyAddress === '' ? '待编辑' : userInfo.companyAddress}}</view>
+        <view class="text">{{userInfo.companyAddress === '' ? '-未编辑-' : userInfo.companyAddress}}</view>
         <view class="btn btn-copy" data-disabled="{{userInfo.companyAddress !== ''}}" data-text="{{userInfo.companyAddress}}" bind:tap="bindCopyText">复制</view>
     </view>
     <view class="item">
         <view class="name">微信号</view>
-        <view class="text">{{userInfo.wechatNo === '' ? '待编辑' : userInfo.wechatNo}}</view>
+        <view class="text">{{userInfo.wechatNo === '' ? '-未编辑-' : userInfo.wechatNo}}</view>
         <view class="btn btn-copy" data-disabled="{{userInfo.wechatNo !== ''}}" data-text="{{userInfo.wechatNo}}" bind:tap="bindCopyText">复制</view>
     </view>
     <!-- <view class="item item-title">
@@ -121,8 +121,8 @@
                         <view>{{item.name}}<text class="small" wx:if="{{activeNav === 1}}"> | {{item.duties}}</text></view>
                     </view>
                     <view class="text" wx:if="{{activeNav !== 1}}">
-                        <view class="iconfont icon-company"></view>
-                        <view>{{item.company}}</view>
+                        <view class="iconfont icon-position"></view>
+                        <view>{{item.duties}}</view>
                     </view>
                     <view class="text company">
                         <view class="iconfont icon-company"></view>
@@ -143,11 +143,11 @@
                     <view class="operator-center">
                         <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
                             <view class="iconfont icon-focus"></view>
-                            <view class="text">关注</view>
+                            <view class="text">{{item.isFocus === 1 ? '已关注' : '关注'}}</view>
                         </view>
                         <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
-                            <view class="iconfont icon-add"></view>
-                            <view class="text">加好友</view>
+                            <view class="iconfont {{item.isAddFriend === 1 ? 'icon-correct' : 'icon-add'}}"></view>
+                            <view class="text">{{item.isAddFriend === 1 ? '已加好友' : '加好友'}}</view>
                         </view>
                     </view>
                 </view>
@@ -180,11 +180,11 @@
                         </view>
                         <view class="text">
                             <view class="iconfont icon-position"></view>
-                            <view>{{item.duties}}</view>
+                            <view>{{item.duties === null ? '职务未编辑' : item.duties}}</view>
                         </view>
                         <view class="text">
                             <view class="iconfont icon-company"></view>
-                            <view>{{item.company}}</view>
+                            <view>{{item.company === null ? '公司未编辑' : item.company}}</view>
                         </view>
                     </view>
                     <view class="operator-center">

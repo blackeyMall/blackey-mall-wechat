@@ -1,12 +1,13 @@
 {
     "pages": [
         "pages/card/card",
-        "pages/project/project",
         "pages/releaseProject/releaseProject",
         "pages/info/info",
+        "pages/myinfo/myinfo",
+        "pages/releaseInfo/releaseInfo",
+        "pages/project/project",
         "pages/myfocus/myfocus",
         "pages/projectDetail/projectDetail",
-        "pages/releaseInfo/releaseInfo",
         "pages/my/my",
         "pages/login/login",
         "pages/cardEdit/cardEdit"

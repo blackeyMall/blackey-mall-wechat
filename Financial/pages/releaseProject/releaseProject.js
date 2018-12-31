@@ -168,22 +168,9 @@ Page({
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
             sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
             success: function(res){
-                // ajax.POSTFILE('/artisan/file/upload', 
-                //   res.tempFiles[0].path, "file", {
-                //     success: function (res) {
-                //         res = res.data
-                //         console.log(JSON.parse(res))
-                //         let pics = _this.data.pics
-                //         pics.push(JSON.parse(res).data)
-                //         _this.setData({pics})
-                //     }}
-                // )
                 _.postfile(res.tempFiles[0].path, "file", {
                     success: function (res) {
                         res = res.data
-                        // console.log(JSON.parse(res))
-                        // let pics = _this.data.logo;
-                        // pics.push(JSON.parse(res).data)
                         _this.setData({
                             logo: JSON.parse(res).data
                         })

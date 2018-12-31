@@ -14,7 +14,9 @@ App({
                 wx.navigateTo({
                     url: "/pages/login/login"
                 });
-            }
+                return false;
+            };
+            return true;
         }
     }
 });

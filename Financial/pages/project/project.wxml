@@ -52,7 +52,7 @@
                 <view class="footer justify-between">
                     <view class="tag-list">
                         <view class="tag-item">融资轮次：{{item.financeRound}}</view>
-                        <view class="tag-item tag-money">￥{{item.financeAmount}}</view>
+                        <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
                     </view>
                     <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
                         <view class="iconfont icon-focus"></view>

@@ -98,14 +98,15 @@ Page({
                     let records = res.data.records;
                     if (records !== null) {
                         records.forEach(el => {
-                            let {id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label} = el;
+                            let {id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label, images} = el;
                             let labelList = label.split(',');
                             company === null ? company = '公司未编辑' : company;
                             duties === null ? duties = '职务未编辑' : duties;
                             isRecommend === null ? isRecommend = 0 : isRecommend = 1;
+                            images === null ? images = [] : images;
                             tempInfoList.push({
-                                id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, labelList
-                            })
+                                id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, labelList, images
+                            });
                         });
 
                         _this.setData({

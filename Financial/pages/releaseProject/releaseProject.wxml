@@ -61,20 +61,23 @@
                     <view class="text">万元</view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">阶段</view>
+                    <view class="release-option-title">阶段：</view>
                     <picker class="release-picker placeholder" bindchange="bindRoundPickerChange" value="{{financeRound}}" range="{{financeRoundArray}}">
                         <view class="picker">{{financeRoundArray[financeRound]}}</view>
                     </picker>
+                    <view class="iconfont icon-open-right"></view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">领域</view>
+                    <view class="release-option-title">领域：</view>
                     <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
+                    <view class="iconfont icon-edit"></view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">城市</view>
+                    <view class="release-option-title">城市：</view>
                     <picker class="release-picker placeholder" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
                         <view class="picker">{{cityArray[cityIndex]}}</view>
                     </picker>
+                    <view class="iconfont icon-open-right"></view>
                 </view>
             </view>
         </view> 
@@ -88,10 +91,10 @@
                 </view>
             </view>
         </view>
-        <view class="release-item">
+        <view class="release-item h-310 relative">
             <textarea maxlength="200" class="textarea" placeholder="请简单介绍下项目，说说你的项目的优势！" placeholder-class="textarea-placeholder" value="{{projectDesc}}" bindinput="bindTextareaInput"></textarea>
             <view class="textarea-tips">
-                字数限制： {{item.projectDesc.length}} / 1000
+                字数限制： {{projectDesc.length}} / 1000
             </view>
         </view> 
     </view>

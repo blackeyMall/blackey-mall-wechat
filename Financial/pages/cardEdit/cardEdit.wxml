@@ -3,7 +3,7 @@
         <view class="item item-title">
             <view class="name">照片信息</view>
         </view>
-        <view class="item">
+        <view class="item" bind:tap="bindChooseImage">
             <view class="name">头像:</view>
             <view class="text text-right">
                 <block wx:if="{{avatarUrl !== ''}}">

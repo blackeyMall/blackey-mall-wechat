@@ -1,4 +1,6 @@
 // pages/my/my.js
+let app = getApp();
+
 Page({
 
     /**
@@ -73,7 +75,7 @@ Page({
     bindMyProject () {
         wx.switchTab({
             url: '/pages/project/project'
-        })
+        });
     },
 
     bindMyInfo () {
