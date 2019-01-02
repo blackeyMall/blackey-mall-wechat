@@ -44,11 +44,11 @@ Page({
         navList: [
             {
                 id: 1,
-                text: '好友'
+                text: '我的好友'
             },
             {
                 id: 2,
-                text: '关注的人'
+                text: '关注人脉'
             },
             {
                 id: 3,
@@ -283,7 +283,7 @@ Page({
                                 duties: duties === null ? '-职务待编辑-' : duties, 
                                 telephone: telephone === null ? '-手机待编辑-' : telephone, 
                                 email: email === null ? '-邮箱待编辑-' : email, 
-                                showFocus: 1, 
+                                showFocus: 0, 
                                 isFocus, 
                                 showAddFriend: 0, 
                                 isAddFriend: 0
@@ -322,7 +322,7 @@ Page({
                                 duties: duties === null ? '-职务待编辑-' : duties, 
                                 showFocus: 1, 
                                 isFocus: 1, 
-                                showAddFriend: 1, 
+                                showAddFriend: 0, 
                                 isAddFriend
                             };
                             tempUserInfo.push(temp);

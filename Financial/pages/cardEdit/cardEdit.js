@@ -129,6 +129,13 @@ Page({
             })
             return
         };
+        if (this.data.wechatNo === '') {
+            wx.showToast({
+                title: '微信号不能为空！',
+                icon: 'none'
+            })
+            return
+        };
         if (this.data.companyBrief === '') {
             wx.showToast({
                 title: '公司简称不能为空！',

@@ -1,5 +1,5 @@
 <view class="panel businessCard">
-    <view class="card">
+    <!-- <view class="card">
         <view class="card-header">
             <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
             <view class="info">
@@ -31,6 +31,42 @@
                         <view class="iconfont icon-dingwei"></view>
                     </view>
                     <view class="text">{{userInfo.companyAddress === '' ? '-公司地址未编辑-' : userInfo.companyAddress}}</view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <view class="card">
+        <view class="card-header">
+            <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
+            <view class="info">
+                <view class="item name" wx:if="{{userInfo.name !== ''}}">{{userInfo.name}}</view>
+                <view class="item tag" wx:if="{{userInfo.duties !== ''}}">{{userInfo.duties}}</view>
+                <view class="item company" wx:if="{{userInfo.companyBrief !== ''}}">{{userInfo.companyBrief}}</view>
+            </view>
+            <view class="edit" bind:tap="bindCardEdit">
+                <view class="iconfont icon-edit"></view>
+                <view class="text">编辑</view>
+            </view>
+        </view>
+        <view class="card-body" wx:if="{{userInfo.telephone !== '' && userInfo.email !== '' && userInfo.companyAddress !== ''}}">
+            <view class="info-list">
+                <view class="item" wx:if="{{userInfo.telephone !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-dianhua"></view>
+                    </view>
+                    <view class="text">{{userInfo.telephone}}</view>
+                </view>
+                <view class="item" wx:if="{{userInfo.email !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-youxiang2"></view>
+                    </view>
+                    <view class="text">{{userInfo.email}}</view>
+                </view>
+                <view class="item" wx:if="{{userInfo.companyAddress !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-dingwei"></view>
+                    </view>
+                    <view class="text">{{userInfo.companyAddress}}</view>
                 </view>
             </view>
         </view>
@@ -117,24 +153,24 @@
                 <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                 <view class="info">
                     <view class="text name">
-                        <view class="iconfont icon-nickname"></view>
-                        <view>{{item.name}}<text class="small" wx:if="{{activeNav === 1}}"> | {{item.duties}}</text></view>
+                        <!-- <view class="iconfont icon-nickname"></view> -->
+                        <view>{{item.name}}</view>
                     </view>
-                    <view class="text" wx:if="{{activeNav !== 1}}">
+                    <view class="text margin-bottom-10">
+                        <!-- <view class="iconfont icon-position"></view> -->
+                        <view>{{item.duties}} | {{item.company}}</view>
+                    </view>
+                    <!-- <view class="text" wx:if="{{activeNav !== 1}}">
                         <view class="iconfont icon-position"></view>
                         <view>{{item.duties}}</view>
-                    </view>
-                    <view class="text company">
-                        <view class="iconfont icon-company"></view>
-                        <view>{{item.company}}</view>
-                    </view>
+                    </view> -->
                     <block wx:if="{{activeNav === 1}}">
                         <view class="text">
-                            <view class="iconfont icon-tel"></view>
+                            <!-- <view class="iconfont icon-tel"></view> -->
                             <view>{{item.telephone}}</view>
                         </view>
                         <view class="text">
-                            <view class="iconfont icon-email"></view>
+                            <!-- <view class="iconfont icon-email"></view> -->
                             <view>{{item.email}}</view>
                         </view>
                     </block>
@@ -142,7 +178,7 @@
                 <view class="div">
                     <view class="operator-center">
                         <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
-                            <view class="iconfont icon-focus"></view>
+                            <view class="iconfont {{item.isFocus === 1 ? 'icon-focus2' : 'icon-focus1'}}"></view>
                             <view class="text">{{item.isFocus === 1 ? '已关注' : '关注'}}</view>
                         </view>
                         <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">

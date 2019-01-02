@@ -4,7 +4,7 @@
             <view class="release-title">
                 <view class="item">
                     <view class="iconfont icon-more"></view>
-                    <view class="text">信息类别</view>
+                    <view class="text">需求类别</view>
                 </view>
             </view>
         </view>

@@ -7,14 +7,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        userInfo: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            userInfo: wx.getStorageSync('userInfo')
+        });
+        console.log(this.data.userInfo);
     },
 
     /**
@@ -66,21 +69,21 @@ Page({
 
     },
 
-    // bindMyFocus () {
-    //     wx.navigateTo({
-    //         url: '/pages/myfocus/myfocus'
-    //     })
-    // },
+    bindMyFocus () {
+        wx.navigateTo({
+            url: '/pages/myfocus/myfocus'
+        })
+    },
 
     bindMyProject () {
-        wx.switchTab({
-            url: '/pages/project/project'
+        wx.navigateTo({
+            url: '/pages/myproject/myproject'
         });
     },
 
     bindMyInfo () {
-        wx.switchTab({
-            url: '/pages/info/info'
-        })
+        wx.navigateTo({
+            url: '/pages/myinfo/myinfo'
+        });
     }
 })

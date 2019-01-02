@@ -34,6 +34,11 @@
             <view class="iconfont icon-tel"></view>
         </view>
         <view class="item">
+            <view class="name"><text class="text-danger">*</text>微信号:</view>
+            <input type="text" class="text" value="{{wechatNo}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWechatNoInput" />
+            <view class="iconfont icon-weixin"></view>
+        </view>
+        <view class="item">
             <view class="name"><text class="text-danger">*</text>公司简称:</view>
             <input type="text" class="text" value="{{companyBrief}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindBriefInput" />
             <view class="iconfont icon-company"></view>
@@ -57,11 +62,6 @@
             <view class="name">公司地址:</view>
             <input type="text" class="text" value="{{companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindAddressInput" />
             <view class="iconfont icon-address"></view>
-        </view>
-        <view class="item">
-            <view class="name">微信:</view>
-            <input type="text" class="text" value="{{wechatNo}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWechatNoInput" />
-            <view class="iconfont icon-weixin"></view>
         </view>
         <!-- <view class="item item-title">
             <view class="name">个人标签</view>

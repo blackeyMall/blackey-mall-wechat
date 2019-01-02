@@ -1,12 +1,13 @@
 {
     "pages": [
         "pages/card/card",
+        "pages/myfocus/myfocus",
+        "pages/project/project",
+        "pages/myproject/myproject",
         "pages/releaseProject/releaseProject",
         "pages/info/info",
         "pages/myinfo/myinfo",
         "pages/releaseInfo/releaseInfo",
-        "pages/project/project",
-        "pages/myfocus/myfocus",
         "pages/projectDetail/projectDetail",
         "pages/my/my",
         "pages/login/login",
@@ -28,7 +29,7 @@
             "selectedIconPath": "./assets/img/card-active.png"
         }, {
             "pagePath": "pages/info/info",
-            "text": "信息",
+            "text": "需求",
             "iconPath": "./assets/img/info.png",
             "selectedIconPath": "./assets/img/info-active.png"
         }, {

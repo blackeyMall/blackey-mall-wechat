@@ -7,8 +7,8 @@
                 </view>
                 <view class="content">
                     <view class="title">{{projectDetail.name}}</view>
-                    <view class="des">{{projectDetail.logo}}</view>
-                    <view class="url">www.bijiajia.com</view>
+                    <view class="des">{{projectDetail.brief}}</view>
+                    <view class="url">{{projectDetail.websiteUrl}}</view>
                 </view>
             </view>
         </view>

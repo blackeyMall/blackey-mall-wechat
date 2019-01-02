@@ -1,26 +1,6 @@
 <view class="project">
-    <!-- <view class="search-box {{displaySearchBtn === true ? 'active' : ''}}">
-        <view class="content">
-            <view class="flex-center">
-                <view class="iconfont icon-search"></view>
-                <input class="input" value="{{searchValue}}" type="text" placeholder="请搜索您感兴趣的需求！" placeholder-class="input-placeholder" bindinput="bindSearchInput" bind:focus="bindSearchFocus" bind:confirm="bindSearchConfirm" />
-                <view class="iconfont icon-close" bind:tap="bindClearInputValue"></view>
-            </view>
-        </view>
-        <view class="btn-cancel" bind:tap="bindCancelSearch">取消</view>
-    </view> -->
-    <view class="nav-tab">
-        <view class="item {{item.category === activeNav ? 'active' : ''}}" data-category="{{item.category}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
-            <view class="text">{{item.text}}</view>
-        </view>
-    </view>
-    <view class="nav-tab-sub">
-        <view class="item {{item.tableCode === activeNavSub ? 'active' : ''}}" data-tablecode="{{item.tableCode}}" wx:for="{{navSubList}}" bind:tap="bindChangeNavSub" >
-            <view class="text">{{item.text}}</view>
-        </view>
-    </view>
     <view class="nav-content">
-        <view class="project-list">
+        <view class="project-list" wx:if="{{projectList.length !== 0}}">
             <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
                 <view class="header">
                     <view class="header-item">
@@ -54,16 +34,8 @@
                         <view class="tag-item">融资轮次：{{item.financeRound}}</view>
                         <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
                     </view>
-                    <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注 {{item.followNum}}</view>
-                    </view>
                 </view>
             </view>
         </view>
     </view>
-</view>
-
-<view class="btn-release" bind:tap="bindRedirect">
-    <view class="text">发布项目</view>
 </view>

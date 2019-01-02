@@ -2,12 +2,12 @@
     <view class="flex-main">
         <view class="my-info">
             <view class="card">
-                <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
                 <view class="detail">
-                    <view class="detail-title">张大炮</view>
+                    <view class="detail-title">{{userInfo.name}}</view>
                     <view class="tag-list">
-                        <view class="tag-item">可以呀</view>
-                        <view class="tag-item">一起</view>
+                        <view class="tag-item">{{userInfo.duties}}</view>
+                        <view class="tag-item">{{userInfo.company}}</view>
                     </view>
                 </view>
             </view>
@@ -25,12 +25,12 @@
             </view>
             <view class="item" bind:tap="bindMyInfo">
                 <view class="iconfont icon-info"></view>
-                <view class="text">我的信息</view>
+                <view class="text">我的需求</view>
                 <view class="iconfont icon-open"></view>
             </view>
             <view class="item">
                 <view class="iconfont icon-kefu"></view>
-                <view class="text">反馈管理</view>
+                <view class="text">建议反馈</view>
                 <view class="iconfont icon-open"></view>
             </view>
         </view>

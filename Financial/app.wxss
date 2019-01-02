@@ -96,6 +96,10 @@
     padding-bottom: 20rpx !important;
 }
 
+.margin-bottom-10 {
+    margin-bottom: 10rpx !important;
+}
+
 .margin-bottom-20 {
     margin-bottom: 20rpx !important;
 }
@@ -105,6 +109,10 @@
 page {
     height: 100%;
     background-color: #f3f3f3;
+}
+
+.avatar {
+    border-radius: 50%;
 }
 
 .panel {
@@ -240,7 +248,6 @@ page {
 .businessCard .card-header .avatar {
     flex: 0 0 140rpx;
     height: 140rpx;
-    border-radius: 6rpx;
 }
 
 .businessCard .card-header .info {
@@ -401,7 +408,6 @@ page {
 .more-info .item .avatar {
     width: 120rpx;
     height: 120rpx;
-    border-radius: 6rpx;
     overflow: hidden;
 }
 
@@ -423,6 +429,10 @@ page {
 }
 
 .people-list .item:last-child {
+    padding-bottom: 0;
+}
+
+.people-list .item:last-child {
     border-bottom: 0;
 }
 
@@ -430,7 +440,6 @@ page {
     flex: 0 0 120rpx;
     height: 120rpx;
     margin-right: 20rpx;
-    border-radius: 12rpx;
     box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
 }
 
@@ -592,7 +601,6 @@ page {
     width: 70rpx;
     height: 70rpx;
     margin-right: 20rpx;
-    border-radius: 6rpx;
 }
 
 .project-list .item .header {
@@ -659,16 +667,17 @@ page {
 }
 
 .project-list .item .body .p {
+    word-break: break-all;
     text-align: justify;
     color: #666;
 }
 
-.project-list .item .body .label-list {
+.project-list .item .label-list {
     display: flex;
-    margin-top: 10rpx;
+    /* margin-top: 10rpx; */
 }
 
-.project-list .item .body .label-list .label-item {
+.project-list .item .label-list .label-item {
     border-color: #67a6f3;
     color: #67a6f3;
 }
@@ -676,7 +685,8 @@ page {
 .project-list .item .footer {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    justify-content: space-between;
     margin-top: 30rpx;
     text-align: center;
 }
@@ -765,7 +775,6 @@ page {
     width: 140rpx;
     height: 140rpx;
     margin-right: 40rpx;
-    border-radius: 50%;
 }
 
 .my-info .detail-title {
@@ -1030,7 +1039,6 @@ page {
     margin-left: 30rpx;
     padding: 10rpx;
     border: 2rpx dashed #999;
-    border-radius: 10rpx;
 }
 
 .release-base-info-container .avatar.empty {
@@ -1187,18 +1195,15 @@ page {
 }
 
 .detail-group .base-info .img {
-    flex: 0 0 100rpx;
-    height: 100rpx;
-    padding: 10rpx;
+    flex: 0 0 120rpx;
+    height: 120rpx;
     margin-right: 20rpx;
-    border: 2rpx solid #f2f2f2;
-    border-radius: 12rpx;
+    border-radius: 50%;
 }
 
 .detail-group .base-info .avatar {
     width: 100%;
-    height: 100rpx;
-    border-radius: 12rpx;
+    height: 120rpx;
 }
 
 .detail-group .base-info .content {
@@ -1262,7 +1267,6 @@ page {
     flex: 0 0 100rpx;
     height: 100rpx;
     margin-right: 30rpx;
-    border-radius: 12rpx;
 }
 
 .member-list .item .title {
@@ -1394,7 +1398,6 @@ page {
 .modal .avatar {
     width: 100rpx;
     height: 100rpx;
-    border-radius: 16rpx;
     box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
 }
 

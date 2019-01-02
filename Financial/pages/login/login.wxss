@@ -44,8 +44,8 @@ image {
   width: 100rpx;
   height: 100rpx;
   margin: 0 auto 40rpx;
-  border-radius: 16rpx;
-  border: 2rpx solid #ccc;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .text-center {
   text-align: center;
