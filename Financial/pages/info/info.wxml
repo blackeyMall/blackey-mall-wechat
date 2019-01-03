@@ -28,15 +28,15 @@
                         <view class="detail">
                             <view class="name">{{item.name}}</view>
                             <view class="tag-list">
-                                <view class="tag-item">{{item.company}}</view>
                                 <view class="tag-item">{{item.duties}}</view>
+                                <view class="tag-item">{{item.company}}</view>
                             </view>
                         </view>
                     </view>
                 </view>
                 <view class="body">
                     <view class="p">{{item.content}}</view>
-                    <view class="img-list" wx:if="{{item.images.length !== 0}}">
+                    <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
                         <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
                     </view>
                 </view>

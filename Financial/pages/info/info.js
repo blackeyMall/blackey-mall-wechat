@@ -129,6 +129,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        // 检测登录
+        if (app.globalData.checkLoginStatus()) {
+            this.setData({
+                infoList: [],
+                activeNavSub: 'DEFAULT',
+                openId: wx.getStorageSync('openId')
+            })
+            this.onGetInfoList(1);
+        }
     },
 
     /**
@@ -137,12 +146,14 @@ Page({
     onShow: function () {
         // 检测登录
         app.globalData.checkLoginStatus();
-        this.setData({
-            infoList: [],
-            activeNavSub: 'DEFAULT',
-            openId: wx.getStorageSync('openId')
-        })
-        this.onGetInfoList(1);
+        // if (app.globalData.checkLoginStatus()) {
+        //     this.setData({
+        //         infoList: [],
+        //         activeNavSub: 'DEFAULT',
+        //         openId: wx.getStorageSync('openId')
+        //     })
+        //     this.onGetInfoList(1);
+        // }
     },
 
     /**
@@ -247,5 +258,12 @@ Page({
                 }
             }
         })
+    },
+
+    bindPreviewImg (e) {
+        let imgList = e.currentTarget.dataset.imglist;
+        wx.previewImage({
+            urls: imgList
+        });
     }
 })

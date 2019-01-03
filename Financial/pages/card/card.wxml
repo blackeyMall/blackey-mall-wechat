@@ -35,7 +35,8 @@
             </view>
         </view>
     </view> -->
-    <view class="card">
+    <view class="card" bind:tap="bindCardEdit">
+        <view class="iconfont icon-open-right"></view>
         <view class="card-header">
             <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
             <view class="info">
@@ -43,10 +44,10 @@
                 <view class="item tag" wx:if="{{userInfo.duties !== ''}}">{{userInfo.duties}}</view>
                 <view class="item company" wx:if="{{userInfo.companyBrief !== ''}}">{{userInfo.companyBrief}}</view>
             </view>
-            <view class="edit" bind:tap="bindCardEdit">
+            <!-- <view class="edit" bind:tap="bindCardEdit">
                 <view class="iconfont icon-edit"></view>
                 <view class="text">编辑</view>
-            </view>
+            </view> -->
         </view>
         <view class="card-body" wx:if="{{userInfo.telephone !== '' && userInfo.email !== '' && userInfo.companyAddress !== ''}}">
             <view class="info-list">
@@ -71,12 +72,12 @@
             </view>
         </view>
     </view>
-    <view class="more {{isMoreinfoActive === true ? 'active' : ''}}" bind:tap="bindViewDetail">
+    <!-- <view class="more {{isMoreinfoActive === true ? 'active' : ''}}" bind:tap="bindViewDetail">
         <view class="text">{{isMoreinfoActive === true ? '收起更多信息' : '查看更多信息'}}</view>
         <view class="iconfont icon-open"></view>
-    </view>
+    </view> -->
 </view>
-<view class="panel more-info" wx:if="{{isMoreinfoActive}}">
+<!-- <view class="panel more-info" wx:if="{{isMoreinfoActive}}">
     <view class="item item-title">
         <view class="name">个人信息</view>
     </view>
@@ -104,7 +105,7 @@
         <view class="name">微信号</view>
         <view class="text">{{userInfo.wechatNo === '' ? '-未编辑-' : userInfo.wechatNo}}</view>
         <view class="btn btn-copy" data-disabled="{{userInfo.wechatNo !== ''}}" data-text="{{userInfo.wechatNo}}" bind:tap="bindCopyText">复制</view>
-    </view>
+    </view> -->
     <!-- <view class="item item-title">
         <view class="name">个人标签</view>
     </view>
@@ -118,7 +119,7 @@
             <view class="label-item">融资</view>
         </view>
     </view> -->
-</view>
+<!-- </view> -->
 <view class="panel">
     <view class="nav-tab">
         <view class="item {{item.id === activeNav ? 'active' : ''}}" data-id="{{item.id}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
@@ -150,7 +151,7 @@
         </view> -->
         <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
             <view class="item" wx:for="{{userInfoList}}">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
                 <view class="info">
                     <view class="text name">
                         <!-- <view class="iconfont icon-nickname"></view> -->
@@ -164,16 +165,16 @@
                         <view class="iconfont icon-position"></view>
                         <view>{{item.duties}}</view>
                     </view> -->
-                    <block wx:if="{{activeNav === 1}}">
+                    <!-- <block wx:if="{{activeNav === 1}}">
                         <view class="text">
-                            <!-- <view class="iconfont icon-tel"></view> -->
+                            <view class="iconfont icon-tel"></view>
                             <view>{{item.telephone}}</view>
                         </view>
                         <view class="text">
-                            <!-- <view class="iconfont icon-email"></view> -->
+                            <view class="iconfont icon-email"></view>
                             <view>{{item.email}}</view>
                         </view>
-                    </block>
+                    </block> -->
                 </view>
                 <view class="div">
                     <view class="operator-center">
@@ -183,8 +184,14 @@
                         </view>
                         <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
                             <view class="iconfont {{item.isAddFriend === 1 ? 'icon-correct' : 'icon-add'}}"></view>
-                            <view class="text">{{item.isAddFriend === 1 ? '已加好友' : '加好友'}}</view>
+                            <view class="text">{{item.isAddFriend === 1 ? '申请中' : '加好友'}}</view>
                         </view>
+                        <block wx:if="{{activeNav === 1}}">
+                            <view class="operator-item active" wx:if="{{item.telephone !== ''}}" data-text="{{item.telephone}}" bind:tap="bindMakePhoneCall">
+                                <view class="iconfont icon-dianhua"></view>
+                                <view class="text">联系对方</view>
+                            </view>
+                        </block>
                     </view>
                 </view>
             </view>

@@ -95,7 +95,8 @@ Page({
             this.setData({
                 userInfoList: [],
                 applyList: [],
-                openId: wx.getStorageSync('openId')
+                openId: wx.getStorageSync('openId'),
+                userInfo: wx.getStorageSync('userInfo')
             });
             // 获取个人名片信息
             this.onGetCardInfo();
@@ -117,7 +118,8 @@ Page({
     bindCloseModal () {
         this.setData({
             isModalOpen: false
-        })
+        });
+        this.onGetList(1);
     },
 
     /**
@@ -171,14 +173,14 @@ Page({
         let text = e.currentTarget.dataset.text;
         if (text !== '') {
             wx.makePhoneCall({
-                phoneNumber: this.data.userInfo.telephone,
+                phoneNumber: text,
                 success: function(res) {
                     wx.showToast({
                         title: '拨打成功！',
                         icon: 'none'
                     })
                 }
-            })
+            });
         }
     },
 
@@ -473,9 +475,17 @@ Page({
                         title: '添加成功！',
                         icon: 'none'
                     });
-                    _this.onGetList(1);
                 }
             }
+        });
+        if (_this.data.applyList.length === 0) {
+            _this.onGetList(1);
+        };
+    },
+
+    bindRedirectUserCard (e) {
+        wx.navigateTo({
+            url: '/pages/userCard/userCard?openId=' + e.currentTarget.dataset.openid
         })
     }
 })

@@ -28,19 +28,19 @@
                 <view class="release-base-info">
                     <view class="release-info-item">
                         <view class="iconfont icon-nickname"></view>
-                        <input placeholder="项目名称" class="release-input" value="{{name}}" bindinput="bindChangeName" />
+                        <input placeholder-class="placeholder" placeholder="项目名称" class="release-input" value="{{name}}" bindinput="bindChangeName" />
                     </view>
                     <view class="release-info-item">
                         <view class="iconfont icon-edit"></view>
-                        <input placeholder="一句话介绍" class="release-input" value="{{brief}}" bindinput="bindChangeBrief" />
+                        <input placeholder-class="placeholder" placeholder="一句话介绍" class="release-input" value="{{brief}}" bindinput="bindChangeBrief" />
                     </view>
                     <view class="release-info-item">
                         <view class="iconfont icon-url"></view>
-                        <input placeholder="项目网地(选填)" class="release-input" value="{{websiteUrl}}" bindinput="bindChangeUrl" />
+                        <input placeholder-class="placeholder" placeholder="项目网址" class="release-input" value="{{websiteUrl}}" bindinput="bindChangeUrl" />
                     </view>
                 </view>
                 <!-- <image class="avatar" mode="widthFix" src="../../assets/img/avatar.jpg" /> -->
-                <image class="avatar empty" mode="widthFix" src="{{logo === '' ? '../../assets/img/logo-upload.png' : logo}}" bind:tap="bindChooseImage" />
+                <image class="avatar {{logo === '' ? 'empty' : ''}}" mode="widthFix" src="{{logo === '' ? '../../assets/img/logo-upload.png' : logo}}" bind:tap="bindChooseImage" />
             </view>
         </view> 
     </view>
@@ -57,24 +57,28 @@
             <view class="release-option-list">
                 <view class="release-option-item">
                     <view class="release-option-title">融资金额：</view>
-                    <input value="{{financeAmount}}" type="number" placeholder="请输入" bindinput="bindChangeAmount" />
+                    <input placeholder-class="placeholder" value="{{financeAmount}}" type="number" placeholder="请输入" bindinput="bindChangeAmount" />
                     <view class="text">万元</view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">阶段：</view>
-                    <picker class="release-picker placeholder" bindchange="bindRoundPickerChange" value="{{financeRound}}" range="{{financeRoundArray}}">
+                    <view class="release-option-title">融资阶段：</view>
+                    <picker class="release-picker {{financeRound === 0 ? 'placeholder' : ''}}" bindchange="bindRoundPickerChange" value="{{financeRound}}" range="{{financeRoundArray}}">
                         <view class="picker">{{financeRoundArray[financeRound]}}</view>
                     </picker>
                     <view class="iconfont icon-open-right"></view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">领域：</view>
-                    <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
-                    <view class="iconfont icon-edit"></view>
+                    <view class="release-option-title">融资领域：</view>
+                    <!-- <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
+                    <view class="iconfont icon-edit"></view> -->
+                    <picker class="release-picker {{domainIndex === 0 ? 'placeholder' : ''}}" bindchange="bindDomainPickerChange" value="{{domainIndex}}" range="{{domainArray}}">
+                        <view class="picker">{{domainArray[domainIndex]}}</view>
+                    </picker>
+                    <view class="iconfont icon-open-right"></view>
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">城市：</view>
-                    <picker class="release-picker placeholder" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
+                    <view class="release-option-title">融资城市：</view>
+                    <picker class="release-picker {{cityIndex === 0 ? 'placeholder' : ''}}" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
                         <view class="picker">{{cityArray[cityIndex]}}</view>
                     </picker>
                     <view class="iconfont icon-open-right"></view>
@@ -92,7 +96,7 @@
             </view>
         </view>
         <view class="release-item h-310 relative">
-            <textarea maxlength="200" class="textarea" placeholder="请简单介绍下项目，说说你的项目的优势！" placeholder-class="textarea-placeholder" value="{{projectDesc}}" bindinput="bindTextareaInput"></textarea>
+            <textarea maxlength="1000" class="textarea" placeholder="请简单介绍下项目，说说你的项目的优势！" placeholder-class="placeholder" value="{{projectDesc}}" bindinput="bindTextareaInput"></textarea>
             <view class="textarea-tips">
                 字数限制： {{projectDesc.length}} / 1000
             </view>

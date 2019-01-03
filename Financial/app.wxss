@@ -231,9 +231,18 @@ page {
     z-index: 1;
 }
 
+.businessCard .card .icon-open-right {
+    position: absolute;
+    top: 50%;
+    right: 20rpx;
+    transform: translateY(-50%);
+    font-size: 24rpx;
+}
+
 .businessCard .card-header {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 .businessCard .card-header .edit {
@@ -251,16 +260,20 @@ page {
 }
 
 .businessCard .card-header .info {
+    flex: 1;
     padding: 0 0 0 30rpx;
     color: #373737;
     overflow: hidden;
 }
 
 .businessCard .card-header .name {
-    margin-bottom: 16rpx;
     font-size: 36rpx;
     font-weight: 500;
     color: #0d0d0d;
+}
+
+.businessCard .card-header .tag {
+    margin-top: 16rpx;
 }
 
 .businessCard .card-header .item {
@@ -437,8 +450,8 @@ page {
 }
 
 .people-list .avatar {
-    flex: 0 0 120rpx;
-    height: 120rpx;
+    flex: 0 0 90rpx;
+    height: 90rpx !important;
     margin-right: 20rpx;
     box-shadow: 0 0 10rpx rgba(0, 0, 0, .2);
 }
@@ -516,6 +529,10 @@ page {
 
 .people-list .item .operator-center .iconfont {
     font-size: 40rpx;
+}
+.people-list .item .operator-center .icon-dianhua {
+    padding-bottom: 10rpx;
+    transform: rotate(-90deg);
 }
 
 .cardEdit .btn-save {
@@ -599,7 +616,7 @@ page {
 
 .project-list .item .avatar {
     width: 70rpx;
-    height: 70rpx;
+    height: 70rpx !important;
     margin-right: 20rpx;
 }
 
@@ -1024,8 +1041,8 @@ page {
     flex: 0 0 200rpx;
 }
 
-.release-picker.placeholder {
-    color: #666;
+.placeholder {
+    color: #b2b2b2;
 }
 
 .release-base-info-container {
@@ -1035,16 +1052,18 @@ page {
 
 .release-base-info-container .avatar {
     width: 100rpx;
-    height: 100rpx;
+    height: 100rpx !important;
     margin-left: 30rpx;
     padding: 10rpx;
     border: 2rpx dashed #999;
+    border-radius: 16rpx;
+    overflow: hidden;
 }
 
 .release-base-info-container .avatar.empty {
     padding: 0;
     border: 0;
-    border: 0;
+    border-radius: 0;
 }
 
 .release-base-info {
@@ -1203,7 +1222,7 @@ page {
 
 .detail-group .base-info .avatar {
     width: 100%;
-    height: 120rpx;
+    height: 120rpx !important;
 }
 
 .detail-group .base-info .content {
@@ -1265,7 +1284,7 @@ page {
 
 .member-list .item .avatar {
     flex: 0 0 100rpx;
-    height: 100rpx;
+    height: 100rpx !important;
     margin-right: 30rpx;
 }
 

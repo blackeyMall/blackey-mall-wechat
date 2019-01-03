@@ -18,9 +18,9 @@
             </view>
             <view class="detail-content">
                 <view class="detail-list">
-                    <view class="item">{{projectDetail.financeRound}}</view>
-                    <view class="item">{{projectDetail.projectDomain}}</view>
-                    <view class="item">{{projectDetail.city}}</view>
+                    <view class="item">轮次：{{projectDetail.financeRound}}</view>
+                    <view class="item">领域：{{projectDetail.projectDomain}}</view>
+                    <view class="item">城市：{{projectDetail.city}}</view>
                 </view>
             </view>
         </view>
@@ -45,7 +45,7 @@
                                 <view class="text">{{projectDetail.userName}}</view>
                                 <view class="small">{{projectDetail.duties}}</view>
                             </view>
-                            <view class="des">{{projectDetail.company}}</view>
+                            <view class="des">{{projectDetail.companyBrief}}</view>
                         </view>
                     </view>
                 </view>

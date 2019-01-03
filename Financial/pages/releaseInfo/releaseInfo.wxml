@@ -92,7 +92,7 @@
         </view>
         <view class="modal-body">
             <view class="add-label">
-                <input type="text" placeholder="输入标签以添加！" class="input" value="{{labelInput}}" bindinput="bindLabelInput" />
+                <input type="text" placeholder="标签长度限制4个字！" maxlength="4" class="input" value="{{labelInput}}" bindinput="bindLabelInput" />
                 <view class="btn-primary" bind:tap="bindAddLabel">添加</view>
             </view>
             <view class="release-label-list" wx:if="{{labelList.length !== 0}}">

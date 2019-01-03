@@ -76,12 +76,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
         // 检测登录
         if (app.globalData.checkLoginStatus()) {
             this.setData({
@@ -110,5 +104,12 @@ Page({
                 icon: 'none'
             })
         }
+    },
+
+    bindPreviewImg (e) {
+        let imgList = e.currentTarget.dataset.imglist;
+        wx.previewImage({
+            urls: imgList
+        });
     }
 })

@@ -1,7 +1,7 @@
 <view class="cardEdit flex-column">
 <view class="more-info flex-main">
         <view class="item item-title">
-            <view class="name">照片信息</view>
+            <view class="name">头像</view>
         </view>
         <view class="item" bind:tap="bindChooseImage">
             <view class="name">头像:</view>

@@ -1,13 +1,10 @@
-// pages/myfocus/myfocus.js
+// pages/card/card.js
 import ajax from "../../utils/ajax";
 
 let app = getApp();
 let _ = {
-    getFocusList: (data, handler) => {
-        ajax.post("/finance/userpersonfollow/list/openid", data, handler);
-    },
-    friendFocus: (data, handler) => {
-        ajax.post("/finance/userpersonfollow/foucs", data, handler);
+    getCardInfo: (data, handler) => {
+        ajax.get("/finance/userinfo/info", data, handler);
     },
     getInfoList: (data, handler) => {
         ajax.post("/finance/requirement/list", data, handler);
@@ -32,44 +29,36 @@ Page({
      * 页面的初始数据
      */
     data: {
-        openId: '',
-        navSubList: [
+        userInfo: {},
+        isMoreinfoActive: false,
+        navList: [
             {
                 id: 1,
-                text: '关注的人'
+                text: 'TA的需求'
             },
             {
                 id: 2,
-                text: '关注需求'
-            },
-            {
-                id: 3,
-                text: '关注项目'
+                text: 'TA的项目'
             }
         ],
-        activeNavSub: 1,
-        userInfoList: [],
+        activeNav: 1,
         infoList: [],
         projectList: [],
-        current: 1,
         size: 5,
-        pages: 0,
+        current: 1,
         total: 0,
+        pages: '',
+        openId: ''
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        if (app.globalData.checkLoginStatus()) {
+    bindChangeNav (e) {
+        if (e.currentTarget.dataset.id !== this.data.activeNav) {
             this.setData({
-                openId: wx.getStorageSync('openId'),
-                activeNavSub: 1,
-                userInfoList: [],
+                activeNav: e.currentTarget.dataset.id,
                 infoList: [],
                 projectList: [],
                 current: 1,
-                pages: 0,
+                pages: '',
                 total: 0
             })
             this.onGetList(1);
@@ -77,30 +66,37 @@ Page({
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 生命周期函数--监听页面加载
      */
-    onReady: function () {
-
+    onLoad: function (options) {
+        // console.log(1);
+        // this.setData({
+        //     openId: options.openId
+        // });
+        // 检测登录是否成功
+        if (app.globalData.checkLoginStatus()) {
+            // 清空数据
+            this.setData({
+                openId: options.openId,
+                activeNav: 1,
+                infoList: [],
+                projectList: [],
+                current: 1,
+                pages: '',
+                total: 0
+            });
+            // 获取个人名片信息
+            this.onGetCardInfo();
+            // 获取用户列表
+            this.onGetList(1);
+        }
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
+        console.log(2);
     },
 
     /**
@@ -115,14 +111,12 @@ Page({
      */
     onReachBottom: function () {
         let totalPage = Math.ceil(this.data.total / this.data.size);
-        let activeNav = this.data.activeNavSub;
         if (this.data.current < totalPage) {
             // 显示加载图标
             wx.showLoading({
                 title: '加载中...',
-            })
+            });
             this.onGetList(this.data.current + 1, 1);
-
         } else {
             wx.showToast({
                 title: '已经到底啦！',
@@ -138,69 +132,79 @@ Page({
 
     },
 
-    bindChangeNavSub (e) {
-        let id = parseInt(e.currentTarget.dataset.id);
-        if (id !== this.data.activeNavSub) {
-            this.setData({
-                activeNavSub: id,
-                userInfoList: [],
-                infoList: [],
-                projectList: [],
-                current: 1,
-                pages: 0,
-                total: 0
+    // 展开信息详情
+    bindViewDetail () {
+        this.setData({
+            isMoreinfoActive: !this.data.isMoreinfoActive
+        })
+    },
+
+    bindMakePhoneCall (e) {
+        let text = e.currentTarget.dataset.text;
+        if (text !== '') {
+            wx.makePhoneCall({
+                phoneNumber: this.data.userInfo.telephone,
+                success: function(res) {
+                    wx.showToast({
+                        title: '拨打成功！',
+                        icon: 'none'
+                    })
+                }
             })
-            this.onGetList(1);
+        }
+    },
+
+    bindCopyText (e) {
+        let text = e.currentTarget.dataset.text;
+        if (text !== '') {
+            wx.setClipboardData({
+                data: text,
+                success () {
+                    wx.showToast({
+                        title: '复制成功！',
+                        icon: 'none'
+                    })
+                }
+            });
         };
+    },
+
+    // 获取用户名片信息
+    onGetCardInfo () {
+        let _this = this;
+        _.getCardInfo({
+            openid: _this.data.openId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let userInfo = res.data;
+                    for (const key in userInfo) {
+                        if (userInfo.hasOwnProperty(key)) {
+                            const el = userInfo[key];
+                            el === null ? userInfo[key] = '' : el;
+                        }
+                    }
+                    wx.setStorageSync('userInfo', userInfo);
+                    _this.setData({
+                        userInfo
+                    });
+                }
+            }
+        });
     },
 
     onGetList (page, isHideLoading) {
         let _this = this;
-        let activeNav = this.data.activeNavSub;
+        let activeNav = this.data.activeNav;
         if (activeNav === 1) {
-            _.getFocusList({
-                openId: this.data.openId,
-                size: this.data.size,
-                current: page
-            }, {
-                success (res) {
-                    res = res.data;
-                    if (res.data.records !== null) {
-                        let tempUserInfo = [];
-                        res.data.records.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties, isAddFriend} = el;
-                            let temp = {
-                                openId, 
-                                avatarUrl, 
-                                name, 
-                                company: company === null ? '-公司待编辑-' : company, 
-                                duties: duties === null ? '-职务待编辑-' : duties, 
-                                showFocus: 1, 
-                                isFocus: 1, 
-                                showAddFriend: 1, 
-                                isAddFriend
-                            };
-                            tempUserInfo.push(temp);
-                        });
-                        _this.setData({
-                            userInfoList: _this.data.userInfoList.concat(tempUserInfo)
-                        })
-                    };
-                    _this.setData({
-                        current: res.data.current,
-                        total: res.data.total,
-                        pages: res.data.pages
-                    });
-                }
-            })
-        } else if (activeNav === 2) {
             let _this = this;
             _.getInfoList({
-                openId: wx.getStorageSync('openId'), //openid
+                openId: this.data.openId, //用户openid
                 current: page, // 当前页
                 size: this.data.size, // 每页条数
                 category: 'DEFAULT', // 主分类
-                tableCode: 'MY_FOLLOW' // 子分类
+                tableCode: 'MY_CREATE' // 子分类
             }, {
                 success (res) {
                     res = res.data;
@@ -232,13 +236,13 @@ Page({
                     }
                 }
             })
-        } else if (activeNav === 3) {
+        } else if (activeNav === 2) {
             _.getProjectList({
                 openId: this.data.openId, //openid
                 current: page, // 当前页
                 size: this.data.size, // 每页条数
                 category: 'DEFAULT', // 主分类
-                tableCode: 'MY_FOLLOW' // 子分类
+                tableCode: 'MY_CREATE' // 子分类
             }, {
                 success (res) {
                     res = res.data;
@@ -272,40 +276,9 @@ Page({
         };
     },
 
-    bindProjectDetail (e) {
-        let objectId = e.currentTarget.dataset.id;
-        wx.navigateTo({
-            url: '/pages/projectDetail/projectDetail?objectId=' + objectId
-        })
-    },
-
-    bindFriendFocus (e) {
-        let index = e.currentTarget.dataset.index;
-        let _this = this;
-        _.friendFocus({
-            openId: this.data.openId,
-            personId: e.currentTarget.dataset.id
-        }, {
-            success (res) {
-                res = res.data
-                if (res.code === 200) {
-                    let userInfoList = _this.data.userInfoList;
-                    userInfoList[index].isFocus = res.data;
-                    _this.setData({
-                        userInfoList
-                    })
-                    wx.showToast({
-                        title: res.message,
-                        icon: 'none'
-                    })
-                }
-            }
-        })
-    },
-
     bindProjectFollow (e) {
         let index = e.currentTarget.dataset.index;
-        let openId = this.data.openId;
+        let openId = wx.getStorageSync('openId');
         let objectId = e.currentTarget.dataset.id;
         let _this = this;
         _.projectFollow({
@@ -372,6 +345,13 @@ Page({
                     })
                 }
             }
+        })
+    },
+
+    bindProjectDetail (e) {
+        let objectId = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: '/pages/projectDetail/projectDetail?objectId=' + objectId
         })
     },
 

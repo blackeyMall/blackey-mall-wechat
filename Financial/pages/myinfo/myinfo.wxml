@@ -23,7 +23,7 @@
                             </view>
                         </view>
                     </view>
-                    <view class="header-item" wx:if="{{item.isRecommend}}">
+                    <!-- <view class="header-item" wx:if="{{item.isRecommend}}">
                         <view class="label-item">
                             <view class="iconfont icon-jingpin"></view>
                             <view class="text">精品</view>
@@ -32,25 +32,32 @@
                             <view class="iconfont icon-fufei"></view>
                             <view class="text">付费</view>
                         </view>
-                    </view>
+                    </view> -->
                 </view>
                 <view class="body">
                     <view class="p">{{item.content}}</view>
+                    <!-- <view class="label-list">
+                        <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                    </view> -->
+                    <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
+                        <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
+                    </view>
+                </view>
+                <view class="footer">
                     <view class="label-list">
                         <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
                     </view>
-                    <!-- <view class="img-list" wx:if="{{item.images.length !== 0}}">
-                        <view class="item" wx:for="{{item.images}}">
-                            <image mode="widthFix" src="{{item}}" />
+                    <view>
+                        <view class="flex-center">
+                            <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
+                                <view class="iconfont icon-zan"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
+                            </view>
+                            <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{item.openId !== openId}}">
+                                <view class="iconfont icon-focus"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
+                            </view>
                         </view>
-                    </view> -->
-                    <!-- <view class="img-list">
-                        <image mode="aspectFill" src="../../assets/img/avatar.jpg" class="img" />
-                        <image mode="aspectFill" src="../../assets/img/test2.png" class="img" />
-                        <image mode="aspectFill" src="../../assets/img/avatar.jpg" class="img" />
-                    </view> -->
-                    <view class="img-list" wx:if="{{item.images.length !== 0}}">
-                        <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
                     </view>
                 </view>
             </view>

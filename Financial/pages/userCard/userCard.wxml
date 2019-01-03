@@ -1,0 +1,151 @@
+<view class="panel businessCard">
+    <view class="card">
+        <view class="card-header">
+            <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
+            <view class="info">
+                <view class="item name" wx:if="{{userInfo.name !== ''}}">{{userInfo.name}}</view>
+                <view class="item tag" wx:if="{{userInfo.duties !== ''}}">{{userInfo.duties}}</view>
+                <view class="item company" wx:if="{{userInfo.companyBrief !== ''}}">{{userInfo.companyBrief}}</view>
+            </view>
+        </view>
+        <view class="card-body" wx:if="{{userInfo.telephone !== '' && userInfo.email !== '' && userInfo.companyAddress !== ''}}">
+            <view class="info-list">
+                <view class="item" wx:if="{{userInfo.telephone !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-dianhua"></view>
+                    </view>
+                    <view class="text">{{userInfo.telephone}}</view>
+                </view>
+                <view class="item" wx:if="{{userInfo.email !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-youxiang2"></view>
+                    </view>
+                    <view class="text">{{userInfo.email}}</view>
+                </view>
+                <view class="item" wx:if="{{userInfo.companyAddress !== ''}}">
+                    <view class="icon">
+                        <view class="iconfont icon-dingwei"></view>
+                    </view>
+                    <view class="text">{{userInfo.companyAddress}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="more {{isMoreinfoActive === true ? 'active' : ''}}" bind:tap="bindViewDetail">
+        <view class="text">{{isMoreinfoActive === true ? '收起更多信息' : '查看更多信息'}}</view>
+        <view class="iconfont icon-open"></view>
+    </view>
+</view>
+<view class="panel more-info" wx:if="{{isMoreinfoActive}}">
+    <view class="item item-title">
+        <view class="name">个人信息</view>
+    </view>
+    <view class="item">
+        <view class="name">手机</view>
+        <view class="text">{{userInfo.telephone === '' ? '-未编辑-' : userInfo.telephone}}</view>
+        <view class="btn btn-call" data-disabled="{{userInfo.telephone !== ''}}" data-text="{{userInfo.telephone}}" bind:tap="bindMakePhoneCall">拨打</view>
+    </view>
+    <view class="item">
+        <view class="name">公司全称</view>
+        <view class="text">{{userInfo.company === '' ? '-未编辑-' : userInfo.company}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.company !== ''}}" data-text="{{userInfo.company}}" bind:tap="bindCopyText">复制</view>
+    </view>
+    <view class="item">
+        <view class="name">公司网站</view>
+        <view class="text">{{userInfo.companyWebsite === '' ? '-未编辑-' : userInfo.companyWebsite}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.companyWebsite !== ''}}" data-text="{{userInfo.companyWebsite}}" bind:tap="bindCopyText">复制</view>
+    </view>
+    <view class="item">
+        <view class="name">公司地址</view>
+        <view class="text">{{userInfo.companyAddress === '' ? '-未编辑-' : userInfo.companyAddress}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.companyAddress !== ''}}" data-text="{{userInfo.companyAddress}}" bind:tap="bindCopyText">复制</view>
+    </view>
+    <view class="item">
+        <view class="name">微信号</view>
+        <view class="text">{{userInfo.wechatNo === '' ? '-未编辑-' : userInfo.wechatNo}}</view>
+        <view class="btn btn-copy" data-disabled="{{userInfo.wechatNo !== ''}}" data-text="{{userInfo.wechatNo}}" bind:tap="bindCopyText">复制</view>
+    </view>
+</view>
+<view class="panel">
+    <view class="nav-tab">
+        <view class="item {{item.id === activeNav ? 'active' : ''}}" data-id="{{item.id}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
+            <view class="text">{{item.text}}</view>
+        </view>
+    </view>
+</view>
+    <view class="nav-content">
+        <block wx:if="{{activeNav === 1}}">
+            <view class="project-list" wx:if="{{infoList.length !== 0}}">
+                <view class="item" wx:for="{{infoList}}">
+                    <view class="header">
+                        <view class="header-item">
+                            <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                            <view class="detail">
+                                <view class="name">{{item.name}}</view>
+                                <view class="tag-list">
+                                    <view class="tag-item">{{item.company}}</view>
+                                    <view class="tag-item">{{item.duties}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="body">
+                        <view class="p">{{item.content}}</view>
+                        <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
+                            <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
+                        </view>
+                    </view>
+                    <view class="footer">
+                        <view class="label-list">
+                            <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                        </view>
+                        <view>
+                            <view class="flex-center">
+                                <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindInfoLike">
+                                    <view class="iconfont icon-zan"></view>
+                                    <view class="text">点赞 {{item.likeNum}}</view>
+                                </view>
+                                <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindInfoFollow">
+                                    <view class="iconfont icon-focus"></view>
+                                    <view class="text">关注 {{item.followNum}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{activeNav === 2}}">
+            <view class="project-list" wx:if="{{projectList.length !== 0}}">
+                <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
+                    <view class="header">
+                        <view class="header-item">
+                            <image mode="widthFix" src="{{item.logo}}" class="avatar" />
+                            <view class="detail">
+                                <view class="name">
+                                    <view class="text">{{item.name}}</view>
+                                </view>
+                                <view class="flex-center">
+                                    <view class="label-item">{{item.attachment}}</view>
+                                    <view class="label-item">{{item.projectDomain}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="body">
+                        <view class="p">{{item.brief}}</view>
+                    </view>
+                    <view class="footer justify-between">
+                        <view class="tag-list">
+                            <view class="tag-item">融资轮次：{{item.financeRound}}</view>
+                            <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                        </view>
+                        <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" catch:tap="bindProjectFollow" data-index="{{index}}" data-id="{{item.id}}">
+                            <view class="iconfont icon-focus"></view>
+                            <view class="text">关注 {{item.followNum}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
