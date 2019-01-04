@@ -43,10 +43,10 @@ Page({
                 tableCode: 'MY_FOLLOW',
                 text: '关注项目'
             },
-            {
-                tableCode: 'MY_CREATE',
-                text: '我的项目'
-            }
+            // {
+            //     tableCode: 'MY_CREATE',
+            //     text: '我的项目'
+            // }
         ],
         activeNavSub: 'DEFAULT',
         projectList: [],

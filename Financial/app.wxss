@@ -245,13 +245,27 @@ page {
     align-items: center;
 }
 
-.businessCard .card-header .edit {
+.businessCard .btn-share {
     position: absolute;
     top: 0;
     right: 0;
     display: flex;
     align-items: center;
+    padding: 20rpx;
+    line-height: 1;
+    font-size: 24rpx;
     color: #e9a04c;
+    background-color: transparent;
+    z-index: 10;
+}
+
+.businessCard .btn-share .iconfont {
+    margin-right: 10rpx;
+    font-size: 28rpx;
+}
+
+.businessCard .btn-share::after {
+    content: none;
 }
 
 .businessCard .card-header .avatar {
@@ -608,67 +622,79 @@ page {
 }
 
 .project-list .item {
-    margin-bottom: 20rpx;
-    padding: 30rpx 20rpx;
+    display: flex;
+    /* flex-wrap: wrap; */
+    margin-bottom: 10rpx;
+    padding: 20rpx;
     background-color: #fff;
     font-size: 24rpx;
 }
 
 .project-list .item .avatar {
+    flex: 0 0 70rpx;
     width: 70rpx;
     height: 70rpx !important;
     margin-right: 20rpx;
 }
 
-.project-list .item .header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+.project-list .item .div {
+    flex: 1;
 }
 
 .project-list .item .header-item {
     display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     line-height: 1;
 }
 
-.project-list .item .header .detail {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.project-list .item .header-item2 {
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .project-list .item .header .name {
     display: flex;
     align-items: center;
+    margin-bottom: 20rpx;
     font-size: 26rpx;
     color: #000;
 }
 
-.project-list .item .header .detail .label-item {
+.project-list .item .header-item2 .name {
+    margin-bottom: 0;
+}
+
+.project-list .item .header-item2 .label-list {
+    margin-left: 10rpx;
+}
+
+.project-list .item .header-item2 .label-item {
     padding: 6rpx;
     background-color: #67a6f3;
     border: 0;
     border-radius: 4rpx;
-    color: #fff;
+    color: #fff !important;
 }
 
 .project-list .item .body {
     position: relative;
-    margin-top: 30rpx;
-    padding: 20rpx;
+    margin-top: 20rpx;
+    padding: 10rpx 20rpx;
     background-color: #f8f8f8;
     border-radius: 6rpx;
 }
 
 .project-list .item .img-list {
     display: flex;
-    margin-top: 20rpx;
+    margin-top: 10rpx;
 }
 
 .project-list .item .img-list .img {
     padding: 0 10rpx;
     flex: 0 0 33.33333%;
-    height: 140rpx;
+    width: 33.33333%;
+    height: 120rpx;
     box-sizing: border-box;
     border-radius: 12rpx;
 }
@@ -691,7 +717,6 @@ page {
 
 .project-list .item .label-list {
     display: flex;
-    /* margin-top: 10rpx; */
 }
 
 .project-list .item .label-list .label-item {
@@ -702,21 +727,21 @@ page {
 .project-list .item .footer {
     display: flex;
     align-items: center;
-    /* justify-content: flex-end; */
-    justify-content: space-between;
-    margin-top: 30rpx;
+    justify-content: flex-end;
+    margin-top: 20rpx;
     text-align: center;
 }
 
 .project-list .item .footer .operator-item {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     color: #666;
 }
 
 .project-list .item .footer .tag-list {
     color: #000;
-    font-size: 28rpx;
+    font-size: 26rpx;
 }
 
 .project-list .item .footer .operator-item + .operator-item {

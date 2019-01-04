@@ -46,10 +46,10 @@ Page({
                 tableCode: 'MY_FOLLOW',
                 text: '关注需求'
             },
-            {
-                tableCode: 'MY_CREATE',
-                text: '我的需求'
-            }
+            // {
+            //     tableCode: 'MY_CREATE',
+            //     text: '我的需求'
+            // }
         ],
         activeNavSub: 'DEFAULT',
         infoList: [],
@@ -99,7 +99,7 @@ Page({
                     if (records !== null) {
                         records.forEach(el => {
                             let {id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label, images} = el;
-                            let labelList = label.split(',');
+                            let labelList = label === null ? [] : label.split(',');
                             company === null ? company = '公司未编辑' : company;
                             duties === null ? duties = '职务未编辑' : duties;
                             isRecommend === null ? isRecommend = 0 : isRecommend = 1;

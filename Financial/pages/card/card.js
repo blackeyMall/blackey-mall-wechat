@@ -244,8 +244,8 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '-公司未编辑-' : company, 
-                                duties: duties === null ? '-职务未编辑-' : duties,
+                                company: company === null ? '公司待编辑' : company, 
+                                duties: duties === null ? '职务待编辑' : duties,
                                 showFocus: 1, 
                                 isFocus: 0, 
                                 showAddFriend: 1, 
@@ -281,10 +281,10 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '-公司待编辑-' : company, 
-                                duties: duties === null ? '-职务待编辑-' : duties, 
-                                telephone: telephone === null ? '-手机待编辑-' : telephone, 
-                                email: email === null ? '-邮箱待编辑-' : email, 
+                                company: company === null ? '公司待编辑' : company, 
+                                duties: duties === null ? '职务待编辑' : duties, 
+                                telephone: telephone === null ? '手机待编辑' : telephone, 
+                                email: email === null ? '邮箱待编辑' : email, 
                                 showFocus: 0, 
                                 isFocus, 
                                 showAddFriend: 0, 
@@ -320,8 +320,8 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '-公司待编辑-' : company, 
-                                duties: duties === null ? '-职务待编辑-' : duties, 
+                                company: company === null ? '公司待编辑' : company, 
+                                duties: duties === null ? '职务待编辑' : duties, 
                                 showFocus: 1, 
                                 isFocus: 1, 
                                 showAddFriend: 0, 
@@ -487,5 +487,11 @@ Page({
         wx.navigateTo({
             url: '/pages/userCard/userCard?openId=' + e.currentTarget.dataset.openid
         })
+    },
+
+    bindShareCard () {
+        return {
+            title: '金融Link 名片分享！'
+        }
     }
 })

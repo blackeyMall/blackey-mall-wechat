@@ -39,7 +39,7 @@
             <view class="detail-content">
                 <view class="member-list">
                     <view class="item">
-                        <image mode="widthFix" src="../../assets/img/avatar.jpg" class="avatar" />
+                        <image mode="widthFix" src="{{projectDetail.avatarUrl}}" class="avatar" />
                         <view class="content">
                             <view class="title">
                                 <view class="text">{{projectDetail.userName}}</view>
@@ -61,7 +61,11 @@
                     <view class="iconfont icon-pdf"></view>
                     <view class="text">{{projectDetail.name + '商业计划书'}} 点击查看</view>
                 </view>
-                <view wx:else class="empty">BP暂未上传</view>
+                <view wx:else class="empty">
+                    <view class="text">
+                        BP暂未上传，<text class="text-danger" bind:tap="bindSendBPLink">点击上传</text>
+                    </view>
+                </view>
             </view>
         </view>
     </view>

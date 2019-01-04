@@ -8,7 +8,10 @@ let _ = {
     },
     follow: (data, handler) => {
         ajax.post("/finance/follow/project/save", data, handler);
-    }
+    },
+    sendBP: (data, handler) => {
+        ajax.post("/finance/email/send", data, handler);
+    },
 };
 
 Page({
@@ -153,5 +156,22 @@ Page({
                 }
             }
         })
+    },
+
+    bindSendBPLink () {
+        _.sendBP({
+            openId: this.data.openId,
+            id: this.data.id
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    wx.showToast({
+                        title: 'BP上传链接已发送！',
+                        icon: 'none'
+                    });
+                };
+            }
+        });
     }
 })

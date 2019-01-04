@@ -22,41 +22,41 @@
     <view class="nav-content">
         <view class="project-list">
             <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
-                <view class="header">
-                    <view class="header-item">
-                        <image mode="widthFix" src="{{item.logo}}" class="avatar" />
-                        <view class="detail">
+                <image mode="widthFix" src="{{item.logo}}" class="avatar" />
+                <view class="div">
+                    <view class="header">
+                        <view class="header-item header-item2">
                             <view class="name">
                                 <view class="text">{{item.name}}</view>
                             </view>
-                            <view class="flex-center">
+                            <view class="label-list">
                                 <view class="label-item">{{item.attachment}}</view>
                                 <view class="label-item">{{item.projectDomain}}</view>
                             </view>
                         </view>
+                        <!-- <view class="header-item">
+                            <view class="label-item">
+                                <view class="iconfont icon-jingpin"></view>
+                                <view class="text">精品</view>
+                            </view>
+                            <view class="label-item">
+                                <view class="iconfont icon-fufei"></view>
+                                <view class="text">付费</view>
+                            </view>
+                        </view> -->
                     </view>
-                    <!-- <view class="header-item">
-                        <view class="label-item">
-                            <view class="iconfont icon-jingpin"></view>
-                            <view class="text">精品</view>
-                        </view>
-                        <view class="label-item">
-                            <view class="iconfont icon-fufei"></view>
-                            <view class="text">付费</view>
-                        </view>
-                    </view> -->
-                </view>
-                <view class="body">
-                    <view class="p">{{item.brief}}</view>
-                </view>
-                <view class="footer justify-between">
-                    <view class="tag-list">
-                        <view class="tag-item">融资轮次：{{item.financeRound}}</view>
-                        <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                    <view class="body">
+                        <view class="p">{{item.brief}}</view>
                     </view>
-                    <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注 {{item.followNum}}</view>
+                    <view class="footer justify-between">
+                        <view class="tag-list">
+                            <view class="tag-item">融资轮次：{{item.financeRound}}</view>
+                            <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                        </view>
+                        <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
+                            <view class="iconfont icon-focus"></view>
+                            <view class="text">关注 {{item.followNum}}</view>
+                        </view>
                     </view>
                 </view>
             </view>
