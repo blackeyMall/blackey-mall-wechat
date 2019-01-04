@@ -36,7 +36,7 @@
         "pagePath": "pages/orderCenter/orderCenter",
         "iconPath": "lib/images/tabbar/order.png",
         "selectedIconPath": "lib/images/tabbar/order-active.png",
-        "text": "订单"
+        "text": "订单中心"
       },
       {
         "pagePath": "pages/my/my",

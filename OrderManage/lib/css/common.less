@@ -14,7 +14,8 @@ page {
 .title { 
     &-page {
         display: flex; 
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: center;
         flex-shrink: 0;
         padding: 30rpx;
         font-size: 50rpx;
@@ -36,20 +37,37 @@ page {
     } 
     &-channel {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: flex-end;
+        // border-bottom: 2rpx solid #eee;
         width: 100%;
         line-height: 1;
         margin: 60rpx 0 0;
+        font-weight: 700;
+        font-size: 40rpx;
+        color: #4454cd;
+        // background-size: auto 40rpx, auto 40rpx;
+        // background-repeat: no-repeat, no-repeat;
+        // background-position: left top, right top;
+        // background-image: url(http://127.0.0.1:5500/lib/images/title-left.png), url(http://127.0.0.1:5500/lib/images/title-right.png);
+        // .icon {
+        //     width: 60rpx;
+        //     height: 40rpx;
+        //     margin: 0 20rpx;
+        //     background: url(http://127.0.0.1:5500/lib/images/title-left.png) center center no-repeat;
+        //     background-size: auto 100%;
+        // }
+        // .icon-right {
+        //     width: 60rpx;
+        //     height: 40rpx;
+        //     background: url(http://127.0.0.1:5500/lib/images/title-right.png) center center no-repeat;
+        //     background-size: auto 100%;
+        // }
     }
     &-main {
         font-weight: 700;
         font-size: 40rpx;
-        > .div {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
+        text-align: center;
         .iconfont {
             margin-right: 10rpx;
             font-size: 44rpx;

@@ -11,12 +11,15 @@
     </swiper>
     <view class="div">
         <view class="title-channel">
-            <view class="title-main">
-                <view class="div">
-                    <i class="iconfont icon-service"></i>
-                    <text>服务项目</text>
-                </view>
-            </view>
+            <!-- <view class="icon"></view> -->
+            <view class="text">服务项目</view>
+            <!-- <view class="icon icon-right"></view> -->
+            <!-- <view class="title-main"> -->
+                <!-- <view class="div"> -->
+                    <!-- <i class="iconfont icon-service"></i> -->
+                    <!-- <view class="text">服务项目</view>
+                </view> -->
+            <!-- </view> -->
             <!-- <view class="title-sm" bindtap="onSwitchOrderCenter">
                 <view class="div">
                     <text>更多</text>
@@ -28,10 +31,8 @@
     <view class="service-list">
         <view class="item" wx:for="{{serviceList}}" data-id="{{item.id}}" data-title="{{item.name}}" data-url="{{item.picUrl}}" wx:key="{{item.id}}" bindtap="handleReservation">
             <view class="item-content" hover-class="active">
-                <image class="item-img" src="{{item.picUrl}}" mode="widthFix" />
-                <text class="">
-                    {{item.name}}
-                </text>
+                <!-- <image class="item-img" src="{{item.picUrl}}" mode="widthFix" /> -->
+                <view class="text">{{item.name}}</view>
             </view>
         </view>
     </view>
@@ -50,13 +51,13 @@
                 <view class="text">手机号</view>
             </view>
             <input type="number" placeholder="请输入" value="{{telNum}}" bindinput="bindNumberInput" />
-            <view class="label-input margin-top-30">
+            <!-- <view class="label-input margin-top-30">
                 <view class="iconfont icon-nickname"></view>
                 <view class="text">角色</view>
             </view>
             <picker bindchange="bindPickerChange" value="{{pickerIndex}}" range="{{pickerArray}}">
                 <view class="input {{pickerIndex === 0 ? 'input-placeholder': ''}}">{{pickerArray[pickerIndex]}} </view>
-            </picker>
+            </picker> -->
             <view class="btn-cancel" bind:tap="onUpdatePhoneNumber">绑定</view>
         </view>
     </view>

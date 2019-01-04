@@ -78,7 +78,7 @@ page {
 }
 .title-page {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-shrink: 0;
   padding: 30rpx;
   font-size: 50rpx;
@@ -100,20 +100,19 @@ page {
 }
 .title-channel {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   width: 100%;
   line-height: 1;
   margin: 60rpx 0 0;
+  font-weight: 700;
+  font-size: 40rpx;
+  color: #4454cd;
 }
 .title-main {
   font-weight: 700;
   font-size: 40rpx;
-}
-.title-main > .div {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  text-align: center;
 }
 .title-main .iconfont {
   margin-right: 10rpx;

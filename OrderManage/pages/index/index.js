@@ -26,70 +26,114 @@ Page({
     pickerArray: ['请选择', '水电', '瓦工', '木工', '保洁']
   },
   onShow () {
-    let _this = this
-    let openid = wx.getStorageSync('openid')
-    if (!openid) {
-      wx.navigateTo({
-        url: '/pages/loginGuide/loginGuide'
-      })
-      return
-    } else {
-      let phoneNumber = wx.getStorageSync('phoneNumber')
-      if (phoneNumber && phoneNumber !== '') {
-        _this.setData({
-          showModal: false
-        })
-      } else {
-        _this.setData({
-          showModal: true
-        })
-        // -----------------------------------
-        // -   取消获取微信绑定手机号相关逻辑     -
-        // -----------------------------------
-        // _.findNumber({
-        //   openid: wx.getStorageSync('openid')
-        // }, {
-        //   success: function(res) {
-        //     res = res.data
-        //     if (res.data.telephone) {
-        //       _this.setData({
-        //         showModal: false
-        //       })
-        //     } else {
-        //       _this.setData({
-        //         showModal: true
-        //       })
-        //       return
-        //     }
-        //   }
-        // })
-      }
+    let _this = this;
+    if (app.globalData.checkOpenId()) {
+      // 好友关系绑定
+      // --
+      // ----------
+
+      _.findNumber({
+        openid: wx.getStorageSync('openid')
+      }, {
+        success: function(res) {
+          res = res.data
+          if (res.data.telephone) {
+            _this.setData({
+              showModal: false
+            });
+            wx.setStorageSync('phoneNumber', res.data.telephone);
+          } else {
+            _this.setData({
+              showModal: true
+            })
+            return
+          }
+        }
+      });
+      _.getSwiper({
+        currPage: '1',
+        pageSize: '1'
+      }, {
+        success: function(res) {
+          res = res.data
+          _this.setData({
+            imgUrls: res.data.list
+          })
+        }
+      });
+      _.getServiceList({}, {
+        success: function(res) {
+          res = res.data
+          _this.setData({
+            serviceList: res.data.list
+          })
+        }
+      });
     }
-    // ------------------------------
-    // -   首页取消订单列表相关逻辑     -
-    // ------------------------------
-    // this.setData({
-    //   orderList: []
+    // let _this = this
+    // let openid = wx.getStorageSync('openid')
+    // if (!openid) {
+    //   wx.navigateTo({
+    //     url: '/pages/loginGuide/loginGuide'
+    //   })
+    //   return
+    // } else {
+    //   let phoneNumber = wx.getStorageSync('phoneNumber')
+    //   if (phoneNumber && phoneNumber !== '') {
+    //     _this.setData({
+    //       showModal: false
+    //     })
+    //   } else {
+    //     _this.setData({
+    //       showModal: true
+    //     })
+    //     // -----------------------------------
+    //     // -   取消获取微信绑定手机号相关逻辑     -
+    //     // -----------------------------------
+    //     _.findNumber({
+    //       openid: wx.getStorageSync('openid')
+    //     }, {
+    //       success: function(res) {
+    //         res = res.data
+    //         if (res.data.telephone) {
+    //           _this.setData({
+    //             showModal: false
+    //           })
+    //         } else {
+    //           _this.setData({
+    //             showModal: true
+    //           })
+    //           return
+    //         }
+    //       }
+    //     })
+    //   }
+    // }
+    // // ------------------------------
+    // // -   首页取消订单列表相关逻辑     -
+    // // ------------------------------
+    // // this.setData({
+    // //   orderList: []
+    // // })
+    // _.getSwiper({
+    //   currPage: '1',
+    //   pageSize: '1'
+    // }, {
+    //   success: function(res) {
+    //     res = res.data
+    //     _this.setData({
+    //       imgUrls: res.data.list
+    //     })
+    //   }
     // })
-    _.getSwiper({
-      currPage: '1',
-      pageSize: '1'
-    }, {
-      success: function(res) {
-        res = res.data
-        _this.setData({
-          imgUrls: res.data.list
-        })
-      }
-    })
-    _.getServiceList({}, {
-      success: function(res) {
-        res = res.data
-        _this.setData({
-          serviceList: res.data.list
-        })
-      }
-    })
+    // _.getServiceList({}, {
+    //   success: function(res) {
+    //     res = res.data
+    //     _this.setData({
+    //       serviceList: res.data.list
+    //     })
+    //   }
+    // })
     // ------------------------------
     // -   首页取消订单列表相关逻辑     -
     // ------------------------------
@@ -153,12 +197,6 @@ Page({
         content: '请输入正确的手机号',
         showCancel: false
       })
-    } else if (parseInt(this.data.pickerIndex) === 0) {
-      wx.showModal({
-        title: '温馨提示',
-        content: '请选择角色',
-        showCancel: false
-      })
     } else {
       _.sendUserInfo({
         openId: wx.getStorageSync('openid'),
@@ -176,7 +214,14 @@ Page({
           }
         }
       })
-    }
+    } 
+    // else if (parseInt(this.data.pickerIndex) === 0) {
+    //   wx.showModal({
+    //     title: '温馨提示',
+    //     content: '请选择角色',
+    //     showCancel: false
+    //   })
+    // }
   },
 
   bindNumberInput (e) {
