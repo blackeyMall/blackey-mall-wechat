@@ -30,10 +30,16 @@
     </view>
 
     <view class="info-list">
-        <view class="item">
-            <view class="title">城市</view>
+        <view class="item" bind:tap="bindRedirectMyComment">
+            <view class="title">我的评论</view>
             <view class="content">
-                {{city}}
+                <view class="iconfont icon-arrow-right"></view>
+            </view>
+        </view>
+        <view class="item" bind:tap="bindRedirectMyPoints">
+            <view class="title">积分记录</view>
+            <view class="content">
+                <view class="iconfont icon-arrow-right"></view>
             </view>
         </view>
         <view class="item">

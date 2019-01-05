@@ -4,8 +4,8 @@ App({
     
   },
   globalData: {
-    // server: 'https://www.ssqushe.com',
-    server: 'http://127.0.0.1:1099',
+    server: 'https://www.ssqushe.com',
+    // server: 'http://127.0.0.1:1099',
     checkOpenId () {
       let openid = wx.getStorageSync('openid')
       if (!openid) {

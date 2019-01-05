@@ -49,3 +49,16 @@
   margin-bottom: 20rpx;
   font-size: 60rpx;
 }
+.btn-list {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.btn-list .btn {
+  flex: 1;
+  margin: 0 10rpx 40rpx;
+}
+.btn-list .btn.disabled {
+  opacity: .3;
+}

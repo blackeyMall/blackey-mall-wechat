@@ -41,5 +41,16 @@ Page({
         })
       }
     })
+  },
+  bindRedirectMyComment () {
+    wx.navigateTo({
+      url: '/pages/mycomment/mycomment'
+    });
+  },
+
+  bindRedirectMyPoints () {
+    wx.navigateTo({
+      url: '/pages/myPoints/myPoints'
+    });
   }
 })

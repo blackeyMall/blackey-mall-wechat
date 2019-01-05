@@ -7,7 +7,52 @@ Page({
         picUrl: '',
         pics: [],
         des: '',
-        autoFocus: true
+        attitudeStarList: [
+            {
+                active: false,
+                index: 0
+            },
+            {
+                active: false,
+                index: 1
+            },
+            {
+                active: false,
+                index: 2
+            },
+            {
+                active: false,
+                index: 3
+            },
+            {
+                active: false,
+                index: 4
+            }
+        ],
+        speedStarList: [
+            {
+                active: false,
+                index: 0
+            },
+            {
+                active: false,
+                index: 1
+            },
+            {
+                active: false,
+                index: 2
+            },
+            {
+                active: false,
+                index: 3
+            },
+            {
+                active: false,
+                index: 4
+            }
+        ],
+        serviceStatus: 0,
+        responseSpeed: 0
     },
     onLoad: function(options) {
         // 生命周期函数--监听页面加载
@@ -24,8 +69,38 @@ Page({
         })
     },
     onFeedBack () {
-        let _this = this
-        if (this.data.des !== '') {
+        let _this = this;
+        if (this.data.des === '') {
+            wx.showToast({
+                title: '请输入描述内容！',
+                icon: 'none'
+            });
+            return;
+        };
+        if (parseInt(this.data.orderInfo.type) === 1) {
+            ajax.POST('/artisan/comment/save', {
+                comment: _this.data.des,
+                serviceStatus: _this.data.serviceStatus,
+                responseSpeed: _this.data.responseSpeed,
+                picUrl: _this.data.pics,
+                serviceId: _this.data.orderInfo.id
+            }, {
+                success: function(res) {
+                    res = res.data
+                    if (res.code === 200) {
+                        wx.showToast({
+                            title: '评价成功！',
+                            icon: 'none'
+                        });
+                        setTimeout(() => {
+                            wx.navigateBack({
+                                delta: 1
+                            });
+                        }, 1000);
+                    }
+                }
+            });
+        } else {
             ajax.POST('/artisan/feedback/save', {
                 openId: wx.getStorageSync('openid'),
                 content: _this.data.des,
@@ -49,16 +124,10 @@ Page({
                     }
                 }
             })
-        } else {
-            wx.showModal({
-                title: '温馨提示',
-                content: '问题描述不能为空！',
-                showCancel: false
-            })
-        }
+        };
     },
     bindChooseImage () {
-        let _this = this
+        let _this = this;
         wx.chooseImage({
             count: 1, // 最多可以选择的图片张数，默认9
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -79,5 +148,31 @@ Page({
                 console.log(err)
             },
         })
+    },
+    bindAttitudeStarClick (e) {
+        let index = e.currentTarget.dataset.index;
+        let attitudeStarList = this.data.attitudeStarList;
+        this.setData({
+            serviceStatus: index,
+        });
+        attitudeStarList.forEach(el => {
+            el.index <= index ? el.active = true : el.active = false;
+        });
+        this.setData({
+            attitudeStarList
+        });
+    },
+    bindSpeedStarClick (e) {
+        let index = e.currentTarget.dataset.index;
+        let speedStarList = this.data.speedStarList;
+        this.setData({
+            responseSpeed: index
+        });
+        speedStarList.forEach(el => {
+            el.index <= index ? el.active = true : el.active = false;
+        });
+        this.setData({
+            speedStarList
+        });
     }
 });

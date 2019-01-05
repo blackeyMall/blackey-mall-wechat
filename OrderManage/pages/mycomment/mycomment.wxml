@@ -1,0 +1,30 @@
+<view class="my-comment">
+    <view class="title-page">
+        <view class="div">我的评论</view>
+    </view>
+    <view class="comment-list">
+        <div class="item" wx:for="{{commentList}}">
+            <view class="comment-info">
+                <image mode="widthFix" src="{{item.picUrl}}" class="avatar" />
+                <view class="comment-title">{{item.name}}</view>
+            </view>
+            <view class="content">
+                <view class="div">
+                    <view class="text">服务态度：</view>
+                    <view class="icon-star active" wx:for="{{item.attitudeStarList}}"></view>
+                </view>
+                <view class="div">
+                    <view class="text">响应速度：</view>
+                    <view class="icon-star active" wx:for="{{item.speedStarList}}"></view>
+                </view>
+                <view class="div align-start">
+                    <view class="text">响应内容：</view>
+                    <view class="content">{{item.comment}}</view>
+                </view>
+                <view class="img-list">
+                    <image class="img" mode="aspectFill" src="{{item}}" wx:for="{{item.picUrls}}" />
+                </view>
+            </view>
+        </div>
+    </view>
+</view>

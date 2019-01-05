@@ -1,0 +1,24 @@
+page {
+    background-color: #f8f8f8;
+}
+.points-list {
+    line-height: 50rpx;
+    padding-left: 60rpx;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+.points-list .item {
+    position: relative;
+    padding: 20rpx 30rpx 20rpx 0;
+    border-bottom: 2rpx solid #f3f3f3;
+}
+.points-list .item::before {
+    position: absolute;
+    top: 40rpx;
+    left: -30rpx;
+    width: 10rpx;
+    height: 10rpx;
+    background-color: #4454cd;
+    border-radius: 50%;
+    content: ' ';
+}
