@@ -21,11 +21,11 @@
         </view>
         <view class="count">
             <view class="title">金币</view>
-            <view class="content">111</view>
+            <view class="content">{{myScore}}</view>
         </view>
         <view class="amount">
             <view class="title">银币</view>
-            <view class="content">222</view>
+            <view class="content">{{friendScore}}</view>
         </view>
     </view>
 

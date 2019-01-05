@@ -22,21 +22,36 @@ Page({
     showModal: false,
     telNum: '',
     serviceList: [],
+    pOpenid:'',
     pickerIndex: 0,
     pickerArray: ['请选择', '水电', '瓦工', '木工', '保洁']
   },
-  onShow () {
+  onLoad(options) {
+    let _this = this;
+    _this.pOpenid = options.pOpenid
+  },
+  onShow() {
     let _this = this;
     if (app.globalData.checkOpenId()) {
+      let openid = wx.getStorageSync('openid')
       // 好友关系绑定
-      // --
+      _.bindRelation({
+        openid: openid,
+        parentOpenid: _this.pOpenid
+      },{
+        success:function(res){
+          console.log(res);
+        }
+      }),
       // ----------
 
       _.findNumber({
-        openid: wx.getStorageSync('openid')
+        openid: openid
       }, {
         success: function(res) {
-          res = res.data
+          res = res.data;
+          wx.setStorageSync('myScore', res.data.myScore);
+          wx.setStorageSync('friendScore', res.data.friendScore);
           if (res.data.telephone) {
             _this.setData({
               showModal: false
@@ -273,5 +288,8 @@ let _ = {
   },
   getServiceList: (data, handler) => {
     ajax.GET('/artisan/project/list/page', data, handler)
+  },
+  bindRelation: (data, handler) =>{
+    ajax.POST('/artisan/sharerelation/save',data,handler)
   }
 }

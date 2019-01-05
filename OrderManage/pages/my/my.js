@@ -11,7 +11,9 @@ Page({
     orderCount: 0,
     orderSum: 0,
     city: '',
-    nickName: ''
+    nickName: '',
+    myScore: -1,
+    friendScore: -1,
   },
 
   /**
@@ -20,9 +22,12 @@ Page({
   onShow: function () {
     // app.globalData.checkSession()
     app.globalData.checkOpenId()
+
     this.setData({
       city: wx.getStorageSync('userInfo').city,
-      nickName: wx.getStorageSync('userInfo').nickName
+      nickName: wx.getStorageSync('userInfo').nickName,
+      myScore: wx.getStorageSync('myScore'),
+      friendScore: wx.getStorageSync('friendScore'),
     })
     let _this = this
     ajax.GET('/artisan/order/user', {
