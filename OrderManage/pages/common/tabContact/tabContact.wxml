@@ -1,0 +1,3 @@
+<view class="contact" hover-class="active" bindtap="onMakePhoneCall">
+    <i class="iconfont icon-dianhua"></i>
+</view>

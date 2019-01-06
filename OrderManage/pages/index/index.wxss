@@ -97,7 +97,7 @@
   align-items: center;
   margin-left: -16rpx;
   margin-right: -16rpx;
-  margin-top: 30rpx;
+  margin-top: 10rpx;
 }
 .service-list .item {
   flex: 0 0 33.33333%;
@@ -159,4 +159,7 @@
 }
 .service-list .item:nth-child(8) .text {
   border-color: #f15aa0;
+}
+.contact {
+  bottom: 20rpx;
 }

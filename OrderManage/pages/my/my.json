@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "contact": "../common/cantact/contact"
+        "contact": "../common/cantact/contact",
+        "tabcontact": "../common/tabContact/tabContact"
     }
 }

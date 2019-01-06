@@ -11,9 +11,9 @@
     </swiper>
     <view class="div">
         <view class="title-channel">
-            <!-- <view class="icon"></view> -->
+            <view class="icon"></view>
             <view class="text">服务项目</view>
-            <!-- <view class="icon icon-right"></view> -->
+            <view class="icon icon-right"></view>
             <!-- <view class="title-main"> -->
                 <!-- <view class="div"> -->
                     <!-- <i class="iconfont icon-service"></i> -->
@@ -62,4 +62,4 @@
         </view>
     </view>
 </view>
-<contact></contact>
+<tabcontact></tabcontact>

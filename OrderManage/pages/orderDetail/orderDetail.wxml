@@ -23,7 +23,7 @@
     </view>
 </view>
 <view class="btn-list">
-    <view class="btn" wx:if="{{orderInfo.statusname === '已完成'}}" data-type="1" data-id="{{orderInfo.id}}" data-statusname="{{orderInfo.statusname}}" data-url="{{orderInfo.url}}" bindtap="onFeedBack">评论</view>
+    <view class="btn {{orderInfo.type === 0 ? 'disabled' : ''}}" wx:if="{{orderInfo.statusname === '已完成'}}" data-type="{{orderInfo.type}}" data-id="{{orderInfo.id}}" data-statusname="{{orderInfo.statusname}}" data-url="{{orderInfo.url}}" bindtap="onFeedBack">{{orderInfo.type === 0 ? '已评论' : '评论'}}</view>
     <view class="btn" data-id="{{orderInfo.id}}" data-type="2" data-statusname="{{orderInfo.statusname}}" data-url="{{orderInfo.url}}" bindtap="onFeedBack">{{orderInfo.statusname ===
     '服务中' ? '实时反馈' : '申请售后'}}</view>
 </view>

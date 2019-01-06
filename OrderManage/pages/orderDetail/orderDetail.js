@@ -23,6 +23,13 @@ Page({
     },
     // 跳转服务反馈页
     onFeedBack (e) {
+        if (!e.currentTarget.dataset.type && this.data.orderInfo.statusname === '已完成') {
+            wx.showToast({
+                title: '订单已评论，请在我的评论列表查看！',
+                icon: 'none'
+            });
+            return;
+        }
         wx.navigateTo({
           url: `/pages/feedback/feedback?orderInfo=${encodeURIComponent(JSON.stringify(e.currentTarget.dataset))}`
         })

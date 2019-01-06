@@ -3,7 +3,7 @@
         <!-- <view class="item" wx:for="{{pointsList}}">
             {{item.notifyContent}}
         </view> -->
-        <view class="item">
+        <!-- <view class="item">
             您的好友已完成了一笔价格为100元的订单，订单号：null,本次订单您获得了100个银币！
         </view>
         <view class="item">
@@ -47,6 +47,7 @@
         </view>
         <view class="item">
             您的好友已完成了一笔价格为100元的订单，订单号：null,本次订单您获得了100个银币！
-        </view>
+        </view> -->
     </view>
 </view>
+<contact></contact>

@@ -38,11 +38,13 @@ page {
     &-channel {
         display: flex;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
         // border-bottom: 2rpx solid #eee;
         width: 100%;
         line-height: 1;
         margin: 60rpx 0 0;
+        padding-bottom: 30rpx;
+        border-bottom: 2rpx solid #ddd;
         font-weight: 700;
         font-size: 40rpx;
         color: #4454cd;
@@ -50,19 +52,19 @@ page {
         // background-repeat: no-repeat, no-repeat;
         // background-position: left top, right top;
         // background-image: url(http://127.0.0.1:5500/lib/images/title-left.png), url(http://127.0.0.1:5500/lib/images/title-right.png);
-        // .icon {
-        //     width: 60rpx;
-        //     height: 40rpx;
-        //     margin: 0 20rpx;
-        //     background: url(http://127.0.0.1:5500/lib/images/title-left.png) center center no-repeat;
-        //     background-size: auto 100%;
-        // }
-        // .icon-right {
-        //     width: 60rpx;
-        //     height: 40rpx;
-        //     background: url(http://127.0.0.1:5500/lib/images/title-right.png) center center no-repeat;
-        //     background-size: auto 100%;
-        // }
+        .icon {
+            width: 30rpx;
+            height: 30rpx;
+            margin: 0 20rpx;
+            background: url(http://127.0.0.1:5500/lib/images/title-left.png) center center no-repeat;
+            background-size: auto 100%;
+        }
+        .icon-right {
+            width: 30rpx;
+            height: 30rpx;
+            background: url(http://127.0.0.1:5500/lib/images/title-right.png) center center no-repeat;
+            background-size: auto 100%;
+        }
     }
     &-main {
         font-weight: 700;
