@@ -3,7 +3,7 @@
         <!-- <view wx:if="{{orderInfo.statusname === '服务中'}}">实时反馈</view>
         <view wx:elif="{{orderInfo.statusname === '已完成'}}">评论</view>
         <view wx:else>申请售后</view> -->
-        <view wx:if="{{orderInfo.type === '1'}}">评论</view>
+        <view wx:if="{{orderInfo.type === 1}}">评论</view>
         <view wx:else>{{orderInfo.statusname === '服务中' ? '实时反馈' : '申请售后'}}</view>
         <view class="label label-primary">{{orderInfo.statusname}}</view>
     </view>

@@ -26,7 +26,7 @@ Page({
     onGetPointsList (page, isHideLoading) {
         let _this = this;
         ajax.GET('/artisan/notifyrecord/list/page', {
-            openid: wx.getStorageSync('openid'),
+            openId: wx.getStorageSync('openid'),
             size: this.data.size,
             current: page
         }, {
