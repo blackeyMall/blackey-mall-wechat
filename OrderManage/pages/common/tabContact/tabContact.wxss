@@ -121,13 +121,13 @@ page {
   width: 30rpx;
   height: 30rpx;
   margin: 0 20rpx;
-  background: url(http://127.0.0.1:5500/lib/images/title-left.png) center center no-repeat;
+  background: url(https://www.ssqushe.com/img/artisanImg/title-left.png) center center no-repeat;
   background-size: auto 100%;
 }
 .title-channel .icon-right {
   width: 30rpx;
   height: 30rpx;
-  background: url(http://127.0.0.1:5500/lib/images/title-right.png) center center no-repeat;
+  background: url(https://www.ssqushe.com/img/artisanImg/title-right.png) center center no-repeat;
   background-size: auto 100%;
 }
 .title-main {
