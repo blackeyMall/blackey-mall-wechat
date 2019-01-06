@@ -57,7 +57,7 @@
   background-size: 100% auto;
 }
 .icon-star.active {
-  background-image: url(https://www.ssqushe.com/img/artisanImg/icon-star-active.png);
+  background-image: url("https://www.ssqushe.com/img/artisanImg/icon-star-active.png");
 }
 .btn {
   width: 60%;
