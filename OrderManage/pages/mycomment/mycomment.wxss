@@ -5,11 +5,11 @@ page {
     display: block;
     width: 30rpx;
     height: 30rpx;
-    background: url(http://127.0.0.1:5500/lib/images/icon-star.png) center center no-repeat;
+    background: url(https://www.ssqushe.com/img/artisanImg/icon-star.png) center center no-repeat;
     background-size: 100% auto;
 }
 .icon-star.active {
-    background-image: url(http://127.0.0.1:5500/lib/images/icon-star-active.png);
+    background-image: url(https://www.ssqushe.com/img/artisanImg/icon-star-active.png);
 }
 .title-page {
     position: fixed;
