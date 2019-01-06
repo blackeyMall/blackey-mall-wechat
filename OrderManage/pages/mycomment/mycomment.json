@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "contact": "../common/cantact/contact"
+  }
 }

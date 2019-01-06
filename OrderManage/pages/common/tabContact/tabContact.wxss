@@ -199,3 +199,29 @@ page {
   text-align: center;
   box-sizing: border-box;
 }
+.contact {
+  position: fixed;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  background-image: linear-gradient(to right bottom, #abb0d4, #6674e0);
+  box-shadow: 0 0 16rpx rgba(147, 166, 179, 0.3);
+  color: #fff;
+  border-radius: 50%;
+  transition: all .1s;
+  opacity: .5;
+  z-index: 10;
+}
+.contact:active {
+  background-image: linear-gradient(to right bottom, #8d96d6, #3e51dd);
+  opacity: 1;
+}
+.contact .iconfont {
+  display: block;
+  line-height: 1;
+  font-size: 40rpx;
+}

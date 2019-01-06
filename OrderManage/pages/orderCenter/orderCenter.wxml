@@ -11,4 +11,4 @@
         <orders order-list="{{orderList}}"></orders>
     </view>
 </view>
-<contact></contact>
+<tabcontact></tabcontact>
