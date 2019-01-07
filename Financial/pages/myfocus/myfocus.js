@@ -380,5 +380,11 @@ Page({
         wx.previewImage({
             urls: imgList
         });
+    },
+
+    bindRedirectUserCard (e) {
+        wx.navigateTo({
+            url: '/pages/userCard/userCard?openId=' + e.currentTarget.dataset.openid
+        })
     }
 })

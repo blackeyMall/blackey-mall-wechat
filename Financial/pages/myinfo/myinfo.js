@@ -111,5 +111,11 @@ Page({
         wx.previewImage({
             urls: imgList
         });
+    },
+
+    bindReleaseInfo () {
+        wx.navigateTo({
+            url: '/pages/releaseInfo/releaseInfo'
+        });
     }
 })

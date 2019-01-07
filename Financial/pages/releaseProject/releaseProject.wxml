@@ -69,15 +69,15 @@
                 </view>
                 <view class="release-option-item">
                     <view class="release-option-title">融资领域：</view>
-                    <!-- <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
-                    <view class="iconfont icon-edit"></view> -->
-                    <picker class="release-picker {{domainIndex === 0 ? 'placeholder' : ''}}" bindchange="bindDomainPickerChange" value="{{domainIndex}}" range="{{domainArray}}">
+                    <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
+                    <view class="iconfont icon-edit"></view>
+                    <!-- <picker class="release-picker {{domainIndex === 0 ? 'placeholder' : ''}}" bindchange="bindDomainPickerChange" value="{{domainIndex}}" range="{{domainArray}}">
                         <view class="picker">{{domainArray[domainIndex]}}</view>
                     </picker>
-                    <view class="iconfont icon-open-right"></view>
+                    <view class="iconfont icon-open-right"></view> -->
                 </view>
                 <view class="release-option-item">
-                    <view class="release-option-title">融资城市：</view>
+                    <view class="release-option-title">所在城市：</view>
                     <picker class="release-picker {{cityIndex === 0 ? 'placeholder' : ''}}" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
                         <view class="picker">{{cityArray[cityIndex]}}</view>
                     </picker>

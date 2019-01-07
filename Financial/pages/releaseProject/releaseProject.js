@@ -35,8 +35,9 @@ Page({
         cityIndex: 0,
         financeRoundArray: ['请选择', '未知','未融资','种子轮','天使轮','Pre-A轮','A轮','A+轮','Pre-B轮','B轮','B+轮','C轮','C+轮','D轮','E轮及以后','新四板','新三板','Pre-IPO','并购','上市','战略投资','上市后','定增'],
         financeRound: 0,
-        domainArray: ['请选择', '机器人','环保','化工','地产建筑','人工智能','医疗健康','硬件','能源矿产','汽车交通','教育','金融','电商','房产家居','光电','旅游','物流','企业服务','无人机','生产执照','农业','VR','工具','消费生活','文娱传媒','社交','材料','公共事业','体育'],
-        domainIndex: 0,
+        // domainArray: ['请选择', '机器人','环保','化工','地产建筑','人工智能','医疗健康','硬件','能源矿产','汽车交通','教育','金融','电商','房产家居','光电','旅游','物流','企业服务','无人机','生产执照','农业','VR','工具','消费生活','文娱传媒','社交','材料','公共事业','体育'],
+        // domainIndex: 0,
+        projectDomain: '',
         openId: '',
         name: '',
         brief: '',
@@ -55,6 +56,12 @@ Page({
     bindCityPickerChange (e) {
         this.setData({
             cityIndex: parseInt(e.detail.value)
+        })
+    },
+
+    bindChangeDomain (e) {
+        this.setData({
+            projectDomain: parseInt(e.detail.value)
         })
     },
 
@@ -257,7 +264,8 @@ Page({
         data.logo = this.data.logo;
         data.financeAmount = this.data.financeAmount;
         data.financeRound = this.data.financeRoundArray[this.data.financeRound];
-        data.projectDomain = this.data.domainArray[this.data.domainIndex];
+        // data.projectDomain = this.data.domainArray[this.data.domainIndex];projectDomain
+        data.projectDomain = this.data.projectDomain;
         data.city = this.data.cityArray[this.data.cityIndex];
         data.projectDesc = this.data.projectDesc;
         _.releaseProject(data, {

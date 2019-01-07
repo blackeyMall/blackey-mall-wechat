@@ -1,0 +1,16 @@
+<view class="padding-bottom-108">
+    <view class="release-group">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-edit"></view>
+                    <view class="text">需求</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item h-310 relative">
+            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请填写您的反馈信息！" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput"></textarea>
+        </view> 
+    </view>
+</view>
+<view class="btn-primary fixed-bottom" bind:tap="bindFeedback">反馈</view>

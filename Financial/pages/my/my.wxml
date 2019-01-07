@@ -28,7 +28,7 @@
                 <view class="text">我的需求</view>
                 <view class="iconfont icon-open"></view>
             </view>
-            <view class="item">
+            <view class="item" bind:tap="bindFeedback">
                 <view class="iconfont icon-kefu"></view>
                 <view class="text">建议反馈</view>
                 <view class="iconfont icon-open"></view>

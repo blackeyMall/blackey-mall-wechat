@@ -1,5 +1,12 @@
-// pages/my/my.js
+// pages/releaseInfo/releaseInfo.js
+import ajax from "../../utils/ajax";
+
 let app = getApp();
+let _ = {
+    feedback: (data, handler) => {
+        ajax.post("/", data, handler);
+    },
+};
 
 Page({
 
@@ -7,7 +14,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: []
+        content: ''
     },
 
     /**
@@ -28,9 +35,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.setData({
-            userInfo: wx.getStorageSync('userInfo')
-        });
+        // 检测登录
+        app.globalData.checkLoginStatus();
     },
 
     /**
@@ -68,27 +74,21 @@ Page({
 
     },
 
-    bindMyFocus () {
-        wx.navigateTo({
-            url: '/pages/myfocus/myfocus'
+    bindTextareaInput (e) {
+        this.setData({
+            content: e.detail.value
         })
     },
 
-    bindMyProject () {
-        wx.navigateTo({
-            url: '/pages/myproject/myproject'
-        });
-    },
-
-    bindMyInfo () {
-        wx.navigateTo({
-            url: '/pages/myinfo/myinfo'
-        });
-    },
-
     bindFeedback () {
-        wx.navigateTo({
-            url: '/pages/feedback/feedback'
+        wx.showToast({
+            title: '反馈成功！',
+            icon: 'none'
         });
+        setTimeout(() => {
+            wx.navigateBack({
+                delta: 1
+            });
+        }, 1500);
     }
 })

@@ -9,7 +9,7 @@
             <view class="panel" wx:if="{{userInfoList.length !== 0}}">
                 <view class="people-list">
                     <view class="item" wx:for="{{userInfoList}}">
-                        <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                        <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                         <view class="info">
                             <view class="text name">
                                 <view>{{item.name}}</view>
@@ -23,9 +23,9 @@
             </view>
         </block>
         <block wx:elif="{{activeNavSub === 2}}">
-            <view class="project-list" wx:if="{{infoList.length !== 0}}">
+            <view class="project-list info" wx:if="{{infoList.length !== 0}}">
                 <view class="item" wx:for="{{infoList}}" data-id="item.id">
-                    <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                    <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                     <view class="div">
                         <view class="header">
                             <view class="header-item">
@@ -64,7 +64,7 @@
         <block wx:elif="{{activeNavSub === 3}}">
             <view class="project-list">
                 <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
-                    <image mode="widthFix" src="{{item.logo}}" class="avatar" />
+                    <image mode="widthFix" src="{{item.logo}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                     <view class="div">
                         <view class="header">
                             <view class="header-item header-item2">

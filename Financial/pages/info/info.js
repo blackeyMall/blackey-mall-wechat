@@ -265,5 +265,18 @@ Page({
         wx.previewImage({
             urls: imgList
         });
+    },
+
+    bindRedirectUserCard (e) {
+        let openId = e.currentTarget.dataset.openid;
+        openId === this.data.openId
+        ?
+        wx.switchTab({
+            url: '/pages/my/my'
+        })
+        :
+        wx.navigateTo({
+            url: '/pages/userCard/userCard?openId=' + e.currentTarget.dataset.openid
+        })
     }
 })

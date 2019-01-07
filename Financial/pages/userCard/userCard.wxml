@@ -75,7 +75,7 @@
 </view>
     <view class="nav-content">
         <block wx:if="{{activeNav === 1}}">
-            <view class="project-list" wx:if="{{infoList.length !== 0}}">
+            <view class="project-list info" wx:if="{{infoList.length !== 0}}">
                 <view class="item" wx:for="{{infoList}}">
                     <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                     <view class="div">

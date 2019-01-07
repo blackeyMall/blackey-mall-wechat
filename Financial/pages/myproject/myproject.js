@@ -121,5 +121,11 @@ Page({
                 }
             }
         })
+    },
+
+    bindReleaseProject () {
+        wx.navigateTo({
+            url: '/pages/releaseProject/releaseProject'
+        });
     }
 })

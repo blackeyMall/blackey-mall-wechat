@@ -20,47 +20,47 @@
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>姓名:</view>
-            <input type="text" id="name" class="text" value="{{name}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindNameInput" />
+            <input cursor-spacing="22rpx" type="text" id="name" class="text" value="{{name}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindNameInput" />
             <view class="iconfont icon-nickname"></view>
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>职务:</view>
-            <input type="text" class="text" value="{{duties}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindDutiesInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{duties}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindDutiesInput" />
             <view class="iconfont icon-position"></view>
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>手机:</view>
-            <input type="number" class="text" value="{{telephone}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindTelInput" />
+            <input cursor-spacing="22rpx" type="number" class="text" value="{{telephone}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindTelInput" />
             <view class="iconfont icon-tel"></view>
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>微信号:</view>
-            <input type="text" class="text" value="{{wechatNo}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWechatNoInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{wechatNo}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWechatNoInput" />
             <view class="iconfont icon-weixin"></view>
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>公司简称:</view>
-            <input type="text" class="text" value="{{companyBrief}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindBriefInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{companyBrief}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindBriefInput" />
             <view class="iconfont icon-company"></view>
         </view>
         <view class="item">
             <view class="name"><text class="text-danger">*</text>邮箱:</view>
-            <input type="text" class="text" value="{{email}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindEmailInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{email}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindEmailInput" />
             <view class="iconfont icon-email"></view>
         </view>
         <view class="item">
             <view class="name">公司名称:</view>
-            <input type="text" class="text" value="{{company}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindCompanyInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{company}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindCompanyInput" />
             <view class="iconfont icon-company"></view>
         </view>
         <view class="item">
             <view class="name">公司网站:</view>
-            <input type="text" class="text" value="{{companyWebsite}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWebsiteInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{companyWebsite}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindWebsiteInput" />
             <view class="iconfont icon-url"></view>
         </view>
         <view class="item">
             <view class="name">公司地址:</view>
-            <input type="text" class="text" value="{{companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindAddressInput" />
+            <input cursor-spacing="22rpx" type="text" class="text" value="{{companyAddress}}" placeholder="请输入" placeholder-class="input-placeholder" bindinput="bindAddressInput" />
             <view class="iconfont icon-address"></view>
         </view>
         <!-- <view class="item item-title">

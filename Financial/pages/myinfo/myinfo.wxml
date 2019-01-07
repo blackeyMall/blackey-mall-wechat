@@ -1,6 +1,6 @@
-<view class="project">
-    <view class="nav-content">
-        <view class="project-list" wx:if="{{infoList.length !== 0}}">
+<view class="project {{infoList.length === 0 ? 'empty' : ''}}">
+    <view class="nav-content" wx:if="{{infoList.length !== 0}}">
+        <view class="project-list info" wx:if="{{infoList.length !== 0}}">
             <view class="item" wx:for="{{infoList}}" data-id="item.id">
                 <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                 <view class="div">
@@ -37,5 +37,10 @@
                 </view>
             </view>
         </view>
+    </view>
+    <view class="empty-content" wx:else>
+        <view class="iconfont icon-empty"></view>
+        <view class="p">发布您的需求，客户会主动联系您！</view>
+        <view class="btn-primary" bind:tap="bindReleaseInfo">我要发需求</view>
     </view>
 </view>

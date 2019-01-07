@@ -20,9 +20,9 @@
         </view>
     </view>
     <view class="nav-content">
-        <view class="project-list" wx:if="{{infoList.length !== 0}}">
+        <view class="project-list info" wx:if="{{infoList.length !== 0}}">
             <view class="item" wx:for="{{infoList}}" data-id="item.id">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
                 <view class="div">
                     <view class="header">
                         <view class="header-item">
@@ -46,11 +46,11 @@
                     </view>
                     <view class="footer">
                         <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
-                            <view class="iconfont icon-zan"></view>
+                            <view class="iconfont {{item.isLike.value === 'ADD' ? 'icon-zan2' : 'icon-zan1'}}"></view>
                             <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
                         </view>
                         <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{item.openId !== openId}}">
-                            <view class="iconfont icon-focus"></view>
+                            <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
                             <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
                         </view>
                     </view>

@@ -21,18 +21,18 @@
             <view class="release-title">
                 <view class="item">
                     <view class="iconfont icon-content"></view>
-                    <view class="text">详情</view>
+                    <view class="text">需求</view>
                 </view>
             </view>
         </view>
         <view class="release-item h-310 relative">
-            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请输入信息正文！" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput" wx:if="{{isModalOpen === false}}"></textarea>
+            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请描述您的需求" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput" wx:if="{{isModalOpen === false}}"></textarea>
             <view class="textarea-tips">
                 字数限制： {{content.length}} / 200
             </view>
         </view> 
     </view>
-    <view class="release-group">
+    <view class="release-group" bind:tap="bindOpenModal">
         <view class="release-title-conteiner">
             <view class="release-title">
                 <view class="item">
@@ -48,16 +48,16 @@
         <view class="release-item">
             <view class="release-label-list">
                 <block wx:if="{{labelList.length !== 0}}">
-                    <view class="item" wx:for="{{labelList}}"  data-index="{{index}}" bind:tap="bindDeleteLabel">
+                    <view class="item" wx:for="{{labelList}}"  data-index="{{index}}" catch:tap="bindDeleteLabel">
                         <view class="text">{{item}}</view>
                         <view class="iconfont icon-add"></view>
                     </view>
                 </block>
-                <view class="empty" wx:else>暂无标签，请点击 '编辑' 按钮添加标签！</view>
+                <view class="empty" wx:else>暂无标签，请点击以添加标签！</view>
             </view>
         </view>
     </view>
-    <view class="release-group">
+    <view class="release-group" bind:tap="bindChooseImage">
         <view class="release-title-conteiner">
             <view class="release-title">
                 <view class="item">
@@ -77,7 +77,7 @@
                         <image mode="widthFix" src="{{item}}" />
                     </view>
                 </block>
-                <view class="empty" wx:else>暂无配图，请点击 '上传' 按钮添加配图！</view>
+                <view class="empty" wx:else>暂无配图，请点击以添加配图！</view>
             </view>
         </view>
     </view>
@@ -92,7 +92,7 @@
         </view>
         <view class="modal-body">
             <view class="add-label">
-                <input type="text" placeholder="标签长度限制4个字！" maxlength="4" class="input" value="{{labelInput}}" bindinput="bindLabelInput" />
+                <input type="text" placeholder="标签长度限制4个字！" maxlength="6" class="input" value="{{labelInput}}" bindinput="bindLabelInput" />
                 <view class="btn-primary" bind:tap="bindAddLabel">添加</view>
             </view>
             <view class="release-label-list" wx:if="{{labelList.length !== 0}}">
