@@ -9,11 +9,11 @@
 <view class="form">
     <view class="form-group">
         <label for="">姓名</label>
-        <input type="text" placeholder="请输入姓名" bindinput="bindNameChanged" />
+        <input type="text" cursor-spacing="20rpx" placeholder="请输入姓名" bindinput="bindNameChanged" />
     </view>
     <view class="form-group">
         <label class="" for="">电话</label>
-        <input class="" type="number" value="{{phoneNumber}}" placeholder="请输入电话" maxlength="11" bindinput="bindTelChanged" />
+        <input class="" cursor-spacing="20rpx" type="number" value="{{phoneNumber}}" placeholder="请输入电话" maxlength="11" bindinput="bindTelChanged" />
     </view>
     <view class="form-group">
         <label class="" for="">日期</label>
@@ -21,13 +21,14 @@
             {{date}}
         </picker>
     </view>
-    <view class="form-group">
+    <view class="form-group address">
         <label class="" for="">地址</label>
-        <input class="" type="text" placeholder="请输入地址" bindinput="bindAddressChanged" bindfocus="" bindblur="" />
+        <!-- <input class="" type="text" placeholder="请输入地址" bindinput="bindAddressChanged" bindfocus="" bindblur="" /> -->
+        <textarea class="" cursor-spacing="20rpx" placeholder="请输入地址" bindinput="bindAddressChanged"></textarea>
     </view>
     <view class="form-group remarks">
         <label class="" for="">备注</label>
-        <textarea class="" placeholder="请输入备注信息" bindinput="bindRemarkChanged"></textarea>
+        <textarea class="" cursor-spacing="20rpx" placeholder="请输入备注信息" bindinput="bindRemarkChanged"></textarea>
     </view>
 </view>
 <view class="btn btn-primary" bindtap="onCommitReservation">确定</view>

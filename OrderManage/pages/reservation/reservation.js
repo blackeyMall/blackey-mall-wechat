@@ -5,7 +5,7 @@ Page({
     data: {
         serviceItem: {},
         name: "",
-        tel: "",
+        // tel: "",
         date: new Date().toLocaleDateString(),
         address: "",
         remark: "",
@@ -37,7 +37,7 @@ Page({
     },
     bindTelChanged(e) {
         this.setData({
-            tel: e.detail.value
+            phoneNumber: e.detail.value
         });
     },
     bindDateChange(e) {
@@ -72,7 +72,7 @@ Page({
                         projectId: this.data.serviceItem.id,
                         openId: wx.getStorageSync("openid"),
                         name: this.data.name,
-                        telephone: this.data.tel,
+                        telephone: this.data.phoneNumber,
                         serviceTime: this.data.date,
                         address: this.data.address,
                         remark: this.data.remark

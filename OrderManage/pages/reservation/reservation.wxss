@@ -18,7 +18,7 @@ page {
 .form {
   flex: 1;
   width: 80%;
-  margin: 60rpx auto 0;
+  margin: 60rpx auto 40rpx;
 }
 .form-group {
   position: relative;
@@ -32,9 +32,13 @@ page {
 .form-group.active {
   box-shadow: 0 0 10rpx #4454cd;
 }
-.form-group.remarks {
+.form-group.remarks,
+.form-group.address {
   display: block;
   padding: 20rpx 0 10rpx;
+}
+.form-group.address textarea {
+  height: 100rpx;
 }
 .form-group textarea {
   width: 100%;
