@@ -4,12 +4,12 @@
             <view class="release-title">
                 <view class="item">
                     <view class="iconfont icon-edit"></view>
-                    <view class="text">需求</view>
+                    <view class="text">建议反馈</view>
                 </view>
             </view>
         </view>
         <view class="release-item h-310 relative">
-            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请填写您的反馈信息！" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput"></textarea>
+            <textarea maxlength="200" value="{{content}}" class="textarea" placeholder="请告诉我们您对系统的改进建议，我们将进行完善与改进，为您提供更好的服务！" placeholder-class="textarea-placeholder" bindinput="bindTextareaInput"></textarea>
         </view> 
     </view>
 </view>

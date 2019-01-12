@@ -1,4 +1,10 @@
 //app.js
+import GlobalConfig from './pages/config/index'
+
+const globalConfig = new GlobalConfig()
+
+globalConfig.init()
+
 App({
     onLaunch: function() {
         // 检测是否登录
@@ -18,6 +24,7 @@ App({
                 return false;
             };
             return true;
-        }
+        },
+        config: globalConfig
     }
 });

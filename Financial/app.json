@@ -1,19 +1,20 @@
 {
     "pages": [
+        "pages/releaseProject/releaseProject",
         "pages/card/card",
+        "pages/cardEdit/cardEdit",
+        "pages/project/project",
+        "pages/avatarCrop/avatarCrop",
+        "pages/userCard/userCard",
         "pages/feedback/feedback",
         "pages/my/my",
         "pages/myinfo/myinfo",
         "pages/myproject/myproject",
         "pages/info/info",
         "pages/releaseInfo/releaseInfo",
-        "pages/releaseProject/releaseProject",
         "pages/myfocus/myfocus",
-        "pages/project/project",
-        "pages/userCard/userCard",
         "pages/projectDetail/projectDetail",
-        "pages/login/login",
-        "pages/cardEdit/cardEdit"
+        "pages/login/login"
     ],
     "window": {
         "backgroundTextStyle": "light",

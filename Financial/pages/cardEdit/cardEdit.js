@@ -37,11 +37,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        console.log(options);
         let userInfo = wx.getStorageSync('userInfo');
         let {telephone, email, wechatNo, avatarUrl, company, duties, companyBrief, companyWebsite, companyAddress, visitingAcrd, isIdentity, name} = userInfo;
         this.setData({
             telephone, email, wechatNo, avatarUrl, company, duties, companyBrief, companyWebsite, companyAddress, visitingAcrd, isIdentity, name
-        })
+        });
+        if (options.cropUrl) {
+            this.onPostFile(options.cropUrl);
+        };
     },
 
     /**
@@ -186,23 +190,45 @@ Page({
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
             sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
             success: function(res){
-                _.postfile(res.tempFiles[0].path, "file", {
-                    success: function (res) {
-                        res = JSON.parse(res.data);
-                        if (res.code === 200) {
-                            let userInfo = wx.getStorageSync('userInfo');
-                            userInfo.avatarUrl = res.data;
-                            wx.setStorageSync(userInfo);
-                            _this.setData({
-                                avatarUrl: res.data
-                            });
-                        };
-                    }
+                const src = res.tempFiles[0].path;
+                wx.redirectTo({
+                    // url: '/pages/avatarCrop/avatarCrop?src=' + src,
+                    url: `/pages/avatarCrop/avatarCrop?target=cardEdit&src=${src}`
                 });
+                // _.postfile(res.tempFiles[0].path, "file", {
+                //     success: function (res) {
+                //         res = JSON.parse(res.data);
+                //         if (res.code === 200) {
+                //             let userInfo = wx.getStorageSync('userInfo');
+                //             userInfo.avatarUrl = res.data;
+                //             wx.setStorageSync(userInfo);
+                //             _this.setData({
+                //                 avatarUrl: res.data
+                //             });
+                //         };
+                //     }
+                // });
             },
             fail: function(err) {
                 console.log(err);
             },
         })
     },
+
+    onPostFile (url) {
+        let _this = this;
+        _.postfile(url, "file", {
+            success: function (res) {
+                res = JSON.parse(res.data);
+                if (res.code === 200) {
+                    let userInfo = wx.getStorageSync('userInfo');
+                    userInfo.avatarUrl = res.data;
+                    wx.setStorageSync('userInfo', userInfo);
+                    _this.setData({
+                        avatarUrl: res.data
+                    });
+                };
+            }
+        });
+    }
 })

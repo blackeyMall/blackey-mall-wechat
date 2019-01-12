@@ -30,7 +30,7 @@
                                 <view class="text">{{item.name}}</view>
                             </view>
                             <view class="label-list">
-                                <view class="label-item">{{item.attachment}}</view>
+                                <view class="label-item" wx:if="{{item.attachment !== ''}}">{{item.attachment}}</view>
                                 <view class="label-item">{{item.projectDomain}}</view>
                             </view>
                         </view>
@@ -65,5 +65,5 @@
 </view>
 
 <view class="btn-release" bind:tap="bindRedirect">
-    <view class="text">发布项目</view>
+    <view class="text">创建项目</view>
 </view>

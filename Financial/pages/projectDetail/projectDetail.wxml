@@ -34,6 +34,23 @@
         </view>
         <view class="detail-group">
             <view class="detail-title-container">
+                <view class="detail-title">BP</view>
+            </view>
+            <view class="detail-content">
+                <!-- <web-view src="{{item.attachment}}" wx:if="{{item.attachment !== null}}" /> -->
+                <view wx:if="{{projectDetail.attachment !== null}}" bind:tap="bindViewBP">
+                    <view class="iconfont icon-pdf"></view>
+                    <view class="text">{{projectDetail.name + '商业计划书'}} 点击查看</view>
+                </view>
+                <view wx:else class="empty">
+                    <view class="text">
+                        BP暂未上传，<text class="text-danger" bind:tap="bindSendBPLink">点击上传</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
                 <view class="detail-title">项目成员</view>
             </view>
             <view class="detail-content">
@@ -51,23 +68,6 @@
                 </view>
             </view>
         </view>
-        <view class="detail-group">
-            <view class="detail-title-container">
-                <view class="detail-title">BP</view>
-            </view>
-            <view class="detail-content">
-                <!-- <web-view src="{{item.attachment}}" wx:if="{{item.attachment !== null}}" /> -->
-                <view wx:if="{{projectDetail.attachment !== null}}" bind:tap="bindViewBP">
-                    <view class="iconfont icon-pdf"></view>
-                    <view class="text">{{projectDetail.name + '商业计划书'}} 点击查看</view>
-                </view>
-                <view wx:else class="empty">
-                    <view class="text">
-                        BP暂未上传，<text class="text-danger" bind:tap="bindSendBPLink">点击上传</text>
-                    </view>
-                </view>
-            </view>
-        </view>
     </view>
     <view class="btn-list" wx:if="{{projectDetail.openId !== openId}}">
         <view class="btn btn-default" bind:tap="bindMakePhoneCall">
@@ -75,7 +75,7 @@
             <view class="text">联系项目方</view>
         </view>
         <view class="btn btn-primary" bind:tap="bindFollow" data-id="{{projectDetail.id}}">
-            <view class="iconfont {{projectDetail.isFollow.value === 'ADD' ? 'icon-focus' : 'icon-add'}}"></view>
+            <view class="iconfont {{projectDetail.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-add'}}"></view>
             <view class="text">{{projectDetail.isFollow.value === 'ADD' ? '已关注' : '关注'}}</view>
         </view>
     </view>

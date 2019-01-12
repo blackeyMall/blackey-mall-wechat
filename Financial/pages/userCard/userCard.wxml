@@ -73,7 +73,7 @@
         </view>
     </view>
 </view>
-    <view class="nav-content">
+    <view class="nav-content padding-bottom-110">
         <block wx:if="{{activeNav === 1}}">
             <view class="project-list info" wx:if="{{infoList.length !== 0}}">
                 <view class="item" wx:for="{{infoList}}">
@@ -101,11 +101,11 @@
                         </view>
                         <view class="footer">
                             <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindInfoLike">
-                                <view class="iconfont icon-zan"></view>
+                                <view class="iconfont {{item.isLike.value === 'ADD' ? 'icon-zan2' : 'icon-zan1'}}"></view>
                                 <view class="text">点赞 {{item.likeNum}}</view>
                             </view>
                             <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindInfoFollow">
-                                <view class="iconfont icon-focus"></view>
+                                <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
                                 <view class="text">关注 {{item.followNum}}</view>
                             </view>
                         </view>
@@ -138,7 +138,7 @@
                                 <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
                             </view>
                             <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" catch:tap="bindProjectFollow" data-index="{{index}}" data-id="{{item.id}}">
-                                <view class="iconfont icon-focus"></view>
+                                <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
                                 <view class="text">关注 {{item.followNum}}</view>
                             </view>
                         </view>
@@ -146,4 +146,14 @@
                 </view>
             </view>
         </block>
+    </view>
+    <view class="btn-list" wx:if="{{projectDetail.openId !== openId}}">
+        <view class="btn btn-default {{(addStatus === 202 || addStatus === 203) ? 'disabled' : ''}}" bind:tap="bindAddFriend" wx:if="{{addStatus !== 201}}">
+            <view class="iconfont  {{(addStatus === 202 || addStatus === 203) ? 'icon-correct' : 'icon-add'}}"></view>
+            <view class="text">{{(addStatus === 202 || addStatus === 203) ? '已发送申请' : '加好友'}}</view>
+        </view>
+        <view class="btn btn-primary {{userInfo.telephone === '' ? 'disabled' : ''}}" bind:tap="bindMakePhoneCall" data-id="{{projectDetail.id}}">
+            <view class="iconfont icon-dianhua"></view>
+            <view class="text">打电话</view>
+        </view>
     </view>

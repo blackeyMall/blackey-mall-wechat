@@ -20,7 +20,13 @@ let _ = {
     },
     projectFollow: (data, handler) => {
         ajax.post("/finance/follow/project/save", data, handler);
-    }
+    },
+    addFriend: (data, handler) => {
+        ajax.post("/finance/userrelation/add", data, handler);
+    },
+    getAddStatus: (data, handler) => {
+        ajax.get("/finance/userrelation/query", data, handler);
+    },
 };
 
 Page({
@@ -48,7 +54,8 @@ Page({
         current: 1,
         total: 0,
         pages: '',
-        openId: ''
+        openId: '',
+        addStatus: 0,
     },
 
     bindChangeNav (e) {
@@ -73,6 +80,7 @@ Page({
         // this.setData({
         //     openId: options.openId
         // });
+        console.log(options);
         // 检测登录是否成功
         if (app.globalData.checkLoginStatus()) {
             // 清空数据
@@ -89,6 +97,8 @@ Page({
             this.onGetCardInfo();
             // 获取用户列表
             this.onGetList(1);
+            // 获取好友添加状态
+            this.ongGetAddStatus(options.openId);
         }
     },
 
@@ -96,7 +106,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        console.log(2);
     },
 
     /**
@@ -276,6 +285,24 @@ Page({
         };
     },
 
+    ongGetAddStatus (friendId) {
+        let openId = wx.getStorageSync('openId');
+        let _this = this;
+        _.getAddStatus({
+            openId,
+            friendId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code >= 200 && res.code <= 203) {
+                    _this.setData({
+                        addStatus: res.code
+                    });
+                }
+            }
+        })
+    },
+
     bindProjectFollow (e) {
         let index = e.currentTarget.dataset.index;
         let openId = wx.getStorageSync('openId');
@@ -360,5 +387,61 @@ Page({
         wx.previewImage({
             urls: imgList
         });
-    }
+    },
+
+    bindMakePhoneCall (e) {
+        let telNum = this.data.userInfo.telephone;
+        if (telNum !== '') {
+            wx.makePhoneCall({
+                phoneNumber: telNum,
+                success: function(res) {
+                    wx.showToast({
+                        title: '拨打成功！',
+                        icon: 'none'
+                    })
+                }
+            });
+        } else {
+            wx.showToast({
+                title: '好友电话未编辑！',
+                icon: 'none'
+            });
+        }
+    },
+
+    bindAddFriend () {
+        let _this = this;
+        let addStatus = this.data.addStatus;
+        if (addStatus === 202) {
+            wx.showToast({
+                title: '好友申请已发送！',
+                icon: 'none'
+            })
+            return
+        };
+        if (addStatus === 203) {
+            wx.showToast({
+                title: '对方已发送好友申请！',
+                icon: 'none'
+            })
+            return
+        };
+        _.addFriend({
+            openId: wx.getStorageSync('openId'),
+            friendId: this.data.userInfo.openId
+        }, {
+            success (res) {
+                res = res.data
+                if (res.code === 200) {
+                    _this.setData({
+                        addStatus: 202
+                    })
+                    wx.showToast({
+                        title: res.message,
+                        icon: 'none'
+                    })
+                }
+            }
+        })
+    },
 })

@@ -172,7 +172,14 @@ Page({
     },
 
     bindAddLabel () {
-        let labelInput = this.data.labelInput;
+        let labelInput = this.data.labelInput.replace(/\s+/, '');
+        if (labelInput === '') {
+            wx.showToast({
+                title: '标签不能为空！',
+                icon: 'none'
+            });
+            return;
+        };
         let labelList = this.data.labelList;
         if (labelList.length >= 5) {
             wx.showToast({

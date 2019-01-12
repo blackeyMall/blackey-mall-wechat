@@ -28,7 +28,7 @@
                 <view class="release-base-info">
                     <view class="release-info-item">
                         <view class="iconfont icon-nickname"></view>
-                        <input placeholder-class="placeholder" placeholder="项目名称" class="release-input" value="{{name}}" bindinput="bindChangeName" />
+                        <input placeholder-class="placeholder" placeholder="项目名称(必填)" class="release-input" value="{{name}}" bindinput="bindChangeName" />
                     </view>
                     <view class="release-info-item">
                         <view class="iconfont icon-edit"></view>
@@ -67,24 +67,55 @@
                     </picker>
                     <view class="iconfont icon-open-right"></view>
                 </view>
-                <view class="release-option-item">
+                <!-- <view class="release-option-item">
                     <view class="release-option-title">融资领域：</view>
                     <input value="{{projectDomain}}" type="text" placeholder="请输入" bindinput="bindChangeDomain" />
-                    <view class="iconfont icon-edit"></view>
+                    <view class="iconfont icon-edit"></view> -->
                     <!-- <picker class="release-picker {{domainIndex === 0 ? 'placeholder' : ''}}" bindchange="bindDomainPickerChange" value="{{domainIndex}}" range="{{domainArray}}">
                         <view class="picker">{{domainArray[domainIndex]}}</view>
                     </picker>
                     <view class="iconfont icon-open-right"></view> -->
+                <!-- </view> -->
+                <view class="release-option-item">
+                    <view class="release-option-title">所属行业：</view>
+                    <input placeholder-class="placeholder" value="{{industry}}" type="text" placeholder="请输入" bindinput="bindChangeIndustry" />
+                    <view class="iconfont icon-edit"></view>
                 </view>
                 <view class="release-option-item">
                     <view class="release-option-title">所在城市：</view>
-                    <picker class="release-picker {{cityIndex === 0 ? 'placeholder' : ''}}" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
+                    <!-- <picker class="release-picker {{cityIndex === 0 ? 'placeholder' : ''}}" bindchange="bindCityPickerChange" value="{{cityIndex}}" range="{{cityArray}}">
                         <view class="picker">{{cityArray[cityIndex]}}</view>
-                    </picker>
-                    <view class="iconfont icon-open-right"></view>
+                    </picker> -->
+                    <input placeholder-class="placeholder" value="{{city}}" type="text" placeholder="请输入" bindinput="bindChangeCity" />
+                    <view class="iconfont icon-edit"></view>
                 </view>
             </view>
         </view> 
+    </view>
+    <view class="release-group" bind:tap="bindOpenModal">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-more"></view>
+                    <view class="text">融资领域 <text class="small">上限5个</text></view>
+                </view>
+                <view class="item operator" bind:tap="bindOpenModal">
+                    <view class="iconfont icon-edit"></view>
+                    <view class="text">编辑</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="release-label-list">
+                <block wx:if="{{labelList.length !== 0}}">
+                    <view class="item" wx:for="{{labelList}}"  data-index="{{index}}" catch:tap="bindDeleteLabel">
+                        <view class="text">{{item}}</view>
+                        <view class="iconfont icon-add"></view>
+                    </view>
+                </block>
+                <view class="empty" wx:else>暂无领域标签，请点击以添加标签！</view>
+            </view>
+        </view>
     </view>
     <view class="release-group">
         <view class="release-title-conteiner">
@@ -96,7 +127,7 @@
             </view>
         </view>
         <view class="release-item h-310 relative">
-            <textarea maxlength="1000" class="textarea" placeholder="请简单介绍下项目，说说你的项目的优势！" placeholder-class="placeholder" value="{{projectDesc}}" bindinput="bindTextareaInput"></textarea>
+            <textarea maxlength="1000" class="textarea" placeholder="请简要介绍项目亮点，包括不限于行业与市场分析、商业模式、核心团队、运营状况、财务状况、融资用途、项目亮点等" placeholder-class="placeholder" value="{{projectDesc}}" bindinput="bindTextareaInput"></textarea>
             <view class="textarea-tips">
                 字数限制： {{projectDesc.length}} / 1000
             </view>
@@ -104,3 +135,27 @@
     </view>
 </view>
 <view class="btn-primary fixed-bottom" bind:tap="bindReleaseProject">发布</view>
+
+<view class="modal {{isModalOpen !== false ? 'open' : ''}}">
+    <div class="modal-dialog">
+        <view class="modal-header">
+            <view class="title">标签管理</view>
+            <view class="icofont icon-add" catch:tap="bindCloseModal"></view>
+        </view>
+        <view class="modal-body">
+            <view class="add-label">
+                <input type="text" placeholder="标签长度限制4个字！" maxlength="6" class="input" value="{{labelInput}}" bindinput="bindLabelInput" />
+                <view class="btn-primary" bind:tap="bindAddLabel">添加</view>
+            </view>
+            <view class="release-label-list" wx:if="{{labelList.length !== 0}}">
+                <view class="item" wx:for="{{labelList}}" data-index="{{index}}" bind:tap="bindDeleteLabel">
+                    <view class="text">{{item}}</view>
+                    <view class="iconfont icon-add"></view>
+                </view>
+            </view>
+        </view>
+    </div>
+</view>
+
+<!-- 遮罩层 -->
+<view class="modal-backdrop {{isModalOpen !== false ? 'active' : ''}}"></view>

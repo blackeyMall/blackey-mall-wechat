@@ -195,7 +195,7 @@ Page({
                     if (records !== null) {
                         records.forEach(el => {
                             let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
-                            attachment === null ? attachment = '无BP' : attachment = '有BP';
+                            attachment === null ? attachment = '' : attachment = '有BP';
                             projectList.push({
                                 id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
                             });

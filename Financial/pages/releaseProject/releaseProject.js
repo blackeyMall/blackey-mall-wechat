@@ -33,6 +33,7 @@ Page({
         activeCategory: 'STOCK',
         cityArray: ['请选择', '河北省', '山西省', '吉林省', '辽宁省', '黑龙江省', '陕西省', '甘肃省', '青海省', '山东省', '福建省', '浙江省', '台湾省', '河南省', '湖北省', '湖南省', '江西省', '江苏省', '安徽省', '广东省', '海南省', '四川省', '贵州省', '云南省', '北京市', '上海市', '天津市', '重庆市', '内蒙古', '新疆', '宁夏', '广西', '西藏自治区', '香港', '澳门'],
         cityIndex: 0,
+        city: '',
         financeRoundArray: ['请选择', '未知','未融资','种子轮','天使轮','Pre-A轮','A轮','A+轮','Pre-B轮','B轮','B+轮','C轮','C+轮','D轮','E轮及以后','新四板','新三板','Pre-IPO','并购','上市','战略投资','上市后','定增'],
         financeRound: 0,
         // domainArray: ['请选择', '机器人','环保','化工','地产建筑','人工智能','医疗健康','硬件','能源矿产','汽车交通','教育','金融','电商','房产家居','光电','旅游','物流','企业服务','无人机','生产执照','农业','VR','工具','消费生活','文娱传媒','社交','材料','公共事业','体育'],
@@ -44,7 +45,11 @@ Page({
         websiteUrl: '',
         financeAmount: '',
         projectDesc: '',
-        logo: ''
+        logo: '',
+        isModalOpen: false,
+        labelList: [],
+        labelInput: '',
+        industry: '',
     },
 
     bindRoundPickerChange (e) {
@@ -53,21 +58,33 @@ Page({
         })
     },
 
-    bindCityPickerChange (e) {
+    // bindCityPickerChange (e) {
+    //     this.setData({
+    //         cityIndex: parseInt(e.detail.value)
+    //     })
+    // },
+
+    bindChangeCity (e) {
         this.setData({
-            cityIndex: parseInt(e.detail.value)
+            city: e.detail.value
         })
     },
 
     bindChangeDomain (e) {
         this.setData({
-            projectDomain: parseInt(e.detail.value)
+            projectDomain: e.detail.value
         })
     },
 
-    bindDomainPickerChange (e) {
+    // bindDomainPickerChange (e) {
+    //     this.setData({
+    //         domainIndex: parseInt(e.detail.value)
+    //     })
+    // },
+
+    bindChangeIndustry (e) {
         this.setData({
-            domainIndex: parseInt(e.detail.value)
+            industry: e.detail.value
         })
     },
 
@@ -113,7 +130,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (options.cropUrl) {
+            this.onPostFile(options.cropUrl);
+        }
     },
 
     /**
@@ -176,19 +195,32 @@ Page({
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
             sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
             success: function(res){
-                _.postfile(res.tempFiles[0].path, "file", {
-                    success: function (res) {
-                        res = res.data
-                        _this.setData({
-                            logo: JSON.parse(res).data
-                        })
-                    }
+                const src = res.tempFiles[0].path;
+                wx.redirectTo({
+                    url: `/pages/avatarCrop/avatarCrop?target=releaseProject&src=${src}`
                 });
             },
             fail: function(err) {
                 console.log(err)
             },
         })
+    },
+
+    onPostFile (url) {
+        let isPosted = false;
+        let _this = this;
+        _.postfile(url, "file", {
+            success: function (res) {
+                res = JSON.parse(res.data);
+                if (res.code === 200) {
+                    isPosted = true;
+                    _this.setData({
+                        logo: res.data
+                    });
+                }
+            }
+        });
+        return isPosted;
     },
 
     bindReleaseProject () {
@@ -199,62 +231,62 @@ Page({
             });
             return;
         };
-        if (this.data.brief === '') {
-            wx.showToast({
-                title: '请填写项目介绍！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.websiteUrl === '') {
-            wx.showToast({
-                title: '请填写项目网址！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.logo === '') {
-            wx.showToast({
-                title: '请上传项目Logo！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.financeAmount === '') {
-            wx.showToast({
-                title: '请填写融资金额！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.financeRound === 0) {
-            wx.showToast({
-                title: '请选择融资阶段！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.domainIndex === 0) {
-            wx.showToast({
-                title: '请选择融资领域！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.cityIndex === 0) {
-            wx.showToast({
-                title: '请选择融资城市！',
-                icon: 'none'
-            });
-            return;
-        };
-        if (this.data.projectDesc === '') {
-            wx.showToast({
-                title: '请填写项目描述！',
-                icon: 'none'
-            });
-            return;
-        };
+        // if (this.data.brief === '') {
+        //     wx.showToast({
+        //         title: '请填写项目介绍！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.websiteUrl === '') {
+        //     wx.showToast({
+        //         title: '请填写项目网址！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.logo === '') {
+        //     wx.showToast({
+        //         title: '请上传项目Logo！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.financeAmount === '') {
+        //     wx.showToast({
+        //         title: '请填写融资金额！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.financeRound === 0) {
+        //     wx.showToast({
+        //         title: '请选择融资阶段！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.domainIndex === 0) {
+        //     wx.showToast({
+        //         title: '请选择融资领域！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.cityIndex === 0) {
+        //     wx.showToast({
+        //         title: '请选择融资城市！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
+        // if (this.data.projectDesc === '') {
+        //     wx.showToast({
+        //         title: '请填写项目描述！',
+        //         icon: 'none'
+        //     });
+        //     return;
+        // };
         let data = {}, _this = this;
         data.openId = this.data.openId;
         data.category = this.data.activeCategory;
@@ -266,7 +298,9 @@ Page({
         data.financeRound = this.data.financeRoundArray[this.data.financeRound];
         // data.projectDomain = this.data.domainArray[this.data.domainIndex];projectDomain
         data.projectDomain = this.data.projectDomain;
-        data.city = this.data.cityArray[this.data.cityIndex];
+        // data.city = this.data.cityArray[this.data.cityIndex];
+        data.city = this.data.city;
+        data.industry = this.data.industry;
         data.projectDesc = this.data.projectDesc;
         _.releaseProject(data, {
             success (res) {
@@ -310,5 +344,60 @@ Page({
                 }
             }
         })
-    }
+    },
+
+    bindOpenModal () {
+        this.setData({
+            isModalOpen: true
+        });
+    },
+
+    bindCloseModal () {
+        this.setData({
+            isModalOpen: false,
+            labelInput: ''
+        });
+    },
+
+    bindDeleteLabel (e) {
+        let index = e.currentTarget.dataset.index;
+        let labelList = this.data.labelList;
+        labelList.splice(index, 1);
+        this.setData({
+            labelList
+        });
+    },
+
+    bindLabelInput (e) {
+        this.setData({
+            labelInput: e.detail.value
+        });
+        console.log(e.detail.value);
+    },
+
+    bindAddLabel () {
+        let labelInput = this.data.labelInput.replace(/\s+/, '');
+        if (labelInput === '') {
+            wx.showToast({
+                title: '标签不能为空！',
+                icon: 'none'
+            });
+            return;
+        };
+        let labelList = this.data.labelList;
+        if (labelList.length >= 5) {
+            wx.showToast({
+                title: '标签上限5个！',
+                icon: 'none'
+            });
+            return;
+        }
+        if (labelInput !== '') {
+            labelList.push(labelInput);
+            this.setData({
+                labelList,
+                labelInput: ''
+            });
+        }
+    },
 })
