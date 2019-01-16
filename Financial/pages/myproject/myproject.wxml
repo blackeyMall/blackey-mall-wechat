@@ -1,8 +1,8 @@
 <view class="project {{projectList.length === 0 ? 'empty' : ''}}">
     <view class="nav-content" wx:if="{{projectList.length !== 0}}">
         <view class="project-list" wx:if="{{projectList.length !== 0}}">
-            <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
-                <image mode="widthFix" src="{{item.logo}}" class="avatar" />
+            <view class="item" bind:tap="bindEditProject" wx:for="{{projectList}}" data-id="{{item.id}}">
+                <image mode="widthFix" src="{{item.logo === null ? '../../assets/img/default-project.png' : item.logo}}" class="avatar" />
                 <view class="div">
                     <view class="header">
                         <view class="header-item header-item2">
@@ -10,18 +10,20 @@
                                 <view class="text">{{item.name}}</view>
                             </view>
                             <view class="label-list">
-                                <view class="label-item">{{item.attachment}}</view>
-                                <view class="label-item">{{item.projectDomain}}</view>
+                                <view class="label-item" wx:if="{{item.attachment !== ''}}">{{item.attachment}}</view>
+                                <block wx:if="{{item.projectDomain.length !== 0}}">
+                                    <view class="label-item" wx:for="{{item.projectDomain}}">{{item}}</view>
+                                </block>
                             </view>
                         </view>
                     </view>
                     <view class="body">
-                        <view class="p">{{item.brief}}</view>
+                        <view class="p">{{item.brief === null ? '--' : item.brief}}</view>
                     </view>
                     <view class="footer justify-between">
                         <view class="tag-list">
-                            <view class="tag-item">融资轮次：{{item.financeRound}}</view>
-                            <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                            <view class="tag-item">融资轮次：{{item.financeRound === '请选择' ? '--' : item.financeRound}}</view>
+                            <view class="tag-item tag-money">￥{{item.financeAmount === null ? '-- ' : item.financeAmount}}万元</view>
                         </view>
                     </view>
                 </view>
@@ -33,4 +35,8 @@
         <view class="p">创建您的项目，合作伙伴会主动联系您！</view>
         <view class="btn-primary" bind:tap="bindReleaseProject">我要发项目</view>
     </view>
+</view>
+
+<view class="btn-release" bind:tap="bindReleaseProject" wx:if="{{projectList.length !== 0}}">
+    <view class="text">创建项目</view>
 </view>

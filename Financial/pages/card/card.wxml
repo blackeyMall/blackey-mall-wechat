@@ -72,7 +72,7 @@
                     <view class="icon">
                         <view class="iconfont icon-dingwei"></view>
                     </view>
-                    <view class="text">{{userInfo.companyAddress === '' ? '公司待编辑' : userInfo.companyAddress}}</view>
+                    <view class="text">{{userInfo.companyAddress === '' ? '公司地址待编辑' : userInfo.companyAddress}}</view>
                 </view>
             </view>
         </view>
@@ -125,61 +125,47 @@
         </view>
     </view> -->
 <!-- </view> -->
-<view class="panel">
+<view class="panel no-padding-bottom">
     <view class="nav-tab">
         <view class="item {{item.id === activeNav ? 'active' : ''}}" data-id="{{item.id}}" wx:for="{{navList}}" bind:tap="bindChangeNav">
             <view class="text">{{item.text}}</view>
         </view>
     </view>
-    <view class="nav-content">
-        <!-- <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
-            <view class="item" wx:for="{{userInfoList}}">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
-                <view class="info">
-                    <view class="name">{{item.name}}</view>
-                    <view class="tag-list">
-                        <view class="tag-item">{{item.company}}</view>
-                        <view class="tag-item">{{item.duties}}</view>
-                    </view>
-                </view>
-                <view class="operator-center">
-                    <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
-                        <view class="iconfont icon-focus"></view>
-                        <view class="text">关注</view>
-                    </view>
-                    <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
-                        <view class="iconfont icon-add"></view>
-                        <view class="text">加好友</view>
-                    </view>
+</view>
+<view class="nav-content">
+    <!-- <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
+        <view class="item" wx:for="{{userInfoList}}">
+            <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+            <view class="info">
+                <view class="name">{{item.name}}</view>
+                <view class="tag-list">
+                    <view class="tag-item">{{item.company}}</view>
+                    <view class="tag-item">{{item.duties}}</view>
                 </view>
             </view>
-        </view> -->
-        <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
-            <view class="item" wx:for="{{userInfoList}}">
+            <view class="operator-center">
+                <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
+                    <view class="iconfont icon-focus"></view>
+                    <view class="text">关注</view>
+                </view>
+                <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
+                    <view class="iconfont icon-add"></view>
+                    <view class="text">加好友</view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+    <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
+        <view class="item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{userInfoList}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+            <view class="detail">
                 <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
                 <view class="info">
                     <view class="text name">
-                        <!-- <view class="iconfont icon-nickname"></view> -->
                         <view>{{item.name}}</view>
                     </view>
-                    <view class="text margin-bottom-10">
-                        <!-- <view class="iconfont icon-position"></view> -->
+                    <view class="text">
                         <view>{{item.duties}} | {{item.company}}</view>
                     </view>
-                    <!-- <view class="text" wx:if="{{activeNav !== 1}}">
-                        <view class="iconfont icon-position"></view>
-                        <view>{{item.duties}}</view>
-                    </view> -->
-                    <!-- <block wx:if="{{activeNav === 1}}">
-                        <view class="text">
-                            <view class="iconfont icon-tel"></view>
-                            <view>{{item.telephone}}</view>
-                        </view>
-                        <view class="text">
-                            <view class="iconfont icon-email"></view>
-                            <view>{{item.email}}</view>
-                        </view>
-                    </block> -->
                 </view>
                 <view class="div">
                     <view class="operator-center">
@@ -200,6 +186,7 @@
                     </view>
                 </view>
             </view>
+            <view class="delete" catch:tap="bindDeleteFriend" data-index="{{index}}" data-openid="{{item.openId}}">删除好友</view>
         </view>
     </view>
 </view>

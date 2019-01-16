@@ -99,6 +99,9 @@
 .padding-bottom-20 {
     padding-bottom: 20rpx !important;
 }
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
 
 .margin-bottom-10 {
     margin-bottom: 10rpx !important;
@@ -451,12 +454,49 @@ page {
     font-size: 24rpx;
 }
 
+.people-list {
+    overflow: hidden;
+    background-color: #fff;
+}
+
 .people-list .item {
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    border-bottom: 2rpx solid #f5f3f4;
+}
+
+.people-list .item .detail {
+    flex: 0 0 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30rpx 0;
-    border-bottom: 2rpx solid #f5f3f4;
+    padding: 30rpx;
+    transition: all 0.4s;
+    transform: translateX(220rpx);
+    margin-left: -220rpx;
+    box-sizing: border-box;
+}
+
+.people-list .item .delete {
+    flex: 0 0 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20rpx;
+    padding: 0 40rpx;
+    background-color: #eb4d3e;
+    color: #fff;
+    transform: translateX(220rpx);
+    transition: all 0.4s;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+
+.people-list .item.touch-move-active .detail,
+.people-list .item.touch-move-active .delete {
+    transform: translateX(0);
 }
 
 .people-list .item:last-child {
@@ -639,6 +679,7 @@ page {
     width: 90rpx;
     height: 90rpx !important;
     margin-right: 20rpx;
+    border: 2rpx solid #f3f3f3;
 }
 
 .project-list .item .div {
@@ -662,7 +703,12 @@ page {
     align-items: center;
     margin-bottom: 20rpx;
     font-size: 30rpx;
+    font-weight: 500;
     color: #000;
+}
+
+.project-list.info .item .header .name {
+    font-weight: 400;
 }
 
 .project-list .item .header-item2 .name {
@@ -677,7 +723,7 @@ page {
     padding: 6rpx;
     background-color: #67a6f3;
     border: 0;
-    border-radius: 4rpx;
+    /* border-radius: 4rpx; */
     color: #fff !important;
 }
 
@@ -688,7 +734,7 @@ page {
 .project-list.info .item .body {
     margin-top: 20rpx;
     position: relative;
-    padding: 10rpx 20rpx;
+    padding: 10rpx;
     background-color: #f8f8f8;
     border-radius: 6rpx;
 }
@@ -706,6 +752,7 @@ page {
 .project-list .item .img-list {
     display: flex;
     margin-top: 10rpx;
+    margin-bottom: 10rpx;
 }
 
 .project-list .item .img-list .img {
@@ -720,8 +767,14 @@ page {
 .project-list .item .body .p {
     word-break: break-all;
     text-align: justify;
-    color: #9aa8c7;
-    font-size: 26rpx;
+    color: #728094;
+    font-size: 24rpx;
+}
+
+.project-list.info .item .body .p {
+    padding: 0 10rpx;
+    font-size: 28rpx;
+    color: #000;
 }
 
 .project-list .item .label-list {
@@ -739,7 +792,7 @@ page {
     justify-content: flex-end;
     margin-top: 20rpx;
     text-align: center;
-    font-size: 28rpx;
+    font-size: 30rpx;
 }
 
 .project-list.info .item .footer {
@@ -750,7 +803,9 @@ page {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    line-height: 1;
     color: #666;
+    font-size: 26rpx;
 }
 
 .project-list .item .footer .tag-list {
@@ -768,7 +823,7 @@ page {
 
 .project-list .item .footer .operator-item .iconfont {
     margin-right: 4rpx;
-    font-size: 30rpx;
+    font-size: 26rpx;
 }
 
 .btn-release {

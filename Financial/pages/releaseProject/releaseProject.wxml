@@ -140,7 +140,7 @@
     <div class="modal-dialog">
         <view class="modal-header">
             <view class="title">标签管理</view>
-            <view class="icofont icon-add" catch:tap="bindCloseModal"></view>
+            <view class="iconfont icon-add" catch:tap="bindCloseModal"></view>
         </view>
         <view class="modal-body">
             <view class="add-label">

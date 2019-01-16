@@ -11,6 +11,9 @@ let _ = {
     },
     postfile: (file, filename, requestHandler) => {
         ajax.postfile("/finance/file/upload", file, filename, requestHandler)
+    },
+    onGetProjectDetail: (data, handler) => {
+        ajax.get("/finance/project/info", data, handler);
     }
 };
 
@@ -50,6 +53,7 @@ Page({
         labelList: [],
         labelInput: '',
         industry: '',
+        id: ''
     },
 
     bindRoundPickerChange (e) {
@@ -130,8 +134,23 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        if (options.cropUrl) {
-            this.onPostFile(options.cropUrl);
+        // 检测登录
+        if (app.globalData.checkLoginStatus()) {
+            this.setData({
+                openId: wx.getStorageSync('openId')
+            });
+            if (options.cropUrl) {
+                if (options.id) {
+                    
+                }
+                this.onPostFile(options.cropUrl);
+            };
+            if (options.objectId) {
+                this.setData({
+                    id: options.objectId
+                });
+                this.onGetProjectDetail();
+            }
         }
     },
 
@@ -146,11 +165,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // 检测登录
-        app.globalData.checkLoginStatus();
-        this.setData({
-            openId: wx.getStorageSync('openId')
-        })
     },
 
     /**
@@ -188,6 +202,35 @@ Page({
 
     },
 
+    onGetProjectDetail () {
+        let _this = this;
+        _.onGetProjectDetail({
+            id: _this.data.id,
+            openId: _this.data.openId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    let financeRoundIndex = _this.data.financeRoundArray.indexOf(res.data.financeRound);
+                    _this.setData({
+                        activeCategory: res.data.category.value,
+                        financeRound: financeRoundIndex,
+                        id: res.data.id,
+                        name: res.data.name,
+                        brief: res.data.brief,
+                        websiteUrl: res.data.websiteUrl,
+                        logo: res.data.logo === null ? '' : res.data.logo,
+                        financeAmount: res.data.financeAmount,
+                        labelList: res.data.projectDomain === null ? [] : res.data.projectDomain.split(','),
+                        city: res.data.city,
+                        industry: res.data.industry,
+                        projectDesc: res.data.projectDesc
+                    })
+                }
+            }
+        })
+    },
+
     bindChooseImage () {
         let _this = this
         wx.chooseImage({
@@ -196,8 +239,12 @@ Page({
             sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
             success: function(res){
                 const src = res.tempFiles[0].path;
+                let url = `/pages/avatarCrop/avatarCrop?target=releaseProject&src=${src}`;
+                if (_this.data.id !== '') {
+                    url += `&id=${_this.data.id}`;
+                }
                 wx.redirectTo({
-                    url: `/pages/avatarCrop/avatarCrop?target=releaseProject&src=${src}`
+                    url
                 });
             },
             fail: function(err) {
@@ -297,11 +344,14 @@ Page({
         data.financeAmount = this.data.financeAmount;
         data.financeRound = this.data.financeRoundArray[this.data.financeRound];
         // data.projectDomain = this.data.domainArray[this.data.domainIndex];projectDomain
-        data.projectDomain = this.data.projectDomain;
+        data.projectDomain = this.data.labelList.join(',');
         // data.city = this.data.cityArray[this.data.cityIndex];
         data.city = this.data.city;
         data.industry = this.data.industry;
         data.projectDesc = this.data.projectDesc;
+        if (this.data.id !== '') {
+            data.id = this.data.id
+        };
         _.releaseProject(data, {
             success (res) {
                 res = res.data;

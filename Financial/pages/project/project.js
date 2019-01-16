@@ -51,7 +51,7 @@ Page({
         activeNavSub: 'DEFAULT',
         projectList: [],
         current: 1,
-        size: 5,
+        size: 10,
         total: 0,
         openId: ''
     },
@@ -196,6 +196,7 @@ Page({
                         records.forEach(el => {
                             let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
                             attachment === null ? attachment = '' : attachment = '有BP';
+                            projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                             projectList.push({
                                 id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
                             });

@@ -1,19 +1,19 @@
 {
     "pages": [
-        "pages/releaseProject/releaseProject",
-        "pages/card/card",
-        "pages/cardEdit/cardEdit",
         "pages/project/project",
+        "pages/myproject/myproject",
+        "pages/card/card",
+        "pages/projectDetail/projectDetail",
+        "pages/info/info",
+        "pages/releaseProject/releaseProject",
+        "pages/cardEdit/cardEdit",
         "pages/avatarCrop/avatarCrop",
         "pages/userCard/userCard",
         "pages/feedback/feedback",
         "pages/my/my",
         "pages/myinfo/myinfo",
-        "pages/myproject/myproject",
-        "pages/info/info",
         "pages/releaseInfo/releaseInfo",
         "pages/myfocus/myfocus",
-        "pages/projectDetail/projectDetail",
         "pages/login/login"
     ],
     "window": {

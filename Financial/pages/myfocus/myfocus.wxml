@@ -6,9 +6,9 @@
     </view>
     <view class="nav-content">
         <block wx:if="{{activeNavSub === 1}}">
-            <view class="panel" wx:if="{{userInfoList.length !== 0}}">
-                <view class="people-list">
-                    <view class="item" wx:for="{{userInfoList}}">
+            <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
+                <view class="item" wx:for="{{userInfoList}}">
+                    <view class="detail">
                         <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                         <view class="info">
                             <view class="text name">
@@ -64,7 +64,7 @@
         <block wx:elif="{{activeNavSub === 3}}">
             <view class="project-list">
                 <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
-                    <image mode="widthFix" src="{{item.logo}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
+                    <image mode="widthFix" src="{{item.logo === null ? '../../assets/img/default-project.png' : item.logo}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                     <view class="div">
                         <view class="header">
                             <view class="header-item header-item2">
@@ -72,18 +72,20 @@
                                     <view class="text">{{item.name}}</view>
                                 </view>
                                 <view class="label-list">
-                                    <view class="label-item">{{item.attachment}}</view>
-                                    <view class="label-item">{{item.projectDomain}}</view>
+                                    <view class="label-item" wx:if="{{item.attachment !== ''}}">{{item.attachment}}</view>
+                                    <block wx:if="{{item.projectDomain.length !== 0}}">
+                                        <view class="label-item" wx:for="{{item.projectDomain}}">{{item}}</view>
+                                    </block>
                                 </view>
                             </view>
                         </view>
                         <view class="body">
-                            <view class="p">{{item.brief}}</view>
+                            <view class="p">{{item.brief === null ? '--' : item.brief}}</view>
                         </view>
                         <view class="footer justify-between">
                             <view class="tag-list">
-                                <view class="tag-item">融资轮次：{{item.financeRound}}</view>
-                                <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                                <view class="tag-item">融资轮次：{{item.financeRound === '请选择' ? '--' : item.financeRound}}</view>
+                                <view class="tag-item tag-money">￥{{item.financeAmount === null ? '-- ' : item.financeAmount}}万元</view>
                             </view>
                             <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindProjectFollow" data-index="{{index}}" data-id="{{item.id}}">
                                 <view class="iconfont icon-focus"></view>

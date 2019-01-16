@@ -52,7 +52,7 @@ Page({
         infoList: [],
         projectList: [],
         current: 1,
-        size: 5,
+        size: 10,
         pages: 0,
         total: 0,
     },
@@ -173,8 +173,8 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '-公司待编辑-' : company, 
-                                duties: duties === null ? '-职务待编辑-' : duties, 
+                                company: company === null ? '公司地址待编辑' : company, 
+                                duties: duties === null ? '职务待编辑' : duties, 
                                 showFocus: 1, 
                                 isFocus: 1, 
                                 showAddFriend: 1, 
@@ -211,7 +211,7 @@ Page({
                             records.forEach(el => {
                                 let {id, openId, avatarUrl, name, company, duties, content, followNum, isFollow, likeNum, isLike, isRecommend, label, images} = el;
                                 let labelList = label === null ? [] : label.split(',');
-                                company === null ? company = '公司未编辑' : company;
+                                company === null ? company = '公司地址未编辑' : company;
                                 duties === null ? duties = '职务未编辑' : duties;
                                 isRecommend === null ? isRecommend = 0 : isRecommend = 1;
                                 images === null ? images = [] : images;
@@ -249,7 +249,8 @@ Page({
                         if (records !== null) {
                             records.forEach(el => {
                                 let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
-                                attachment === null ? attachment = '无BP' : attachment = '有BP';
+                                attachment === null ? attachment = '' : attachment = '有BP';
+                                projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                                 projectList.push({
                                     id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
                                 });

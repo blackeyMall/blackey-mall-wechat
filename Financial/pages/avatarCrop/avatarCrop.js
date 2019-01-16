@@ -33,7 +33,8 @@ Page({
             }
         },
         avatarUrl: '',
-        target: ''
+        target: '',
+        id: ''
     },
     touchStart(e) {
         this.cropper.touchStart(e);
@@ -50,8 +51,12 @@ Page({
             .getCropperImage()
             .then(src => {
                 let target = _this.data.target;
+                let url = `/pages/${target}/${target}?cropUrl=${src}`;
+                if (_this.data.id !== '') {
+                    url += `&objectId=${_this.data.id}`;
+                }
                 wx.redirectTo({
-                    url: `/pages/${target}/${target}?cropUrl=${src}`
+                    url
                 });
                 // wx.previewImage({
                 //     current: "", // 当前显示图片的http链接
@@ -88,6 +93,11 @@ Page({
                 target: option.target
             });
         };
+        if (option.id) {
+            this.setData({
+                id: option.id
+            });
+        }
         const { cropperOpt } = this.data;
 
         cropperOpt.boundStyle.color = config.getThemeColor();

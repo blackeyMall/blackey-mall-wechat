@@ -19,7 +19,7 @@
             <view class="detail-content">
                 <view class="detail-list">
                     <view class="item">轮次：{{projectDetail.financeRound}}</view>
-                    <view class="item">领域：{{projectDetail.projectDomain}}</view>
+                    <view class="item">行业：{{projectDetail.industry}}</view>
                     <view class="item">城市：{{projectDetail.city}}</view>
                 </view>
             </view>
@@ -34,7 +34,7 @@
         </view>
         <view class="detail-group">
             <view class="detail-title-container">
-                <view class="detail-title">BP</view>
+                <view class="detail-title">BP/融资文件</view>
             </view>
             <view class="detail-content">
                 <!-- <web-view src="{{item.attachment}}" wx:if="{{item.attachment !== null}}" /> -->
@@ -55,7 +55,7 @@
             </view>
             <view class="detail-content">
                 <view class="member-list">
-                    <view class="item">
+                    <view class="item" bind:tap="bindRedirectUserCard" data-id="{{projectDetail.openId}}">
                         <image mode="widthFix" src="{{projectDetail.avatarUrl}}" class="avatar" />
                         <view class="content">
                             <view class="title">
