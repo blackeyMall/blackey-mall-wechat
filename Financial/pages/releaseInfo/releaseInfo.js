@@ -8,7 +8,11 @@ let _ = {
     },
     postfile: (file, filename, handler) => {
         ajax.postfile("/finance/file/upload", file, filename, handler);
-    }
+    },
+
+    getInfo: (data, handler) => {
+        ajax.get("/finance/requirement/info", data, handler);
+    },
 };
 
 Page({
@@ -32,7 +36,8 @@ Page({
         labelList: [],
         labelInput: '',
         images: [],
-        isModalOpen: false
+        isModalOpen: false,
+        infoId: ''
     },
 
     bindChangeNav (e) {
@@ -47,7 +52,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (options.infoId) {
+            this.setData({
+                infoId: options.infoId
+            });
+            this.onGetInfo();
+        }
     },
 
     /**
@@ -118,18 +128,45 @@ Page({
         console.log(e.detail.value);
     },
 
+    onGetInfo () {
+        let _this = this;
+        _.getInfo({
+            id: this.data.infoId
+        }, {
+            success (res) {
+                res = res.data;
+                // activeNav: 'PROJECT',
+                // content: '',
+                // labelList: [],
+                // labelInput: '',
+                // images: [],
+                console.log(res.data);
+                if (res.code === 200) {
+                    _this.setData({
+                        activeNav: res.data.category.value,
+                        content: res.data.content === null ? '' : res.data.content,
+                        labelList: res.data.label === null ? [] : res.data.label.split(','),
+                        images: res.data.images === null ? [] : res.data.images.split(',')
+                    });
+                }
+            }
+        })
+    },
+
     // 
     bindReleaseInfo (e) {
         if (this.data.content !== '') {
             // let _this = this;
             let openId = wx.getStorageSync('openId');
-            _.releaseInfo({
-                openId,
-                category: this.data.activeNav,
-                content: this.data.content,
-                label: this.data.labelList.join(','),
-                images: this.data.images
-            }, {
+            let data = {openId};
+            data.category = this.data.activeNav;
+            data.content = this.data.content;
+            data.label = this.data.labelList.join(',');
+            data.images = this.data.images;
+            if (this.data.infoId !== '') {
+                data.id = this.data.infoId
+            }
+            _.releaseInfo(data, {
                 success (res) {
                     res = res.data;
                     if (res.code === 200) {
@@ -207,6 +244,13 @@ Page({
     },
 
     bindChooseImage () {
+        if (this.data.images.length >= 3) {
+            wx.showToast({
+                title: '图片已达上限',
+                icon: 'none'
+            });
+            return;
+        };
         let _this = this
         wx.chooseImage({
             count: 1, // 最多可以选择的图片张数，默认9

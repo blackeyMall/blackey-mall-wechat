@@ -24,6 +24,9 @@ let _ = {
     addFriend: (data, handler) => {
         ajax.post("/finance/userrelation/add", data, handler);
     },
+    deleteFriend: (data, handler) => {
+        ajax.post("/finance/userrelation/delete", data, handler);
+    },
     accept: (data, handler) => {
         ajax.post("/finance/userrelation/accept", data, handler);
     },
@@ -59,11 +62,13 @@ Page({
         userInfoList: [],
         applyList: [],
         applyCurrent: 1,
-        size: 5,
+        size: 10,
         current: 1,
         total: 0,
         pages: '',
-        openId: ''
+        openId: '',
+        startX: 0, //开始坐标
+        startY: 0
     },
 
     bindChangeNav (e) {
@@ -244,7 +249,7 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司待编辑' : company, 
+                                company: company === null ? '公司地址待编辑' : company, 
                                 duties: duties === null ? '职务待编辑' : duties,
                                 showFocus: 1, 
                                 isFocus: 0, 
@@ -281,14 +286,15 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司待编辑' : company, 
+                                company: company === null ? '公司地址待编辑' : company, 
                                 duties: duties === null ? '职务待编辑' : duties, 
                                 telephone: telephone === null ? '手机待编辑' : telephone, 
                                 email: email === null ? '邮箱待编辑' : email, 
                                 showFocus: 0, 
                                 isFocus, 
                                 showAddFriend: 0, 
-                                isAddFriend: 0
+                                isAddFriend: 0,
+                                isTouchMove: false
                             };
                             tempUserInfo.push(temp);
                         });
@@ -320,7 +326,7 @@ Page({
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司待编辑' : company, 
+                                company: company === null ? '公司地址待编辑' : company, 
                                 duties: duties === null ? '职务待编辑' : duties, 
                                 showFocus: 1, 
                                 isFocus: 1, 
@@ -493,5 +499,90 @@ Page({
         return {
             title: '金融Link 名片分享！'
         }
+    },
+
+    touchstart: function(e) {
+        //开始触摸时 重置所有删除
+        let userInfoList = this.data.userInfoList;
+        userInfoList.forEach(el => {
+            if (el.isTouchMove)
+                //只操作为true的
+                el.isTouchMove = false;
+        });
+        this.setData({
+            startX: e.changedTouches[0].clientX,
+            startY: e.changedTouches[0].clientY,
+            userInfoList
+        });
+    },
+
+    touchmove: function(e) {
+        if (this.data.activeNav !== 1) {
+            return;
+        }
+        var _this = this,
+            index = e.currentTarget.dataset.index, //当前索引
+            startX = _this.data.startX, //开始X坐标
+            startY = _this.data.startY, //开始Y坐标
+            touchMoveX = e.changedTouches[0].clientX, //滑动变化坐标
+            touchMoveY = e.changedTouches[0].clientY, //滑动变化坐标
+            //获取滑动角度
+
+            angle = _this.angle(
+                { X: startX, Y: startY },
+                { X: touchMoveX, Y: touchMoveY }
+            );
+
+        _this.data.userInfoList.forEach((el, i) => {
+            el.isTouchMove = false;
+            if (Math.abs(angle) > 30) return;
+            if (i == index) {
+                if (touchMoveX > startX) {
+                    //右滑
+                    el.isTouchMove = false;
+                } else {
+                    //左滑
+                    el.isTouchMove = true;
+                }
+            };
+        });
+        //更新数据
+        _this.setData({
+            userInfoList: _this.data.userInfoList
+        });
+    },
+
+    angle: function(start, end) {
+        var _X = end.X - start.X,
+            _Y = end.Y - start.Y;
+        //返回角度 /Math.atan()返回数字的反正切值
+        return (360 * Math.atan(_Y / _X)) / (2 * Math.PI);
+    },
+
+    //删除好友事件
+    bindDeleteFriend (e) {
+        let index = e.currentTarget.dataset.index,
+            friendId = e.currentTarget.dataset.openid,
+            openId = this.data.openId,
+            _this = this,
+            userInfoList = this.data.userInfoList;
+        _.deleteFriend({
+            friendId,
+            openId
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    userInfoList.splice(index, 1);
+                    _this.setData({
+                        userInfoList
+                    })
+                    wx.showToast({
+                        title: '删除成功！',
+                        icon: 'none'
+                    });
+                }
+            }
+        })
     }
 })

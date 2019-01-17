@@ -22,7 +22,7 @@ Page({
     data: {
         infoList: [],
         current: 1,
-        size: 5,
+        size: 10,
         total: 0,
         openId: ''
     },
@@ -72,6 +72,13 @@ Page({
         }
     },
 
+    bindEditInfo (e) {
+        let infoId = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: '/pages/releaseInfo/releaseInfo?infoId=' + infoId
+        });
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -117,5 +124,5 @@ Page({
         wx.navigateTo({
             url: '/pages/releaseInfo/releaseInfo'
         });
-    }
+    },
 })

@@ -22,7 +22,7 @@
     <view class="nav-content">
         <view class="project-list">
             <view class="item" bind:tap="bindProjectDetail" wx:for="{{projectList}}" data-id="{{item.id}}">
-                <image mode="widthFix" src="{{item.logo}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
+                <image mode="widthFix" src="{{item.logo === null ? '../../assets/img/default-project.png' : item.logo}}" class="avatar" data-openid="{{item.openId}}" catch:tap="bindRedirectUserCard" />
                 <view class="div">
                     <view class="header">
                         <view class="header-item header-item2">
@@ -31,7 +31,9 @@
                             </view>
                             <view class="label-list">
                                 <view class="label-item" wx:if="{{item.attachment !== ''}}">{{item.attachment}}</view>
-                                <view class="label-item">{{item.projectDomain}}</view>
+                                <block wx:if="{{item.projectDomain.length !== 0}}">
+                                    <view class="label-item" wx:for="{{item.projectDomain}}">{{item}}</view>
+                                </block>
                             </view>
                         </view>
                         <!-- <view class="header-item">
@@ -46,16 +48,16 @@
                         </view> -->
                     </view>
                     <view class="body">
-                        <view class="p">{{item.brief}}</view>
+                        <view class="p">{{item.brief === null ? '--' : item.brief}}</view>
                     </view>
                     <view class="footer justify-between">
                         <view class="tag-list">
-                            <view class="tag-item">融资轮次：{{item.financeRound}}</view>
-                            <view class="tag-item tag-money">￥{{item.financeAmount}}万元</view>
+                            <view class="tag-item">融资轮次：{{item.financeRound === '请选择' ? '--' : item.financeRound}}</view>
+                            <view class="tag-item tag-money">￥{{item.financeAmount === null ? '-- ' : item.financeAmount}}万元</view>
                         </view>
                         <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
                             <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
-                            <view class="text">关注{{item.followNum}}</view>
+                            <view class="text">关注 {{item.followNum}}</view>
                         </view>
                     </view>
                 </view>

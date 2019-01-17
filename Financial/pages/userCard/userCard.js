@@ -50,7 +50,7 @@ Page({
         activeNav: 1,
         infoList: [],
         projectList: [],
-        size: 5,
+        size: 10,
         current: 1,
         total: 0,
         pages: '',
@@ -262,7 +262,8 @@ Page({
                         if (records !== null) {
                             records.forEach(el => {
                                 let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
-                                attachment === null ? attachment = '无BP' : attachment = '有BP';
+                                attachment === null ? attachment = '' : attachment = '有BP';
+                                projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                                 projectList.push({
                                     id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
                                 });

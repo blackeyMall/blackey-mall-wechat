@@ -54,7 +54,7 @@ Page({
         activeNavSub: 'DEFAULT',
         infoList: [],
         current: 1,
-        size: 5,
+        size: 10,
         total: 0,
         openId: ''
     },

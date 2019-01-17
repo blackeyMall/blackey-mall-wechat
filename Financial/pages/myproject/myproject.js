@@ -19,7 +19,7 @@ Page({
     data: {
         projectList: [],
         current: 1,
-        size: 5,
+        size: 10,
         total: 0,
         openId: ''
     },
@@ -79,10 +79,17 @@ Page({
 
     },
 
-    bindProjectDetail (e) {
+    // bindProjectDetail (e) {
+    //     let objectId = e.currentTarget.dataset.id;
+    //     wx.navigateTo({
+    //         url: '/pages/projectDetail/projectDetail?objectId=' + objectId
+    //     })
+    // },
+
+    bindEditProject (e) {
         let objectId = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: '/pages/projectDetail/projectDetail?objectId=' + objectId
+            url: '/pages/releaseProject/releaseProject?objectId=' + objectId
         })
     },
 
@@ -105,7 +112,8 @@ Page({
                     if (records !== null) {
                         records.forEach(el => {
                             let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
-                            attachment === null ? attachment = '无BP' : attachment = '有BP';
+                            attachment === null ? attachment = '' : attachment = '有BP';
+                            projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                             projectList.push({
                                 id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
                             });
