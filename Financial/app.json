@@ -1,8 +1,9 @@
 {
     "pages": [
+        "pages/myproject/myproject",
+        "pages/myinfo/myinfo",
         "pages/card/card",
         "pages/project/project",
-        "pages/myproject/myproject",
         "pages/projectDetail/projectDetail",
         "pages/info/info",
         "pages/releaseProject/releaseProject",
@@ -11,7 +12,6 @@
         "pages/userCard/userCard",
         "pages/feedback/feedback",
         "pages/my/my",
-        "pages/myinfo/myinfo",
         "pages/releaseInfo/releaseInfo",
         "pages/myfocus/myfocus",
         "pages/login/login"

@@ -27,6 +27,7 @@
                         </view>
                     </view>
                 </view>
+                <view class="iconfont icon-open-right"></view>
             </view>
         </view>
     </view>

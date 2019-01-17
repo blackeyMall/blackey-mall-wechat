@@ -1,1 +1,3 @@
-/* pages/info/info.wxss */
+.project-list .item {
+    padding-right: 60rpx;
+}

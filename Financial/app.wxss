@@ -666,6 +666,7 @@ page {
 }
 
 .project-list .item {
+    position: relative;
     display: flex;
     /* flex-wrap: wrap; */
     margin-bottom: 10rpx;
@@ -824,6 +825,15 @@ page {
 .project-list .item .footer .operator-item .iconfont {
     margin-right: 4rpx;
     font-size: 26rpx;
+}
+
+.project-list .item .icon-open-right {
+    position: absolute;
+    top: 50%;
+    right: 16rpx;
+    color: #666;
+    font-size: 28rpx;
+    transform: translateY(-50%);
 }
 
 .btn-release {

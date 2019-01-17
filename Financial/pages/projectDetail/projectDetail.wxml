@@ -44,7 +44,8 @@
                 </view>
                 <view wx:else class="empty">
                     <view class="text">
-                        BP暂未上传，<text class="text-danger" bind:tap="bindSendBPLink">点击上传</text>
+                        BP暂未上传
+                        <!-- ，<text class="text-danger" bind:tap="bindSendBPLink">点击上传</text> -->
                     </view>
                 </view>
             </view>
