@@ -265,9 +265,8 @@ Page({
     let openId = wx.getStorageSync('openid');
     return {
       title: '好匠工',
-      path: '/page/index/index?openid=' + openId,
-      desc: '测试测试',
-      imageUrl: '../../lib/images/logo.jpg'
+      path: '/pages/index/index?openid=' + openId,
+      desc: '测试测试'
     }
   }
 })
