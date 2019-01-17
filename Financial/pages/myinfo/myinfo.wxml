@@ -20,7 +20,7 @@
                     </view>
                     <view class="body">
                         <view class="p">{{item.content}}</view>
-                        <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
+                        <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" catch:tap="bindPreviewImg">
                             <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
                         </view>
                     </view>

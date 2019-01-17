@@ -146,7 +146,7 @@ Page({
                         activeNav: res.data.category.value,
                         content: res.data.content === null ? '' : res.data.content,
                         labelList: res.data.label === null ? [] : res.data.label.split(','),
-                        images: res.data.images === null ? [] : res.data.images.split(',')
+                        images: res.data.images
                     });
                 }
             }
