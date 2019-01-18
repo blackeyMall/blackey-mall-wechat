@@ -72,7 +72,7 @@
                     <view class="icon">
                         <view class="iconfont icon-dingwei"></view>
                     </view>
-                    <view class="text">{{userInfo.companyAddress === '' ? '公司地址待编辑' : userInfo.companyAddress}}</view>
+                    <view class="text">{{userInfo.companyAddress === '' ? '公司待编辑' : userInfo.companyAddress}}</view>
                 </view>
             </view>
         </view>
