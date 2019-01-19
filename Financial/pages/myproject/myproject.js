@@ -8,6 +8,9 @@ let _ = {
     },
     follow: (data, handler) => {
         ajax.post("/finance/follow/project/save", data, handler);
+    },
+    deleteProject: (data, handler) => {
+        ajax.get("/finance/project/delete", data, handler);
     }
 };
 
@@ -21,7 +24,9 @@ Page({
         current: 1,
         size: 10,
         total: 0,
-        openId: ''
+        openId: '',
+        startX: 0, //开始坐标
+        startY: 0
     },
 
     /**
@@ -115,7 +120,7 @@ Page({
                             attachment === null ? attachment = '' : attachment = '有BP';
                             projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                             projectList.push({
-                                id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
+                                id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum, isTouchMove: false
                             });
                         });
                         _this.setData({
@@ -135,5 +140,86 @@ Page({
         wx.navigateTo({
             url: '/pages/releaseProject/releaseProject'
         });
+    },
+
+    touchstart: function(e) {
+        //开始触摸时 重置所有删除
+        let projectList = this.data.projectList;
+        projectList.forEach(el => {
+            if (el.isTouchMove)
+                //只操作为true的
+                el.isTouchMove = false;
+        });
+        this.setData({
+            startX: e.changedTouches[0].clientX,
+            startY: e.changedTouches[0].clientY,
+            projectList
+        });
+    },
+
+    touchmove: function(e) {
+        var _this = this,
+            index = e.currentTarget.dataset.index, //当前索引
+            startX = _this.data.startX, //开始X坐标
+            startY = _this.data.startY, //开始Y坐标
+            touchMoveX = e.changedTouches[0].clientX, //滑动变化坐标
+            touchMoveY = e.changedTouches[0].clientY, //滑动变化坐标
+            //获取滑动角度
+
+            angle = _this.angle(
+                { X: startX, Y: startY },
+                { X: touchMoveX, Y: touchMoveY }
+            );
+
+        _this.data.projectList.forEach((el, i) => {
+            el.isTouchMove = false;
+            if (Math.abs(angle) > 30) return;
+            if (i == index) {
+                if (touchMoveX > startX) {
+                    //右滑
+                    el.isTouchMove = false;
+                } else {
+                    //左滑
+                    el.isTouchMove = true;
+                }
+            };
+        });
+        //更新数据
+        _this.setData({
+            projectList: _this.data.projectList
+        });
+    },
+
+    angle: function(start, end) {
+        var _X = end.X - start.X,
+            _Y = end.Y - start.Y;
+        //返回角度 /Math.atan()返回数字的反正切值
+        return (360 * Math.atan(_Y / _X)) / (2 * Math.PI);
+    },
+
+    //删除好友事件
+    bindDeleteProject (e) {
+        let index = e.currentTarget.dataset.index,
+            id = e.currentTarget.dataset.id,
+            // openId = this.data.openId,
+            _this = this,
+            projectList = this.data.projectList;
+        _.deleteProject({
+            id
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    projectList.splice(index, 1);
+                    _this.setData({
+                        projectList
+                    })
+                    wx.showToast({
+                        title: '删除成功！',
+                        icon: 'none'
+                    });
+                }
+            }
+        })
     }
 })

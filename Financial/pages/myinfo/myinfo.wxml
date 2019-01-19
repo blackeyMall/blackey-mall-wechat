@@ -1,40 +1,43 @@
 <view class="project {{infoList.length === 0 ? 'empty' : ''}}">
     <view class="nav-content" wx:if="{{infoList.length !== 0}}">
         <view class="project-list info" wx:if="{{infoList.length !== 0}}">
-            <view class="item" wx:for="{{infoList}}" data-id="{{item.id}}" bind:tap="bindEditInfo">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
-                <view class="div">
-                    <view class="header">
-                        <view class="header-item">
-                            <view class="name">{{item.name}}</view>
-                            <view class="label-list">
-                                <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+            <view class="item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{infoList}}" data-id="{{item.id}}" bind:tap="bindEditInfo" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+                <view class="detail">
+                    <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
+                    <view class="div">
+                        <view class="header">
+                            <view class="header-item">
+                                <view class="name">{{item.name}}</view>
+                                <view class="label-list">
+                                    <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                                </view>
+                            </view>
+                            <view class="header-item">
+                                <view class="tag-list">
+                                    <view class="tag-item">{{item.company}}</view>
+                                    <view class="tag-item">{{item.duties}}</view>
+                                </view>
                             </view>
                         </view>
-                        <view class="header-item">
-                            <view class="tag-list">
-                                <view class="tag-item">{{item.company}}</view>
-                                <view class="tag-item">{{item.duties}}</view>
+                        <view class="body">
+                            <view class="p">{{item.content}}</view>
+                            <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" catch:tap="bindPreviewImg">
+                                <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
                             </view>
                         </view>
-                    </view>
-                    <view class="body">
-                        <view class="p">{{item.content}}</view>
-                        <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" catch:tap="bindPreviewImg">
-                            <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
-                        </view>
-                    </view>
-                    <view class="footer" wx:if="{{item.openId !== openId}}">
-                        <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
-                            <view class="iconfont icon-zan"></view>
-                            <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
-                        </view>
-                        <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}">
-                            <view class="iconfont icon-focus"></view>
-                            <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
+                        <view class="footer" wx:if="{{item.openId !== openId}}">
+                            <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
+                                <view class="iconfont icon-zan"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
+                            </view>
+                            <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}">
+                                <view class="iconfont icon-focus"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
+                            </view>
                         </view>
                     </view>
                 </view>
+                <view class="delete" catch:tap="bindDeleteInfo" data-index="{{index}}" data-id="{{item.id}}">删除需求</view>
                 <view class="iconfont icon-open-right"></view>
             </view>
         </view>

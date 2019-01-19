@@ -22,36 +22,38 @@
     <view class="nav-content">
         <view class="project-list info" wx:if="{{infoList.length !== 0}}">
             <view class="item" wx:for="{{infoList}}" data-id="item.id">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
-                <view class="div">
-                    <view class="header">
-                        <view class="header-item">
-                            <view class="name">{{item.name}}</view>
-                            <view class="label-list">
-                                <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                <view class="detail">
+                    <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
+                    <view class="div">
+                        <view class="header">
+                            <view class="header-item">
+                                <view class="name">{{item.name}}</view>
+                                <view class="label-list">
+                                    <view class="label-item" wx:for="{{item.labelList}}">{{item}}</view>
+                                </view>
+                            </view>
+                            <view class="header-item">
+                                <view class="tag-list">
+                                    <view class="tag-item">{{item.duties}}</view>
+                                    <view class="tag-item">{{item.company}}</view>
+                                </view>
                             </view>
                         </view>
-                        <view class="header-item">
-                            <view class="tag-list">
-                                <view class="tag-item">{{item.duties}}</view>
-                                <view class="tag-item">{{item.company}}</view>
+                        <view class="body">
+                            <view class="p">{{item.content}}</view>
+                            <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
+                                <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
                             </view>
                         </view>
-                    </view>
-                    <view class="body">
-                        <view class="p">{{item.content}}</view>
-                        <view class="img-list" wx:if="{{item.images.length !== 0}}" data-imglist="{{item.images}}" bind:tap="bindPreviewImg">
-                            <image mode="aspectFill" src="{{item}}" class="img"  wx:for="{{item.images}}" />
-                        </view>
-                    </view>
-                    <view class="footer">
-                        <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
-                            <view class="iconfont {{item.isLike.value === 'ADD' ? 'icon-zan2' : 'icon-zan1'}}"></view>
-                            <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
-                        </view>
-                        <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{item.openId !== openId}}">
-                            <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
-                            <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
+                        <view class="footer">
+                            <view class="operator-item {{item.isLike.value === 'ADD' ? 'active' : ''}}">
+                                <view class="iconfont {{item.isLike.value === 'ADD' ? 'icon-zan2' : 'icon-zan1'}}"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindLike">点赞 {{item.likeNum}}</view>
+                            </view>
+                            <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{item.openId !== openId}}">
+                                <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
+                                <view class="text" data-id="{{item.id}}" data-index="{{index}}" bind:tap="bindFollow">关注 {{item.followNum}}</view>
+                            </view>
                         </view>
                     </view>
                 </view>

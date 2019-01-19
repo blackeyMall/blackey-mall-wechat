@@ -665,14 +665,49 @@ page {
     padding-left: 20rpx;
 }
 
+.project-list {
+    overflow: hidden;
+}
+
 .project-list .item {
     position: relative;
     display: flex;
-    /* flex-wrap: wrap; */
     margin-bottom: 10rpx;
-    padding: 20rpx;
+    /* padding: 20rpx; */
     background-color: #fff;
     font-size: 24rpx;
+}
+
+.project-list .item .detail {
+    flex:0 0 100%;
+    width:100%;
+    display: flex;
+    padding: 20rpx;
+    transition: all 0.4s;
+    transform: translateX(220rpx);
+    margin-left: -220rpx;
+    box-sizing: border-box;
+}
+
+.project-list .item .delete {
+    flex: 0 0 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20rpx;
+    padding: 0 40rpx;
+    background-color: #eb4d3e;
+    color: #fff;
+    transform: translateX(220rpx);
+    transition: all 0.4s;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.project-list .item.touch-move-active .detail,
+.project-list .item.touch-move-active .delete {
+    transform: translateX(2rpx);
 }
 
 .project-list .item .avatar {
@@ -834,6 +869,11 @@ page {
     color: #666;
     font-size: 28rpx;
     transform: translateY(-50%);
+    transition: all .4s;
+}
+
+.project-list .item.touch-move-active .icon-open-right {
+    right: 236rpx;
 }
 
 .btn-release {
