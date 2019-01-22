@@ -244,12 +244,12 @@ Page({
                     if (res.data.records !== null) {
                         let tempUserInfo = [];
                         res.data.records.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties} = el;
+                          let { openId, avatarUrl, name, companyBrief, duties} = el;
                             let temp = {
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司地址待编辑' : company, 
+                              company: companyBrief === null ? '公司待编辑' : companyBrief, 
                                 duties: duties === null ? '职务待编辑' : duties,
                                 showFocus: 1, 
                                 isFocus: 0, 
@@ -281,12 +281,12 @@ Page({
                     if (res.data.records !== null) {
                         let tempUserInfo = [];
                         res.data.records.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties, telephone, email, isFocus} = el;
+                          let { openId, avatarUrl, name, companyBrief, duties, telephone, email, isFocus} = el;
                             let temp = {
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司地址待编辑' : company, 
+                              company: companyBrief === null ? '公司待编辑' : companyBrief, 
                                 duties: duties === null ? '职务待编辑' : duties, 
                                 telephone: telephone === null ? '手机待编辑' : telephone, 
                                 email: email === null ? '邮箱待编辑' : email, 
@@ -321,12 +321,12 @@ Page({
                     if (res.data.records !== null) {
                         let tempUserInfo = [];
                         res.data.records.forEach(el => {
-                            let {openId, avatarUrl, name, company, duties, isAddFriend} = el;
+                          let { openId, avatarUrl, name, companyBrief, duties, isAddFriend} = el;
                             let temp = {
                                 openId, 
                                 avatarUrl, 
                                 name, 
-                                company: company === null ? '公司地址待编辑' : company, 
+                              company: companyBrief === null ? '公司待编辑' : companyBrief, 
                                 duties: duties === null ? '职务待编辑' : duties, 
                                 showFocus: 1, 
                                 isFocus: 1, 
