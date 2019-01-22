@@ -12,8 +12,8 @@ App({
     },
     globalData: {
         // 服务器地址
-        serverUrl: "http://127.0.0.1:1099",
-        // serverUrl: "https://www.ssqushe.com",
+        // serverUrl: "http://127.0.0.1:1099",
+        serverUrl: "https://www.ssqushe.com",
         // 检查登录状态
         checkLoginStatus() {
             let openId = wx.getStorageSync("openId");
