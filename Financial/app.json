@@ -1,12 +1,12 @@
 {
     "pages": [
-        "pages/card/card",
-        "pages/myproject/myproject",
-        "pages/myinfo/myinfo",
         "pages/project/project",
+        "pages/myproject/myproject",
+        "pages/releaseProject/releaseProject",
+        "pages/card/card",
+        "pages/myinfo/myinfo",
         "pages/projectDetail/projectDetail",
         "pages/info/info",
-        "pages/releaseProject/releaseProject",
         "pages/cardEdit/cardEdit",
         "pages/avatarCrop/avatarCrop",
         "pages/userCard/userCard",

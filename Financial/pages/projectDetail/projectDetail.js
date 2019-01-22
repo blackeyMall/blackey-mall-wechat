@@ -82,8 +82,11 @@ Page({
         }, {
             success (res) {
                 res = res.data;
+                let {projectDomain, ...temp} = res.data;
+                projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
+                temp.projectDomain = projectDomain;
                 _this.setData({
-                    projectDetail: res.data
+                    projectDetail: temp
                 })
             }
         })

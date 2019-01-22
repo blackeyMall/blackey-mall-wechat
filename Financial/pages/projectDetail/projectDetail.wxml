@@ -26,6 +26,21 @@
         </view>
         <view class="detail-group">
             <view class="detail-title-container">
+                <view class="detail-title">融资领域</view>
+            </view>
+            <view class="detail-content">
+                <view class="release-label-list">
+                    <block wx:if="{{projectDetail.projectDomain.length !== 0}}">
+                        <view class="item" wx:for="{{projectDetail.projectDomain}}">
+                            <view class="text">{{item}}</view>
+                        </view>
+                    </block>
+                    <view class="empty" wx:else>暂无领域标签，请点击以添加标签！</view>
+                </view>
+            </view>
+        </view>
+        <view class="detail-group">
+            <view class="detail-title-container">
                 <view class="detail-title">项目描述</view>
             </view>
             <view class="detail-content">

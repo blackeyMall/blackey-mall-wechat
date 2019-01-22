@@ -53,7 +53,10 @@ Page({
         labelList: [],
         labelInput: '',
         industry: '',
-        id: ''
+        id: '',
+        showBP: false,
+        isSend: false,
+        countDownText: 60
     },
 
     bindRoundPickerChange (e) {
@@ -147,7 +150,8 @@ Page({
             };
             if (options.objectId) {
                 this.setData({
-                    id: options.objectId
+                    id: options.objectId,
+                    showBP: true
                 });
                 this.onGetProjectDetail();
             }
@@ -270,6 +274,57 @@ Page({
         return isPosted;
     },
 
+    onSendBP (id) {
+        let _this = this;
+        _.sendBP({
+            openId: _this.data.openId,
+            id
+        }, {
+            success (res) {
+                res = res.data;
+                if (res.code === 200) {
+                    wx.showToast({
+                        title: 'BP上传链接已发送！',
+                        icon: 'none'
+                    });
+                    if (!_this.data.showBP) {
+                        setTimeout(() => {
+                            wx.switchTab({
+                                url: '/pages/project/project'
+                            })
+                        }, 1500);
+                    } else {
+                        _this.setData({
+                            isSend: true
+                        });
+                        let count = 60;
+                        let interval = setInterval(() => {
+                            --count;
+                            if (count < 0) {
+                                clearInterval(interval);
+                                _this.setData({
+                                    isSend: false,
+                                    countDownText: 60
+                                });
+                            } else {
+                                _this.setData({
+                                    countDownText: count
+                                });
+                            }
+                        }, 1000);
+                    };
+                }
+            }
+        })
+    },
+
+    bindSendBP () {
+        if (this.data.isSend) {
+            return;
+        };
+        this.onSendBP(this.data.id);
+    },
+
     bindReleaseProject () {
         if (this.data.name === '') {
             wx.showToast({
@@ -355,42 +410,54 @@ Page({
         _.releaseProject(data, {
             success (res) {
                 res = res.data;
-                let id = res.data;
                 if (res.code === 200) {
-                    wx.showModal({
-                        title: '温馨提示',
-                        content: '是否发送BP上传链接？',
-                        success (res) {
-                            if (res.confirm) {
-                                _.sendBP({
-                                    openId: _this.data.openId,
-                                    id
-                                }, {
-                                    success (res) {
-                                        res = res.data;
-                                        if (res.code === 200) {
-                                            wx.showToast({
-                                                title: 'BP上传链接已发送！',
-                                                icon: 'none'
-                                            });
-                                        }
-                                    }
-                                })
-                            } else if (res.cancel) {
-                                wx.showToast({
-                                    title: '创建成功，请至详情页发送BP链接！',
-                                    icon: 'none'
-                                });
-                            }
-                        },
-                        complete () {
-                            setTimeout(() => {
-                                wx.switchTab({
-                                    url: '/pages/project/project'
-                                })
-                            }, 1500);
-                        }
-                    })
+                    let id = res.data;
+                    if (_this.data.showBP) {
+                        wx.switchTab({
+                            url: '/pages/project/project'
+                        });
+                    } else {
+                        _this.onSendBP(id);
+                        // setTimeout(() => {
+                        //     wx.switchTab({
+                        //         url: '/pages/project/project'
+                        //     })
+                        // }, 1500);
+                    }
+                    // wx.showModal({
+                    //     title: '温馨提示',
+                    //     content: '是否发送BP上传链接？',
+                    //     success (res) {
+                    //         if (res.confirm) {
+                    //             _.sendBP({
+                    //                 openId: _this.data.openId,
+                    //                 id
+                    //             }, {
+                    //                 success (res) {
+                    //                     res = res.data;
+                    //                     if (res.code === 200) {
+                    //                         wx.showToast({
+                    //                             title: 'BP上传链接已发送！',
+                    //                             icon: 'none'
+                    //                         });
+                    //                     }
+                    //                 }
+                    //             })
+                    //         } else if (res.cancel) {
+                    //             wx.showToast({
+                    //                 title: '创建成功，请至详情页发送BP链接！',
+                    //                 icon: 'none'
+                    //             });
+                    //         }
+                    //     },
+                    //     complete () {
+                    //         setTimeout(() => {
+                    //             wx.switchTab({
+                    //                 url: '/pages/project/project'
+                    //             })
+                    //         }, 1500);
+                    //     }
+                    // })
                 }
             }
         })

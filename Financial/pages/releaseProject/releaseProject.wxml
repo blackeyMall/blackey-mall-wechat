@@ -133,6 +133,19 @@
             </view>
         </view> 
     </view>
+    <view class="release-group" wx:if="{{showBP}}" bind:tap="bindSendBP">
+        <view class="release-title-conteiner">
+            <view class="release-title">
+                <view class="item">
+                    <view class="iconfont icon-bp"></view>
+                    <view class="text">BP/融资文件</view>
+                </view>
+            </view>
+        </view>
+        <view class="release-item">
+            <view class="send-bp {{isSend === true ? 'sended' : ''}}">{{isSend === true ? countDownText + '后重新发送' : '点击重新发送BP链接'}}</view>
+        </view> 
+    </view>
 </view>
 <view class="btn-primary fixed-bottom" bind:tap="bindReleaseProject">发布</view>
 

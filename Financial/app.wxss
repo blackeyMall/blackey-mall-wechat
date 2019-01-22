@@ -1649,3 +1649,13 @@ page {
     margin: 0 auto;
     border-radius: 80rpx;
 }
+
+.send-bp {
+    font-size: 24rpx;
+    color: #f56c6c;
+    text-align: center;
+}
+
+.send-bp.sended {
+    color: #666;
+}
