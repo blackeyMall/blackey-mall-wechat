@@ -92,6 +92,21 @@ Page({
         })
     },
 
+    bindMakePhoneCall (e) {
+        let text = e.currentTarget.dataset.text;
+        if (text !== '') {
+            wx.makePhoneCall({
+                phoneNumber: text,
+                success: function(res) {
+                    wx.showToast({
+                        title: '拨打成功！',
+                        icon: 'none'
+                    })
+                }
+            });
+        }
+    },
+
     bindViewBP () {
         wx.downloadFile({
             url: this.data.projectDetail.attachment,

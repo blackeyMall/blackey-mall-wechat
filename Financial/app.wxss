@@ -81,6 +81,7 @@
 }
 
 .text-danger {
+    font-weight: 500;
     color: #f56c6c;
 }
 
@@ -1433,11 +1434,14 @@ page {
     margin-right: 30rpx;
 }
 
+.member-list .item .content {
+    flex: 1;
+}
+
 .member-list .item .title {
     display: flex;
     align-items: flex-end;
     line-height: 1;
-    margin-bottom: 20rpx;
     font-size: 30rpx;
     color: #000;
 }
@@ -1448,6 +1452,16 @@ page {
     border-left: 2rpx solid #8e94a1;
     font-size: 24rpx;
     color: #8e94a1;
+}
+
+.member-list .item .des {
+    margin-top: 20rpx;
+}
+
+.member-list .item .contact {
+    padding: 30rpx 0;
+    font-weight: 500;
+    color: #67a6f3;
 }
 
 .btn-list {
@@ -1658,4 +1672,14 @@ page {
 
 .send-bp.sended {
     color: #666;
+}
+
+.attachment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.attachment .iconfont {
+    font-size: 24rpx;
 }
