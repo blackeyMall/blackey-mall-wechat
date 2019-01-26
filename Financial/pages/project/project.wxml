@@ -32,9 +32,7 @@
                                 </view>
                                 <view class="label-list">
                                     <view class="label-item" wx:if="{{item.attachment !== ''}}">{{item.attachment}}</view>
-                                    <block wx:if="{{item.projectDomain.length !== 0}}">
-                                        <view class="label-item" wx:for="{{item.projectDomain}}">{{item}}</view>
-                                    </block>
+                                    <view class="label-item" wx:if="{{item.industry !== null}}">{{item.industry}}</view>
                                 </view>
                             </view>
                         </view>
@@ -51,6 +49,16 @@
                                 <view class="text">关注 {{item.followNum}}</view>
                             </view>
                         </view>
+                    </view>
+                    <view class="header-item">
+                        <view class="label-item">
+                            <view class="iconfont icon-jingpin"></view>
+                            <view class="text">精品</view>
+                        </view>
+                        <!-- <view class="label-item">
+                            <view class="iconfont icon-fufei"></view>
+                            <view class="text">付费</view>
+                        </view> -->
                     </view>
                 </view>
             </view>

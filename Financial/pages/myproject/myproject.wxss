@@ -1,0 +1,3 @@
+.project-list .detail > .header-item {
+    right: 60rpx;
+}

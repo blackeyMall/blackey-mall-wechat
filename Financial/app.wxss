@@ -735,6 +735,16 @@ page {
     justify-content: flex-start;
 }
 
+.project-list .detail {
+    position: relative;
+}
+
+.project-list .detail > .header-item {
+    position: absolute;
+    top: 10rpx;
+    right: 20rpx;
+}
+
 .project-list .item .header .name {
     display: flex;
     align-items: center;

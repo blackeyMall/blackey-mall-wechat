@@ -261,11 +261,11 @@ Page({
                         let records = res.data.records;
                         if (records !== null) {
                             records.forEach(el => {
-                                let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum} = el;
+                                let {id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, industry, isFollow, followNum} = el;
                                 attachment === null ? attachment = '' : attachment = '有BP';
                                 projectDomain === null ? projectDomain = [] : projectDomain = projectDomain.split(',');
                                 projectList.push({
-                                    id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, isFollow, followNum
+                                    id, openId, logo, name, attachment, brief, financeRound, financeAmount, projectDomain, industry, isFollow, followNum
                                 });
                             });
                             _this.setData({
