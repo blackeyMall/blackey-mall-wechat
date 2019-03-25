@@ -7,20 +7,20 @@
                 </view>
                 <view class="content">
                     <view class="title">{{projectDetail.name}}</view>
-                    <view class="des">{{projectDetail.brief}}</view>
-                    <view class="url">{{projectDetail.websiteUrl}}</view>
+                    <view class="des">{{projectDetail.brief === null ? '--' : projectDetail.brief}}</view>
+                    <view class="url">{{projectDetail.websiteUrl === null ? '--' : projectDetail.websiteUrl}}</view>
                 </view>
             </view>
         </view>
         <view class="detail-group">
             <view class="detail-title-container">
-                <view class="detail-title">融资需求</view>
+                <view class="detail-title">融资信息</view>
             </view>
             <view class="detail-content">
                 <view class="detail-list">
-                    <view class="item">轮次：{{projectDetail.financeRound}}</view>
-                    <view class="item">行业：{{projectDetail.industry}}</view>
-                    <view class="item">城市：{{projectDetail.city}}</view>
+                    <view class="item">轮次：{{projectDetail.financeRound === null ? '--' : projectDetail.financeRound}}</view>
+                    <view class="item">行业：{{projectDetail.industry === null ? '--' : projectDetail.industry}}</view>
+                    <view class="item">城市：{{projectDetail.city === null ? '--' : projectDetail.city}}</view>
                 </view>
             </view>
         </view>
@@ -44,7 +44,7 @@
                 <view class="detail-title">项目描述</view>
             </view>
             <view class="detail-content">
-                <view class="p">{{projectDetail.projectDesc}}</view>
+                <view class="p">{{projectDetail.projectDesc === null ? '--' : projectDetail.projectDesc}}</view>
             </view>
         </view>
         <view class="detail-group">
@@ -57,7 +57,8 @@
                     <view class="iconfont icon-pdf"></view>
                     <view class="text attachment">
                         <view class="">
-                            {{projectDetail.name + '商业计划书'}} <text class="text-danger">点击查看</text>
+                            <!-- {{projectDetail.name + '商业计划书'}}  -->
+                            <text class="text-danger">点击查看</text>
                         </view>
                         <view class="iconfont icon-open-right"></view>
                     </view>

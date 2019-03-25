@@ -38,7 +38,7 @@
     <view class="card" bind:tap="bindCardEdit">
         <view class="iconfont icon-open-right"></view>
         <button class="btn-share" type="default" open-type="share" catch:tap="bindShareCard">
-            <view class="iconfont icon-fenxiang"></view>
+            <view class="iconfont icon-share"></view>
             <view class="text">分享名片</view>
         </button>
         <view class="card-header">
@@ -156,9 +156,9 @@
         </view>
     </view> -->
     <view class="people-list" wx:if="{{userInfoList.length !== 0}}">
-        <view class="item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{userInfoList}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <view class="item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{userInfoList}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" bind:tap="bindRedirectUserCard" data-openid="{{item.openId}}">
             <view class="detail">
-                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" data-openid="{{item.openId}}" bind:tap="bindRedirectUserCard" />
+                <image mode="widthFix" src="{{item.avatarUrl}}" class="avatar" />
                 <view class="info">
                     <view class="text name">
                         <view>{{item.name}}</view>
@@ -169,16 +169,16 @@
                 </view>
                 <view class="div">
                     <view class="operator-center">
-                        <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindFocus">
+                        <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" catch:tap="bindAddFriend">
+                            <view class="iconfont {{item.isAddFriend === 1 ? 'icon-correct' : 'icon-add'}}"></view>
+                            <view class="text">{{item.isAddFriend === 1 ? '申请中' : '联系'}}</view>
+                        </view>
+                        <view class="operator-item {{item.isFocus === 1 ? 'active' : ''}}" wx:if="{{item.showFocus}}" data-id="{{item.openId}}" data-index="{{index}}" catch:tap="bindFocus">
                             <view class="iconfont {{item.isFocus === 1 ? 'icon-focus2' : 'icon-focus1'}}"></view>
                             <view class="text">{{item.isFocus === 1 ? '已关注' : '关注'}}</view>
                         </view>
-                        <view class="operator-item {{item.isAddFriend === 1 ? 'active' : ''}}" wx:if="{{item.showAddFriend}}" data-id="{{item.openId}}" data-index="{{index}}" bind:tap="bindAddFriend">
-                            <view class="iconfont {{item.isAddFriend === 1 ? 'icon-correct' : 'icon-add'}}"></view>
-                            <view class="text">{{item.isAddFriend === 1 ? '申请中' : '加好友'}}</view>
-                        </view>
                         <block wx:if="{{activeNav === 1}}">
-                            <view class="operator-item active" wx:if="{{item.telephone !== ''}}" data-text="{{item.telephone}}" bind:tap="bindMakePhoneCall">
+                            <view class="operator-item active" wx:if="{{item.telephone !== ''}}" data-text="{{item.telephone}}" catch:tap="bindMakePhoneCall">
                                 <view class="iconfont icon-dianhua"></view>
                                 <view class="text">联系对方</view>
                             </view>

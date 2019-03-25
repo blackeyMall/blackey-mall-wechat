@@ -1,9 +1,9 @@
 {
     "pages": [
+        "pages/card/card",
         "pages/project/project",
         "pages/myproject/myproject",
         "pages/releaseProject/releaseProject",
-        "pages/card/card",
         "pages/myinfo/myinfo",
         "pages/projectDetail/projectDetail",
         "pages/info/info",

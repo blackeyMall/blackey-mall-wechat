@@ -390,6 +390,14 @@ Page({
         });
     },
 
+    bindPreviewAvatar (e) {
+        let imgList = [];
+        imgList.push(e.currentTarget.dataset.src);
+        wx.previewImage({
+            urls: imgList
+        });
+    },
+
     bindMakePhoneCall (e) {
         let telNum = this.data.userInfo.telephone;
         if (telNum !== '') {

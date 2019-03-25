@@ -45,7 +45,7 @@
                                 <view class="tag-item tag-money">￥{{item.financeAmount === null ? '-- ' : item.financeAmount}}万元</view>
                             </view>
                             <view class="operator-item {{item.isFollow.value === 'ADD' ? 'active' : ''}}" wx:if="{{openId !== item.openId}}" catch:tap="bindFollow" data-index="{{index}}" data-id="{{item.id}}">
-                                <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view>
+                                <!-- <view class="iconfont {{item.isFollow.value === 'ADD' ? 'icon-focus2' : 'icon-focus1'}}"></view> -->
                                 <view class="text">关注 {{item.followNum}}</view>
                             </view>
                         </view>

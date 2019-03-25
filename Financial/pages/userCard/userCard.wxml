@@ -1,7 +1,7 @@
 <view class="panel businessCard">
     <view class="card">
         <view class="card-header">
-            <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" />
+            <image mode="widthFix" src="{{userInfo.avatarUrl}}" class="avatar" data-src="{{userInfo.avatarUrl}}" bind:tap="bindPreviewAvatar" />
             <view class="info">
                 <view class="item name" wx:if="{{userInfo.name !== ''}}">{{userInfo.name}}</view>
                 <view class="item tag" wx:if="{{userInfo.duties !== ''}}">{{userInfo.duties}}</view>
