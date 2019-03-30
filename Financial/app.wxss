@@ -45,7 +45,8 @@
     font-size: 20rpx;
     padding: 4rpx 10rpx;
     border: 2rpx solid #e9a04c;
-    color: #e9a04c;
+    background-color: #e9a04c;
+    color: #fff;
 }
 
 .label-item + .label-item {
@@ -70,7 +71,7 @@
 
 .btn-primary {
     padding: 20rpx;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     color: #fff;
     text-align: center;
     font-size: 34rpx;
@@ -153,7 +154,7 @@ page {
 }
 
 .nav-tab .item.active {
-    color: #67a6f3;
+    color: #b71e23;
 }
 
 .nav-tab .item .text {
@@ -178,7 +179,7 @@ page {
 
 .nav-tab .item.active .text::after {
     width: 70rpx;
-    background-color: #69a2ef;
+    background-color: #b71e23;
 }
 
 .nav-tab-sub {
@@ -196,7 +197,7 @@ page {
 }
 
 .nav-tab-sub .item.active {
-    color: #69a2ef;
+    color: #b71e23;
 }
 
 .tag-list {
@@ -225,7 +226,7 @@ page {
     height: 70%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    background: linear-gradient(to bottom, #67a6f3, #3968d1);
+    background: linear-gradient(to bottom, #b71e23, #8a1619);
     content: ' ';
 }
 
@@ -308,7 +309,7 @@ page {
 
 .businessCard .card-body {
     margin-top: 30rpx;
-    color: #67a6f3;
+    color: #b71e23;
     font-size: 24rpx;
 }
 
@@ -327,7 +328,7 @@ page {
 
 .businessCard .info-list .item .iconfont {
     line-height: 1;
-    color: #67a6f3;
+    color: #b71e23;
 }
 
 .businessCard .more {
@@ -336,7 +337,7 @@ page {
     justify-content: center;
     align-items: center;
     font-size: 24rpx;
-    color: #67a6f3;
+    color: #b71e23;
     z-index: 1;
 }
 
@@ -405,9 +406,9 @@ page {
 
 .more-info .item .btn {
     padding: 6rpx 10rpx;
-    border: 2rpx solid #67a6f3;
+    border: 2rpx solid #b71e23;
     font-size: 20rpx;
-    color: #67a6f3;
+    color: #b71e23;
     border-radius: 6rpx;
 }
 .more-info .item .btn[data-disabled=false] {
@@ -427,7 +428,7 @@ page {
     margin: 10rpx;
     padding: 10rpx 30rpx;
     text-align: center;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     border-radius: 6rpx;
     font-size: 20rpx;
     color: #fff;
@@ -436,8 +437,8 @@ page {
 
 .more-info .item .label-item.empty {
     background-color: transparent;
-    border: 2rpx solid #67a6f3;
-    color: #67a6f3;
+    border: 2rpx solid #b71e23;
+    color: #b71e23;
 }
 
 .more-info .item .avatar {
@@ -596,7 +597,7 @@ page {
 
 .cardEdit .btn-save {
     padding: 20rpx 30rpx;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     color: #fff;
     text-align: center;
     font-size: 32rpx;
@@ -610,7 +611,7 @@ page {
     display: flex;
     align-items: center;
     padding: 20rpx 30rpx;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     font-size: 28rpx;
 }
 
@@ -768,7 +769,7 @@ page {
 
 .project-list .item .header-item2 .label-item {
     padding: 6rpx;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     border: 0;
     /* border-radius: 4rpx; */
     color: #fff !important;
@@ -829,8 +830,10 @@ page {
 }
 
 .project-list .item .label-list .label-item {
-    border-color: #67a6f3;
-    color: #67a6f3;
+    padding: 6rpx 10rpx;
+    background-color: #b71e23;
+    border-color: #b71e23;
+    color: #fff;
 }
 
 .project-list .item .footer {
@@ -865,7 +868,7 @@ page {
 }
 
 .project-list .item .footer .operator-item.active {
-    color: #67a6f3;
+    color: #b71e23;
 }
 
 .project-list .item .footer .operator-item .iconfont {
@@ -899,7 +902,7 @@ page {
     border-radius: 50%;
     font-size: 24rpx;
     text-align: center;
-    background: linear-gradient(#a5ceff, #67a6f3);
+    background: linear-gradient(#cc5256, #b71e23);
     color: #fff;
     opacity: .6;
     transition: all .1s;
@@ -926,7 +929,7 @@ page {
     left: 0;
     right: 0;
     height: 50%;
-    background-color: #67a6f3;
+    background-color: #b71e23;
     content: ' ';
 }
 
@@ -977,7 +980,7 @@ page {
     flex: 0 0 auto;
     margin-right: 20rpx;
     font-size: 40rpx;
-    color: #67a6f3;
+    color: #b71e23;
 }
 
 .my-list .item .text {
@@ -1084,12 +1087,13 @@ page {
     align-items: center;
     margin: 6rpx;
     padding: 10rpx 20rpx;
-    border: 2rpx solid #67a6f3;
-    color: #67a6f3;
+    border: 2rpx solid #b71e23;
+    background-color: #b71e23;
+    color: #fff;
 }
 
 .release-label-list .item .iconfont {
-    color: #67a6f3;
+    color: #fff;
 }
 
 .release-label-list .item .iconfont {
@@ -1144,8 +1148,8 @@ page {
 }
 
 .release-category-list .item.active {
-    border-color: #67a6f3;
-    background-color: #67a6f3;
+    border-color: #b71e23;
+    background-color: #b71e23;
     color: #fff;
 }
 
@@ -1471,7 +1475,7 @@ page {
 .member-list .item .contact {
     padding: 30rpx 0;
     font-weight: 500;
-    color: #67a6f3;
+    color: #b71e23;
 }
 
 .btn-list {
@@ -1660,7 +1664,7 @@ page {
 .empty-content .iconfont {
     display: block;
     font-size: 200rpx;
-    color: #67a6f3;
+    color: #b71e23;
     text-align: center;
 }
 .empty-content .p {

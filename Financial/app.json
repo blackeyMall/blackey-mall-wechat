@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/card/card",
         "pages/project/project",
+        "pages/card/card",
         "pages/myproject/myproject",
         "pages/releaseProject/releaseProject",
         "pages/myinfo/myinfo",
@@ -18,13 +18,13 @@
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#67a6f3",
+        "navigationBarBackgroundColor": "#b71e23",
         "navigationBarTitleText": "金融Link",
-        "navigationBarTextStyle": "light"
+        "navigationBarTextStyle": "white"
     },
     "tabBar": {
         "color": "#000",
-        "selectedColor": "#67a6f3",
+        "selectedColor": "#b71e23",
         "list": [{
             "pagePath": "pages/card/card",
             "text": "名片",
